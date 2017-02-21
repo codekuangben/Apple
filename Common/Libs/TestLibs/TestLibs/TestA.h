@@ -27,6 +27,8 @@
 - (void) setA: (int) paramA;
 // 测试多个参数
 - (void) setAll: (int) paramA paramStr: (NSString*) paramC;
+// 定义抽象方法
+- (NSString*) stepMsg;
 @end
 
 #endif /* TestA_h */

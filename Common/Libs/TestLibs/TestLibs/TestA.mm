@@ -38,4 +38,10 @@ static int msB = 0;
     mStr = paramC;
 }
 
+- (NSString*) stepMsg
+{
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
+}
+
 @end
