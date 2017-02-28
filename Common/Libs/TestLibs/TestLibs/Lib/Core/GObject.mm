@@ -1,16 +1,21 @@
-﻿package SDK.Lib.Core;
+﻿#import "GObject.h"
 
-public class GObject
+@implementation GObject
+
+- (id) init
 {
-    protected String mTypeId;     // 名字
-
-    public GObject()
+    if(self = [super init])
     {
-        this.mTypeId = "GObject";
+        mTypeId = @"GObject";
     }
-
-    public String getTypeId()
-    {
-        return this.mTypeId;
-    }
+    
+    return self;
 }
+
+
+(-) getTypeId
+{
+    return this.mTypeId;
+}
+
+@end

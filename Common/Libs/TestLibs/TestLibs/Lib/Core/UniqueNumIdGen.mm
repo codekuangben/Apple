@@ -1,24 +1,29 @@
-﻿package SDK.Lib.Core;
+﻿@import "UniqueNumIdGen.h"
 
-public class UniqueNumIdGen
+@implementation UniqueNumIdGen
+
+- (id) init: (int) baseUniqueId
 {
-    protected int mPreIdx;
-    protected int mCurId;
-
-    public UniqueNumIdGen(int baseUniqueId)
+    if(self = [super init])
     {
-        this.mCurId = 0;
+        mTypeId = @"UniqueNumIdGen";
+        mCurId = 0;
     }
-
-    public int genNewId()
-    {
-        this.mPreIdx = this.mCurId;
-        this.mCurId++;
-        return this.mPreIdx;
-    }
-
-    public int getCurId()
-    {
-        return this.mCurId;
-    }
+    
+    return self;
 }
+
+- (int) genNewId
+{
+    mPreIdx = mCurId;
+    mCurId++;
+    
+    return mPreIdx;
+}
+
+- (int) getCurId
+{
+    return mCurId;
+}
+
+@end

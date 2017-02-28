@@ -1,40 +1,35 @@
-﻿package SDK.Lib.Core;
+﻿@import "UniqueStrIdGen.h"
 
-/**
- * @brief 唯一字符串生成器
- */
-public class UniqueStrIdGen extends UniqueNumIdGen
+static NSString* PlayerPrefix = @"PL";
+static NSString* PlayerChildPrefix = @"PC";
+static NSString* PlayerSnowBlockPrefix = @"PSM";
+static NSString* RobotPrefix = @"RT";
+static NSString* SnowBlockPrefix = @"SM";
+
+@implementation UniqueStrIdGen
+
+- (id) init: (NSString*) prefix baseUniqueId: (int) baseUniqueId
 {
-    public final String PlayerPrefix = "PL";
-    public final String PlayerChildPrefix = "PC";
-    public final String PlayerSnowBlockPrefix = "PSM";
-    public final String RobotPrefix = "RT";
-    public final String SnowBlockPrefix = "SM";
+    super(baseUniqueId);
 
-    protected String mPrefix;
-    protected String mRetId;
-
-    public UniqueStrIdGen(String prefix, int baseUniqueId)
-    {
-        super(baseUniqueId);
-
-        this.mPrefix = prefix;
-    }
-
-    public String genNewStrId()
-    {
-        this.mRetId = String.format("{0}_{1}", this.mPrefix, this.genNewId());
-        return this.mRetId;
-    }
-
-    public String getCurStrId()
-    {
-        return this.mRetId;
-    }
-
-    public String genStrIdById(int id)
-    {
-        this.mRetId = String.format("{0}_{1}", mPrefix, id);
-        return this.mRetId;
-    }
+    this.mPrefix = prefix;
 }
+
+public String genNewStrId()
+{
+    this.mRetId = String.format("{0}_{1}", this.mPrefix, this.genNewId());
+    return this.mRetId;
+}
+
+public String getCurStrId()
+{
+    return this.mRetId;
+}
+
+public String genStrIdById(int id)
+{
+    this.mRetId = String.format("{0}_{1}", mPrefix, id);
+    return this.mRetId;
+}
+
+@end

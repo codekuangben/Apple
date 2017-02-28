@@ -29,6 +29,7 @@
 - (void) setAll: (int) paramA paramStr: (NSString*) paramC;
 // 定义抽象方法
 - (NSString*) stepMsg;
+
 @end
 
 #endif /* TestA_h */
