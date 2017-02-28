@@ -174,6 +174,21 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					TestLibs/Lib/Core,
+					TestLibs/Lib/DataStruct,
+					TestLibs/Lib/DelayHandle,
+					TestLibs/Lib/EventHandle,
+					TestLibs/Lib/FileSystem,
+					TestLibs/Lib/FrameHandle,
+					TestLibs/Lib/FrameWork,
+					TestLibs/Lib/Log,
+					TestLibs/Lib/MsgRoute,
+					TestLibs/Lib/ObjectPool,
+					TestLibs/Lib/Tools,
+					TestLibs/Lib/Thread,
+					TestLibs/Lib/Task,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -215,6 +230,21 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					TestLibs/Lib/Core,
+					TestLibs/Lib/DataStruct,
+					TestLibs/Lib/DelayHandle,
+					TestLibs/Lib/EventHandle,
+					TestLibs/Lib/FileSystem,
+					TestLibs/Lib/FrameHandle,
+					TestLibs/Lib/FrameWork,
+					TestLibs/Lib/Log,
+					TestLibs/Lib/MsgRoute,
+					TestLibs/Lib/ObjectPool,
+					TestLibs/Lib/Tools,
+					TestLibs/Lib/Thread,
+					TestLibs/Lib/Task,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
