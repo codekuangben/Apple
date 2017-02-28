@@ -28,6 +28,7 @@
 		2F8315EB1E5AB5BE0054D1F8 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		2F8315F21E5AB7760054D1F8 /* TestA.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TestA.mm; sourceTree = "<group>"; };
 		2F8315F41E5AB7980054D1F8 /* TestA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestA.h; sourceTree = "<group>"; };
+		2FD260EE1E65289800AEF965 /* Lib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Lib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +61,7 @@
 		2F8315EA1E5AB5BE0054D1F8 /* TestLibs */ = {
 			isa = PBXGroup;
 			children = (
+				2FD260EE1E65289800AEF965 /* Lib */,
 				2F8315EB1E5AB5BE0054D1F8 /* main.mm */,
 				2F8315F21E5AB7760054D1F8 /* TestA.mm */,
 				2F8315F41E5AB7980054D1F8 /* TestA.h */,
