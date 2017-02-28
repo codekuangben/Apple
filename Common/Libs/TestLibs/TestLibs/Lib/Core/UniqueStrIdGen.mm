@@ -15,7 +15,7 @@ static NSString* SnowBlockPrefix = @"SM";
     this.mPrefix = prefix;
 }
 
-public String genNewStrId()
+- (NSString*) genNewStrId
 {
     this.mRetId = String.format("{0}_{1}", this.mPrefix, this.genNewId());
     return this.mRetId;
