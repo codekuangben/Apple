@@ -1,6 +1,15 @@
-﻿package SDK.Lib.DelayHandle;
+﻿#import "DelayHandleParamBase.h"
 
-public class DelayHandleParamBase
+@implementation DelayHandleParamBase
+
+- (void) init
 {
-
+	if(self = [super init])
+    {
+        
+    }
+    
+    return self;
 }
+
+@end

@@ -1,7 +1,16 @@
-﻿package SDK.Lib.DelayHandle;
+﻿#import "DelayHandleObject.h"
 
-public class DelayHandleObject
+@implementation DelayHandleObject
+
+- (void) init
 {
-    public IDelayHandleItem mDelayObject;
-    public DelayHandleParamBase mDelayParam;
+	if(self = [super init])
+    {
+        self.mDelayObject = null;
+		self.mDelayParam = null;
+    }
+    
+    return self;
 }
+
+@end

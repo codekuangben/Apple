@@ -1,6 +1,6 @@
-﻿package SDK.Lib.DelayHandle;
+﻿#import "DelayDelParam.h"
 
-public class DelayDelParam extends  DelayHandleParamBase
-{
+@implement DelayDelParam
 
-}
+
+@end
