@@ -6,8 +6,10 @@
  */
 @interface ICalleeObjectNoRetNoParam
 {
-    public void call();
+    
 }
+
+- (void) call;
 
 @end
 

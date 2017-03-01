@@ -7,41 +7,45 @@
 */
 @implementation ResInsEventDispatch
 
-public ResInsEventDispatch()
+- (id) init
 {
-	this.mIsValid = true;
+    if(self = [super init])
+    {
+		self.mIsValid = true;
+    }
+    
+    return self;
 }
 
-public void setIsValid(boolean value)
+- (void) setIsValid: (bool) value
 {
-	this.mIsValid = value;
+	self.mIsValid = value;
 }
 
-public boolean getIsValid()
+- (bool) getIsValid
 {
-	return this.mIsValid;
+	return self.mIsValid;
 }
 
-public void setInsGO(Object go)
+- (void) setInsGO: (NSObject) go
 {
-	this.mInsGO = go;
+	self.mInsGO = go;
 }
 
-public Object getInsGO()
+- (NSObject) getInsGO
 {
-	return this.mInsGO;
+	return self.mInsGO;
 }
 
-@Override
-public void dispatchEvent(IDispatchObject dispatchObject)
+- (void) dispatchEvent: (IDispatchObject) dispatchObject
 {
-	if(this.mIsValid)
+	if(self.mIsValid)
 	{
-		super.dispatchEvent(dispatchObject);
+		[super dispatchEvent: dispatchObject];
 	}
 	else
 	{
-		this.mInsGO = null;
+		self.mInsGO = null;
 	}
 }
 

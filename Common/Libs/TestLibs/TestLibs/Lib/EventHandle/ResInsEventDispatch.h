@@ -9,47 +9,19 @@
  */
 @interface ResInsEventDispatch : EventDispatch, IDispatchObject
 {
-    protected boolean mIsValid;
-    protected Object mInsGO;
 
-    public ResInsEventDispatch()
-    {
-        this.mIsValid = true;
-    }
-
-    public void setIsValid(boolean value)
-    {
-        this.mIsValid = value;
-    }
-
-    public boolean getIsValid()
-    {
-        return this.mIsValid;
-    }
-
-    public void setInsGO(Object go)
-    {
-        this.mInsGO = go;
-    }
-
-    public Object getInsGO()
-    {
-        return this.mInsGO;
-    }
-
-    @Override
-    public void dispatchEvent(IDispatchObject dispatchObject)
-    {
-        if(this.mIsValid)
-        {
-            super.dispatchEvent(dispatchObject);
-        }
-        else
-        {
-            this.mInsGO = null;
-        }
-    }
 }
+
+@property (nonatomic, readwrite, retain) bool mIsValid;
+@property (nonatomic, readwrite, retain) NSObject mInsGO;
+
+- (id) init;
+- (void) setIsValid: (bool) value;
+- (bool) getIsValid;
+- (void) setInsGO: (NSObject) go;
+- (NSObject) getInsGO;
+
+- (void) dispatchEvent: (IDispatchObject) dispatchObject;
 
 @end
 

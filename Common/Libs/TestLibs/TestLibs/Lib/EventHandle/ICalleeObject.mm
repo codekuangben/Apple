@@ -5,7 +5,9 @@
  */
 @implementation ICalleeObject
 {
-    public void call(IDispatchObject dispObj);
+    
 }
+
+- (void) call: (IDispatchObject) dispObj;
 
 @end

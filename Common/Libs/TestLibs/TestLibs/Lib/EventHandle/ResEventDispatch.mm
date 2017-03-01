@@ -2,19 +2,22 @@
 #import "EventDispatch.h"
 
 @implementation ResEventDispatch
+
+- (id) init
 {
-    public ResEventDispatch()
+    if(self = [super init])
     {
-
+        
     }
+    
+    return self;
+}
 
-    @Override
-    public void dispatchEvent(IDispatchObject dispatchObject)
-    {
-        super.dispatchEvent(dispatchObject);
+- (void) dispatchEvent: (IDispatchObject) dispatchObject
+{
+	[super dispatchEvent: dispatchObject];
 
-        this.clearEventHandle();
-    }
+	[self clearEventHandle];
 }
 
 @end

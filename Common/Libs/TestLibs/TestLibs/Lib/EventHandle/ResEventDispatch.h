@@ -5,19 +5,11 @@
 
 @interface ResEventDispatch : EventDispatch
 {
-    public ResEventDispatch()
-    {
-
-    }
-
-    @Override
-    public void dispatchEvent(IDispatchObject dispatchObject)
-    {
-        super.dispatchEvent(dispatchObject);
-
-        this.clearEventHandle();
-    }
+    
 }
+
+- (id) init;
+- (void) dispatchEvent: (IDispatchObject) dispatchObject;
 
 @end
 
