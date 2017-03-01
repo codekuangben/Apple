@@ -11,6 +11,8 @@
     NSString* mStr;
 }
 
+@property (nonatomic, readwrite, retain) int mIntValue;
+
 // 静态数据
 //static int msB;
 
