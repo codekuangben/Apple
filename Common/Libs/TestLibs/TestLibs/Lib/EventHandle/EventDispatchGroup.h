@@ -1,8 +1,9 @@
-﻿#import "EventDispatchGroup.h"
+﻿#ifndef __EventDispatchGroup_h
+#define __EventDispatchGroup_h
 
-import SDK.Lib.DataStruct.MDictionary;
+#import "MDictionary.h"
 
-@implementation EventDispatchGroup
+@interface EventDispatchGroup
 {
     protected MDictionary<Integer, EventDispatch> mGroupID2DispatchDic;
     protected boolean mIsInLoop;       // 是否是在循环遍历中
@@ -114,3 +115,5 @@ import SDK.Lib.DataStruct.MDictionary;
 }
 
 @end
+
+#endif

@@ -1,10 +1,12 @@
-﻿#import "EventDispatchFunctionObject.h"
+﻿#ifndef __EventDispatchFunctionObject_h
+#define __EventDispatchFunctionObject_h
+
 #import "IDelayHandleItem.h"
 
 import SDK.Lib.DelayHandle.IDelayHandleItem;
 import SDK.Lib.Tools.UtilApi;
 
-@implementation EventDispatchFunctionObject
+@interface EventDispatchFunctionObject : IDelayHandleItem
 {
     public boolean mIsClientDispose;       // 是否释放了资源
     public ICalleeObject mThis;
@@ -75,3 +77,5 @@ import SDK.Lib.Tools.UtilApi;
 }
 
 @end
+
+#endif

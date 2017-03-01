@@ -1,21 +1,20 @@
-﻿package SDK.Lib.EventHandle;
+﻿#import "AddOnceAndCallOnceEventDispatch.h"
 
-public class AddOnceAndCallOnceEventDispatch extends EventDispatch
+@implementation AddOnceAndCallOnceEventDispatch
+
+- (void) addEventHandle: ICalleeObject pThis and: (IDispatchObject) handle
 {
-    @Override
-    public void addEventHandle(ICalleeObject pThis, IDispatchObject handle)
-    {
-        if (!this.isExistEventHandle(pThis, handle))
-        {
-            super.addEventHandle(pThis, handle);
-        }
-    }
-
-    @Override
-    public void dispatchEvent(IDispatchObject dispatchObject)
-    {
-        super.dispatchEvent(dispatchObject);
-
-        this.clearEventHandle();
-    }
+	if (! [self isExistEventHandle: pThis and: handle])
+	{
+		[super addEventHandle:pThis and handle];
+	}
 }
+
+- (void) dispatchEvent: (IDispatchObject) dispatchObject
+{
+	[super dispatchEvent: dispatchObject];
+
+	[self clearEventHandle];
+}
+
+@end

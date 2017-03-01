@@ -1,6 +1,7 @@
-﻿package SDK.Lib.EventHandle;
+﻿#import "ResEventDispatch.h"
+#import "EventDispatch.h"
 
-public class ResEventDispatch extends EventDispatch
+@implementation ResEventDispatch
 {
     public ResEventDispatch()
     {
@@ -15,3 +16,5 @@ public class ResEventDispatch extends EventDispatch
         this.clearEventHandle();
     }
 }
+
+@end

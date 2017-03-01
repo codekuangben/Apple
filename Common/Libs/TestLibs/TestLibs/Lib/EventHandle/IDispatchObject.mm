@@ -1,9 +1,11 @@
-﻿package SDK.Lib.EventHandle;
+﻿#import "IDispatchObject.h"
 
 /**
  * @brief 可分发的对象
  */
-public interface IDispatchObject
+@implementation IDispatchObject
 {
 
 }
+
+@end

@@ -1,9 +1,11 @@
-﻿package SDK.Lib.EventHandle;
+﻿#import "ICalleeObject.h"
 
 /**
  * @brief 可被调用的函数对象
  */
-public interface ICalleeObject
+@implementation ICalleeObject
 {
     public void call(IDispatchObject dispObj);
 }
+
+@end
