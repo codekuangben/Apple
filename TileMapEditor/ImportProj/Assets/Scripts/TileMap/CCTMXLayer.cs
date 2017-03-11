@@ -1,4 +1,4 @@
-public class CC_DLL TMXLayer
+public class TMXLayer
 {
     // TMXLayer - atlasIndex and Z
 static int compareInts(const void* a, const void* b)
@@ -17,52 +17,34 @@ static int compareInts(const void* a, const void* b)
  */
 static public TMXLayer create(TMXTilesetInfo tilesetInfo, TMXLayerInfo layerInfo, TMXMapInfo mapInfo)
 {
-    TMXLayer* ret = new (std::nothrow) TMXLayer();
-    if (ret->initWithTilesetInfo(tilesetInfo, layerInfo, mapInfo))
+    TMXLayer ret = new TMXLayer();
+    if (ret.initWithTilesetInfo(tilesetInfo, layerInfo, mapInfo))
     {
-        ret->autorelease();
         return ret;
     }
-    CC_SAFE_DELETE(ret);
-    return nullptr;
+
+    return null;
 }
 /**
  * @js ctor
  */
 public TMXLayer()
 {
-    :_layerName("")
-,_opacity(0)
-,_vertexZvalue(0)
-,_useAutomaticVertexZ(false)
-,_reusedTile(nullptr)
-,_atlasIndexArray(nullptr)
-,_contentScaleFactor(1.0f)
-,_layerSize(Size::ZERO)
-,_mapTileSize(Size::ZERO)
-,_tiles(nullptr)
-,_tileSet(nullptr)
-,_layerOrientation(TMXOrientationOrtho)
-,_staggerAxis(TMXStaggerAxis_Y)
-,_staggerIndex(TMXStaggerIndex_Even)
-,_hexSideLength(0)
-}
-/**
- * @js NA
- * @lua NA
- */
-public virtual ~TMXLayer()
-{
-    CC_SAFE_RELEASE(_tileSet);
-    CC_SAFE_RELEASE(_reusedTile);
-
-    if (_atlasIndexArray)
-    {
-        ccCArrayFree(_atlasIndexArray);
-        _atlasIndexArray = nullptr;
-    }
-
-    CC_SAFE_FREE(_tiles);
+    _layerName = "";
+    _opacity = 0;
+_vertexZvalue = 0;
+_useAutomaticVertexZ = false;
+_reusedTile = null;
+_atlasIndexArray = null;
+_contentScaleFactor = 1.0f;
+_layerSize = Size::ZERO;
+_mapTileSize = Size::ZERO;
+_tiles = null;
+_tileSet = null;
+_layerOrientation = TMXOrientationOrtho;
+_staggerAxis = TMXStaggerAxis_Y;
+_staggerIndex = TMXStaggerIndex_Even;
+_hexSideLength = 0;
 }
 
 /** Initializes a TMXLayer with a tileset info, a layer info and a map info.
@@ -72,7 +54,7 @@ public virtual ~TMXLayer()
  * @param mapInfo A map info.
  * @return If initializes successfully, it will return true.
  */
-public bool initWithTilesetInfo(TMXTilesetInfo *tilesetInfo, TMXLayerInfo *layerInfo, TMXMapInfo *mapInfo)
+public bool initWithTilesetInfo(TMXTilesetInfo tilesetInfo, TMXLayerInfo layerInfo, TMXMapInfo mapInfo)
 {
     // FIXME:: is 35% a good estimate ?
     Size size = layerInfo->_layerSize;
@@ -174,7 +156,7 @@ public void releaseMap()
  * @param tileCoordinate A tile coordinate.
  * @return Returns the tile (Sprite) at a given a tile coordinate.
  */
-public Sprite* getTileAt(const Vec2& tileCoordinate)
+public Sprite getTileAt(ref Vec2 tileCoordinate)
 {
     CCASSERT(pos.x < _layerSize.width && pos.y < _layerSize.height && pos.x >= 0 && pos.y >= 0, "TMXLayer: invalid position");
     CCASSERT(_tiles && _atlasIndexArray, "TMXLayer: the tiles map has been released");
@@ -212,7 +194,10 @@ public Sprite* getTileAt(const Vec2& tileCoordinate)
 /**
  * @js NA
  */
-public CC_DEPRECATED_ATTRIBUTE Sprite* tileAt(const Vec2& tileCoordinate) { return getTileAt(tileCoordinate); };
+public Sprite tileAt(ref Vec2 tileCoordinate)
+{
+    return getTileAt(tileCoordinate);
+}
 
 /** Returns the tile gid at a given tile coordinate. It also returns the tile flags.
  * This method requires the tile map has not been previously released (eg. don't call [layer releaseMap]).
@@ -221,7 +206,7 @@ public CC_DEPRECATED_ATTRIBUTE Sprite* tileAt(const Vec2& tileCoordinate) { retu
  * @param flags Tile flags.
  * @return Returns the tile gid at a given tile coordinate. It also returns the tile flags.
  */
-public uint32_t getTileGIDAt(const Vec2& tileCoordinate, TMXTileFlags* flags = nullptr)
+public uint32_t getTileGIDAt(ref Vec2 tileCoordinate, TMXTileFlags flags = null)
 {
     CCASSERT(pos.x < _layerSize.width && pos.y < _layerSize.height && pos.x >= 0 && pos.y >= 0, "TMXLayer: invalid position");
     CCASSERT(_tiles && _atlasIndexArray, "TMXLayer: the tiles map has been released");
@@ -241,7 +226,8 @@ public uint32_t getTileGIDAt(const Vec2& tileCoordinate, TMXTileFlags* flags = n
 /**
  * @js NA
  */
-public CC_DEPRECATED_ATTRIBUTE uint32_t tileGIDAt(const Vec2& tileCoordinate, TMXTileFlags* flags = nullptr){
+public uint32_t tileGIDAt(ref Vec2 tileCoordinate, TMXTileFlags flags = null)
+{
         return getTileGIDAt(tileCoordinate, flags);
     }
 
@@ -252,7 +238,7 @@ public CC_DEPRECATED_ATTRIBUTE uint32_t tileGIDAt(const Vec2& tileCoordinate, TM
  * @param gid The tile gid.
  * @param tileCoordinate The tile coordinate.
  */
-public void setTileGID(uint32_t gid, const Vec2& tileCoordinate)
+public void setTileGID(uint32_t gid, ref Vec2 tileCoordinate)
 {
     setTileGID(gid, pos, (TMXTileFlags)0);
 }
@@ -267,7 +253,7 @@ public void setTileGID(uint32_t gid, const Vec2& tileCoordinate)
  * @param flags The tile flags.
  */
 
-public void setTileGID(uint32_t gid, const Vec2& tileCoordinate, TMXTileFlags flags)
+public void setTileGID(uint32_t gid, ref Vec2 tileCoordinate, TMXTileFlags flags)
 {
     CCASSERT(pos.x < _layerSize.width && pos.y < _layerSize.height && pos.x >= 0 && pos.y >= 0, "TMXLayer: invalid position");
     CCASSERT(_tiles && _atlasIndexArray, "TMXLayer: the tiles map has been released");
