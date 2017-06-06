@@ -1,77 +1,73 @@
 ﻿#import "EventDispatchFunctionObject.h"
 #import "IDelayHandleItem.h"
 
-import SDK.Lib.DelayHandle.IDelayHandleItem;
-import SDK.Lib.Tools.UtilApi;
-
 @implementation EventDispatchFunctionObject
-{
-    public boolean mIsClientDispose;       // 是否释放了资源
-    public ICalleeObject mThis;
-    public IDispatchObject mHandle;
 
-    public EventDispatchFunctionObject()
+- (id) init: (int) baseUniqueId
+{
+    if(self = [super init])
     {
         self.mIsClientDispose = false;
     }
+    
+    return self;
+}
 
-    public void setFuncObject(ICalleeObject pThis, IDispatchObject func)
-    {
-        self.mThis = pThis;
-        self.mHandle = func;
-    }
+- (void) setFuncObject(ICalleeObject* pThis, SEL func)
+{
+	self.mThis = pThis;
+	self.mHandle = func;
+	self.mHandleImp = [self.mThis methodForSelector:self.mHandle];  
+}
 
-    public boolean isValid()
-    {
-        return self.mThis != null || self.mHandle != null;
-    }
+- (bool) isValid()
+{
+	return self.mThis != nil && self.mHandle != nil;
+}
 
-    public boolean isEqual(ICalleeObject pThis, IDispatchObject handle)
-    {
-        boolean ret = false;
-        if(pThis != null)
-        {
-            ret = UtilApi.isAddressEqual(self.mThis, pThis);
-            if (!ret)
-            {
-                return ret;
-            }
-        }
-        if (handle != null)
-        {
-            //ret = UtilApi.isAddressEqual(self.mHandle, handle);
-            ret = UtilApi.isDelegateEqual(self.mHandle, handle);
-            if (!ret)
-            {
-                return ret;
-            }
-        }
+- (bool) isEqual(ICalleeObject* pThis, SEL handle)
+{
+	bool ret = false;
+	if(pThis != nil)
+	{
+		ret = UtilApi.isAddressEqual(self.mThis, pThis);
+		if (!ret)
+		{
+			return ret;
+		}
+	}
+	if (handle != nil)
+	{
+		ret = UtilApi.isDelegateEqual(self.mHandle, handle);
+		if (!ret)
+		{
+			return ret;
+		}
+	}
 
-        return ret;
-    }
+	return ret;
+}
 
-    public void call(IDispatchObject dispObj)
-    {
-        if(mThis != null)
-        {
-            mThis.call(dispObj);
-        }
+public void call(IDispatchObject* dispObj)
+{
+	if(nil != self.mThis && nil != self.mHandle)
+	{
+		[mThis performSelector:self.mHandle withObject:self.mEventId withObject:dispObj];
+	}
+	else if(nil == self.mThis && nil != self.mHandle)
+	{
+		self.mHandle(dispObj, self.mEventId); 
+	}
+}
 
-//        if(null != self.mHandle)
-//        {
-//            self.mHandle(dispObj);
-//        }
-    }
+public void setClientDispose(boolean isDispose)
+{
+	self.mIsClientDispose = isDispose;
+}
 
-    public void setClientDispose(boolean isDispose)
-    {
-        self.mIsClientDispose = isDispose;
-    }
-
-    public boolean isClientDispose()
-    {
-        return self.mIsClientDispose;
-    }
+public boolean isClientDispose()
+{
+	return self.mIsClientDispose;
 }
 
 @end

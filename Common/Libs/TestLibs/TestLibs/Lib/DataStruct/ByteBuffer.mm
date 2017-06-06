@@ -56,52 +56,52 @@
 	return self.mDynBuffer;
 }
 
-public int getBytesAvailable()
+- (int)getBytesAvailable
 {
-	return (self.mDynBuffer.getSize() - self.mPos);
+	return (self.mDynBuffer->getSize() - self.mPos);
 }
 
-public EEndian getEndian()
+- (EEndian)getEndian
 {
 	return self.mEndian;
 }
 
-public void setEndian(EEndian end)
+- (void)setEndian:(EEndian)end
 {
 	self.mEndian = end;
 }
 
-public int getLength()
+- (int)getLength
 {
 	return self.mDynBuffer.getSize();
 }
 
-public void setLength(int value)
+- (void)setLength:(int)value
 {
-	self.mDynBuffer.setSize(value);
+	self.mDynBuffer->setSize(value);
 }
 
-public void setPos(int pos)
+- (void)setPos:(int) pos
 {
 	self.mPos = pos;
 }
 
-public int getPos()
+- (int)getPos
 {
 	return self.mPos;
 }
 
-public int getPosition()
+- (int)getPosition
 {
 	return self.mPos;
 }
 
-public void setPosition(int value)
+- (void)setPosition:(int) value
 {
 	self.mPos = value;
 }
 
-public void clear ()
+- (void)clear
 {
 	self.mPos = 0;
 	self.mDynBuffer.setSize(0);
