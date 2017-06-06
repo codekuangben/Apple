@@ -11,7 +11,7 @@ public class TickObjectMgrBase extends DelayHandleMgrBase implements ITickedObje
 
     public TickObjectMgrBase()
     {
-        this.mTickObjectList = new MList<ITickedObject>();
+        self.mTickObjectList = new MList<ITickedObject>();
     }
 
     @Override
@@ -38,22 +38,22 @@ public class TickObjectMgrBase extends DelayHandleMgrBase implements ITickedObje
 
     public void onTick(float delta)
     {
-        this.mLoopDepth.incDepth();
+        self.mLoopDepth.incDepth();
 
-        this.onExecTick(delta);
+        self.onExecTick(delta);
 
-        this.mLoopDepth.decDepth();
+        self.mLoopDepth.decDepth();
     }
 
     protected void onExecTick(float delta)
     {
         int idx = 0;
-        int count = this.mTickObjectList.Count();
+        int count = self.mTickObjectList.Count();
         ITickedObject tickObject = null;
 
         while (idx < count)
         {
-            tickObject = this.mTickObjectList.get(idx);
+            tickObject = self.mTickObjectList.get(idx);
 
             if (!((IDelayHandleItem)tickObject).isClientDispose())
             {
@@ -67,21 +67,21 @@ public class TickObjectMgrBase extends DelayHandleMgrBase implements ITickedObje
     @Override
     protected void addObject(IDelayHandleItem tickObject)
     {
-        this.addObject(tickObject, 0);
+        self.addObject(tickObject, 0);
     }
 
     @Override
     protected void addObject(IDelayHandleItem tickObject, float priority)
     {
-        if (this.mLoopDepth.isInDepth())
+        if (self.mLoopDepth.isInDepth())
         {
             super.addObject(tickObject);
         }
         else
         {
-            if (this.mTickObjectList.IndexOf((ITickedObject)tickObject) == -1)
+            if (self.mTickObjectList.IndexOf((ITickedObject)tickObject) == -1)
             {
-                this.mTickObjectList.Add((ITickedObject)tickObject);
+                self.mTickObjectList.Add((ITickedObject)tickObject);
             }
         }
     }
@@ -89,15 +89,15 @@ public class TickObjectMgrBase extends DelayHandleMgrBase implements ITickedObje
     @Override
     protected void removeObject(IDelayHandleItem tickObject)
     {
-        if (this.mLoopDepth.isInDepth())
+        if (self.mLoopDepth.isInDepth())
         {
             super.removeObject(tickObject);
         }
         else
         {
-            if (this.mTickObjectList.IndexOf((ITickedObject)tickObject) != -1)
+            if (self.mTickObjectList.IndexOf((ITickedObject)tickObject) != -1)
             {
-                this.mTickObjectList.Remove((ITickedObject)tickObject);
+                self.mTickObjectList.Remove((ITickedObject)tickObject);
             }
         }
     }

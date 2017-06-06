@@ -11,55 +11,55 @@ public class LoopDepth
 
     public LoopDepth()
     {
-        this.mLoopDepth = 0;
-        this.mIncHandle = null;
-        this.mDecHandle = null;
-        this.mZeroHandle = null;
+        self.mLoopDepth = 0;
+        self.mIncHandle = null;
+        self.mDecHandle = null;
+        self.mZeroHandle = null;
     }
 
     public void setIncHandle(ICalleeObjectNoRetNoParam value)
     {
-        this.mIncHandle = value;
+        self.mIncHandle = value;
     }
 
     public void setDecHandle(ICalleeObjectNoRetNoParam value)
     {
-        this.mDecHandle = value;
+        self.mDecHandle = value;
     }
 
     public void setZeroHandle(ICalleeObjectNoRetNoParam value)
     {
-        this.mZeroHandle = value;
+        self.mZeroHandle = value;
     }
 
     public void incDepth()
     {
-        ++this.mLoopDepth;
+        ++self.mLoopDepth;
 
-        if(null != this.mIncHandle)
+        if(null != self.mIncHandle)
         {
-            this.mIncHandle.call();
+            self.mIncHandle.call();
         }
     }
 
     public void decDepth()
     {
-        --this.mLoopDepth;
+        --self.mLoopDepth;
 
-        if (null != this.mDecHandle)
+        if (null != self.mDecHandle)
         {
-            this.mDecHandle.call();
+            self.mDecHandle.call();
         }
 
-        if(0 == this.mLoopDepth)
+        if(0 == self.mLoopDepth)
         {
-            if (null != this.mZeroHandle)
+            if (null != self.mZeroHandle)
             {
-                this.mZeroHandle.call();
+                self.mZeroHandle.call();
             }
         }
 
-        if(this.mLoopDepth < 0)
+        if(self.mLoopDepth < 0)
         {
             // 错误，不对称
             //UnityEngine.Debug.LogError("LoopDepth::decDepth, Error !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -68,6 +68,6 @@ public class LoopDepth
 
     public boolean isInDepth()
     {
-        return this.mLoopDepth > 0;
+        return self.mLoopDepth > 0;
     }
 }

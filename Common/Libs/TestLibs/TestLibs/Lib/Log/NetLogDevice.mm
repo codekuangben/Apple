@@ -77,7 +77,7 @@ public class NetLogDevice extends LogDeviceBase
     @Override
     public void logout(String message)
     {
-        this.logout(message, LogColor.eLC_LOG);
+        self.logout(message, LogColor.eLC_LOG);
     }
 
     @Override

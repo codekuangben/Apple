@@ -9,17 +9,17 @@ public class TimerFunctionObject
 
     public TimerFunctionObject()
     {
-        this.mHandle = null;
+        self.mHandle = null;
     }
 
     public void setFuncObject(ICalleeObjectTimer handle)
     {
-        this.mHandle = handle;
+        self.mHandle = handle;
     }
 
     public boolean isValid()
     {
-        return this.mHandle != null;
+        return self.mHandle != null;
     }
 
     public boolean isEqual(ICalleeObject handle)
@@ -28,7 +28,7 @@ public class TimerFunctionObject
 
         if(handle != null)
         {
-            ret = UtilApi.isAddressEqual(this.mHandle, handle);
+            ret = UtilApi.isAddressEqual(self.mHandle, handle);
             if(!ret)
             {
                 return ret;
@@ -40,9 +40,9 @@ public class TimerFunctionObject
 
     public void call(TimerItemBase dispObj)
     {
-        if (null != this.mHandle)
+        if (null != self.mHandle)
         {
-            this.mHandle.call(dispObj);
+            self.mHandle.call(dispObj);
         }
     }
 }

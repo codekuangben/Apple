@@ -13,7 +13,7 @@ public class IdPoolSys
 
     public IdPoolSys()
     {
-        this.mId2PoolDic = new MDictionary<String, MList<IRecycle>>();
+        self.mId2PoolDic = new MDictionary<String, MList<IRecycle>>();
     }
 
     public void init()
@@ -30,12 +30,12 @@ public class IdPoolSys
     {
         IRecycle ret = null;
 
-        if (this.mId2PoolDic.ContainsKey(id))
+        if (self.mId2PoolDic.ContainsKey(id))
         {
-            if (this.mId2PoolDic.get(id).Count() > 0)
+            if (self.mId2PoolDic.get(id).Count() > 0)
             {
-                ret = this.mId2PoolDic.get(id).get(0);
-                this.mId2PoolDic.get(id).RemoveAt(0);
+                ret = self.mId2PoolDic.get(id).get(0);
+                self.mId2PoolDic.get(id).RemoveAt(0);
             }
         }
 
@@ -44,11 +44,11 @@ public class IdPoolSys
 
     public void deleteObj(String id, IRecycle obj)
     {
-        if (!this.mId2PoolDic.ContainsKey(id))
+        if (!self.mId2PoolDic.ContainsKey(id))
         {
-            this.mId2PoolDic.set(id, new MList<IRecycle>());
+            self.mId2PoolDic.set(id, new MList<IRecycle>());
         }
 
-        this.mId2PoolDic.get(id).Add(obj);
+        self.mId2PoolDic.get(id).Add(obj);
     }
 }

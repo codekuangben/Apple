@@ -18,8 +18,8 @@ public class MMutex
         {
             // IOS 下不支持，错误提示如下： "Named mutexes are not supported"
             //mMutex = new Mutex(initiallyOwned, name);
-            this.mMutex = new Semaphore(2);
-            this.mName = name;
+            self.mMutex = new Semaphore(2);
+            self.mName = name;
         }
     }
 
@@ -29,7 +29,7 @@ public class MMutex
         {
             try
             {
-                this.mMutex.acquire();
+                self.mMutex.acquire();
             }
             catch (InterruptedException e)
             {
@@ -42,7 +42,7 @@ public class MMutex
     {
         if (MacroDef.NET_MULTHREAD)
         {
-            this.mMutex.release();
+            self.mMutex.release();
         }
     }
 
@@ -50,7 +50,7 @@ public class MMutex
     {
         if (MacroDef.NET_MULTHREAD)
         {
-            //this.mMutex.Close();
+            //self.mMutex.Close();
         }
     }
 }

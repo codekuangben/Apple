@@ -31,30 +31,30 @@ public class MFileStream extends GObject implements IDispatchObject
      */
     public MFileStream(String filePath)
     {
-        this.mTypeId = "MFileStream";
+        self.mTypeId = "MFileStream";
 
-        this.mFilePath = filePath;
-        this.mFileOpState = FileOpState.eNoOp;
+        self.mFilePath = filePath;
+        self.mFileOpState = FileOpState.eNoOp;
 
-        this.checkAndOpen();
+        self.checkAndOpen();
     }
 
     public void seek(long offset, MSeekOrigin origin)
     {
-        if(this.mFileOpState == FileOpState.eOpenSuccess)
+        if(self.mFileOpState == FileOpState.eOpenSuccess)
         {
             if(MSeekOrigin.Begin == origin)
             {
                 try
                 {
-                    if(null != this.mFileInputStream)
+                    if(null != self.mFileInputStream)
                     {
-                        this.mFileInputStream.getChannel().position(offset);
+                        self.mFileInputStream.getChannel().position(offset);
                     }
 
-                    if(null != this.mFileOutputStream)
+                    if(null != self.mFileOutputStream)
                     {
-                        this.mFileOutputStream.getChannel().position(offset);
+                        self.mFileOutputStream.getChannel().position(offset);
                     }
                 }
                 catch (Exception e)
@@ -66,14 +66,14 @@ public class MFileStream extends GObject implements IDispatchObject
             {
                 try
                 {
-                    if(null != this.mFileInputStream)
+                    if(null != self.mFileInputStream)
                     {
-                        this.mFileInputStream.getChannel().position(this.mFile.length() - 1 - offset);
+                        self.mFileInputStream.getChannel().position(self.mFile.length() - 1 - offset);
                     }
 
-                    if(null != this.mFileOutputStream)
+                    if(null != self.mFileOutputStream)
                     {
-                        this.mFileOutputStream.getChannel().position(this.mFile.length() - 1 - offset);
+                        self.mFileOutputStream.getChannel().position(self.mFile.length() - 1 - offset);
                     }
                 }
                 catch (Exception e)
@@ -85,14 +85,14 @@ public class MFileStream extends GObject implements IDispatchObject
             {
                 try
                 {
-                    if(null != this.mFileInputStream)
+                    if(null != self.mFileInputStream)
                     {
-                        this.mFileInputStream.getChannel().position(this.mFileInputStream.getChannel().position() + offset);
+                        self.mFileInputStream.getChannel().position(self.mFileInputStream.getChannel().position() + offset);
                     }
 
-                    if(null != this.mFileOutputStream)
+                    if(null != self.mFileOutputStream)
                     {
-                        this.mFileOutputStream.getChannel().position(this.mFileOutputStream.getChannel().position() + offset);
+                        self.mFileOutputStream.getChannel().position(self.mFileOutputStream.getChannel().position() + offset);
                     }
                 }
                 catch (Exception e)
@@ -105,38 +105,38 @@ public class MFileStream extends GObject implements IDispatchObject
 
     public void dispose()
     {
-        this.close();
+        self.close();
     }
 
     protected void checkAndOpen()
     {
-        if(this.mFileOpState == FileOpState.eNoOp)
+        if(self.mFileOpState == FileOpState.eNoOp)
         {
-            this.mFile = new File(this.mFilePath);
+            self.mFile = new File(self.mFilePath);
         }
     }
 
     protected void syncOpenFileStream()
     {
-        if (this.mFileOpState == FileOpState.eNoOp)
+        if (self.mFileOpState == FileOpState.eNoOp)
         {
-            this.mFileOpState = FileOpState.eOpening;
+            self.mFileOpState = FileOpState.eOpening;
 
             try
             {
-                this.mFile = new File(mFilePath);
-                this.mFileOpState = FileOpState.eOpenSuccess;
+                self.mFile = new File(mFilePath);
+                self.mFileOpState = FileOpState.eOpenSuccess;
             }
             catch(Exception exp)
             {
-                this.mFileOpState = FileOpState.eOpenFail;
+                self.mFileOpState = FileOpState.eOpenFail;
             }
         }
     }
 
     public boolean isValid()
     {
-        return this.mFileOpState == FileOpState.eOpenSuccess;
+        return self.mFileOpState == FileOpState.eOpenSuccess;
     }
 
     // 获取总共长度
@@ -144,11 +144,11 @@ public class MFileStream extends GObject implements IDispatchObject
     {
         int len = 0;
 
-        if (this.mFileOpState == FileOpState.eOpenSuccess)
+        if (self.mFileOpState == FileOpState.eOpenSuccess)
         {
-            if (this.mFile != null)
+            if (self.mFile != null)
             {
-                len = (int)this.mFile.length();
+                len = (int)self.mFile.length();
             }
             /*
             if (mFileStream != null && mFileStream.CanSeek)
@@ -170,24 +170,24 @@ public class MFileStream extends GObject implements IDispatchObject
 
     protected void close()
     {
-        if (this.mFileOpState == FileOpState.eOpenSuccess)
+        if (self.mFileOpState == FileOpState.eOpenSuccess)
         {
-            if (this.mFile != null)
+            if (self.mFile != null)
             {
                 try
                 {
-                    if(null != this.mFileInputStream)
+                    if(null != self.mFileInputStream)
                     {
-                        this.mFileInputStream.close();
-                        this.mFileInputStream = null;
+                        self.mFileInputStream.close();
+                        self.mFileInputStream = null;
                     }
 
-                    if(null != this.mFileInputStream)
+                    if(null != self.mFileInputStream)
                     {
-                        this.mFileOutputStream.flush();
+                        self.mFileOutputStream.flush();
 
-                        this.mFileOutputStream.close();
-                        this.mFileOutputStream = null;
+                        self.mFileOutputStream.close();
+                        self.mFileOutputStream = null;
                     }
                 }
                 catch(Exception e)
@@ -196,29 +196,29 @@ public class MFileStream extends GObject implements IDispatchObject
                 }
             }
 
-            this.mFileOpState = FileOpState.eOpenClose;
-            this.mFileOpState = FileOpState.eNoOp;
+            self.mFileOpState = FileOpState.eOpenClose;
+            self.mFileOpState = FileOpState.eNoOp;
         }
     }
 
     public String readText()
     {
-        return this.readText(0, 0, null);
+        return self.readText(0, 0, null);
     }
 
     public String readText(int offset)
     {
-        return this.readText(offset, 0, null);
+        return self.readText(offset, 0, null);
     }
 
     public String readText(int offset, int count)
     {
-        return this.readText(offset, count, null);
+        return self.readText(offset, count, null);
     }
 
     public String readText(int offset, int count, MEncoding encode)
     {
-        this.checkAndOpen();
+        self.checkAndOpen();
 
         String retStr = "";
         byte[] bytes = null;
@@ -233,14 +233,14 @@ public class MFileStream extends GObject implements IDispatchObject
             count = getLength();
         }
 
-        if (this.mFileOpState == FileOpState.eOpenSuccess)
+        if (self.mFileOpState == FileOpState.eOpenSuccess)
         {
-            if (this.mFile.canRead())
+            if (self.mFile.canRead())
             {
                 try
                 {
                     bytes = new byte[count];
-                    this.mFileInputStream.read(bytes, 0, count);
+                    self.mFileInputStream.read(bytes, 0, count);
 
                     retStr = encode.GetString(bytes);
                 }
@@ -256,17 +256,17 @@ public class MFileStream extends GObject implements IDispatchObject
 
     public byte[] readByte()
     {
-        return this.readByte(0, 0);
+        return self.readByte(0, 0);
     }
 
     public byte[] readByte(int offset)
     {
-        return this.readByte(offset, 0);
+        return self.readByte(offset, 0);
     }
 
     public byte[] readByte(int offset, int count)
     {
-        this.checkAndOpen();
+        self.checkAndOpen();
 
         if (count == 0)
         {
@@ -275,12 +275,12 @@ public class MFileStream extends GObject implements IDispatchObject
 
         byte[] bytes = null;
 
-        if (this.mFile.canRead())
+        if (self.mFile.canRead())
         {
             try
             {
                 bytes = new byte[count];
-                this.mFileInputStream.read(bytes, 0, count);
+                self.mFileInputStream.read(bytes, 0, count);
             }
             catch (Exception err)
             {
@@ -293,16 +293,16 @@ public class MFileStream extends GObject implements IDispatchObject
 
     public void writeText(String text)
     {
-        this.writeText(text, GkEncode.eUTF8);
+        self.writeText(text, GkEncode.eUTF8);
     }
 
     public void writeText(String text, GkEncode gkEncode)
     {
         MEncoding encode = UtilApi.convGkEncode2EncodingEncoding(gkEncode);
 
-        this.checkAndOpen();
+        self.checkAndOpen();
 
-        if (this.mFile.canWrite())
+        if (self.mFile.canWrite())
         {
             //if (encode == null)
             //{
@@ -315,7 +315,7 @@ public class MFileStream extends GObject implements IDispatchObject
             {
                 try
                 {
-                    this.mFileOutputStream.write(bytes, 0, bytes.length);
+                    self.mFileOutputStream.write(bytes, 0, bytes.length);
                 }
                 catch (Exception err)
                 {
@@ -327,19 +327,19 @@ public class MFileStream extends GObject implements IDispatchObject
 
     public void writeByte(byte[] bytes)
     {
-        this.writeByte(bytes, 0, 0);
+        self.writeByte(bytes, 0, 0);
     }
 
     public void writeByte(byte[] bytes, int offset)
     {
-        this.writeByte(bytes, offset, 0);
+        self.writeByte(bytes, offset, 0);
     }
 
     public void writeByte(byte[] bytes, int offset, int count)
     {
-        this.checkAndOpen();
+        self.checkAndOpen();
 
-        if (this.mFile.canWrite())
+        if (self.mFile.canWrite())
         {
             if (bytes != null)
             {
@@ -352,7 +352,7 @@ public class MFileStream extends GObject implements IDispatchObject
                 {
                     try
                     {
-                        this.mFileOutputStream.write(bytes, offset, count);
+                        self.mFileOutputStream.write(bytes, offset, count);
                     }
                     catch (Exception err)
                     {
@@ -365,7 +365,7 @@ public class MFileStream extends GObject implements IDispatchObject
 
     public void writeLine(String text)
     {
-        this.writeLine(text, GkEncode.eUTF8);
+        self.writeLine(text, GkEncode.eUTF8);
     }
 
     public void writeLine(String text, GkEncode gkEncode)

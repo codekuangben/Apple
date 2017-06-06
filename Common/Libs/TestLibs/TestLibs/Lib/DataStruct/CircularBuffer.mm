@@ -62,7 +62,7 @@ public class CircularBuffer
 
     public boolean isLinearized()
     {
-        if (this.getSize() == 0)
+        if (self.getSize() == 0)
         {
             return true;
         }
@@ -82,7 +82,7 @@ public class CircularBuffer
 
     public boolean full()
     {
-        return capacity() == this.getSize();
+        return capacity() == self.getSize();
     }
 
     // 清空缓冲区
@@ -115,7 +115,7 @@ public class CircularBuffer
             MArray.Copy(tmp, 0, mDynBuffer.mBuffer, mDynBuffer.mCapacity - mFirst, mLast);      // 拷贝第二段数据到缓冲区
 
             mFirst = 0;
-            mLast = this.getSize();
+            mLast = self.getSize();
         }
     }
 
@@ -128,7 +128,7 @@ public class CircularBuffer
         {
             return;
         }
-        if (newCapacity < this.getSize())       // 不能分配比当前已经占有的空间还小的空间
+        if (newCapacity < self.getSize())       // 不能分配比当前已经占有的空间还小的空间
         {
             return;
         }
@@ -304,8 +304,8 @@ public class CircularBuffer
             int closeSize = DynBufResizePolicy.getCloseSize(rhv.getSize() + mDynBuffer.mSize, mDynBuffer.mCapacity, mDynBuffer.mMaxCapacity);
             setCapacity(closeSize);
         }
-        //this.mSize += rhv.size;
-        //this.mLast = this.mSize;
+        //self.mSize += rhv.size;
+        //self.mLast = self.mSize;
 
         //mTmpBA.clear();
         rhv.frontBA(mTmpBA, rhv.getSize());

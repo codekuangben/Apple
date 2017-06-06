@@ -19,20 +19,20 @@ public class SystemFrameData
 
     public int getTotalFrameCount()
     {
-        return this.mTotalFrameCount;
+        return self.mTotalFrameCount;
     }
 
     public void nextFrame(float delta)
     {
-        ++this.mTotalFrameCount;
-        ++this.mCurFrameCount;
-        this.mCurTime += delta;
+        ++self.mTotalFrameCount;
+        ++self.mCurFrameCount;
+        self.mCurTime += delta;
 
-        if(this.mCurTime > 1.0f)
+        if(self.mCurTime > 1.0f)
         {
-            this.mFps = (int)(this.mCurFrameCount / this.mCurTime);
-            this.mCurFrameCount = 0;
-            this.mCurTime = 0;
+            self.mFps = (int)(self.mCurFrameCount / self.mCurTime);
+            self.mCurFrameCount = 0;
+            self.mCurTime = 0;
         }
     }
 }

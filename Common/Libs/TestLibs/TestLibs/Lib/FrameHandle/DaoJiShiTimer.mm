@@ -9,44 +9,44 @@ public class DaoJiShiTimer extends TimerItemBase
     public void setTotalTime(float value)
     {
         super.setTotalTime(value);
-        this.mCurRunTime = value;
+        self.mCurRunTime = value;
     }
 
     @Override
     public float getRunTime()
     {
-        return this.mTotalTime - this.mCurRunTime;
+        return self.mTotalTime - self.mCurRunTime;
     }
 
     // 如果要获取剩余的倒计时时间，使用 getLeftCallTime
     @Override
     public float getLeftRunTime()
     {
-        return this.mCurRunTime;
+        return self.mCurRunTime;
     }
 
     @Override
     public void OnTimer(float delta)
     {
-        if (this.mDisposed)
+        if (self.mDisposed)
         {
             return;
         }
 
-        this.mCurRunTime -= delta;
-        if(this.mCurRunTime < 0)
+        self.mCurRunTime -= delta;
+        if(self.mCurRunTime < 0)
         {
-            this.mCurRunTime = 0;
+            self.mCurRunTime = 0;
         }
-        this.mIntervalLeftTime += delta;
+        self.mIntervalLeftTime += delta;
 
-        if (this.mIsInfineLoop)
+        if (self.mIsInfineLoop)
         {
             checkAndDisp();
         }
         else
         {
-            if (this.mCurRunTime <= 0)
+            if (self.mCurRunTime <= 0)
             {
                 disposeAndDisp();
             }
@@ -60,9 +60,9 @@ public class DaoJiShiTimer extends TimerItemBase
     @Override
     public void reset()
     {
-        this.mCurRunTime = this.mTotalTime;
-        this.mCurCallTime = 0;
-        this.mIntervalLeftTime = 0;
-        this.mDisposed = false;
+        self.mCurRunTime = self.mTotalTime;
+        self.mCurCallTime = 0;
+        self.mIntervalLeftTime = 0;
+        self.mDisposed = false;
     }
 }

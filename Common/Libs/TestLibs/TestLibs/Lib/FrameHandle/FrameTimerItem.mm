@@ -19,24 +19,24 @@ public class FrameTimerItem implements IDelayHandleItem
 
     public FrameTimerItem()
     {
-        this.mInternal = 1;
-        this.mTotalFrameCount = 1;
-        this.mCurFrame = 0;
-        this.mIsInfineLoop = false;
-        this.mCurLeftFrame = 0;
-        this.mTimerDisp = null;
-        this.mDisposed = false;
+        self.mInternal = 1;
+        self.mTotalFrameCount = 1;
+        self.mCurFrame = 0;
+        self.mIsInfineLoop = false;
+        self.mCurLeftFrame = 0;
+        self.mTimerDisp = null;
+        self.mDisposed = false;
     }
 
     public void OnFrameTimer()
     {
-        if (this.mDisposed)
+        if (self.mDisposed)
         {
             return;
         }
 
-        ++this.mCurFrame;
-        ++this.mCurLeftFrame;
+        ++self.mCurFrame;
+        ++self.mCurLeftFrame;
 
         //if (m_preFrame == m_curFrame)
         //{
@@ -45,36 +45,36 @@ public class FrameTimerItem implements IDelayHandleItem
 
         //m_curFrame = m_preFrame;
 
-        if (this.mIsInfineLoop)
+        if (self.mIsInfineLoop)
         {
-            if (this.mCurLeftFrame == this.mInternal)
+            if (self.mCurLeftFrame == self.mInternal)
             {
-                this.mCurLeftFrame = 0;
+                self.mCurLeftFrame = 0;
 
-                if (this.mTimerDisp != null)
+                if (self.mTimerDisp != null)
                 {
-                    this.mTimerDisp.call(this);
+                    self.mTimerDisp.call(this);
                 }
             }
         }
         else
         {
-            if (this.mCurFrame == this.mTotalFrameCount)
+            if (self.mCurFrame == self.mTotalFrameCount)
             {
-                this.mDisposed = true;
-                if (this.mTimerDisp != null)
+                self.mDisposed = true;
+                if (self.mTimerDisp != null)
                 {
-                    this.mTimerDisp.call(this);
+                    self.mTimerDisp.call(this);
                 }
             }
             else
             {
-                if (this.mCurLeftFrame == this.mInternal)
+                if (self.mCurLeftFrame == self.mInternal)
                 {
-                    this.mCurLeftFrame = 0;
-                    if (this.mTimerDisp != null)
+                    self.mCurLeftFrame = 0;
+                    if (self.mTimerDisp != null)
                     {
-                        this.mTimerDisp.call(this);
+                        self.mTimerDisp.call(this);
                     }
                 }
             }
@@ -83,9 +83,9 @@ public class FrameTimerItem implements IDelayHandleItem
 
     public void reset()
     {
-        this.mCurFrame = 0;
-        this.mCurLeftFrame = 0;
-        this.mDisposed = false;
+        self.mCurFrame = 0;
+        self.mCurLeftFrame = 0;
+        self.mDisposed = false;
     }
 
     public void setClientDispose(boolean isDispose)

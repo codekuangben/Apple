@@ -169,9 +169,9 @@ public class ClientBuffer
     // KBEngine 引擎消息流程
     public void moveRaw2Msg_KBE()
     {
-        this.mRawBuffer.circularBuffer.linearize();
-        this.mMsgBuffer.circularBuffer.pushBackCB(this.mRawBuffer.circularBuffer);
-        this.mRawBuffer.circularBuffer.clear();
+        self.mRawBuffer.circularBuffer.linearize();
+        self.mMsgBuffer.circularBuffer.pushBackCB(self.mRawBuffer.circularBuffer);
+        self.mRawBuffer.circularBuffer.clear();
     }
 
     public void send(boolean bnet = true)

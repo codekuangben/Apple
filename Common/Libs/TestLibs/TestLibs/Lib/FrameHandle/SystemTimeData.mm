@@ -16,14 +16,14 @@ public class SystemTimeData
 
     public SystemTimeData()
     {
-        this.mPreTime = 0;
-        this.mCurTime = 0;
-        this.mDeltaSec = 0.0f;
-        this.mIsFixFrameRate = false;
-        this.mFixFrameRate = 0.0417f;       //  1 / 24;
-        this.mScale = 1;
+        self.mPreTime = 0;
+        self.mCurTime = 0;
+        self.mDeltaSec = 0.0f;
+        self.mIsFixFrameRate = false;
+        self.mFixFrameRate = 0.0417f;       //  1 / 24;
+        self.mScale = 1;
 
-        this.mFixedTimestep = 0.02f;
+        self.mFixedTimestep = 0.02f;
     }
 
     public void init()
@@ -38,57 +38,57 @@ public class SystemTimeData
 
     public float getDeltaSec()
     {
-        return this.mDeltaSec;
+        return self.mDeltaSec;
     }
 
     public void setDeltaSec(float value)
     {
-        this.mDeltaSec = value;
+        self.mDeltaSec = value;
     }
 
     public float getFixedTimestep()
     {
         if (Ctx.mInstance.mCfg.mIsActorMoveUseFixUpdate)
         {
-            return this.mFixedTimestep;
+            return self.mFixedTimestep;
         }
         else
         {
-            return this.mDeltaSec;
+            return self.mDeltaSec;
         }
     }
 
     public long getCurTime()
     {
-        return this.mCurTime;
+        return self.mCurTime;
     }
 
     public void setCurTime(long value)
     {
-        this.mCurTime = value;
+        self.mCurTime = value;
     }
 
     public void nextFrame()
     {
-        this.mPreTime = this.mCurTime;
-        this.mCurTime = System.currentTimeMillis()/1000;
+        self.mPreTime = self.mCurTime;
+        self.mCurTime = System.currentTimeMillis()/1000;
 
         if (mIsFixFrameRate)
         {
-            this.mDeltaSec = this.mFixFrameRate;        // 每秒 24 帧
+            self.mDeltaSec = self.mFixFrameRate;        // 每秒 24 帧
         }
         else
         {
-            if (this.mPreTime != 0f)     // 第一帧跳过，因为这一帧不好计算间隔
+            if (self.mPreTime != 0f)     // 第一帧跳过，因为这一帧不好计算间隔
             {
-                this.mDeltaSec = (float)(this.mCurTime - this.mPreTime);
+                self.mDeltaSec = (float)(self.mCurTime - self.mPreTime);
             }
             else
             {
-                this.mDeltaSec = this.mFixFrameRate;        // 每秒 24 帧
+                self.mDeltaSec = self.mFixFrameRate;        // 每秒 24 帧
             }
         }
 
-        this.mDeltaSec *= this.mScale;
+        self.mDeltaSec *= self.mScale;
     }
 }

@@ -16,23 +16,23 @@ public class MThread implements IMRunnable
 
     public MThread(IThreadDispatch func, Object param)
     {
-        this.mCb = func;
-        this.mParam = param;
+        self.mCb = func;
+        self.mParam = param;
     }
 
     public void setExitFlag(boolean value)
     {
-        this.mIsExitFlag = value;
+        self.mIsExitFlag = value;
     }
 
     public void setCb(IThreadDispatch value)
     {
-        this.mCb = value;
+        self.mCb = value;
     }
 
     public void setParam(Object value)
     {
-        this.mParam = value;
+        self.mParam = value;
     }
 
     // 函数区域
@@ -41,10 +41,10 @@ public class MThread implements IMRunnable
      */
     public void start()
     {
-        this.mThread = new MThreadImpl(this);
-        //this.mThread.Priority = ThreadPriority.Lowest;
+        self.mThread = new MThreadImpl(this);
+        //self.mThread.Priority = ThreadPriority.Lowest;
         //mThread.IsBackground = true;             // 继续作为前台线程
-        this.mThread.start();
+        self.mThread.start();
     }
 
     public void join()
@@ -52,7 +52,7 @@ public class MThread implements IMRunnable
         //mThread.Interrupt();           // 直接线程终止
         try
         {
-            this.mThread.wait();
+            self.mThread.wait();
         }
         catch(InterruptedException e)
         {
@@ -66,22 +66,22 @@ public class MThread implements IMRunnable
     @Override
     public void run()
     {
-        this.getCurThreadID();
+        self.getCurThreadID();
 
-        if(this.mCb != null)
+        if(self.mCb != null)
         {
-            this.mCb.threadMain(this.mParam);
+            self.mCb.threadMain(self.mParam);
         }
     }
 
     protected void getCurThreadID()
     {
-        this.mCurThreadID = Thread.currentThread().getId();       // 当前线程的 ID
+        self.mCurThreadID = Thread.currentThread().getId();       // 当前线程的 ID
     }
 
     public boolean isCurThread(long threadID)
     {
-        return (this.mCurThreadID == threadID);
+        return (self.mCurThreadID == threadID);
     }
 
     static public void getMainThreadID()

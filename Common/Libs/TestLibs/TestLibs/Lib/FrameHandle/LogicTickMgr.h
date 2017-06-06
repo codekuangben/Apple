@@ -9,13 +9,13 @@ public class LogicTickMgr extends TickMgr
 
     public LogicTickMgr()
     {
-        this.mTimeInterval = new TimeInterval();
+        self.mTimeInterval = new TimeInterval();
     }
 
     @Override
     protected void onExecAdvance(float delta)
     {
-        if(this.mTimeInterval.canExec(delta))
+        if(self.mTimeInterval.canExec(delta))
         {
             super.onExecAdvance(delta);
         }

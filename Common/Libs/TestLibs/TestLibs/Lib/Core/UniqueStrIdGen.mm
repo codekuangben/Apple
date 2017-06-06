@@ -12,24 +12,24 @@ static NSString* SnowBlockPrefix = @"SM";
 {
     super(baseUniqueId);
 
-    this.mPrefix = prefix;
+    self.mPrefix = prefix;
 }
 
 - (NSString*) genNewStrId
 {
-    this.mRetId = String.format("{0}_{1}", this.mPrefix, this.genNewId());
-    return this.mRetId;
+    self.mRetId = String.format("{0}_{1}", self.mPrefix, self.genNewId());
+    return self.mRetId;
 }
 
 public String getCurStrId()
 {
-    return this.mRetId;
+    return self.mRetId;
 }
 
 public String genStrIdById(int id)
 {
-    this.mRetId = String.format("{0}_{1}", mPrefix, id);
-    return this.mRetId;
+    self.mRetId = String.format("{0}_{1}", mPrefix, id);
+    return self.mRetId;
 }
 
 @end

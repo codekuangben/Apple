@@ -108,14 +108,14 @@ public class FileLogDevice extends LogDeviceBase
     @Override
     public void logout(String message)
     {
-        this.logout(message, LogColor.eLC_LOG);
+        self.logout(message, LogColor.eLC_LOG);
     }
 
     // 写文件
     @Override
     public void logout(String message, LogColor type)
     {
-//        if (this.isValid())
+//        if (self.isValid())
 //        {
 //            if (mStreamWriter != null)
 //            {

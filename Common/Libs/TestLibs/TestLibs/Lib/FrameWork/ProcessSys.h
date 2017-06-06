@@ -13,7 +13,7 @@ public class ProcessSys
     public void ProcessNextFrame()
     {
         Ctx.mInstance.mSystemTimeData.nextFrame();
-        this.Advance(Ctx.mInstance.mSystemTimeData.getDeltaSec());
+        self.Advance(Ctx.mInstance.mSystemTimeData.getDeltaSec());
     }
 
     public void Advance(float delta)
@@ -26,7 +26,7 @@ public class ProcessSys
 
     public void ProcessNextFixedFrame()
     {
-        this.FixedAdvance(Ctx.mInstance.mSystemTimeData.getFixedTimestep());
+        self.FixedAdvance(Ctx.mInstance.mSystemTimeData.getFixedTimestep());
     }
 
     public void FixedAdvance(float delta)

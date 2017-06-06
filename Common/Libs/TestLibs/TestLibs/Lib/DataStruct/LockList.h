@@ -91,7 +91,7 @@ public class LockList<T>
             {
                 if(item.equals(elem))       // 地址比较
                 {
-                    this.RemoveAt(idx);
+                    self.RemoveAt(idx);
                     mlock.Dispose();
 
                     return true;
@@ -146,7 +146,7 @@ public class LockList<T>
             {
                 if (item.equals(elem))       // 地址比较
                 {
-                    this.RemoveAt(idx);
+                    self.RemoveAt(idx);
                     mlock.Dispose();
 
                     return idx;

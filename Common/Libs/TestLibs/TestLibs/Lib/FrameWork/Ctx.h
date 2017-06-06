@@ -70,54 +70,54 @@ public class Ctx
 
     protected void constructInit()
     {
-        this.mMsgRouteNotify = new MsgRouteNotify();
-        this.mSystemSetting = new SystemSetting();
-        this.mPoolSys = new PoolSys();
-        this.mTaskQueue = new TaskQueue("TaskQueue");
-        this.mTaskThreadPool = new TaskThreadPool();
+        self.mMsgRouteNotify = new MsgRouteNotify();
+        self.mSystemSetting = new SystemSetting();
+        self.mPoolSys = new PoolSys();
+        self.mTaskQueue = new TaskQueue("TaskQueue");
+        self.mTaskThreadPool = new TaskThreadPool();
 
-        this.mCfg = new Config();
-        this.mFactoryBuild = new FactoryBuild();
+        self.mCfg = new Config();
+        self.mFactoryBuild = new FactoryBuild();
 
-        this.mProcessSys = new ProcessSys();
-        this.mTickMgr = new TickMgr();
-        this.mFixedTickMgr = new FixedTickMgr();
-        this.mTimerMgr = new TimerMgr();
-        this.mFrameTimerMgr = new FrameTimerMgr();
+        self.mProcessSys = new ProcessSys();
+        self.mTickMgr = new TickMgr();
+        self.mFixedTickMgr = new FixedTickMgr();
+        self.mTimerMgr = new TimerMgr();
+        self.mFrameTimerMgr = new FrameTimerMgr();
 
-        this.mShareData = new ShareData();
-        this.mEngineLoop = new EngineLoop();
-        this.mResizeMgr = new ResizeMgr();
+        self.mShareData = new ShareData();
+        self.mEngineLoop = new EngineLoop();
+        self.mResizeMgr = new ResizeMgr();
 
-        this.mLogSys = new LogSys();
-        this.mGlobalDelegate = new GlobalDelegate();
-        this.mIdPoolSys = new IdPoolSys();
+        self.mLogSys = new LogSys();
+        self.mGlobalDelegate = new GlobalDelegate();
+        self.mIdPoolSys = new IdPoolSys();
 
-        this.mLogicTickMgr = new LogicTickMgr();
-        this.mSysMsgRoute = new SysMsgRoute("");
-        this.mSystemTimeData = new SystemTimeData();
-        this.mSystemFrameData = new SystemFrameData();
+        self.mLogicTickMgr = new LogicTickMgr();
+        self.mSysMsgRoute = new SysMsgRoute("");
+        self.mSystemTimeData = new SystemTimeData();
+        self.mSystemFrameData = new SystemFrameData();
     }
 
     public void logicInit()
     {
-        this.mLogSys.init();
-        this.mTickMgr.init();
-        this.mFixedTickMgr.init();
+        self.mLogSys.init();
+        self.mTickMgr.init();
+        self.mFixedTickMgr.init();
 
-        this.mTaskQueue.mTaskThreadPool = this.mTaskThreadPool;
-        this.mTaskThreadPool.initThreadPool(2, this.mTaskQueue);
+        self.mTaskQueue.mTaskThreadPool = self.mTaskThreadPool;
+        self.mTaskThreadPool.initThreadPool(2, self.mTaskQueue);
 
-        this.mGlobalDelegate.init();
-        this.mResizeMgr.init();
-        this.mIdPoolSys.init();
-        this.mLogicTickMgr.init();
-        this.mSysMsgRoute.init();
-        this.mSystemTimeData.init();
+        self.mGlobalDelegate.init();
+        self.mResizeMgr.init();
+        self.mIdPoolSys.init();
+        self.mLogicTickMgr.init();
+        self.mSysMsgRoute.init();
+        self.mSystemTimeData.init();
 
-        this.mSystemFrameData.init();
+        self.mSystemFrameData.init();
 
-        this.addEventHandle();
+        self.addEventHandle();
     }
 
     public void init()
@@ -130,58 +130,58 @@ public class Ctx
 
     public void dispose()
     {
-        if (null != this.mResizeMgr)
+        if (null != self.mResizeMgr)
         {
-            this.mResizeMgr.dispose();
-            this.mResizeMgr = null;
+            self.mResizeMgr.dispose();
+            self.mResizeMgr = null;
         }
-        if (null != this.mTickMgr)
+        if (null != self.mTickMgr)
         {
-            this.mTickMgr.dispose();
-            this.mTickMgr = null;
+            self.mTickMgr.dispose();
+            self.mTickMgr = null;
         }
-        if (null != this.mFixedTickMgr)
+        if (null != self.mFixedTickMgr)
         {
-            this.mFixedTickMgr.dispose();
-            this.mFixedTickMgr = null;
+            self.mFixedTickMgr.dispose();
+            self.mFixedTickMgr = null;
         }
 
         // 关闭日志设备
-        if (null != this.mLogSys)
+        if (null != self.mLogSys)
         {
-            this.mLogSys.dispose();
-            this.mLogSys = null;
+            self.mLogSys.dispose();
+            self.mLogSys = null;
         }
-        if(null != this.mIdPoolSys)
+        if(null != self.mIdPoolSys)
         {
-            this.mIdPoolSys.dispose();
-            this.mIdPoolSys = null;
+            self.mIdPoolSys.dispose();
+            self.mIdPoolSys = null;
         }
-        if(null != this.mLogicTickMgr)
+        if(null != self.mLogicTickMgr)
         {
-            this.mLogicTickMgr.dispose();
-            this.mLogicTickMgr = null;
+            self.mLogicTickMgr.dispose();
+            self.mLogicTickMgr = null;
         }
-        if(null != this.mSysMsgRoute)
+        if(null != self.mSysMsgRoute)
         {
-            this.mSysMsgRoute.dispose();
-            this.mSysMsgRoute = null;
+            self.mSysMsgRoute.dispose();
+            self.mSysMsgRoute = null;
         }
-        if(null != this.mSystemTimeData)
+        if(null != self.mSystemTimeData)
         {
-            this.mSystemTimeData.dispose();
-            this.mSystemTimeData = null;
+            self.mSystemTimeData.dispose();
+            self.mSystemTimeData = null;
         }
-        if(null != this.mSystemFrameData)
+        if(null != self.mSystemFrameData)
         {
-            this.mSystemFrameData.dispose();
-            this.mSystemFrameData = null;
+            self.mSystemFrameData.dispose();
+            self.mSystemFrameData = null;
         }
     }
 
     public void quitApp()
     {
-        this.dispose();
+        self.dispose();
 
         // 释放自己
         //mInstance = null;
@@ -189,6 +189,6 @@ public class Ctx
 
     protected void addEventHandle()
     {
-        this.mTickMgr.addTick((ITickedObject)this.mResizeMgr, TickPriority.eTPResizeMgr);
+        self.mTickMgr.addTick((ITickedObject)self.mResizeMgr, TickPriority.eTPResizeMgr);
     }
 }

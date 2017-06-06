@@ -20,17 +20,17 @@ public class MEncoding
 
     public MEncoding(String encodeStr)
     {
-        this.mEncodeStr = encodeStr;
+        self.mEncodeStr = encodeStr;
     }
 
     public String GetString(byte[] bytes)
     {
-        return  this.GetString(bytes, 0, bytes.length);
+        return  self.GetString(bytes, 0, bytes.length);
     }
 
     public String GetString(byte[] bytes, int startIndex)
     {
-        return this.GetString(bytes, startIndex, bytes.length - startIndex);
+        return self.GetString(bytes, startIndex, bytes.length - startIndex);
     }
 
     public String GetString(byte[] bytes, int startIndex, int len)
@@ -39,7 +39,7 @@ public class MEncoding
 
         try
         {
-            ret = new String(MArray.getSubBytes(bytes, startIndex, len), this.mEncodeStr);
+            ret = new String(MArray.getSubBytes(bytes, startIndex, len), self.mEncodeStr);
         }
         catch(UnsupportedEncodingException e)
         {
@@ -55,7 +55,7 @@ public class MEncoding
 
         try
         {
-            byte[] bytes = str.getBytes(this.mEncodeStr);
+            byte[] bytes = str.getBytes(self.mEncodeStr);
             len = bytes.length;
         }
         catch(UnsupportedEncodingException e)
@@ -72,7 +72,7 @@ public class MEncoding
 
         try
         {
-            bytes = str.getBytes(this.mEncodeStr);
+            bytes = str.getBytes(self.mEncodeStr);
         }
         catch(UnsupportedEncodingException e)
         {

@@ -29,12 +29,12 @@ public class DynBuffer<T>
 
     public DynBuffer(int initCapacity, int maxCapacity)      // mono 模板类中使用常亮报错， vs 可以
     {
-        this.mMaxCapacity = maxCapacity;
-        this.mCapacity = initCapacity;
-        this.mSize = 0;
-        //this.mBuffer = new T[mCapacity];
-        //this.mBuffer = (T[]) new Object[this.mCapacity];
-        this.mBuffer = this.createArray(mClassT, this.mCapacity);
+        self.mMaxCapacity = maxCapacity;
+        self.mCapacity = initCapacity;
+        self.mSize = 0;
+        //self.mBuffer = new T[mCapacity];
+        //self.mBuffer = (T[]) new Object[self.mCapacity];
+        self.mBuffer = self.createArray(mClassT, self.mCapacity);
     }
 
     // 获取模板类型
@@ -99,66 +99,66 @@ public class DynBuffer<T>
 
     public T[] getBuffer()
     {
-        return this.mBuffer;
+        return self.mBuffer;
     }
 
     public void setBuffer(T[] value)
     {
-        this.mBuffer = value;
-        this.mCapacity = (int)this.mBuffer.length;
+        self.mBuffer = value;
+        self.mCapacity = (int)self.mBuffer.length;
     }
 
     public int getMaxCapacity()
     {
-        return this.mMaxCapacity;
+        return self.mMaxCapacity;
     }
 
     public void setMaxCapacity(int value)
     {
-        this.mMaxCapacity = value;
+        self.mMaxCapacity = value;
     }
 
     public int getCapacity()
     {
-            return this.mCapacity;
+            return self.mCapacity;
     }
 
     public void setCapacity(int value)
     {
-        if (value == this.mCapacity)
+        if (value == self.mCapacity)
         {
             return;
         }
-        if (value < this.getSize())       // 不能分配比当前已经占有的空间还小的空间
+        if (value < self.getSize())       // 不能分配比当前已经占有的空间还小的空间
         {
             return;
         }
         //T[] tmpbuff = new T[value];   // 分配新的空间
         //T[] tmpbuff = (T[]) new Object[value];
-        T[] tmpbuff = this.createArray(mClassT, this.mCapacity);
-        MArray.Copy(this.mBuffer, 0, tmpbuff, 0, this.mSize);  // 这个地方是 mSize 还是应该是 mCapacity，如果是 CircleBuffer 好像应该是 mCapacity，如果是 ByteBuffer ，好像应该是 mCapacity。但是 DynBuffer 只有 ByteBuffer 才会使用这个函数，因此使用 mSize 就行了，但是如果使用 mCapacity 也没有问题
+        T[] tmpbuff = self.createArray(mClassT, self.mCapacity);
+        MArray.Copy(self.mBuffer, 0, tmpbuff, 0, self.mSize);  // 这个地方是 mSize 还是应该是 mCapacity，如果是 CircleBuffer 好像应该是 mCapacity，如果是 ByteBuffer ，好像应该是 mCapacity。但是 DynBuffer 只有 ByteBuffer 才会使用这个函数，因此使用 mSize 就行了，但是如果使用 mCapacity 也没有问题
 
-        this.mBuffer = tmpbuff;
-        this.mCapacity = value;
+        self.mBuffer = tmpbuff;
+        self.mCapacity = value;
     }
 
     public int getSize()
     {
-        return this.mSize;
+        return self.mSize;
     }
 
     public void setSize(int value)
     {
-        if (value > this.getCapacity())
+        if (value > self.getCapacity())
         {
-            this.extendDeltaCapicity(value - this.getSize());
+            self.extendDeltaCapicity(value - self.getSize());
         }
 
-        this.mSize = value;
+        self.mSize = value;
     }
 
     public void extendDeltaCapicity(int delta)
     {
-        this.setCapacity(DynBufResizePolicy.getCloseSize(this.getSize() + delta, this.getCapacity(), this.getMaxCapacity()));
+        self.setCapacity(DynBufResizePolicy.getCloseSize(self.getSize() + delta, self.getCapacity(), self.getMaxCapacity()));
     }
 }

@@ -11,31 +11,31 @@ public class MCondition
 
     public MCondition(String name)
     {
-        this.mMutex = new MMutex(false, name);
-        this.mEvent = new MEvent(false);
-        this.mCanEnterWait = true;      // 允许进入等待状态
+        self.mMutex = new MMutex(false, name);
+        self.mEvent = new MEvent(false);
+        self.mCanEnterWait = true;      // 允许进入等待状态
     }
 
     public boolean getCanEnterWait()
     {
-        return this.mCanEnterWait;
+        return self.mCanEnterWait;
     }
 
     public void waitImpl()
     {
         //using (MLock mlock = new MLock(mMutex))
         //{
-            this.mMutex.WaitOne();
-            if (this.mCanEnterWait)
+            self.mMutex.WaitOne();
+            if (self.mCanEnterWait)
             {
-                this.mMutex.ReleaseMutex();   // 这个地方需要释放锁，否则 notifyAll 进不来
-                this.mEvent.WaitOne();
-                this.mEvent.Reset();      // 重置信号
+                self.mMutex.ReleaseMutex();   // 这个地方需要释放锁，否则 notifyAll 进不来
+                self.mEvent.WaitOne();
+                self.mEvent.Reset();      // 重置信号
             }
             else
             {
-                this.mCanEnterWait = true;
-                this.mMutex.ReleaseMutex();
+                self.mCanEnterWait = true;
+                self.mMutex.ReleaseMutex();
             }
         //}
     }
@@ -45,10 +45,10 @@ public class MCondition
         MLock mlock = new MLock(mMutex);
 
         {
-            if (this.mCanEnterWait) // 如果 mCanEnterWait == false，必然不能进入等待
+            if (self.mCanEnterWait) // 如果 mCanEnterWait == false，必然不能进入等待
             {
-                this.mCanEnterWait = false;
-                this.mEvent.Set();        // 唤醒线程
+                self.mCanEnterWait = false;
+                self.mEvent.Set();        // 唤醒线程
             }
         }
     }

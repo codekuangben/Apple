@@ -14,7 +14,7 @@ public class FrameTimerMgr extends DelayHandleMgrBase
 
     public FrameTimerMgr()
     {
-        this.mTimerList = new MList<FrameTimerItem>();
+        self.mTimerList = new MList<FrameTimerItem>();
     }
 
     @Override
@@ -32,22 +32,22 @@ public class FrameTimerMgr extends DelayHandleMgrBase
     @Override
     protected void addObject(IDelayHandleItem delayObject)
     {
-        this.addObject(delayObject, 0);
+        self.addObject(delayObject, 0);
     }
 
     @Override
     protected void addObject(IDelayHandleItem delayObject, float priority)
     {
         // 检查当前是否已经在队列中
-        if (!this.mTimerList.Contains((FrameTimerItem)delayObject))
+        if (!self.mTimerList.Contains((FrameTimerItem)delayObject))
         {
-            if (this.mLoopDepth.isInDepth())
+            if (self.mLoopDepth.isInDepth())
             {
                 super.addObject(delayObject, priority);
             }
             else
             {
-                this.mTimerList.Add((FrameTimerItem)delayObject);
+                self.mTimerList.Add((FrameTimerItem)delayObject);
             }
         }
     }
@@ -56,21 +56,21 @@ public class FrameTimerMgr extends DelayHandleMgrBase
     protected void removeObject(IDelayHandleItem delayObject)
     {
         // 检查当前是否在队列中
-        if (this.mTimerList.Contains((FrameTimerItem)delayObject))
+        if (self.mTimerList.Contains((FrameTimerItem)delayObject))
         {
             ((FrameTimerItem)delayObject).mDisposed = true;
 
-            if (this.mLoopDepth.isInDepth())
+            if (self.mLoopDepth.isInDepth())
             {
                 super.addObject(delayObject);
             }
             else
             {
-                for(FrameTimerItem item : this.mTimerList.list())
+                for(FrameTimerItem item : self.mTimerList.list())
                 {
                     if (UtilApi.isAddressEqual(item, delayObject))
                     {
-                        this.mTimerList.Remove(item);
+                        self.mTimerList.Remove(item);
                         break;
                     }
                 }
@@ -80,24 +80,24 @@ public class FrameTimerMgr extends DelayHandleMgrBase
 
     public void addFrameTimer(FrameTimerItem timer)
     {
-        this.addFrameTimer(timer, 0);
+        self.addFrameTimer(timer, 0);
     }
 
     public void addFrameTimer(FrameTimerItem timer, float priority)
     {
-        this.addObject(timer, priority);
+        self.addObject(timer, priority);
     }
 
     public void removeFrameTimer(FrameTimerItem timer)
     {
-        this.removeObject(timer);
+        self.removeObject(timer);
     }
 
     public void Advance(float delta)
     {
-        this.mLoopDepth.incDepth();
+        self.mLoopDepth.incDepth();
 
-        for(FrameTimerItem timerItem : this.mTimerList.list())
+        for(FrameTimerItem timerItem : self.mTimerList.list())
         {
             if (!timerItem.isClientDispose())
             {
@@ -109,6 +109,6 @@ public class FrameTimerMgr extends DelayHandleMgrBase
             }
         }
 
-        this.mLoopDepth.decDepth();
+        self.mLoopDepth.decDepth();
     }
 }

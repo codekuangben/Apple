@@ -8,6 +8,6 @@ public class TextCompTimer extends DaoJiShiTimer
     protected void onPreCallBack()
     {
         super.onPreCallBack();
-        //this.mText.text = UtilLogic.formatTime((int)this.mCurRunTime);
+        //self.mText.text = UtilLogic.formatTime((int)self.mCurRunTime);
     }
 }

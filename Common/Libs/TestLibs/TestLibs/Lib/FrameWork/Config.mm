@@ -31,25 +31,25 @@ public class Config
     {
         StreamingAssets = "StreamingAssets/";
 
-        this.mIp = "192.168.96.14";
-        this.mPort = 20013;
-        this.mZone = 30;
+        self.mIp = "192.168.96.14";
+        self.mPort = 20013;
+        self.mZone = 30;
 
-        this.mWebIP = "http://127.0.0.1/UnityServer/";
-        this.mWebPort = 80;
-        this.mNetLogPhp = "/netlog/NetLog.php";
-        this.mPakExtNameList = new MList<String>();
+        self.mWebIP = "http://127.0.0.1/UnityServer/";
+        self.mWebPort = 80;
+        self.mNetLogPhp = "/netlog/NetLog.php";
+        self.mPakExtNameList = new MList<String>();
 
-//        this.mPathLst = new string[(int)ResPathType.eTotal];
-//        this.mPathLst[(int)ResPathType.ePathScene] = "Scenes/";
-//        this.mPathLst[(int)ResPathType.ePathSceneXml] = "Scenes/Xml/";
-//        this.mPathLst[(int)ResPathType.ePathModule] = "Module/";
+//        self.mPathLst = new string[(int)ResPathType.eTotal];
+//        self.mPathLst[(int)ResPathType.ePathScene] = "Scenes/";
+//        self.mPathLst[(int)ResPathType.ePathSceneXml] = "Scenes/Xml/";
+//        self.mPathLst[(int)ResPathType.ePathModule] = "Module/";
 
-        this.mPakExtNameList.Add("prefab");
-        this.mPakExtNameList.Add("png");
-        this.mPakExtNameList.Add("shader");
-        this.mPakExtNameList.Add("unity");
+        self.mPakExtNameList.Add("prefab");
+        self.mPakExtNameList.Add("png");
+        self.mPakExtNameList.Add("shader");
+        self.mPakExtNameList.Add("unity");
 
-        this.mIsActorMoveUseFixUpdate = true;
+        self.mIsActorMoveUseFixUpdate = true;
     }
 }

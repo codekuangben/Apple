@@ -18,30 +18,30 @@ import SDK.Lib.DelayHandle.*;
 
     public EventDispatch()
     {
-        this.mEventId = 0;
-        this.mHandleList = new MList<EventDispatchFunctionObject>();
+        self.mEventId = 0;
+        self.mHandleList = new MList<EventDispatchFunctionObject>();
     }
 
     public EventDispatch(int eventId_)
     {
-        this.mEventId = eventId_;
-        this.mHandleList = new MList<EventDispatchFunctionObject>();
+        self.mEventId = eventId_;
+        self.mHandleList = new MList<EventDispatchFunctionObject>();
     }
 
     protected MList<EventDispatchFunctionObject> getHandleList()
     {
-        return this.mHandleList;
+        return self.mHandleList;
     }
 
     public int getUniqueId()
     {
-        return this.mUniqueId;
+        return self.mUniqueId;
     }
 
     public void setUniqueId(int value)
     {
-        this.mUniqueId = value;
-        this.mHandleList.setUniqueId(this.mUniqueId);
+        self.mUniqueId = value;
+        self.mHandleList.setUniqueId(self.mUniqueId);
     }
 
     @Override
@@ -58,12 +58,12 @@ import SDK.Lib.DelayHandle.*;
 
     public void addDispatch(EventDispatchFunctionObject dispatch)
     {
-        this.addObject(dispatch);
+        self.addObject(dispatch);
     }
 
     public void removeDispatch(EventDispatchFunctionObject dispatch)
     {
-        this.removeObject(dispatch);
+        self.removeObject(dispatch);
     }
 
     // 相同的函数只能增加一次，Lua ，Python 这些语言不支持同时存在几个相同名字的函数，只支持参数可以赋值，因此不单独提供同一个名字不同参数的接口了
@@ -78,7 +78,7 @@ import SDK.Lib.DelayHandle.*;
                 funcObject.setFuncObject(pThis, handle);
             }
 
-            this.addDispatch(funcObject);
+            self.addDispatch(funcObject);
         }
         else
         {
@@ -90,11 +90,11 @@ import SDK.Lib.DelayHandle.*;
     {
         int idx = 0;
         int elemLen = 0;
-        elemLen = this.mHandleList.Count();
+        elemLen = self.mHandleList.Count();
 
         while (idx < elemLen)
         {
-            if (this.mHandleList.get(idx).isEqual(pThis, handle))
+            if (self.mHandleList.get(idx).isEqual(pThis, handle))
             {
                 break;
             }
@@ -102,9 +102,9 @@ import SDK.Lib.DelayHandle.*;
             idx += 1;
         }
 
-        if (idx < this.mHandleList.Count())
+        if (idx < self.mHandleList.Count())
         {
-            this.removeDispatch(this.mHandleList.get(idx));
+            self.removeDispatch(self.mHandleList.get(idx));
         }
         else
         {
@@ -115,33 +115,33 @@ import SDK.Lib.DelayHandle.*;
     @Override
     protected void addObject(IDelayHandleItem delayObject)
     {
-        this.addObject(delayObject, 0);
+        self.addObject(delayObject, 0);
     }
 
     @Override
     protected void addObject(IDelayHandleItem delayObject, float priority)
     {
-        if (this.mLoopDepth.isInDepth())
+        if (self.mLoopDepth.isInDepth())
         {
             super.addObject(delayObject, priority);
         }
         else
         {
             // 这个判断说明相同的函数只能加一次，但是如果不同资源使用相同的回调函数就会有问题，但是这个判断可以保证只添加一次函数，值得，因此不同资源需要不同回调函数
-            this.mHandleList.Add((EventDispatchFunctionObject)delayObject);
+            self.mHandleList.Add((EventDispatchFunctionObject)delayObject);
         }
     }
 
     @Override
     protected void removeObject(IDelayHandleItem delayObject)
     {
-        if (this.mLoopDepth.isInDepth())
+        if (self.mLoopDepth.isInDepth())
         {
             super.removeObject(delayObject);
         }
         else
         {
-            if (!this.mHandleList.Remove((EventDispatchFunctionObject)delayObject))
+            if (!self.mHandleList.Remove((EventDispatchFunctionObject)delayObject))
             {
 
             }
@@ -152,17 +152,17 @@ import SDK.Lib.DelayHandle.*;
     {
         //try
         //{
-        this.mLoopDepth.incDepth();
+        self.mLoopDepth.incDepth();
 
-        //foreach (EventDispatchFunctionObject handle in this.mHandleList.list())
+        //foreach (EventDispatchFunctionObject handle in self.mHandleList.list())
 
         int idx = 0;
-        int len = this.mHandleList.Count();
+        int len = self.mHandleList.Count();
         EventDispatchFunctionObject handle = null;
 
         while (idx < len)
         {
-            handle = this.mHandleList.get(idx);
+            handle = self.mHandleList.get(idx);
 
             if (!handle.mIsClientDispose)
             {
@@ -172,7 +172,7 @@ import SDK.Lib.DelayHandle.*;
             ++idx;
         }
 
-        this.mLoopDepth.decDepth();
+        self.mLoopDepth.decDepth();
         //}
         //catch (Exception ex)
         //{
@@ -182,25 +182,25 @@ import SDK.Lib.DelayHandle.*;
 
     public void clearEventHandle()
     {
-        if (this.mLoopDepth.isInDepth())
+        if (self.mLoopDepth.isInDepth())
         {
-            //foreach (EventDispatchFunctionObject item in this.mHandleList.list())
+            //foreach (EventDispatchFunctionObject item in self.mHandleList.list())
             int idx = 0;
-            int len = this.mHandleList.Count();
+            int len = self.mHandleList.Count();
             EventDispatchFunctionObject item = null;
 
             while (idx < len)
             {
-                item = this.mHandleList.get(idx);
+                item = self.mHandleList.get(idx);
 
-                this.removeDispatch(item);
+                self.removeDispatch(item);
 
                 ++idx;
             }
         }
         else
         {
-            this.mHandleList.Clear();
+            self.mHandleList.Clear();
         }
     }
 
@@ -208,14 +208,14 @@ import SDK.Lib.DelayHandle.*;
     public boolean isExistEventHandle(ICalleeObject pThis, IDispatchObject handle)
     {
         boolean bFinded = false;
-        //foreach (EventDispatchFunctionObject item in this.mHandleList.list())
+        //foreach (EventDispatchFunctionObject item in self.mHandleList.list())
         int idx = 0;
-        int len = this.mHandleList.Count();
+        int len = self.mHandleList.Count();
         EventDispatchFunctionObject item = null;
 
         while (idx < len)
         {
-            item = this.mHandleList.get(idx);
+            item = self.mHandleList.get(idx);
 
             if (item.isEqual(pThis, handle))
             {
@@ -233,14 +233,14 @@ import SDK.Lib.DelayHandle.*;
     {
         //foreach(EventDispatchFunctionObject handle in rhv.handleList.list())
         int idx = 0;
-        int len = this.mHandleList.Count();
+        int len = self.mHandleList.Count();
         EventDispatchFunctionObject handle = null;
 
         while (idx < len)
         {
-            handle = this.mHandleList.get(idx);
+            handle = self.mHandleList.get(idx);
 
-            this.mHandleList.Add(handle);
+            self.mHandleList.Add(handle);
 
             ++idx;
         }
@@ -248,12 +248,12 @@ import SDK.Lib.DelayHandle.*;
 
     public boolean hasEventHandle()
     {
-        return this.mHandleList.Count() > 0;
+        return self.mHandleList.Count() > 0;
     }
 
     public int getEventHandle()
     {
-        return this.mHandleList.Count();
+        return self.mHandleList.Count();
     }
 }
 

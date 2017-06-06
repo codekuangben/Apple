@@ -14,12 +14,12 @@ public class GlobalDelegate
 
     public GlobalDelegate()
     {
-        this.mMainChildMassChangedDispatch = new AddOnceEventDispatch();
+        self.mMainChildMassChangedDispatch = new AddOnceEventDispatch();
     }
 
     public void addMainChildChangedHandle(ICalleeObject pThis, IDispatchObject handle)
     {
-        this.mMainChildMassChangedDispatch.addEventHandle(pThis, handle);
+        self.mMainChildMassChangedDispatch.addEventHandle(pThis, handle);
     }
 
     public void init()

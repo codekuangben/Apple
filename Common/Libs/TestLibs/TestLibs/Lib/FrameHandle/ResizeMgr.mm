@@ -19,7 +19,7 @@ public class ResizeMgr extends DelayHandleMgrBase implements ITickedObject, IDel
 
     public ResizeMgr()
     {
-        this.mResizeList = new MList<IResizeObject>();
+        self.mResizeList = new MList<IResizeObject>();
     }
 
     @Override
@@ -31,95 +31,95 @@ public class ResizeMgr extends DelayHandleMgrBase implements ITickedObject, IDel
     @Override
     public void dispose()
     {
-        this.mResizeList.Clear();
+        self.mResizeList.Clear();
     }
 
     public int getWidth()
     {
-        return this.mCurWidth;
+        return self.mCurWidth;
     }
 
     public int getHeight()
     {
-        return this.mCurHeight;
+        return self.mCurHeight;
     }
 
     public int getHalfWidth()
     {
-        return this.mCurHalfWidth;
+        return self.mCurHalfWidth;
     }
 
     public int getHalfHeight()
     {
-        return this.mCurHalfHeight;
+        return self.mCurHalfHeight;
     }
 
     @Override
     protected void addObject(IDelayHandleItem delayObject)
     {
-        this.addObject(delayObject, 0);
+        self.addObject(delayObject, 0);
     }
 
     @Override
     protected void addObject(IDelayHandleItem delayObject, float priority)
     {
-        if(this.mLoopDepth.isInDepth())
+        if(self.mLoopDepth.isInDepth())
         {
             super.addObject(delayObject, priority);
         }
         else
         {
-            this.addResizeObject((IResizeObject)delayObject, priority);
+            self.addResizeObject((IResizeObject)delayObject, priority);
         }
     }
 
     @Override
     protected void removeObject(IDelayHandleItem delayObject)
     {
-        if(this.mLoopDepth.isInDepth())
+        if(self.mLoopDepth.isInDepth())
         {
             super.removeObject(delayObject);
         }
         else
         {
-            this.removeResizeObject((IResizeObject)delayObject);
+            self.removeResizeObject((IResizeObject)delayObject);
         }
     }
 
     public void addResizeObject(IResizeObject obj)
     {
-        this.addResizeObject(obj, 0);
+        self.addResizeObject(obj, 0);
     }
 
     public void addResizeObject(IResizeObject obj, float priority)
     {
-        if (!this.mResizeList.Contains(obj))
+        if (!self.mResizeList.Contains(obj))
         {
-            this.mResizeList.Add(obj);
+            self.mResizeList.Add(obj);
         }
     }
 
     public void removeResizeObject(IResizeObject obj)
     {
-        if (this.mResizeList.IndexOf(obj) != -1)
+        if (self.mResizeList.IndexOf(obj) != -1)
         {
-            this.mResizeList.Remove(obj);
+            self.mResizeList.Remove(obj);
         }
     }
 
     public void onTick(float delta)
     {
-        this.mPreWidth = this.mCurWidth;
-        this.mCurWidth = UtilApi.getScreenWidth();
-        this.mCurHalfWidth = this.mCurWidth / 2;
+        self.mPreWidth = self.mCurWidth;
+        self.mCurWidth = UtilApi.getScreenWidth();
+        self.mCurHalfWidth = self.mCurWidth / 2;
 
-        this.mPreHeight = this.mCurHeight;
-        this.mCurHeight = UtilApi.getScreenHeight();
-        this.mCurHalfHeight = this.mCurHeight / 2;
+        self.mPreHeight = self.mCurHeight;
+        self.mCurHeight = UtilApi.getScreenHeight();
+        self.mCurHalfHeight = self.mCurHeight / 2;
 
-        if (this.mPreWidth != this.mCurWidth || this.mPreHeight != this.mCurHeight)
+        if (self.mPreWidth != self.mCurWidth || self.mPreHeight != self.mCurHeight)
         {
-            this.onResize(this.mCurWidth, this.mCurHeight);
+            self.onResize(self.mCurWidth, self.mCurHeight);
         }
     }
 

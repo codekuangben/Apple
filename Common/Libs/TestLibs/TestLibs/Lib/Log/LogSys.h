@@ -25,62 +25,62 @@ public class LogSys
     // 构造函数仅仅是初始化变量，不涉及逻辑
     public LogSys()
     {
-        this.mAsyncLogList = new LockList<String>("Logger_asyncLogList");
-        this.mAsyncWarnList = new LockList<String>("Logger_asyncWarnList");
-        this.mAsyncErrorList = new LockList<String>("Logger_asyncErrorList");
-        this.mLogDeviceList = new MList<LogDeviceBase>();
+        self.mAsyncLogList = new LockList<String>("Logger_asyncLogList");
+        self.mAsyncWarnList = new LockList<String>("Logger_asyncWarnList");
+        self.mAsyncErrorList = new LockList<String>("Logger_asyncErrorList");
+        self.mLogDeviceList = new MList<LogDeviceBase>();
 
-        //this.mEnableLogTypeList = new MList<LogTypeId>[LogColor.eLC_Count.ordinal();
+        //self.mEnableLogTypeList = new MList<LogTypeId>[LogColor.eLC_Count.ordinal();
         Class classT = MList.class;
-        this.mEnableLogTypeList = (MList<LogTypeId>[])TClassOp.createArray(classT, LogColor.eLC_Count.ordinal());
-        this.mEnableLogTypeList[LogColor.eLC_LOG.ordinal()] = new MList<LogTypeId>();
-        this.mEnableLogTypeList[LogColor.eLC_LOG.ordinal()].Add(LogTypeId.eLogCommon);
+        self.mEnableLogTypeList = (MList<LogTypeId>[])TClassOp.createArray(classT, LogColor.eLC_Count.ordinal());
+        self.mEnableLogTypeList[LogColor.eLC_LOG.ordinal()] = new MList<LogTypeId>();
+        self.mEnableLogTypeList[LogColor.eLC_LOG.ordinal()].Add(LogTypeId.eLogCommon);
 
-        this.mEnableLogTypeList[LogColor.eLC_WARN.ordinal()] = new MList<LogTypeId>();
-        this.mEnableLogTypeList[LogColor.eLC_ERROR.ordinal()] = new MList<LogTypeId>();
+        self.mEnableLogTypeList[LogColor.eLC_WARN.ordinal()] = new MList<LogTypeId>();
+        self.mEnableLogTypeList[LogColor.eLC_ERROR.ordinal()] = new MList<LogTypeId>();
 
-        this.mEnableLog = new boolean[LogColor.eLC_Count.ordinal()];
-        this.mEnableLog[(int)LogColor.eLC_LOG.ordinal()] = true;
-        this.mEnableLog[(int)LogColor.eLC_WARN.ordinal()] = false;
-        this.mEnableLog[(int)LogColor.eLC_ERROR.ordinal()] = false;
+        self.mEnableLog = new boolean[LogColor.eLC_Count.ordinal()];
+        self.mEnableLog[(int)LogColor.eLC_LOG.ordinal()] = true;
+        self.mEnableLog[(int)LogColor.eLC_WARN.ordinal()] = false;
+        self.mEnableLog[(int)LogColor.eLC_ERROR.ordinal()] = false;
 
-        this.mIsOutStack = new boolean[(int)LogColor.eLC_Count.ordinal()];
-        this.mIsOutStack[(int)LogColor.eLC_LOG.ordinal()] = false;
-        this.mIsOutStack[(int)LogColor.eLC_WARN.ordinal()] = false;
-        this.mIsOutStack[(int)LogColor.eLC_ERROR.ordinal()] = false;
+        self.mIsOutStack = new boolean[(int)LogColor.eLC_Count.ordinal()];
+        self.mIsOutStack[(int)LogColor.eLC_LOG.ordinal()] = false;
+        self.mIsOutStack[(int)LogColor.eLC_WARN.ordinal()] = false;
+        self.mIsOutStack[(int)LogColor.eLC_ERROR.ordinal()] = false;
 
-        this.mIsOutTimeStamp = new boolean[(int)LogColor.eLC_Count.ordinal()];
-        this.mIsOutStack[(int)LogColor.eLC_LOG.ordinal()] = false;
-        this.mIsOutStack[(int)LogColor.eLC_WARN.ordinal()] = false;
-        this.mIsOutStack[(int)LogColor.eLC_ERROR.ordinal()] = false;
+        self.mIsOutTimeStamp = new boolean[(int)LogColor.eLC_Count.ordinal()];
+        self.mIsOutStack[(int)LogColor.eLC_LOG.ordinal()] = false;
+        self.mIsOutStack[(int)LogColor.eLC_WARN.ordinal()] = false;
+        self.mIsOutStack[(int)LogColor.eLC_ERROR.ordinal()] = false;
     }
 
     // 初始化逻辑处理
     public void init()
     {
-        this.registerDevice();
-        this.registerFileLogDevice();
+        self.registerDevice();
+        self.registerFileLogDevice();
     }
 
     // 析构
     public void dispose()
     {
-        this.closeDevice();
+        self.closeDevice();
     }
 
     public void setEnableLog(boolean value)
     {
-        this.mEnableLog[(int)LogColor.eLC_LOG.ordinal()] = value;
+        self.mEnableLog[(int)LogColor.eLC_LOG.ordinal()] = value;
     }
 
     public void setEnableWarn(boolean value)
     {
-        this.mEnableLog[(int)LogColor.eLC_WARN.ordinal()] = value;
+        self.mEnableLog[(int)LogColor.eLC_WARN.ordinal()] = value;
     }
 
     public void setEnableError(boolean value)
     {
-        this.mEnableLog[(int)LogColor.eLC_ERROR.ordinal()] = value;
+        self.mEnableLog[(int)LogColor.eLC_ERROR.ordinal()] = value;
     }
 
     protected void registerDevice()
@@ -91,14 +91,14 @@ public class LogSys
         {
             logDevice = new WinLogDevice();
             logDevice.initDevice();
-            this.mLogDeviceList.Add(logDevice);
+            self.mLogDeviceList.Add(logDevice);
         }
 
         if (MacroDef.ENABLE_NETLOG)
         {
             logDevice = new NetLogDevice();
             logDevice.initDevice();
-            this.mLogDeviceList.Add(logDevice);
+            self.mLogDeviceList.Add(logDevice);
         }
     }
 
@@ -114,7 +114,7 @@ public class LogSys
             logDevice = new FileLogDevice();
             //((FileLogDevice)logDevice).fileSuffix = Ctx.mInstance.mDataPlayer.m_accountData.m_account;
             logDevice.initDevice();
-            this.mLogDeviceList.Add(logDevice);
+            self.mLogDeviceList.Add(logDevice);
         }
     }
 
@@ -125,7 +125,7 @@ public class LogSys
             if(FileLogDevice.class == item.getClass())
             {
                 item.closeDevice();
-                this.mLogDeviceList.Remove(item);
+                self.mLogDeviceList.Remove(item);
                 break;
             }
         }
@@ -133,9 +133,9 @@ public class LogSys
 
     protected boolean isInFilter(LogTypeId logTypeId, LogColor logColor)
     {
-        if (this.mEnableLog[(int)logColor.ordinal()])
+        if (self.mEnableLog[(int)logColor.ordinal()])
         {
-            if (this.mEnableLogTypeList[(int)logColor.ordinal()].Contains(logTypeId))
+            if (self.mEnableLogTypeList[(int)logColor.ordinal()].Contains(logTypeId))
             {
                 return true;
             }
@@ -148,19 +148,19 @@ public class LogSys
 
     public void log(String message)
     {
-        this.log(message, LogTypeId.eLogCommon);
+        self.log(message, LogTypeId.eLogCommon);
     }
 
     public void log(String message, LogTypeId logTypeId)
     {
         if (isInFilter(logTypeId, LogColor.eLC_LOG))
         {
-            if(this.mIsOutTimeStamp[(int)LogColor.eLC_LOG.ordinal()])
+            if(self.mIsOutTimeStamp[(int)LogColor.eLC_LOG.ordinal()])
             {
                 message = String.format("{0}: {1}", UtilApi.getFormatTime(), message);
             }
 
-            if (this.mIsOutStack[(int)LogColor.eLC_LOG.ordinal()])
+            if (self.mIsOutStack[(int)LogColor.eLC_LOG.ordinal()])
             {
                 Throwable ex = new Throwable();
                 String traceStr = ex.toString();
@@ -169,30 +169,30 @@ public class LogSys
 
             if (MThread.isMainThread())
             {
-                this.logout(message, LogColor.eLC_LOG);
+                self.logout(message, LogColor.eLC_LOG);
             }
             else
             {
-                this.asyncLog(message);
+                self.asyncLog(message);
             }
         }
     }
 
     public void warn(String message)
     {
-        this.warn(message, LogTypeId.eLogCommon);
+        self.warn(message, LogTypeId.eLogCommon);
     }
 
     public void warn(String message, LogTypeId logTypeId)
     {
         if (isInFilter(logTypeId, LogColor.eLC_WARN))
         {
-            if (this.mIsOutTimeStamp[(int)LogColor.eLC_WARN.ordinal()])
+            if (self.mIsOutTimeStamp[(int)LogColor.eLC_WARN.ordinal()])
             {
                 message = String.format("{0}: {1}", UtilApi.getFormatTime(), message);
             }
 
-            if (this.mIsOutStack[(int)LogColor.eLC_WARN.ordinal()])
+            if (self.mIsOutStack[(int)LogColor.eLC_WARN.ordinal()])
             {
                 Throwable ex = new Throwable();
                 String traceStr = ex.toString();
@@ -201,30 +201,30 @@ public class LogSys
 
             if (MThread.isMainThread())
             {
-                this.logout(message, LogColor.eLC_WARN);
+                self.logout(message, LogColor.eLC_WARN);
             }
             else
             {
-                this.asyncWarn(message);
+                self.asyncWarn(message);
             }
         }
     }
 
     public void error(String message)
     {
-        this.error(message, LogTypeId.eLogCommon);
+        self.error(message, LogTypeId.eLogCommon);
     }
 
     public void error(String message, LogTypeId logTypeId)
     {
         if (isInFilter(logTypeId, LogColor.eLC_ERROR))
         {
-            if (this.mIsOutTimeStamp[(int)LogColor.eLC_ERROR.ordinal()])
+            if (self.mIsOutTimeStamp[(int)LogColor.eLC_ERROR.ordinal()])
             {
                 message = String.format("{0}: {1}", UtilApi.getFormatTime(), message);
             }
 
-            if (this.mIsOutStack[(int)LogColor.eLC_ERROR.ordinal()])
+            if (self.mIsOutStack[(int)LogColor.eLC_ERROR.ordinal()])
             {
                 Throwable ex = new Throwable();
                 String traceStr = ex.toString();
@@ -233,11 +233,11 @@ public class LogSys
 
             if (MThread.isMainThread())
             {
-                this.logout(message, LogColor.eLC_ERROR);
+                self.logout(message, LogColor.eLC_ERROR);
             }
             else
             {
-                this.asyncError(message);
+                self.asyncError(message);
             }
         }
     }
@@ -251,18 +251,18 @@ public class LogSys
     // 多线程日志
     protected void asyncWarn(String message)
     {
-        this.mAsyncWarnList.Add(message);
+        self.mAsyncWarnList.Add(message);
     }
 
     // 多线程日志
     protected void asyncError(String message)
     {
-        this.mAsyncErrorList.Add(message);
+        self.mAsyncErrorList.Add(message);
     }
 
     public void logout(String message)
     {
-        this.logout(message, LogColor.eLC_LOG);
+        self.logout(message, LogColor.eLC_LOG);
     }
 
     public void logout(String message, LogColor type)
@@ -274,12 +274,12 @@ public class LogSys
 
         //foreach (LogDeviceBase logDevice in mLogDeviceList.list())
         int idx = 0;
-        int len = this.mLogDeviceList.Count();
+        int len = self.mLogDeviceList.Count();
         LogDeviceBase logDevice = null;
 
         while (idx < len)
         {
-            logDevice = this.mLogDeviceList.get(idx);
+            logDevice = self.mLogDeviceList.get(idx);
             logDevice.logout(message, type);
 
             ++idx;
@@ -293,19 +293,19 @@ public class LogSys
             MThread.needMainThread();
         }
 
-        while ((this.mTmpStr = mAsyncLogList.RemoveAt(0)) != "")
+        while ((self.mTmpStr = mAsyncLogList.RemoveAt(0)) != "")
         {
-            this.logout(mTmpStr, LogColor.eLC_LOG);
+            self.logout(mTmpStr, LogColor.eLC_LOG);
         }
 
-        while ((this.mTmpStr = mAsyncWarnList.RemoveAt(0)) != "")
+        while ((self.mTmpStr = mAsyncWarnList.RemoveAt(0)) != "")
         {
-            this.logout(mTmpStr, LogColor.eLC_WARN);
+            self.logout(mTmpStr, LogColor.eLC_WARN);
         }
 
-        while ((this.mTmpStr = mAsyncErrorList.RemoveAt(0)) != "")
+        while ((self.mTmpStr = mAsyncErrorList.RemoveAt(0)) != "")
         {
-            this.logout(mTmpStr, LogColor.eLC_ERROR);
+            self.logout(mTmpStr, LogColor.eLC_ERROR);
         }
     }
 

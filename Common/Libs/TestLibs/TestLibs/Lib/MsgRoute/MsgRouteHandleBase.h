@@ -12,26 +12,26 @@ public class MsgRouteHandleBase extends GObject implements ICalleeObject
 
     public MsgRouteHandleBase()
     {
-        this.mTypeId = "MsgRouteHandleBase";
+        self.mTypeId = "MsgRouteHandleBase";
 
-        this.mId2HandleDic = new MDictionary<Integer, AddOnceEventDispatch>();
+        self.mId2HandleDic = new MDictionary<Integer, AddOnceEventDispatch>();
     }
 
     public void addMsgRouteHandle(MsgRouteID msgRouteID, IDispatchObject handle)
     {
-        if(!this.mId2HandleDic.ContainsKey(msgRouteID.ordinal()))
+        if(!self.mId2HandleDic.ContainsKey(msgRouteID.ordinal()))
         {
-            this.mId2HandleDic.set(msgRouteID.ordinal(), new AddOnceEventDispatch());
+            self.mId2HandleDic.set(msgRouteID.ordinal(), new AddOnceEventDispatch());
         }
 
-        this.mId2HandleDic.get(msgRouteID.ordinal()).addEventHandle(null, handle);
+        self.mId2HandleDic.get(msgRouteID.ordinal()).addEventHandle(null, handle);
     }
 
     public void removeMsgRouteHandle(MsgRouteID msgRouteID, IDispatchObject handle)
     {
-        if (this.mId2HandleDic.ContainsKey(msgRouteID.ordinal()))
+        if (self.mId2HandleDic.ContainsKey(msgRouteID.ordinal()))
         {
-            this.mId2HandleDic.get(msgRouteID.ordinal()).removeEventHandle(null, handle);
+            self.mId2HandleDic.get(msgRouteID.ordinal()).removeEventHandle(null, handle);
         }
     }
 
@@ -39,9 +39,9 @@ public class MsgRouteHandleBase extends GObject implements ICalleeObject
     {
         MsgRouteBase msg = (MsgRouteBase)dispObj;
 
-        if (this.mId2HandleDic.ContainsKey(msg.mMsgID.ordinal()))
+        if (self.mId2HandleDic.ContainsKey(msg.mMsgID.ordinal()))
         {
-            this.mId2HandleDic.get(msg.mMsgID.ordinal()).dispatchEvent(msg);
+            self.mId2HandleDic.get(msg.mMsgID.ordinal()).dispatchEvent(msg);
         }
         else
         {

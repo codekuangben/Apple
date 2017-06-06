@@ -18,182 +18,182 @@ public class MList<T>
 
     public MList()
     {
-        this.mList = new ArrayList<T>();
-        this.mDic = new MDictionary<T, Integer>();
-        this.mIsSpeedUpFind = true;
+        self.mList = new ArrayList<T>();
+        self.mDic = new MDictionary<T, Integer>();
+        self.mIsSpeedUpFind = true;
     }
 
     public MList(int capacity)
     {
-        this.mList = new ArrayList<T>(capacity);
+        self.mList = new ArrayList<T>(capacity);
     }
 
     public T[] ToArray()
     {
-        return (T[])this.mList.toArray();
+        return (T[])self.mList.toArray();
     }
 
     public List<T> list()
     {
-        return this.mList;
+        return self.mList;
     }
 
     public int getUniqueId()
     {
-        return this.mUniqueId;
+        return self.mUniqueId;
     }
 
     public void setUniqueId(int value)
     {
-        this.mUniqueId = value;
+        self.mUniqueId = value;
     }
 
     public List<T> getBuffer()
     {
-        return this.mList;
+        return self.mList;
     }
 
     public int getSize()
     {
-        return this.mList.size();
+        return self.mList.size();
     }
 
     public void Add(T item)
     {
-        this.mList.add(item);
+        self.mList.add(item);
 
-        if (this.mIsSpeedUpFind)
+        if (self.mIsSpeedUpFind)
         {
-            this.mDic.set(item, this.mList.size() - 1);
+            self.mDic.set(item, self.mList.size() - 1);
         }
     }
 
     // 主要是 Add 一个 float 类型的 Vector3
     public void Add(T item_1, T item_2, T item_3)
     {
-        this.mList.add(item_1);
-        this.mList.add(item_2);
-        this.mList.add(item_3);
+        self.mList.add(item_1);
+        self.mList.add(item_2);
+        self.mList.add(item_3);
 
-        if(this.mIsSpeedUpFind)
+        if(self.mIsSpeedUpFind)
         {
-            this.mDic.set(item_1, this.mList.size() - 3);
-            this.mDic.set(item_2, this.mList.size() - 2);
-            this.mDic.set(item_3, this.mList.size() - 1);
+            self.mDic.set(item_1, self.mList.size() - 3);
+            self.mDic.set(item_2, self.mList.size() - 2);
+            self.mDic.set(item_3, self.mList.size() - 1);
         }
     }
 
     // 主要是 Add 一个 float 类型的 UV
     public void Add(T item_1, T item_2)
     {
-        this.mList.add(item_1);
-        this.mList.add(item_2);
+        self.mList.add(item_1);
+        self.mList.add(item_2);
 
-        if (this.mIsSpeedUpFind)
+        if (self.mIsSpeedUpFind)
         {
-            this.mDic.set(item_1, this.mList.size() - 2);
-            this.mDic.set(item_2, this.mList.size() - 1);
+            self.mDic.set(item_1, self.mList.size() - 2);
+            self.mDic.set(item_2, self.mList.size() - 1);
         }
     }
 
     // 主要是 Add 一个 byte 类型的 Color32
     public void Add(T item_1, T item_2, T item_3, T item_4)
     {
-        this.mList.add(item_1);
-        this.mList.add(item_2);
-        this.mList.add(item_3);
-        this.mList.add(item_4);
+        self.mList.add(item_1);
+        self.mList.add(item_2);
+        self.mList.add(item_3);
+        self.mList.add(item_4);
 
-        if (this.mIsSpeedUpFind)
+        if (self.mIsSpeedUpFind)
         {
-            this.mDic.set(item_1, this.mList.size() - 4);
-            this.mDic.set(item_2, this.mList.size() - 3);
-            this.mDic.set(item_3, this.mList.size() - 2);
-            this.mDic.set(item_4, this.mList.size() - 1);
+            self.mDic.set(item_1, self.mList.size() - 4);
+            self.mDic.set(item_2, self.mList.size() - 3);
+            self.mDic.set(item_3, self.mList.size() - 2);
+            self.mDic.set(item_4, self.mList.size() - 1);
         }
     }
 
     public void push(T item)
     {
-        this.mList.add(item);
+        self.mList.add(item);
 
-        if (this.mIsSpeedUpFind)
+        if (self.mIsSpeedUpFind)
         {
-            this.mDic.set(item, this.mList.size() - 1);
+            self.mDic.set(item, self.mList.size() - 1);
         }
     }
 
     public boolean Remove(T item)
     {
-        if (this.mIsSpeedUpFind)
+        if (self.mIsSpeedUpFind)
         {
-            return this.effectiveRemove(item);
+            return self.effectiveRemove(item);
         }
         else
         {
-            return this.mList.remove(item);
+            return self.mList.remove(item);
         }
     }
 
     public T get(int index)
     {
-        return this.mList.get(index);
+        return self.mList.get(index);
     }
 
     public void set(int index, T value)
     {
-        if (this.mIsSpeedUpFind)
+        if (self.mIsSpeedUpFind)
         {
-            this.mDic.set(value, index);
+            self.mDic.set(value, index);
         }
 
-        this.mList.add(index, value);
+        self.mList.add(index, value);
     }
 
     public void Clear()
     {
-        this.mList.clear();
+        self.mList.clear();
 
-        if (this.mIsSpeedUpFind)
+        if (self.mIsSpeedUpFind)
         {
-            this.mDic.Clear();
+            self.mDic.Clear();
         }
     }
 
     public int Count()
     {
-        return this.mList.size();
+        return self.mList.size();
     }
 
     public int length()
     {
-        return this.mList.size();
+        return self.mList.size();
     }
 
     public void setLength(int value)
     {
-        this.mList.ensureCapacity(value);
+        self.mList.ensureCapacity(value);
     }
 
     public void RemoveAt(int index)
     {
-        if (this.mIsSpeedUpFind)
+        if (self.mIsSpeedUpFind)
         {
-            this.effectiveRemove(this.mList.get(index));
+            self.effectiveRemove(self.mList.get(index));
         }
         else
         {
-            this.mList.remove(index);
+            self.mList.remove(index);
         }
     }
 
     public int IndexOf(T item)
     {
-        if (this.mIsSpeedUpFind)
+        if (self.mIsSpeedUpFind)
         {
-            if (this.mDic.ContainsKey(item))
+            if (self.mDic.ContainsKey(item))
             {
-                return this.mDic.get(item);
+                return self.mDic.get(item);
             }
             else
             {
@@ -202,25 +202,25 @@ public class MList<T>
         }
         else
         {
-            return this.mList.indexOf(item);
+            return self.mList.indexOf(item);
         }
     }
 
     public void Insert(int index, T item)
     {
-        if (index <= this.Count())
+        if (index <= self.Count())
         {
-            if (this.mIsSpeedUpFind)
+            if (self.mIsSpeedUpFind)
             {
-                this.mDic.set(item, index);
+                self.mDic.set(item, index);
             }
 
-            //this.mList.Insert(index, item);
-            this.mList.add(index, item);
+            //self.mList.Insert(index, item);
+            self.mList.add(index, item);
 
-            if (this.mIsSpeedUpFind)
+            if (self.mIsSpeedUpFind)
             {
-                this.updateIndex(index + 1);
+                self.updateIndex(index + 1);
             }
         }
         else
@@ -231,19 +231,19 @@ public class MList<T>
 
     public boolean Contains(T item)
     {
-        if (this.mIsSpeedUpFind)
+        if (self.mIsSpeedUpFind)
         {
-            return this.mDic.ContainsKey(item);
+            return self.mDic.ContainsKey(item);
         }
         else
         {
-            return this.mList.contains(item);
+            return self.mList.contains(item);
         }
     }
 
 //    public void Sort(System.Comparison<T> comparer)
 //    {
-//        this.mList.Sort(comparer);
+//        self.mList.Sort(comparer);
 //    }
 
     public void merge(MList<T> appendList)
@@ -252,11 +252,11 @@ public class MList<T>
         {
             for(T item : appendList.list())
             {
-                this.mList.add(item);
+                self.mList.add(item);
 
-                if (this.mIsSpeedUpFind)
+                if (self.mIsSpeedUpFind)
                 {
-                    this.mDic.set(item, this.mList.size() - 1);
+                    self.mDic.set(item, self.mList.size() - 1);
                 }
             }
         }
@@ -267,24 +267,24 @@ public class MList<T>
     {
         boolean ret = false;
 
-        if (this.mDic.ContainsKey(item))
+        if (self.mDic.ContainsKey(item))
         {
             ret = true;
 
-            int idx = this.mDic.get(item);
-            this.mDic.Remove(item);
+            int idx = self.mDic.get(item);
+            self.mDic.Remove(item);
 
-            if (idx == this.mList.size() - 1)    // 如果是最后一个元素，直接移除
+            if (idx == self.mList.size() - 1)    // 如果是最后一个元素，直接移除
             {
-                //this.mList.RemoveAt(idx);
-                this.mList.remove(idx);
+                //self.mList.RemoveAt(idx);
+                self.mList.remove(idx);
             }
             else
             {
-                this.mList.set(idx, this.mList.get(this.mList.size() - 1));
-                //this.mList.RemoveAt(this.mList.size() - 1);
-                this.mList.remove(this.mList.size() - 1);
-                this.mDic.set(this.mList.get(idx), idx);
+                self.mList.set(idx, self.mList.get(self.mList.size() - 1));
+                //self.mList.RemoveAt(self.mList.size() - 1);
+                self.mList.remove(self.mList.size() - 1);
+                self.mDic.set(self.mList.get(idx), idx);
             }
         }
 
@@ -293,11 +293,11 @@ public class MList<T>
 
     protected void updateIndex(int idx)
     {
-        int len = this.mList.size();
+        int len = self.mList.size();
 
         while(idx < len)
         {
-            this.mDic.set(this.mList.get(idx), idx);
+            self.mDic.set(self.mList.get(idx), idx);
 
             ++idx;
         }

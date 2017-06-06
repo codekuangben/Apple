@@ -12,18 +12,18 @@ import SDK.Lib.Tools.UtilApi;
 
     public EventDispatchFunctionObject()
     {
-        this.mIsClientDispose = false;
+        self.mIsClientDispose = false;
     }
 
     public void setFuncObject(ICalleeObject pThis, IDispatchObject func)
     {
-        this.mThis = pThis;
-        this.mHandle = func;
+        self.mThis = pThis;
+        self.mHandle = func;
     }
 
     public boolean isValid()
     {
-        return this.mThis != null || this.mHandle != null;
+        return self.mThis != null || self.mHandle != null;
     }
 
     public boolean isEqual(ICalleeObject pThis, IDispatchObject handle)
@@ -31,7 +31,7 @@ import SDK.Lib.Tools.UtilApi;
         boolean ret = false;
         if(pThis != null)
         {
-            ret = UtilApi.isAddressEqual(this.mThis, pThis);
+            ret = UtilApi.isAddressEqual(self.mThis, pThis);
             if (!ret)
             {
                 return ret;
@@ -39,8 +39,8 @@ import SDK.Lib.Tools.UtilApi;
         }
         if (handle != null)
         {
-            //ret = UtilApi.isAddressEqual(this.mHandle, handle);
-            ret = UtilApi.isDelegateEqual(this.mHandle, handle);
+            //ret = UtilApi.isAddressEqual(self.mHandle, handle);
+            ret = UtilApi.isDelegateEqual(self.mHandle, handle);
             if (!ret)
             {
                 return ret;
@@ -57,20 +57,20 @@ import SDK.Lib.Tools.UtilApi;
             mThis.call(dispObj);
         }
 
-//        if(null != this.mHandle)
+//        if(null != self.mHandle)
 //        {
-//            this.mHandle(dispObj);
+//            self.mHandle(dispObj);
 //        }
     }
 
     public void setClientDispose(boolean isDispose)
     {
-        this.mIsClientDispose = isDispose;
+        self.mIsClientDispose = isDispose;
     }
 
     public boolean isClientDispose()
     {
-        return this.mIsClientDispose;
+        return self.mIsClientDispose;
     }
 }
 

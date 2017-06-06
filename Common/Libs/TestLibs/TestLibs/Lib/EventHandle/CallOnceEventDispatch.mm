@@ -16,7 +16,7 @@
     {
         super.dispatchEvent(dispatchObject);
 
-        this.clearEventHandle();
+        self.clearEventHandle();
     }
 }
 

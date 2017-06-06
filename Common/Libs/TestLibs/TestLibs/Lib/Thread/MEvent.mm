@@ -12,14 +12,14 @@ public class MEvent
 
     public MEvent(boolean initialState)
     {
-        //this.mEvent = new CyclicBarrier(2);
+        //self.mEvent = new CyclicBarrier(2);
     }
 
     synchronized public void WaitOne()
     {
         try
         {
-            this.mEvent.wait();
+            self.mEvent.wait();
         }
         catch(Exception e)
         {
@@ -29,13 +29,13 @@ public class MEvent
 
     synchronized public boolean Reset()
     {
-        //this.mEvent.reset();
+        //self.mEvent.reset();
         return true;
     }
 
     synchronized public boolean Set()
     {
-        this.mEvent.notify();
+        self.mEvent.notify();
         return true;
     }
 }

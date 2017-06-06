@@ -6,6 +6,6 @@ public class DelayAddParam extends DelayHandleParamBase
 
     public DelayAddParam()
     {
-        this.mPriority = 0.0f;
+        self.mPriority = 0.0f;
     }
 }

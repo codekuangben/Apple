@@ -11,15 +11,15 @@ public class MThreadImpl extends Thread
 
     public MThreadImpl(IMRunnable value)
     {
-        this.mRunnable = value;
+        self.mRunnable = value;
     }
 
     @Override
     public void run()
     {
-        if(null != this.mRunnable)
+        if(null != self.mRunnable)
         {
-            this.mRunnable.run();
+            self.mRunnable.run();
         }
     }
 }

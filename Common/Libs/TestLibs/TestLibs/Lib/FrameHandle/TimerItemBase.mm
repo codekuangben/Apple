@@ -20,45 +20,45 @@ public class TimerItemBase implements IDelayHandleItem, IDispatchObject
 
     public TimerItemBase()
     {
-        this.mInternal = 1;
-        this.mTotalTime = 1;
-        this.mCurRunTime = 0;
-        this.mCurCallTime = 0;
-        this.mIsInfineLoop = false;
-        this.mIntervalLeftTime = 0;
-        this.mTimerDisp = new TimerFunctionObject();
-        this.mDisposed = false;
-        this.mIsContinuous = false;
+        self.mInternal = 1;
+        self.mTotalTime = 1;
+        self.mCurRunTime = 0;
+        self.mCurCallTime = 0;
+        self.mIsInfineLoop = false;
+        self.mIntervalLeftTime = 0;
+        self.mTimerDisp = new TimerFunctionObject();
+        self.mDisposed = false;
+        self.mIsContinuous = false;
     }
 
     public void setFuncObject(ICalleeObjectTimer handle)
     {
-        this.mTimerDisp.setFuncObject(handle);
+        self.mTimerDisp.setFuncObject(handle);
     }
 
     public void setTotalTime(float value)
     {
-        this.mTotalTime = value;
+        self.mTotalTime = value;
     }
 
     public float getRunTime()
     {
-        return this.mCurRunTime;
+        return self.mCurRunTime;
     }
 
     public float getCallTime()
     {
-        return this.mCurCallTime;
+        return self.mCurCallTime;
     }
 
     public float getLeftRunTime()
     {
-        return this.mTotalTime - this.mCurRunTime;
+        return self.mTotalTime - self.mCurRunTime;
     }
 
     public float getLeftCallTime()
     {
-        return this.mTotalTime - this.mCurCallTime;
+        return self.mTotalTime - self.mCurCallTime;
     }
 
     // 在调用回调函数之前处理
@@ -69,25 +69,25 @@ public class TimerItemBase implements IDelayHandleItem, IDispatchObject
 
     public void OnTimer(float delta)
     {
-        if (this.mDisposed)
+        if (self.mDisposed)
         {
             return;
         }
 
-        this.mCurRunTime += delta;
-        if (this.mCurRunTime > this.mTotalTime)
+        self.mCurRunTime += delta;
+        if (self.mCurRunTime > self.mTotalTime)
         {
-            this.mCurRunTime = this.mTotalTime;
+            self.mCurRunTime = self.mTotalTime;
         }
-        this.mIntervalLeftTime += delta;
+        self.mIntervalLeftTime += delta;
 
-        if (this.mIsInfineLoop)
+        if (self.mIsInfineLoop)
         {
             checkAndDisp();
         }
         else
         {
-            if (this.mCurRunTime >= this.mTotalTime)
+            if (self.mCurRunTime >= self.mTotalTime)
             {
                 disposeAndDisp();
             }
@@ -100,48 +100,48 @@ public class TimerItemBase implements IDelayHandleItem, IDispatchObject
 
     public void disposeAndDisp()
     {
-        if (this.mIsContinuous)
+        if (self.mIsContinuous)
         {
-            this.continueDisposeAndDisp();
+            self.continueDisposeAndDisp();
         }
         else
         {
-            this.discontinueDisposeAndDisp();
+            self.discontinueDisposeAndDisp();
         }
     }
 
     protected void continueDisposeAndDisp()
     {
-        this.mDisposed = true;
+        self.mDisposed = true;
 
-        while (this.mIntervalLeftTime >= this.mInternal && this.mCurCallTime < this.mTotalTime)
+        while (self.mIntervalLeftTime >= self.mInternal && self.mCurCallTime < self.mTotalTime)
         {
-            this.mCurCallTime = this.mCurCallTime + this.mInternal;
-            this.mIntervalLeftTime = this.mIntervalLeftTime - this.mInternal;
-            this.onPreCallBack();
+            self.mCurCallTime = self.mCurCallTime + self.mInternal;
+            self.mIntervalLeftTime = self.mIntervalLeftTime - self.mInternal;
+            self.onPreCallBack();
 
-            if (this.mTimerDisp.isValid())
+            if (self.mTimerDisp.isValid())
             {
-                this.mTimerDisp.call(this);
+                self.mTimerDisp.call(this);
             }
         }
     }
 
     protected void discontinueDisposeAndDisp()
     {
-        this.mDisposed = true;
-        this.mCurCallTime = this.mTotalTime;
-        this.onPreCallBack();
+        self.mDisposed = true;
+        self.mCurCallTime = self.mTotalTime;
+        self.onPreCallBack();
 
-        if (this.mTimerDisp.isValid())
+        if (self.mTimerDisp.isValid())
         {
-            this.mTimerDisp.call(this);
+            self.mTimerDisp.call(this);
         }
     }
 
     public void checkAndDisp()
     {
-        if(this.mIsContinuous)
+        if(self.mIsContinuous)
         {
             continueCheckAndDisp();
         }
@@ -154,16 +154,16 @@ public class TimerItemBase implements IDelayHandleItem, IDispatchObject
     // 连续的定时器
     protected void continueCheckAndDisp()
     {
-        while (this.mIntervalLeftTime >= this.mInternal)
+        while (self.mIntervalLeftTime >= self.mInternal)
         {
             // 这个地方 m_curCallTime 肯定会小于 m_totalTime，因为在调用这个函数的外部已经进行了判断
-            this.mCurCallTime = this.mCurCallTime + this.mInternal;
-            this.mIntervalLeftTime = this.mIntervalLeftTime - this.mInternal;
-            this.onPreCallBack();
+            self.mCurCallTime = self.mCurCallTime + self.mInternal;
+            self.mIntervalLeftTime = self.mIntervalLeftTime - self.mInternal;
+            self.onPreCallBack();
 
-            if (this.mTimerDisp.isValid())
+            if (self.mTimerDisp.isValid())
             {
-                this.mTimerDisp.call(this);
+                self.mTimerDisp.call(this);
             }
         }
     }
@@ -171,26 +171,26 @@ public class TimerItemBase implements IDelayHandleItem, IDispatchObject
     // 不连续的定时器
     protected void discontinueCheckAndDisp()
     {
-        if (this.mIntervalLeftTime >= this.mInternal)
+        if (self.mIntervalLeftTime >= self.mInternal)
         {
             // 这个地方 m_curCallTime 肯定会小于 m_totalTime，因为在调用这个函数的外部已经进行了判断
-            this.mCurCallTime = this.mCurCallTime + (((int)(this.mIntervalLeftTime / this.mInternal)) * this.mInternal);
-            this.mIntervalLeftTime = this.mIntervalLeftTime % this.mInternal;   // 只保留余数
-            this.onPreCallBack();
+            self.mCurCallTime = self.mCurCallTime + (((int)(self.mIntervalLeftTime / self.mInternal)) * self.mInternal);
+            self.mIntervalLeftTime = self.mIntervalLeftTime % self.mInternal;   // 只保留余数
+            self.onPreCallBack();
 
-            if (this.mTimerDisp.isValid())
+            if (self.mTimerDisp.isValid())
             {
-                this.mTimerDisp.call(this);
+                self.mTimerDisp.call(this);
             }
         }
     }
 
     public void reset()
     {
-        this.mCurRunTime = 0;
-        this.mCurCallTime = 0;
-        this.mIntervalLeftTime = 0;
-        this.mDisposed = false;
+        self.mCurRunTime = 0;
+        self.mCurCallTime = 0;
+        self.mIntervalLeftTime = 0;
+        self.mDisposed = false;
     }
 
     public void setClientDispose(boolean isDispose)

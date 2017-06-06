@@ -16,8 +16,8 @@ public class MLock
     {
         if (MacroDef.NET_MULTHREAD)
         {
-            this.mMutex = new ReentrantLock();
-            this.mMutex.lock();
+            self.mMutex = new ReentrantLock();
+            self.mMutex.lock();
         }
     }
 

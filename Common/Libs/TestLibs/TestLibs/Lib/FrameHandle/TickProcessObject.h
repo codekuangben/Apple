@@ -7,7 +7,7 @@ public class TickProcessObject
 
     public TickProcessObject()
     {
-        this.mTickObject = null;
-        this.mPriority = 0.0f;
+        self.mTickObject = null;
+        self.mPriority = 0.0f;
     }
 }

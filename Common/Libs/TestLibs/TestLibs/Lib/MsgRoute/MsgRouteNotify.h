@@ -8,28 +8,28 @@ public class MsgRouteNotify
 
     public MsgRouteNotify()
     {
-        this.mDispList = new MList<MsgRouteDispHandle>();
+        self.mDispList = new MList<MsgRouteDispHandle>();
     }
 
     public void addOneDisp(MsgRouteDispHandle disp)
     {
-        if(!this.mDispList.Contains(disp))
+        if(!self.mDispList.Contains(disp))
         {
-            this.mDispList.Add(disp);
+            self.mDispList.Add(disp);
         }
     }
 
     public void removeOneDisp(MsgRouteDispHandle disp)
     {
-        if(this.mDispList.Contains(disp))
+        if(self.mDispList.Contains(disp))
         {
-            this.mDispList.Remove(disp);
+            self.mDispList.Remove(disp);
         }
     }
 
     public void handleMsg(MsgRouteBase msg)
     {
-        for(MsgRouteDispHandle item : this.mDispList.list())
+        for(MsgRouteDispHandle item : self.mDispList.list())
         {
             item.handleMsg(msg);
         }

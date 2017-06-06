@@ -15,7 +15,7 @@ public class TickMgr extends DelayHandleMgrBase
 
     public TickMgr()
     {
-        this.mTickList = new MList<TickProcessObject>();
+        self.mTickList = new MList<TickProcessObject>();
     }
 
     @Override
@@ -27,29 +27,29 @@ public class TickMgr extends DelayHandleMgrBase
     @Override
     public void dispose()
     {
-        this.mTickList.Clear();
+        self.mTickList.Clear();
     }
 
     public void addTick(ITickedObject tickObj)
     {
-        this.addTick(tickObj, 0);
+        self.addTick(tickObj, 0);
     }
 
     public void addTick(ITickedObject tickObj, float priority)
     {
-        this.addObject((IDelayHandleItem)tickObj, priority);
+        self.addObject((IDelayHandleItem)tickObj, priority);
     }
 
     @Override
     protected void addObject(IDelayHandleItem delayObject)
     {
-        this.addObject(delayObject, 0);
+        self.addObject(delayObject, 0);
     }
 
     @Override
     protected void addObject(IDelayHandleItem delayObject, float priority)
     {
-        if (this.mLoopDepth.isInDepth())
+        if (self.mLoopDepth.isInDepth())
         {
             super.addObject(delayObject, priority);
         }
@@ -57,21 +57,21 @@ public class TickMgr extends DelayHandleMgrBase
         {
             int position = -1;
             int idx = 0;
-            int elemLen = this.mTickList.Count();
+            int elemLen = self.mTickList.Count();
 
             while(idx < elemLen)
             {
-                if (this.mTickList.get(idx) == null)
+                if (self.mTickList.get(idx) == null)
                 {
                     continue;
                 }
 
-                if (this.mTickList.get(idx).mTickObject == delayObject)
+                if (self.mTickList.get(idx).mTickObject == delayObject)
                 {
                     return;
                 }
 
-                if (this.mTickList.get(idx).mPriority < priority)
+                if (self.mTickList.get(idx).mPriority < priority)
                 {
                     position = idx;
                     break;
@@ -84,36 +84,36 @@ public class TickMgr extends DelayHandleMgrBase
             processObject.mTickObject = (ITickedObject)delayObject;
             processObject.mPriority = priority;
 
-            if (position < 0 || position >= this.mTickList.Count())
+            if (position < 0 || position >= self.mTickList.Count())
             {
-                this.mTickList.Add(processObject);
+                self.mTickList.Add(processObject);
             }
             else
             {
-                this.mTickList.Insert(position, processObject);
+                self.mTickList.Insert(position, processObject);
             }
         }
     }
 
     public void removeTick(ITickedObject tickObj)
     {
-        this.removeObject((IDelayHandleItem)tickObj);
+        self.removeObject((IDelayHandleItem)tickObj);
     }
 
     @Override
     protected void removeObject(IDelayHandleItem delayObject)
     {
-        if (this.mLoopDepth.isInDepth())
+        if (self.mLoopDepth.isInDepth())
         {
             super.removeObject(delayObject);
         }
         else
         {
-            for(TickProcessObject item : this.mTickList.list())
+            for(TickProcessObject item : self.mTickList.list())
             {
                 if (UtilApi.isAddressEqual(item.mTickObject, delayObject))
                 {
-                    this.mTickList.Remove(item);
+                    self.mTickList.Remove(item);
                     break;
                 }
             }
@@ -122,20 +122,20 @@ public class TickMgr extends DelayHandleMgrBase
 
     public void Advance(float delta)
     {
-        this.mLoopDepth.incDepth();
+        self.mLoopDepth.incDepth();
 
-        //foreach (TickProcessObject tk in this.mTickList.list())
+        //foreach (TickProcessObject tk in self.mTickList.list())
         //{
         //    if (!(tk.mTickObject as IDelayHandleItem).isClientDispose())
         //    {
         //        (tk.mTickObject as ITickedObject).onTick(delta);
         //    }
         //}
-        this.onPreAdvance(delta);
-        this.onExecAdvance(delta);
-        this.onPostAdvance(delta);
+        self.onPreAdvance(delta);
+        self.onExecAdvance(delta);
+        self.onPostAdvance(delta);
 
-        this.mLoopDepth.decDepth();
+        self.mLoopDepth.decDepth();
     }
 
     protected void onPreAdvance(float delta)
@@ -146,12 +146,12 @@ public class TickMgr extends DelayHandleMgrBase
     protected void onExecAdvance(float delta)
     {
         int idx = 0;
-        int count = this.mTickList.Count();
+        int count = self.mTickList.Count();
         ITickedObject tickObject = null;
 
         while (idx < count)
         {
-            tickObject = this.mTickList.get(idx).mTickObject;
+            tickObject = self.mTickList.get(idx).mTickObject;
 
             if (!((IDelayHandleItem)tickObject).isClientDispose())
             {
