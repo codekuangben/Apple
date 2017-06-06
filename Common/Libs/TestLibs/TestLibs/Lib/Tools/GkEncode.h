@@ -1,6 +1,7 @@
-﻿package SDK.Lib.Tools;
+﻿#ifndef __GkEncode_h
+#define __GkEncode_h
 
-public enum GkEncode
+enum GkEncode
 {
     /**
     static public Encoding UTF8 = Encoding.UTF8;
@@ -14,3 +15,5 @@ public enum GkEncode
     eUnicode,
     eDefault,
 }
+
+#endif
