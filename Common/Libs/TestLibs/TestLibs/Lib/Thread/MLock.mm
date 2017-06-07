@@ -22,7 +22,7 @@ public class MLock
     }
 
     // 这个在超出作用域的时候就会被调用，但是只有在使用 using 语句中，例如 using (MLock mlock = new MLock(mReadMutex)) ，这个语句执行完后立马调用，using (MLock mlock = new MLock(mReadMutex)) {} 才行
-    public void Dispose()
+    public (void) Dispose()
     {
         if (MacroDef.NET_MULTHREAD)
         {

@@ -6,13 +6,13 @@
 @interface UniqueNumIdGen : GObject
 {
 @protected
-    int mPreIdx;
-    int mCurId;
+    (int) mPreIdx;
+    (int) mCurId;
 }
 
-- (id) init: (int) baseUniqueId;
-- (int) genNewId;
-- (int) getCurId;
+- (id) init: ((int)) baseUniqueId;
+- ((int)) genNewId;
+- ((int)) getCurId;
 
 @end
 

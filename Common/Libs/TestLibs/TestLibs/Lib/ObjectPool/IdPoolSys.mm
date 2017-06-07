@@ -16,12 +16,12 @@ public class IdPoolSys
         self.mId2PoolDic = new MDictionary<String, MList<IRecycle>>();
     }
 
-    public void init()
+    public (void) init()
     {
 
     }
 
-    public void dispose()
+    public (void) dispose()
     {
 
     }
@@ -42,7 +42,7 @@ public class IdPoolSys
         return ret;
     }
 
-    public void deleteObj(String id, IRecycle obj)
+    public (void) deleteObj(String id, IRecycle obj)
     {
         if (!self.mId2PoolDic.ContainsKey(id))
         {

@@ -12,7 +12,7 @@ public class TaskQueue extends LockQueue<ITask>
     }
 
     @Override
-    public void push(ITask item)
+    public (void) push(ITask item)
     {
         super.push(item);
 

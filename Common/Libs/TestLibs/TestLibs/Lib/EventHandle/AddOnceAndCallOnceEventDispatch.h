@@ -8,8 +8,8 @@
     
 }
 
-- (void) addEventHandle: (ICalleeObject) pThis and: (IDispatchObject) handle;
-- (void) dispatchEvent: (IDispatchObject) dispatchObject;
+- ((void)) addEventHandle: (ICalleeObject) pThis and: (IDispatchObject) handle;
+- ((void)) dispatchEvent: (IDispatchObject) dispatchObject;
 
 @end
 

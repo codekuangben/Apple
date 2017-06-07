@@ -4,7 +4,7 @@ import SDK.Lib.EventHandle.ICalleeObjectNoRetNoParam;
 
 public class LoopDepth
 {
-    private int mLoopDepth;         // 是否在循环中，支持多层嵌套，就是循环中再次调用循环
+    private (int) mLoopDepth;         // 是否在循环中，支持多层嵌套，就是循环中再次调用循环
     private ICalleeObjectNoRetNoParam mIncHandle;     // 增加处理器
     private ICalleeObjectNoRetNoParam mDecHandle;     // 减少处理器
     private ICalleeObjectNoRetNoParam mZeroHandle;    // 减少到 0 处理器
@@ -17,22 +17,22 @@ public class LoopDepth
         self.mZeroHandle = null;
     }
 
-    public void setIncHandle(ICalleeObjectNoRetNoParam value)
+    public (void) setIncHandle(ICalleeObjectNoRetNoParam value)
     {
         self.mIncHandle = value;
     }
 
-    public void setDecHandle(ICalleeObjectNoRetNoParam value)
+    public (void) setDecHandle(ICalleeObjectNoRetNoParam value)
     {
         self.mDecHandle = value;
     }
 
-    public void setZeroHandle(ICalleeObjectNoRetNoParam value)
+    public (void) setZeroHandle(ICalleeObjectNoRetNoParam value)
     {
         self.mZeroHandle = value;
     }
 
-    public void incDepth()
+    public (void) incDepth()
     {
         ++self.mLoopDepth;
 
@@ -42,7 +42,7 @@ public class LoopDepth
         }
     }
 
-    public void decDepth()
+    public (void) decDepth()
     {
         --self.mLoopDepth;
 

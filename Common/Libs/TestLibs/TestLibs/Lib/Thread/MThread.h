@@ -20,17 +20,17 @@ public class MThread implements IMRunnable
         self.mParam = param;
     }
 
-    public void setExitFlag(boolean value)
+    public (void) setExitFlag(boolean value)
     {
         self.mIsExitFlag = value;
     }
 
-    public void setCb(IThreadDispatch value)
+    public (void) setCb(IThreadDispatch value)
     {
         self.mCb = value;
     }
 
-    public void setParam(Object value)
+    public (void) setParam(Object value)
     {
         self.mParam = value;
     }
@@ -39,7 +39,7 @@ public class MThread implements IMRunnable
     /**
      *@brief 开启一个线程
      */
-    public void start()
+    public (void) start()
     {
         self.mThread = new MThreadImpl(this);
         //self.mThread.Priority = ThreadPriority.Lowest;
@@ -47,7 +47,7 @@ public class MThread implements IMRunnable
         self.mThread.start();
     }
 
-    public void join()
+    public (void) join()
     {
         //mThread.Interrupt();           // 直接线程终止
         try
@@ -64,7 +64,7 @@ public class MThread implements IMRunnable
      *@brief 线程回调函数
      */
     @Override
-    public void run()
+    public (void) run()
     {
         self.getCurThreadID();
 
@@ -74,7 +74,7 @@ public class MThread implements IMRunnable
         }
     }
 
-    protected void getCurThreadID()
+    protected (void) getCurThreadID()
     {
         self.mCurThreadID = Thread.currentThread().getId();       // 当前线程的 ID
     }
@@ -84,7 +84,7 @@ public class MThread implements IMRunnable
         return (self.mCurThreadID == threadID);
     }
 
-    static public void getMainThreadID()
+    static public (void) getMainThreadID()
     {
         msMainThreadID = Thread.currentThread().getId();
     }
@@ -94,7 +94,7 @@ public class MThread implements IMRunnable
         return (msMainThreadID == Thread.currentThread().getId());
     }
 
-    static public void needMainThread()
+    static public (void) needMainThread()
     {
         if (!isMainThread())
         {

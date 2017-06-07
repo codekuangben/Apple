@@ -8,9 +8,9 @@ import java.lang.reflect.Array;
  */
 public class DynByteBuffer
 {
-    public int mCapacity;         // 分配的内存空间大小，单位大小是字节
-    public int mMaxCapacity;      // 最大允许分配的存储空间大小
-    public int mSize;              // 存储在当前缓冲区中的数量
+    public (int) mCapacity;         // 分配的内存空间大小，单位大小是字节
+    public (int) mMaxCapacity;      // 最大允许分配的存储空间大小
+    public (int) mSize;              // 存储在当前缓冲区中的数量
     public byte[] mBuffer;            // 当前环形缓冲区
 
     public DynByteBuffer()      // mono 模板类中使用常亮报错， vs 可以
@@ -18,12 +18,12 @@ public class DynByteBuffer
         this(1 * 1024/*DataCV.INIT_CAPACITY*/, 8 * 1024 * 1024/*DataCV.MAX_CAPACITY*/);
     }
 
-    public DynByteBuffer(int initCapacity)
+    public DynByteBuffer((int) initCapacity)
     {
         this(initCapacity, 8 * 1024 * 1024/*DataCV.MAX_CAPACITY*/);
     }
 
-    public DynByteBuffer(int initCapacity, int maxCapacity)      // mono 模板类中使用常亮报错， vs 可以
+    public DynByteBuffer((int) initCapacity, (int) maxCapacity)      // mono 模板类中使用常亮报错， vs 可以
     {
         self.mMaxCapacity = maxCapacity;
         self.mCapacity = initCapacity;
@@ -36,28 +36,28 @@ public class DynByteBuffer
         return self.mBuffer;
     }
 
-    public void setBuffer(byte[] value)
+    public (void) setBuffer(byte[] value)
     {
         self.mBuffer = value;
-        self.mCapacity = (int)self.mBuffer.length;
+        self.mCapacity = ((int))self.mBuffer.length;
     }
 
-    public int getMaxCapacity()
+    public (int) getMaxCapacity()
     {
         return self.mMaxCapacity;
     }
 
-    public void setMaxCapacity(int value)
+    public (void) setMaxCapacity((int) value)
     {
         self.mMaxCapacity = value;
     }
 
-    public int getCapacity()
+    public (int) getCapacity()
     {
             return self.mCapacity;
     }
 
-    public void setCapacity(int value)
+    public (void) setCapacity((int) value)
     {
         if (value == self.mCapacity)
         {
@@ -74,12 +74,12 @@ public class DynByteBuffer
         self.mCapacity = value;
     }
 
-    public int getSize()
+    public (int) getSize()
     {
         return self.mSize;
     }
 
-    public void setSize(int value)
+    public (void) setSize((int) value)
     {
         if (value > self.getCapacity())
         {
@@ -89,7 +89,7 @@ public class DynByteBuffer
         self.mSize = value;
     }
 
-    public void extendDeltaCapicity(int delta)
+    public (void) extendDeltaCapicity((int) delta)
     {
         self.setCapacity(DynBufResizePolicy.getCloseSize(self.getSize() + delta, self.getCapacity(), self.getMaxCapacity()));
     }

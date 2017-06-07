@@ -12,12 +12,12 @@ public class SysMsgRoute extends LockQueue<MsgRouteBase>
         super(name);
     }
 
-    public void init()
+    public (void) init()
     {
 
     }
 
-    public void dispose()
+    public (void) dispose()
     {
 
     }

@@ -2,7 +2,7 @@
 
 @implementation DelayHandleObject
 
-- (void) init
+- ((void)) init
 {
 	if(self = [super init])
     {

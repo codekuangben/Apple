@@ -19,35 +19,35 @@ public class TickMgr extends DelayHandleMgrBase
     }
 
     @Override
-    public void init()
+    public (void) init()
     {
 
     }
 
     @Override
-    public void dispose()
+    public (void) dispose()
     {
         self.mTickList.Clear();
     }
 
-    public void addTick(ITickedObject tickObj)
+    public (void) addTick(ITickedObject tickObj)
     {
         self.addTick(tickObj, 0);
     }
 
-    public void addTick(ITickedObject tickObj, float priority)
+    public (void) addTick(ITickedObject tickObj, float priority)
     {
         self.addObject((IDelayHandleItem)tickObj, priority);
     }
 
     @Override
-    protected void addObject(IDelayHandleItem delayObject)
+    protected (void) addObject(IDelayHandleItem delayObject)
     {
         self.addObject(delayObject, 0);
     }
 
     @Override
-    protected void addObject(IDelayHandleItem delayObject, float priority)
+    protected (void) addObject(IDelayHandleItem delayObject, float priority)
     {
         if (self.mLoopDepth.isInDepth())
         {
@@ -55,9 +55,9 @@ public class TickMgr extends DelayHandleMgrBase
         }
         else
         {
-            int position = -1;
-            int idx = 0;
-            int elemLen = self.mTickList.Count();
+            (int) position = -1;
+            (int) idx = 0;
+            (int) elemLen = self.mTickList.Count();
 
             while(idx < elemLen)
             {
@@ -95,13 +95,13 @@ public class TickMgr extends DelayHandleMgrBase
         }
     }
 
-    public void removeTick(ITickedObject tickObj)
+    public (void) removeTick(ITickedObject tickObj)
     {
         self.removeObject((IDelayHandleItem)tickObj);
     }
 
     @Override
-    protected void removeObject(IDelayHandleItem delayObject)
+    protected (void) removeObject(IDelayHandleItem delayObject)
     {
         if (self.mLoopDepth.isInDepth())
         {
@@ -120,7 +120,7 @@ public class TickMgr extends DelayHandleMgrBase
         }
     }
 
-    public void Advance(float delta)
+    public (void) Advance(float delta)
     {
         self.mLoopDepth.incDepth();
 
@@ -138,15 +138,15 @@ public class TickMgr extends DelayHandleMgrBase
         self.mLoopDepth.decDepth();
     }
 
-    protected void onPreAdvance(float delta)
+    protected (void) onPreAdvance(float delta)
     {
 
     }
 
-    protected void onExecAdvance(float delta)
+    protected (void) onExecAdvance(float delta)
     {
-        int idx = 0;
-        int count = self.mTickList.Count();
+        (int) idx = 0;
+        (int) count = self.mTickList.Count();
         ITickedObject tickObject = null;
 
         while (idx < count)
@@ -162,7 +162,7 @@ public class TickMgr extends DelayHandleMgrBase
         }
     }
 
-    protected void onPostAdvance(float delta)
+    protected (void) onPostAdvance(float delta)
     {
 
     }

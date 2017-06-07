@@ -13,10 +13,10 @@
     NSString* mRetId;
 }
 
-- (id) init: (NSString*) prefix baseUniqueId: (int) baseUniqueId;
+- (id) init: (NSString*) prefix baseUniqueId: ((int)) baseUniqueId;
 - (NSString*) genNewStrId();
 - (NSString*) getCurStrId();
-- (NSString*) genStrIdById: (int) id;
+- (NSString*) genStrIdById: ((int)) id;
 
 @end
 

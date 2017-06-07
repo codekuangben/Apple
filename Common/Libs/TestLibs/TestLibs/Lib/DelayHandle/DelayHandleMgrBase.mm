@@ -19,7 +19,7 @@
     return self;
 }
 
-- (void) dealloc
+- ((void)) dealloc
 {
 	[self dispose];
 	
@@ -27,17 +27,17 @@
     [super dealloc];
 }
 
-- (void) dispose
+- ((void)) dispose
 {
 
 }
 
-- (void) addObject(IDelayHandleItem delayObject)
+- ((void)) addObject(IDelayHandleItem delayObject)
 {
 	self.addObject(delayObject, 0);
 }
 
-- (void) addObject(IDelayHandleItem delayObject, float priority)
+- ((void)) addObject(IDelayHandleItem delayObject, float priority)
 {
 	if (self.mLoopDepth.isInDepth())
 	{
@@ -58,7 +58,7 @@
 	}
 }
 
-- (void) removeObject(IDelayHandleItem delayObject)
+- ((void)) removeObject(IDelayHandleItem delayObject)
 {
 	if (self.mLoopDepth.isInDepth())
 	{
@@ -108,7 +108,7 @@
 }
 
 // 从延迟添加列表删除一个 Item
-- (void) delFromDelayAddList(IDelayHandleItem delayObject)
+- ((void)) delFromDelayAddList(IDelayHandleItem delayObject)
 {
 	for (DelayHandleObject item : self.mDeferredAddQueue.list())
 	{
@@ -120,7 +120,7 @@
 }
 
 // 从延迟删除列表删除一个 Item
-- (void) delFromDelayDelList(IDelayHandleItem delayObject)
+- ((void)) delFromDelayDelList(IDelayHandleItem delayObject)
 {
 	for (DelayHandleObject item : self.mDeferredDelQueue.list())
 	{
@@ -131,11 +131,11 @@
 	}
 }
 
-- (void) processDelayObjects()
+- ((void)) processDelayObjects()
 {
-	int idx = 0;
+	(int) idx = 0;
 	// len 是 Python 的关键字
-	int elemLen = 0;
+	(int) elemLen = 0;
 
 	if (!self.mLoopDepth.isInDepth())       // 只有全部退出循环后，才能处理添加删除
 	{
@@ -170,7 +170,7 @@
 	}
 }
 
-- (void) call
+- ((void)) call
 {
 	self.processDelayObjects();
 }

@@ -6,7 +6,7 @@
 public class DaoJiShiTimer extends TimerItemBase
 {
     @Override
-    public void setTotalTime(float value)
+    public (void) setTotalTime(float value)
     {
         super.setTotalTime(value);
         self.mCurRunTime = value;
@@ -26,7 +26,7 @@ public class DaoJiShiTimer extends TimerItemBase
     }
 
     @Override
-    public void OnTimer(float delta)
+    public (void) OnTimer(float delta)
     {
         if (self.mDisposed)
         {
@@ -58,7 +58,7 @@ public class DaoJiShiTimer extends TimerItemBase
     }
 
     @Override
-    public void reset()
+    public (void) reset()
     {
         self.mCurRunTime = self.mTotalTime;
         self.mCurCallTime = 0;

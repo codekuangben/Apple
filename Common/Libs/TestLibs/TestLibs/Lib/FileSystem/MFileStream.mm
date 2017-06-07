@@ -39,7 +39,7 @@ public class MFileStream extends GObject implements IDispatchObject
         self.checkAndOpen();
     }
 
-    public void seek(long offset, MSeekOrigin origin)
+    public (void) seek(long offset, MSeekOrigin origin)
     {
         if(self.mFileOpState == FileOpState.eOpenSuccess)
         {
@@ -103,12 +103,12 @@ public class MFileStream extends GObject implements IDispatchObject
         }
     }
 
-    public void dispose()
+    public (void) dispose()
     {
         self.close();
     }
 
-    protected void checkAndOpen()
+    protected (void) checkAndOpen()
     {
         if(self.mFileOpState == FileOpState.eNoOp)
         {
@@ -116,7 +116,7 @@ public class MFileStream extends GObject implements IDispatchObject
         }
     }
 
-    protected void syncOpenFileStream()
+    protected (void) syncOpenFileStream()
     {
         if (self.mFileOpState == FileOpState.eNoOp)
         {
@@ -140,23 +140,23 @@ public class MFileStream extends GObject implements IDispatchObject
     }
 
     // 获取总共长度
-    public int getLength()
+    public (int) getLength()
     {
-        int len = 0;
+        (int) len = 0;
 
         if (self.mFileOpState == FileOpState.eOpenSuccess)
         {
             if (self.mFile != null)
             {
-                len = (int)self.mFile.length();
+                len = ((int))self.mFile.length();
             }
             /*
             if (mFileStream != null && mFileStream.CanSeek)
             {
                 try
                 {
-                    len = (int)mFileStream.Seek(0, SeekOrigin.End);     // 移动到文件结束，返回长度
-                    len = (int)mFileStream.Position;                    // Position 移动到 Seek 位置
+                    len = ((int))mFileStream.Seek(0, SeekOrigin.End);     // 移动到文件结束，返回长度
+                    len = ((int))mFileStream.Position;                    // Position 移动到 Seek 位置
                 }
                 catch(Exception exp)
                 {
@@ -168,7 +168,7 @@ public class MFileStream extends GObject implements IDispatchObject
         return len;
     }
 
-    protected void close()
+    protected (void) close()
     {
         if (self.mFileOpState == FileOpState.eOpenSuccess)
         {
@@ -206,17 +206,17 @@ public class MFileStream extends GObject implements IDispatchObject
         return self.readText(0, 0, null);
     }
 
-    public String readText(int offset)
+    public String readText((int) offset)
     {
         return self.readText(offset, 0, null);
     }
 
-    public String readText(int offset, int count)
+    public String readText((int) offset, (int) count)
     {
         return self.readText(offset, count, null);
     }
 
-    public String readText(int offset, int count, MEncoding encode)
+    public String readText((int) offset, (int) count, MEncoding encode)
     {
         self.checkAndOpen();
 
@@ -259,12 +259,12 @@ public class MFileStream extends GObject implements IDispatchObject
         return self.readByte(0, 0);
     }
 
-    public byte[] readByte(int offset)
+    public byte[] readByte((int) offset)
     {
         return self.readByte(offset, 0);
     }
 
-    public byte[] readByte(int offset, int count)
+    public byte[] readByte((int) offset, (int) count)
     {
         self.checkAndOpen();
 
@@ -291,12 +291,12 @@ public class MFileStream extends GObject implements IDispatchObject
         return bytes;
     }
 
-    public void writeText(String text)
+    public (void) writeText(String text)
     {
         self.writeText(text, GkEncode.eUTF8);
     }
 
-    public void writeText(String text, GkEncode gkEncode)
+    public (void) writeText(String text, GkEncode gkEncode)
     {
         MEncoding encode = UtilApi.convGkEncode2EncodingEncoding(gkEncode);
 
@@ -325,17 +325,17 @@ public class MFileStream extends GObject implements IDispatchObject
         }
     }
 
-    public void writeByte(byte[] bytes)
+    public (void) writeByte(byte[] bytes)
     {
         self.writeByte(bytes, 0, 0);
     }
 
-    public void writeByte(byte[] bytes, int offset)
+    public (void) writeByte(byte[] bytes, (int) offset)
     {
         self.writeByte(bytes, offset, 0);
     }
 
-    public void writeByte(byte[] bytes, int offset, int count)
+    public (void) writeByte(byte[] bytes, (int) offset, (int) count)
     {
         self.checkAndOpen();
 
@@ -363,12 +363,12 @@ public class MFileStream extends GObject implements IDispatchObject
         }
     }
 
-    public void writeLine(String text)
+    public (void) writeLine(String text)
     {
         self.writeLine(text, GkEncode.eUTF8);
     }
 
-    public void writeLine(String text, GkEncode gkEncode)
+    public (void) writeLine(String text, GkEncode gkEncode)
     {
         text = text + UtilApi.CR_LF;
         writeText(text, gkEncode);

@@ -48,12 +48,12 @@ public class UtilApi
         return a == b;
     }
 
-    static public int getScreenWidth()
+    static public (int) getScreenWidth()
     {
         return 1000;
     }
 
-    static public int getScreenHeight()
+    static public (int) getScreenHeight()
     {
         return 1000;
     }
@@ -66,7 +66,7 @@ public class UtilApi
         return dateString;
     }
 
-    static public void printCallStack()
+    static public (void) printCallStack()
     {
         Throwable ex = new Throwable();
 
@@ -74,7 +74,7 @@ public class UtilApi
 
         if(stackElements != null)
         {
-            for(int i = 0; i < stackElements.length; i++)
+            for((int) i = 0; i < stackElements.length; i++)
             {
                 System.out.println(stackElements[i].getClassName());
                 System.out.println(stackElements[i].getFileName());

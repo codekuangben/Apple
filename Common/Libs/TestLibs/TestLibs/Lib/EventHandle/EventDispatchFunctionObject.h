@@ -10,14 +10,14 @@
     ICalleeObject* mThis;
     SEL mHandle;
 	IMP mHandleImp;
-	int mEventId;
+	(int) mEventId;
 }
 
 @property bool mIsClientDispose;       	// 是否释放了资源
 @property ICalleeObject* mThis;
 @property SEL mHandle;					// 选择器
 @property IMP mHandleImp;
-@property int mEventId;
+@property (int) mEventId;
 
 @end
 

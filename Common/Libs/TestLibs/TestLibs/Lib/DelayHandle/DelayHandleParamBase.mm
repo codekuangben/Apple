@@ -2,7 +2,7 @@
 
 @implementation DelayHandleParamBase
 
-- (void) init
+- ((void)) init
 {
 	if(self = [super init])
     {

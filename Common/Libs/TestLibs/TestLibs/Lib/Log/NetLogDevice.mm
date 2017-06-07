@@ -5,13 +5,13 @@
  */
 public class NetLogDevice extends LogDeviceBase
 {
-    public void getTest()
+    public (void) getTest()
     {
         //GET请求
         //Ctx.mInstance.mCoroutineMgr.StartCoroutine(GET("http://xuanyusong.com/"));
     }
 
-//    public void sendTest()
+//    public (void) sendTest()
 //    {
 //        //登录请求 POST 把参数写在字典用 通过www类来请求
 //        MDictionary<string,string> dic = new MDictionary<string, string> ();
@@ -66,7 +66,7 @@ public class NetLogDevice extends LogDeviceBase
 //    }
 //
 //    // 如果想通过HTTP传递二进制流的话 可以使用 下面的方法。
-//    public void sendBinaryData(String url, String str)
+//    public (void) sendBinaryData(String url, String str)
 //    {
 //        WWWForm wwwForm = new WWWForm();
 //        byte[] byteStream = System.Text.Encoding.Default.GetBytes(str);
@@ -75,13 +75,13 @@ public class NetLogDevice extends LogDeviceBase
 //    }
 
     @Override
-    public void logout(String message)
+    public (void) logout(String message)
     {
         self.logout(message, LogColor.eLC_LOG);
     }
 
     @Override
-    public void logout(String message, LogColor type)
+    public (void) logout(String message, LogColor type)
     {
         //注册请求 POST
 //        MDictionary<string, string> dic = new MDictionary<string, string>();

@@ -12,7 +12,7 @@ public class LoadedWebResMR extends MsgRouteBase
     }
 
     @Override
-    public void resetDefault()
+    public (void) resetDefault()
     {
         m_task = null;
     }

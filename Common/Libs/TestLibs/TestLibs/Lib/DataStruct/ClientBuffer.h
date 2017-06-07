@@ -87,7 +87,7 @@ public class ClientBuffer
     }
 
     // 设置 ClientBuffer 字节序
-    public void setEndian(EEndian end)
+    public (void) setEndian(EEndian end)
     {
         mRawBuffer.setEndian(end);
         mMsgBuffer.setEndian(end);
@@ -101,14 +101,14 @@ public class ClientBuffer
         mTmp1fData.setEndian(end);
     }
 
-    public void setCryptKey(byte[] encrypt)
+    public (void) setCryptKey(byte[] encrypt)
     {
         //mCryptContext.cryptAlgorithm = CryptAlgorithm.DES;
         mCryptContext.m_cryptKey = encrypt;
-        Dec.DES_set_key_unchecked(mCryptContext.m_cryptKey, mCryptContext.m_cryptKeyArr[(int)CryptAlgorithm.DES] as DES_key_schedule);
+        Dec.DES_set_key_unchecked(mCryptContext.m_cryptKey, mCryptContext.m_cryptKeyArr[((int))CryptAlgorithm.DES] as DES_key_schedule);
     }
 
-    public void checkDES()
+    public (void) checkDES()
     {
         if (mCryptContext.m_cryptKey != null && mCryptContext.m_cryptAlgorithm != CryptAlgorithm.DES)
         {
@@ -124,12 +124,12 @@ public class ClientBuffer
         }
     }
 
-    public void SetRevBufferSize(int size)
+    public (void) SetRevBufferSize((int) size)
     {
         mDynBuffer = new DynBuffer<byte>((uint)size);
     }
 
-    public void moveDyn2Raw()
+    public (void) moveDyn2Raw()
     {
         UtilMsg.formatBytes2Array(mDynBuffer.buffer, mDynBuffer.size);
 
@@ -145,7 +145,7 @@ public class ClientBuffer
         mRawBuffer.circularBuffer.pushBackArr(mDynBuffer.buffer, 0, mDynBuffer.size);
     }
 
-    public void moveDyn2Raw_KBE()
+    public (void) moveDyn2Raw_KBE()
     {
         if (MacroDef.MSG_ENCRIPT)
         {
@@ -157,7 +157,7 @@ public class ClientBuffer
     }
 
     // 自己的消息逻辑
-    public void moveRaw2Msg()
+    public (void) moveRaw2Msg()
     {
         while (mRawBuffer.popFront())  // 如果有数据
         {
@@ -167,14 +167,14 @@ public class ClientBuffer
     }
 
     // KBEngine 引擎消息流程
-    public void moveRaw2Msg_KBE()
+    public (void) moveRaw2Msg_KBE()
     {
         self.mRawBuffer.circularBuffer.linearize();
         self.mMsgBuffer.circularBuffer.pushBackCB(self.mRawBuffer.circularBuffer);
         self.mRawBuffer.circularBuffer.clear();
     }
 
-    public void send(boolean bnet = true)
+    public (void) send(boolean bnet = true)
     {
         mTmpData.clear();
         mTmpData.writeUnsignedInt32(mSendData.length);      // 填充长度
@@ -201,7 +201,7 @@ public class ClientBuffer
     }
 
     // TODO: KBEngine 引擎发送
-    public void send_KBE(boolean isSendToNet = true)
+    public (void) send_KBE(boolean isSendToNet = true)
     {
         mTmpData.clear();
 
@@ -246,7 +246,7 @@ public class ClientBuffer
     }
 
     // 获取数据，然后压缩加密
-    public void getSocketSendData()
+    public (void) getSocketSendData()
     {
         mSocketSendBA.clear();
 
@@ -276,7 +276,7 @@ public class ClientBuffer
     }
 
     // TODO: KBEngine 获取发送数据
-    public void getSocketSendData_KBE()
+    public (void) getSocketSendData_KBE()
     {
         mSocketSendBA.clear();
 
@@ -293,7 +293,7 @@ public class ClientBuffer
     }
 
     // 压缩加密每一个包
-    protected void CompressAndEncryptEveryOne()
+    protected (void) CompressAndEncryptEveryOne()
     {
         uint origMsgLen = 0;    // 原始的消息长度，后面判断头部是否添加压缩标志
         uint compressMsgLen = 0;
@@ -317,14 +317,14 @@ public class ClientBuffer
                 }
                 else
                 {
-                    mSocketSendBA.incPosDelta((int)origMsgLen);
+                    mSocketSendBA.incPosDelta(((int))origMsgLen);
                     compressMsgLen = origMsgLen;
                 }
             }
             // 只加密消息 body
             //#if MSG_ENCRIPT
             //                mSocketSendBA.position -= compressMsgLen;      // 移动加密指针位置
-            //                cryptLen = mSocketSendBA.encrypt(m_cryptKeyArr[(int)m_cryptAlgorithm], compressMsgLen, m_cryptAlgorithm);
+            //                cryptLen = mSocketSendBA.encrypt(m_cryptKeyArr[((int))m_cryptAlgorithm], compressMsgLen, m_cryptAlgorithm);
             //                if (compressMsgLen != cryptLen)
             //                {
             //                    bHeaderChange = true;
@@ -344,9 +344,9 @@ public class ClientBuffer
 
                 if (bHeaderChange)
                 {
-                    mSocketSendBA.decPosDelta((int)compressMsgLen + 4);        // 移动到头部位置
+                    mSocketSendBA.decPosDelta(((int))compressMsgLen + 4);        // 移动到头部位置
                     mSocketSendBA.writeUnsignedInt32(origMsgLen, false);     // 写入压缩或者加密后的消息长度
-                    mSocketSendBA.incPosDelta((int)compressMsgLen);              // 移动到下一个位置
+                    mSocketSendBA.incPosDelta(((int))compressMsgLen);              // 移动到下一个位置
                 }
             }
 
@@ -364,7 +364,7 @@ public class ClientBuffer
                     origMsgLen = cryptLen;                // 压缩后的长度
                 }
 
-                mSocketSendBA.decPosDelta((int)(compressMsgLen + 4));        // 移动到头部位置
+                mSocketSendBA.decPosDelta(((int))(compressMsgLen + 4));        // 移动到头部位置
                 mSocketSendBA.writeUnsignedInt32(origMsgLen, false);     // 写入压缩或者加密后的消息长度
 
                 mSocketSendBA.decPosDelta(4);      // 移动到头部
@@ -375,12 +375,12 @@ public class ClientBuffer
         // 整个消息压缩后，包括 4 个字节头的长度，然后整个加密
 //#if MSG_ENCRIPT
         //mSocketSendBA.position = 0;      // 移动到头部
-        //mSocketSendBA.encrypt(m_cryptKeyArr[(int)m_cryptAlgorithm], 0, m_cryptAlgorithm);
+        //mSocketSendBA.encrypt(m_cryptKeyArr[((int))m_cryptAlgorithm], 0, m_cryptAlgorithm);
 //#endif
     }
 
     // 压缩解密作为一个包
-    protected void CompressAndEncryptAllInOne()
+    protected (void) CompressAndEncryptAllInOne()
     {
         uint origMsgLen = mSocketSendBA.length;       // 原始的消息长度，后面判断头部是否添加压缩标志
         uint compressMsgLen = 0;
@@ -392,12 +392,12 @@ public class ClientBuffer
         else if (MacroDef.MSG_ENCRIPT)
         {
             compressMsgLen = origMsgLen;
-            mSocketSendBA.incPosDelta((int)origMsgLen);
+            mSocketSendBA.incPosDelta(((int))origMsgLen);
         }
 
         if (MacroDef.MSG_ENCRIPT)
         {
-            mSocketSendBA.decPosDelta((int)compressMsgLen);
+            mSocketSendBA.decPosDelta(((int))compressMsgLen);
             compressMsgLen = mSocketSendBA.encrypt(mCryptContext, 0);
         }
 
@@ -422,7 +422,7 @@ public class ClientBuffer
     // |------------- 加密的整个消息  -------------------------------------|
     // |----4 Header----|-压缩的 body----|----4 Header----|-压缩的 body----|
     // |                |                |                |                |
-    protected void UnCompressAndDecryptEveryOne()
+    protected (void) UnCompressAndDecryptEveryOne()
     {
         if (MacroDef.MSG_ENCRIPT)
         {
@@ -478,7 +478,7 @@ public class ClientBuffer
         }
     }
 
-    protected void UnCompressAndDecryptAllInOne()
+    protected (void) UnCompressAndDecryptAllInOne()
     {
         if (MacroDef.MSG_ENCRIPT)
         {

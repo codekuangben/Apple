@@ -26,12 +26,12 @@ public class SystemTimeData
         self.mFixedTimestep = 0.02f;
     }
 
-    public void init()
+    public (void) init()
     {
 
     }
 
-    public void dispose()
+    public (void) dispose()
     {
 
     }
@@ -41,7 +41,7 @@ public class SystemTimeData
         return self.mDeltaSec;
     }
 
-    public void setDeltaSec(float value)
+    public (void) setDeltaSec(float value)
     {
         self.mDeltaSec = value;
     }
@@ -63,12 +63,12 @@ public class SystemTimeData
         return self.mCurTime;
     }
 
-    public void setCurTime(long value)
+    public (void) setCurTime(long value)
     {
         self.mCurTime = value;
     }
 
-    public void nextFrame()
+    public (void) nextFrame()
     {
         self.mPreTime = self.mCurTime;
         self.mCurTime = System.currentTimeMillis()/1000;

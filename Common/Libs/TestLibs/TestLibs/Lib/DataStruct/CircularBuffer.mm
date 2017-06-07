@@ -11,8 +11,8 @@ package SDK.Lib.DataStruct;
 public class CircularBuffer
 {
     protected DynByteBuffer mDynBuffer;
-    protected int mFirst;             // 当前缓冲区数据的第一个索引
-    protected int mLast;              // 当前缓冲区数据的最后一个索引的后面一个索引，浪费一个字节
+    protected (int) mFirst;             // 当前缓冲区数据的第一个索引
+    protected (int) mLast;              // 当前缓冲区数据的最后一个索引的后面一个索引，浪费一个字节
     protected ByteBuffer mTmpBA;        // 临时数据
 
     public CircularBuffer()
@@ -20,12 +20,12 @@ public class CircularBuffer
         this(BufferCV.INIT_CAPACITY, BufferCV.MAX_CAPACITY);
     }
 
-    public CircularBuffer(int initCapacity)
+    public CircularBuffer((int) initCapacity)
     {
         this(initCapacity, BufferCV.MAX_CAPACITY);
     }
 
-    public CircularBuffer(int initCapacity, int maxCapacity)
+    public CircularBuffer((int) initCapacity, (int) maxCapacity)
     {
         mDynBuffer = new DynByteBuffer(initCapacity, maxCapacity);
 
@@ -35,12 +35,12 @@ public class CircularBuffer
         mTmpBA = new ByteBuffer();
     }
 
-    public int getFirst()
+    public (int) getFirst()
     {
         return mFirst;
     }
 
-    public int getLast()
+    public (int) getLast()
     {
         return mLast;
     }
@@ -50,12 +50,12 @@ public class CircularBuffer
         return mDynBuffer.mBuffer;
     }
 
-    public int getSize()
+    public (int) getSize()
     {
         return mDynBuffer.mSize;
     }
 
-    public void setSize(int value)
+    public (void) setSize((int) value)
     {
         mDynBuffer.setSize(value);
     }
@@ -75,7 +75,7 @@ public class CircularBuffer
         return mDynBuffer.mSize == 0;
     }
 
-    public int capacity()
+    public (int) capacity()
     {
         return mDynBuffer.mCapacity;
     }
@@ -86,7 +86,7 @@ public class CircularBuffer
     }
 
     // 清空缓冲区
-    public void clear()
+    public (void) clear()
     {
         mDynBuffer.mSize = 0;
         mFirst = 0;
@@ -96,7 +96,7 @@ public class CircularBuffer
     /**
      * @brief 将数据尽量按照存储地址的从小到大排列
      */
-    public void linearize()
+    public (void) linearize()
     {
         if (empty())        // 没有数据
         {
@@ -122,7 +122,7 @@ public class CircularBuffer
     /**
      * @brief 更改存储内容空间大小
      */
-    protected void setCapacity(int newCapacity)
+    protected (void) setCapacity((int) newCapacity)
     {
         if (newCapacity == capacity())
         {
@@ -153,7 +153,7 @@ public class CircularBuffer
     /**
      *@brief 能否添加 num 长度的数据
      */
-    protected boolean canAddData(int num)
+    protected boolean canAddData((int) num)
     {
         if (mDynBuffer.mCapacity - mDynBuffer.mSize > num) // 浪费一个字节，不用 >= ，使用 >
         {
@@ -166,11 +166,11 @@ public class CircularBuffer
     /**
      *@brief 向存储空尾部添加一段内容
      */
-    public void pushBackArr(byte[] items, int start, int len)
+    public (void) pushBackArr(byte[] items, (int) start, (int) len)
     {
         if (!canAddData(len)) // 存储空间必须要比实际数据至少多 1
         {
-            int closeSize = DynBufResizePolicy.getCloseSize(len + mDynBuffer.mSize, mDynBuffer.mCapacity, mDynBuffer.mMaxCapacity);
+            (int) closeSize = DynBufResizePolicy.getCloseSize(len + mDynBuffer.mSize, mDynBuffer.mCapacity, mDynBuffer.mMaxCapacity);
             setCapacity(closeSize);
         }
 
@@ -197,7 +197,7 @@ public class CircularBuffer
         mDynBuffer.mSize += len;
     }
 
-    public void pushBackBA(ByteBuffer bu)
+    public (void) pushBackBA(ByteBuffer bu)
     {
         //pushBack(bu.dynBuff.buffer, bu.position, bu.bytesAvailable);
         pushBackArr(bu.getDynBuffer().getBuffer(), 0, bu.getLength());
@@ -206,11 +206,11 @@ public class CircularBuffer
     /**
      *@brief 向存储空头部添加一段内容
      */
-    protected void pushFrontArr(byte[] items)
+    protected (void) pushFrontArr(byte[] items)
     {
-        if (!canAddData((int)items.length)) // 存储空间必须要比实际数据至少多 1
+        if (!canAddData(((int))items.length)) // 存储空间必须要比实际数据至少多 1
         {
-            int closeSize = DynBufResizePolicy.getCloseSize((int)items.length + mDynBuffer.mSize, mDynBuffer.mCapacity, mDynBuffer.mMaxCapacity);
+            (int) closeSize = DynBufResizePolicy.getCloseSize(((int))items.length + mDynBuffer.mSize, mDynBuffer.mCapacity, mDynBuffer.mMaxCapacity);
             setCapacity(closeSize);
         }
 
@@ -233,26 +233,26 @@ public class CircularBuffer
 
         if (items.length<= mFirst)
         {
-            mFirst -= (int)items.length;
+            mFirst -= ((int))items.length;
         }
         else
         {
-            mFirst = mDynBuffer.mCapacity - ((int)items.length - mFirst);
+            mFirst = mDynBuffer.mCapacity - (((int))items.length - mFirst);
         }
-        mDynBuffer.mSize += (int)items.length;
+        mDynBuffer.mSize += ((int))items.length;
     }
 
     /**
      * @brief 从 CB 中读取内容，并且将数据删除
      */
-    public void popFrontBA(ByteBuffer bytearray, int len)
+    public (void) popFrontBA(ByteBuffer bytearray, (int) len)
     {
         frontBA(bytearray, len);
         popFrontLen(len);
     }
 
     // 仅仅是获取数据，并不删除
-    public void frontBA(ByteBuffer bytearray, int len)
+    public (void) frontBA(ByteBuffer bytearray, (int) len)
     {
         bytearray.clear();          // 设置数据为初始值
         if (mDynBuffer.mSize >= len)          // 头部占据 4 个字节
@@ -278,7 +278,7 @@ public class CircularBuffer
     /**
      * @brief 从 CB 头部删除数据
      */
-    public void popFrontLen(int len)
+    public (void) popFrontLen((int) len)
     {
         if (isLinearized())  // 在一段连续的内存
         {
@@ -297,11 +297,11 @@ public class CircularBuffer
     }
 
     // 向自己尾部添加一个 CircularBuffer
-    public void pushBackCB(CircularBuffer rhv)
+    public (void) pushBackCB(CircularBuffer rhv)
     {
         if(mDynBuffer.mCapacity - mDynBuffer.mSize < rhv.getSize())
         {
-            int closeSize = DynBufResizePolicy.getCloseSize(rhv.getSize() + mDynBuffer.mSize, mDynBuffer.mCapacity, mDynBuffer.mMaxCapacity);
+            (int) closeSize = DynBufResizePolicy.getCloseSize(rhv.getSize() + mDynBuffer.mSize, mDynBuffer.mCapacity, mDynBuffer.mMaxCapacity);
             setCapacity(closeSize);
         }
         //self.mSize += rhv.size;

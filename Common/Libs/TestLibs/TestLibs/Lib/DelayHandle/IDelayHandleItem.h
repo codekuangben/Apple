@@ -8,7 +8,7 @@
 @optional
 
 @required
-    - (void) setClientDispose: (bool) isDispose;
+    - ((void)) setClientDispose: (bool) isDispose;
     - (bool) isClientDispose;
 @end
 

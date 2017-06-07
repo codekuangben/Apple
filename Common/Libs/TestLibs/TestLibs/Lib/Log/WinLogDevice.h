@@ -6,13 +6,13 @@
 public class WinLogDevice extends LogDeviceBase
 {
     @Override
-    public void logout(String message)
+    public (void) logout(String message)
     {
         self.logout(message, LogColor.eLC_LOG);
     }
 
     @Override
-    public void logout(String message, LogColor type)
+    public (void) logout(String message, LogColor type)
     {
         if (type == LogColor.eLC_LOG)
         {

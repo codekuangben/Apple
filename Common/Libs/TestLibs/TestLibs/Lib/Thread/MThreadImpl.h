@@ -15,7 +15,7 @@ public class MThreadImpl extends Thread
     }
 
     @Override
-    public void run()
+    public (void) run()
     {
         if(null != self.mRunnable)
         {

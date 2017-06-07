@@ -17,7 +17,7 @@ public class MsgRouteHandleBase extends GObject implements ICalleeObject
         self.mId2HandleDic = new MDictionary<Integer, AddOnceEventDispatch>();
     }
 
-    public void addMsgRouteHandle(MsgRouteID msgRouteID, IDispatchObject handle)
+    public (void) addMsgRouteHandle(MsgRouteID msgRouteID, IDispatchObject handle)
     {
         if(!self.mId2HandleDic.ContainsKey(msgRouteID.ordinal()))
         {
@@ -27,7 +27,7 @@ public class MsgRouteHandleBase extends GObject implements ICalleeObject
         self.mId2HandleDic.get(msgRouteID.ordinal()).addEventHandle(null, handle);
     }
 
-    public void removeMsgRouteHandle(MsgRouteID msgRouteID, IDispatchObject handle)
+    public (void) removeMsgRouteHandle(MsgRouteID msgRouteID, IDispatchObject handle)
     {
         if (self.mId2HandleDic.ContainsKey(msgRouteID.ordinal()))
         {
@@ -35,7 +35,7 @@ public class MsgRouteHandleBase extends GObject implements ICalleeObject
         }
     }
 
-    public void handleMsg(IDispatchObject dispObj)
+    public (void) handleMsg(IDispatchObject dispObj)
     {
         MsgRouteBase msg = (MsgRouteBase)dispObj;
 
@@ -49,7 +49,7 @@ public class MsgRouteHandleBase extends GObject implements ICalleeObject
         }
     }
 
-    public void call(IDispatchObject dispObj)
+    public (void) call(IDispatchObject dispObj)
     {
 
     }

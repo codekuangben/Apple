@@ -21,7 +21,7 @@ public class Singleton<T>
         return msSingleton;
     }
 
-    public static void deleteSingletonPtr()
+    public static (void) deleteSingletonPtr()
     {
         if (null != msSingleton)
         {

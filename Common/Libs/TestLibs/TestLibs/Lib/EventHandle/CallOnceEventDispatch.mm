@@ -12,7 +12,7 @@
     }
 
     @Override
-    public void dispatchEvent(IDispatchObject dispatchObject)
+    public (void) dispatchEvent(IDispatchObject dispatchObject)
     {
         super.dispatchEvent(dispatchObject);
 

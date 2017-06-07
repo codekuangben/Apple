@@ -13,17 +13,17 @@ public class MsgRouteDispHandle
         self.mEventDispatchGroup = new EventDispatchGroup();
     }
 
-    public void addRouteHandle(int evtId, MsgRouteHandleBase pThis, IDispatchObject handle)
+    public (void) addRouteHandle((int) evtId, MsgRouteHandleBase pThis, IDispatchObject handle)
     {
         self.mEventDispatchGroup.addEventHandle(evtId, pThis, handle);
     }
 
-    public void removeRouteHandle(int evtId, MsgRouteHandleBase pThis, IDispatchObject handle)
+    public (void) removeRouteHandle((int) evtId, MsgRouteHandleBase pThis, IDispatchObject handle)
     {
         self.mEventDispatchGroup.removeEventHandle(evtId, pThis, handle);
     }
 
-    public void handleMsg(MsgRouteBase msg)
+    public (void) handleMsg(MsgRouteBase msg)
     {
         String textStr = "";
 

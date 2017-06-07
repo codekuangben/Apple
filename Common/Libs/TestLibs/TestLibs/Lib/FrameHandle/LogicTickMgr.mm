@@ -13,7 +13,7 @@ public class LogicTickMgr extends TickMgr
     }
 
     @Override
-    protected void onExecAdvance(float delta)
+    protected (void) onExecAdvance(float delta)
     {
         if(self.mTimeInterval.canExec(delta))
         {

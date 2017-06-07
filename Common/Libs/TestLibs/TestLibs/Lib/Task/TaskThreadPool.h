@@ -11,10 +11,10 @@ public class TaskThreadPool
 
     }
 
-    public void initThreadPool(int numThread, TaskQueue taskQueue)
+    public (void) initThreadPool((int) numThread, TaskQueue taskQueue)
     {
         mList = new MList<TaskThread>(numThread);
-        int idx = 0;
+        (int) idx = 0;
         for(idx = 0; idx < numThread; ++idx)
         {
             mList.Add(new TaskThread(String.format("TaskThread{0}", idx), taskQueue));
@@ -22,7 +22,7 @@ public class TaskThreadPool
         }
     }
 
-    public void notifyIdleThread()
+    public (void) notifyIdleThread()
     {
         for(TaskThread item : mList.list())
         {

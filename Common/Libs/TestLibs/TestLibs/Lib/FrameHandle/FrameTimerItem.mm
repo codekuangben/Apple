@@ -7,15 +7,15 @@ import SDK.Lib.DelayHandle.IDelayHandleItem;
  */
 public class FrameTimerItem implements IDelayHandleItem
 {
-    public int mInternal;              // 帧数间隔
-    public int mTotalFrameCount;       // 总共次数
-    public int mCurFrame;              // 当前已经调用的定时器的时间
-    public int mCurLeftFrame;          // 剩余帧数
+    public (int) mInternal;              // 帧数间隔
+    public (int) mTotalFrameCount;       // 总共次数
+    public (int) mCurFrame;              // 当前已经调用的定时器的时间
+    public (int) mCurLeftFrame;          // 剩余帧数
     public boolean mIsInfineLoop;      // 是否是无限循环
     public ICalleeObjectFrameTimer mTimerDisp;       // 定时器分发
     public boolean mDisposed;             // 是否已经被释放
 
-    //protected int m_preFrame = 0;
+    //protected (int) m_preFrame = 0;
 
     public FrameTimerItem()
     {
@@ -28,7 +28,7 @@ public class FrameTimerItem implements IDelayHandleItem
         self.mDisposed = false;
     }
 
-    public void OnFrameTimer()
+    public (void) OnFrameTimer()
     {
         if (self.mDisposed)
         {
@@ -81,14 +81,14 @@ public class FrameTimerItem implements IDelayHandleItem
         }
     }
 
-    public void reset()
+    public (void) reset()
     {
         self.mCurFrame = 0;
         self.mCurLeftFrame = 0;
         self.mDisposed = false;
     }
 
-    public void setClientDispose(boolean isDispose)
+    public (void) setClientDispose(boolean isDispose)
     {
 
     }

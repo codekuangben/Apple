@@ -46,7 +46,7 @@ public class FileLogDevice extends LogDeviceBase
 //        return null != mFileStream;
 //    }
 //
-//    public override void initDevice()
+//    public override (void) initDevice()
 //    {
 //#if UNITY_EDITOR
 //        //string path = string.Format("{0}{1}", Application.dataPath, "/Debug");
@@ -95,7 +95,7 @@ public class FileLogDevice extends LogDeviceBase
 //    }
 
     @Override
-    public void closeDevice()
+    public (void) closeDevice()
     {
 //        mStreamWriter.Flush();
 //        //关闭流
@@ -106,14 +106,14 @@ public class FileLogDevice extends LogDeviceBase
     }
 
     @Override
-    public void logout(String message)
+    public (void) logout(String message)
     {
         self.logout(message, LogColor.eLC_LOG);
     }
 
     // 写文件
     @Override
-    public void logout(String message, LogColor type)
+    public (void) logout(String message, LogColor type)
     {
 //        if (self.isValid())
 //        {
@@ -134,7 +134,7 @@ public class FileLogDevice extends LogDeviceBase
     }
 
     // 检测日志目录大小，如果太大，就删除
-//    protected void checkDirSize(string path)
+//    protected (void) checkDirSize(string path)
 //    {
 //        if (Directory.Exists(path))
 //        {

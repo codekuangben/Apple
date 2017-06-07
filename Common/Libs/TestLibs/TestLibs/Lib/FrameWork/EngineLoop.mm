@@ -7,7 +7,7 @@ import SDK.Lib.MsgRoute.MsgRouteBase;
  */
 public class EngineLoop
 {
-    public void MainLoop()
+    public (void) MainLoop()
     {
         // 每一帧处理
         // 处理 input
@@ -55,7 +55,7 @@ public class EngineLoop
         Ctx.mInstance.mLogSys.updateLog();
     }
 
-    public void fixedUpdate()
+    public (void) fixedUpdate()
     {
         Ctx.mInstance.mProcessSys.ProcessNextFixedFrame();
     }

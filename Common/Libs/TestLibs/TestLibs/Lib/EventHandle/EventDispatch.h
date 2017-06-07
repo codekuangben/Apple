@@ -10,14 +10,14 @@
 @interface EventDispatch : DelayHandleMgrBase
 {
 @protected
-	int mEventId;
+	(int) mEventId;
     MList<EventDispatchFunctionObject> mHandleList;
-    int mUniqueId;       // 唯一 Id ，调试使用
+    (int) mUniqueId;       // 唯一 Id ，调试使用
 }
 
-@property int mEventId;
+@property (int) mEventId;
 @property MList<EventDispatchFunctionObject> mHandleList;
-@property int mUniqueId; 
+@property (int) mUniqueId; 
 
 @end
 

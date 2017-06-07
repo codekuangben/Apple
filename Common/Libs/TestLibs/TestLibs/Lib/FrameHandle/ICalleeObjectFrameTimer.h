@@ -5,5 +5,5 @@
  */
 public interface ICalleeObjectFrameTimer
 {
-    public void call(FrameTimerItem frameTimer);
+    public (void) call(FrameTimerItem frameTimer);
 }

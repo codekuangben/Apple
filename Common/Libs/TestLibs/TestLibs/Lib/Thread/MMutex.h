@@ -23,7 +23,7 @@ public class MMutex
         }
     }
 
-    public void WaitOne()
+    public (void) WaitOne()
     {
         if (MacroDef.NET_MULTHREAD)
         {
@@ -38,7 +38,7 @@ public class MMutex
         }
     }
 
-    public void ReleaseMutex()
+    public (void) ReleaseMutex()
     {
         if (MacroDef.NET_MULTHREAD)
         {
@@ -46,7 +46,7 @@ public class MMutex
         }
     }
 
-    public void close()
+    public (void) close()
     {
         if (MacroDef.NET_MULTHREAD)
         {

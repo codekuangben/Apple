@@ -17,17 +17,17 @@ public class GlobalDelegate
         self.mMainChildMassChangedDispatch = new AddOnceEventDispatch();
     }
 
-    public void addMainChildChangedHandle(ICalleeObject pThis, IDispatchObject handle)
+    public (void) addMainChildChangedHandle(ICalleeObject pThis, IDispatchObject handle)
     {
         self.mMainChildMassChangedDispatch.addEventHandle(pThis, handle);
     }
 
-    public void init()
+    public (void) init()
     {
 
     }
 
-    public void dispose()
+    public (void) dispose()
     {
 
     }

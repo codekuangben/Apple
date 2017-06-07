@@ -10,9 +10,9 @@ import java.lang.reflect.Type;
  */
 public class DynBuffer<T>
 {
-    public int mCapacity;         // 分配的内存空间大小，单位大小是字节
-    public int mMaxCapacity;      // 最大允许分配的存储空间大小
-    public int mSize;              // 存储在当前缓冲区中的数量
+    public (int) mCapacity;         // 分配的内存空间大小，单位大小是字节
+    public (int) mMaxCapacity;      // 最大允许分配的存储空间大小
+    public (int) mSize;              // 存储在当前缓冲区中的数量
     public T[] mBuffer;            // 当前环形缓冲区
 
     private Class<T> mClassT;   // 传递的模板类型的类型信息
@@ -22,12 +22,12 @@ public class DynBuffer<T>
         this(1 * 1024/*DataCV.INIT_CAPACITY*/, 8 * 1024 * 1024/*DataCV.MAX_CAPACITY*/);
     }
 
-    public DynBuffer(int initCapacity)
+    public DynBuffer((int) initCapacity)
     {
         this(initCapacity, 8 * 1024 * 1024/*DataCV.MAX_CAPACITY*/);
     }
 
-    public DynBuffer(int initCapacity, int maxCapacity)      // mono 模板类中使用常亮报错， vs 可以
+    public DynBuffer((int) initCapacity, (int) maxCapacity)      // mono 模板类中使用常亮报错， vs 可以
     {
         self.mMaxCapacity = maxCapacity;
         self.mCapacity = initCapacity;
@@ -38,7 +38,7 @@ public class DynBuffer<T>
     }
 
     // 获取模板类型
-    public Class getTClass(int index)
+    public Class getTClass((int) index)
     {
         Type genType = getClass().getGenericSuperclass();
 
@@ -92,7 +92,7 @@ public class DynBuffer<T>
         return ret;
     }
 
-    public T[] createArray(Class<T> type, int initCapacity)
+    public T[] createArray(Class<T> type, (int) initCapacity)
     {
         return (T[]) Array.newInstance(type, initCapacity);
     }
@@ -102,28 +102,28 @@ public class DynBuffer<T>
         return self.mBuffer;
     }
 
-    public void setBuffer(T[] value)
+    public (void) setBuffer(T[] value)
     {
         self.mBuffer = value;
-        self.mCapacity = (int)self.mBuffer.length;
+        self.mCapacity = ((int))self.mBuffer.length;
     }
 
-    public int getMaxCapacity()
+    public (int) getMaxCapacity()
     {
         return self.mMaxCapacity;
     }
 
-    public void setMaxCapacity(int value)
+    public (void) setMaxCapacity((int) value)
     {
         self.mMaxCapacity = value;
     }
 
-    public int getCapacity()
+    public (int) getCapacity()
     {
             return self.mCapacity;
     }
 
-    public void setCapacity(int value)
+    public (void) setCapacity((int) value)
     {
         if (value == self.mCapacity)
         {
@@ -142,12 +142,12 @@ public class DynBuffer<T>
         self.mCapacity = value;
     }
 
-    public int getSize()
+    public (int) getSize()
     {
         return self.mSize;
     }
 
-    public void setSize(int value)
+    public (void) setSize((int) value)
     {
         if (value > self.getCapacity())
         {
@@ -157,7 +157,7 @@ public class DynBuffer<T>
         self.mSize = value;
     }
 
-    public void extendDeltaCapicity(int delta)
+    public (void) extendDeltaCapicity((int) delta)
     {
         self.setCapacity(DynBufResizePolicy.getCloseSize(self.getSize() + delta, self.getCapacity(), self.getMaxCapacity()));
     }

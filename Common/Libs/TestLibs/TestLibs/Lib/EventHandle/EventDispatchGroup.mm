@@ -14,7 +14,7 @@ import SDK.Lib.DataStruct.MDictionary;
     }
 
     // 添加分发器
-    public void addEventDispatch(int groupID, EventDispatch disp)
+    public (void) addEventDispatch((int) groupID, EventDispatch disp)
     {
         if (!self.mGroupID2DispatchDic.ContainsKey(groupID))
         {
@@ -22,7 +22,7 @@ import SDK.Lib.DataStruct.MDictionary;
         }
     }
 
-    public void addEventHandle(int groupID, ICalleeObject pThis, IDispatchObject handle)
+    public (void) addEventHandle((int) groupID, ICalleeObject pThis, IDispatchObject handle)
     {
         // 如果没有就创建一个
         if (!self.mGroupID2DispatchDic.ContainsKey(groupID))
@@ -33,7 +33,7 @@ import SDK.Lib.DataStruct.MDictionary;
         self.mGroupID2DispatchDic.get(groupID).addEventHandle(pThis, handle);
     }
 
-    public void removeEventHandle(int groupID, ICalleeObject pThis, IDispatchObject handle)
+    public (void) removeEventHandle((int) groupID, ICalleeObject pThis, IDispatchObject handle)
     {
         if (self.mGroupID2DispatchDic.ContainsKey(groupID))
         {
@@ -51,7 +51,7 @@ import SDK.Lib.DataStruct.MDictionary;
         }
     }
 
-    public void dispatchEvent(int groupID, IDispatchObject dispatchObject)
+    public (void) dispatchEvent((int) groupID, IDispatchObject dispatchObject)
     {
         self.mIsInLoop = true;
         if (self.mGroupID2DispatchDic.ContainsKey(groupID))
@@ -65,7 +65,7 @@ import SDK.Lib.DataStruct.MDictionary;
         self.mIsInLoop = false;
     }
 
-    public void clearAllEventHandle()
+    public (void) clearAllEventHandle()
     {
         if (!self.mIsInLoop)
         {
@@ -82,7 +82,7 @@ import SDK.Lib.DataStruct.MDictionary;
         }
     }
 
-    public void clearGroupEventHandle(int groupID)
+    public (void) clearGroupEventHandle((int) groupID)
     {
         if (!self.mIsInLoop)
         {
@@ -102,7 +102,7 @@ import SDK.Lib.DataStruct.MDictionary;
         }
     }
 
-    public boolean hasEventHandle(int groupID)
+    public boolean hasEventHandle((int) groupID)
     {
         if(self.mGroupID2DispatchDic.ContainsKey(groupID))
         {

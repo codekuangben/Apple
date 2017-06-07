@@ -9,7 +9,7 @@ public class LockQueue<T>
         mList = new LockList<T>("name");
     }
 
-    public void push(T item)
+    public (void) push(T item)
     {
         mList.Add(item);
     }

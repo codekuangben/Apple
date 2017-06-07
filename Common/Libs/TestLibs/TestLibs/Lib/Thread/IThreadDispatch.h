@@ -6,5 +6,5 @@ package SDK.Lib.Thread;
 
 public interface IThreadDispatch
 {
-    void threadMain(Object param);
+    (void) threadMain(Object param);
 }

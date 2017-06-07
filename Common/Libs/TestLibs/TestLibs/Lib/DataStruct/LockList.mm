@@ -16,26 +16,26 @@ public class LockList<T>
         this(name, 32, 8 * 1024 * 1024);
     }
 
-    public LockList(String name, int initCapacity)
+    public LockList(String name, (int) initCapacity)
     {
         this(name, initCapacity, 8 * 1024 * 1024);
     }
 
-    public LockList(String name, int initCapacity, int maxCapacity)
+    public LockList(String name, (int) initCapacity, (int) maxCapacity)
     {
         mDynamicBuffer = new DynBuffer<T>(initCapacity, maxCapacity);
         mVisitMutex = new MMutex(false, name);
     }
 
-    public int getCount()
+    public (int) getCount()
     {
         MLock mlock = new MLock(mVisitMutex);
-        int ret = mDynamicBuffer.mSize;
+        (int) ret = mDynamicBuffer.mSize;
         mlock.Dispose();
         return ret;
     }
 
-    public T get(int index)
+    public T get((int) index)
     {
         MLock mlock = new MLock(mVisitMutex);
 
@@ -52,7 +52,7 @@ public class LockList<T>
         }
     }
 
-    public void set(int index, T value)
+    public (void) set((int) index, T value)
     {
         MLock mlock = new MLock(mVisitMutex);
 
@@ -63,7 +63,7 @@ public class LockList<T>
         mlock.Dispose();
     }
 
-    public void Add(T item)
+    public (void) Add(T item)
     {
         MLock mlock = new MLock(mVisitMutex);
 
@@ -85,7 +85,7 @@ public class LockList<T>
         MLock mlock = new MLock(mVisitMutex);
 
         {
-            int idx = 0;
+            (int) idx = 0;
 
             for(T elem : mDynamicBuffer.mBuffer)
             {
@@ -106,7 +106,7 @@ public class LockList<T>
         }
     }
 
-    public T RemoveAt(int index)
+    public T RemoveAt((int) index)
     {
         MLock mlock = new MLock(mVisitMutex);
 
@@ -136,12 +136,12 @@ public class LockList<T>
         }
     }
 
-    public int IndexOf(T item)
+    public (int) IndexOf(T item)
     {
         MLock mlock = new MLock(mVisitMutex);
 
         {
-            int idx = 0;
+            (int) idx = 0;
             for(T elem : mDynamicBuffer.mBuffer)
             {
                 if (item.equals(elem))       // 地址比较

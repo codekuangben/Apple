@@ -14,11 +14,11 @@ public class Config
     public static String StreamingAssets;
 
     public String mIp;
-    public int mPort;
+    public (int) mPort;
     public short mZone;
 
     public String mWebIP;               // web 服务器
-    public int mWebPort;
+    public (int) mWebPort;
 
     public String[] mPathLst;
     public String mDataPath;
@@ -40,10 +40,10 @@ public class Config
         self.mNetLogPhp = "/netlog/NetLog.php";
         self.mPakExtNameList = new MList<String>();
 
-//        self.mPathLst = new string[(int)ResPathType.eTotal];
-//        self.mPathLst[(int)ResPathType.ePathScene] = "Scenes/";
-//        self.mPathLst[(int)ResPathType.ePathSceneXml] = "Scenes/Xml/";
-//        self.mPathLst[(int)ResPathType.ePathModule] = "Module/";
+//        self.mPathLst = new string[((int))ResPathType.eTotal];
+//        self.mPathLst[((int))ResPathType.ePathScene] = "Scenes/";
+//        self.mPathLst[((int))ResPathType.ePathSceneXml] = "Scenes/Xml/";
+//        self.mPathLst[((int))ResPathType.ePathModule] = "Module/";
 
         self.mPakExtNameList.Add("prefab");
         self.mPakExtNameList.Add("png");

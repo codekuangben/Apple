@@ -18,7 +18,7 @@ public class ByteBuffer : IDispatchObject
 
     @protected
     DynByteBuffer mDynBuffer;
-    int mPos;          // 当前可以读取的位置索引
+    (int) mPos;          // 当前可以读取的位置索引
     EEndian mEndian;          // 大端小端
 
     Byte[] mPadBytes;

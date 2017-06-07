@@ -6,5 +6,5 @@ package SDK.Lib.Thread;
 
 public interface IMRunnable
 {
-    void run();
+    (void) run();
 }

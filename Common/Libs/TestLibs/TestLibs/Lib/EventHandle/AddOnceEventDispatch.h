@@ -12,8 +12,8 @@
 }
 
 - (id) init;
-- (id) init(int eventId_);
-- (void) addEventHandle: (ICalleeObject) pThis and: (IDispatchObject) handle;
+- (id) init((int) eventId_);
+- ((void)) addEventHandle: (ICalleeObject) pThis and: (IDispatchObject) handle;
 
 @end
 

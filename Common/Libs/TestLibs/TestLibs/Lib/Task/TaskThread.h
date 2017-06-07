@@ -24,7 +24,7 @@ public class TaskThread extends MThread
      *brief 线程回调函数
      */
     @Override
-    public void run()
+    public (void) run()
     {
         while (!mIsExitFlag)
         {

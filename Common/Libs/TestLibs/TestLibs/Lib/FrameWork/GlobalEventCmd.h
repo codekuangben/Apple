@@ -5,12 +5,12 @@
  */
 public class GlobalEventCmd
 {
-    static public void onSample()
+    static public (void) onSample()
     {
 
     }
 
-    static public void onEnterWorld()
+    static public (void) onEnterWorld()
     {
 
     }

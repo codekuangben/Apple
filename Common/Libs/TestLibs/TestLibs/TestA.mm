@@ -1,12 +1,12 @@
 #import "TestA.h"
 
-static int msB = 0;
+static (int) msB = 0;
 
 @implementation TestA
 
-//static int msB = 0;
+//static (int) msB = 0;
 
-+ (void) setB: (int) paramB
++ ((void)) setB: ((int)) paramB
 {
     msB = paramB;
 }
@@ -21,18 +21,18 @@ static int msB = 0;
     return self;
 }
 
-- (void) dealloc
+- ((void)) dealloc
 {
     //dealloc 不可以人为调用
     [super dealloc];
 }
 
-- (void) setA: (int) paramA
+- ((void)) setA: ((int)) paramA
 {
     mA = paramA;
 }
 
-- (void) setAll: (int) paramA paramStr: (NSString*) paramC
+- ((void)) setAll: ((int)) paramA paramStr: (NSString*) paramC
 {
     mA = paramA;
     mStr = paramC;

@@ -18,25 +18,25 @@ public class TimerMgr extends DelayHandleMgrBase
     }
 
     @Override
-    public void init()
+    public (void) init()
     {
 
     }
 
     @Override
-    public void dispose()
+    public (void) dispose()
     {
 
     }
 
     @Override
-    protected void addObject(IDelayHandleItem delayObject)
+    protected (void) addObject(IDelayHandleItem delayObject)
     {
         self.addObject(delayObject, 0);
     }
 
     @Override
-    protected void addObject(IDelayHandleItem delayObject, float priority)
+    protected (void) addObject(IDelayHandleItem delayObject, float priority)
     {
         // 检查当前是否已经在队列中
         if (!self.mTimerList.Contains((TimerItemBase)delayObject))
@@ -53,7 +53,7 @@ public class TimerMgr extends DelayHandleMgrBase
     }
 
     @Override
-    protected void removeObject(IDelayHandleItem delayObject)
+    protected (void) removeObject(IDelayHandleItem delayObject)
     {
         // 检查当前是否在队列中
         if (self.mTimerList.Contains((TimerItemBase)delayObject))
@@ -78,23 +78,23 @@ public class TimerMgr extends DelayHandleMgrBase
         }
     }
 
-    public void addTimer(TimerItemBase delayObject)
+    public (void) addTimer(TimerItemBase delayObject)
     {
         self.addTimer(delayObject, 0);
     }
 
     // 从 Lua 中添加定时器，这种定时器尽量整个定时器周期只与 Lua 通信一次
-    public void addTimer(TimerItemBase delayObject, float priority)
+    public (void) addTimer(TimerItemBase delayObject, float priority)
     {
         self.addObject(delayObject, priority);
     }
 
-    public void removeTimer(TimerItemBase timer)
+    public (void) removeTimer(TimerItemBase timer)
     {
         self.removeObject(timer);
     }
 
-    public void Advance(float delta)
+    public (void) Advance(float delta)
     {
         self.mLoopDepth.incDepth();
 

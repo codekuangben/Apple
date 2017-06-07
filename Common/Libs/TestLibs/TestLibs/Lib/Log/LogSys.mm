@@ -40,50 +40,50 @@ public class LogSys
         self.mEnableLogTypeList[LogColor.eLC_ERROR.ordinal()] = new MList<LogTypeId>();
 
         self.mEnableLog = new boolean[LogColor.eLC_Count.ordinal()];
-        self.mEnableLog[(int)LogColor.eLC_LOG.ordinal()] = true;
-        self.mEnableLog[(int)LogColor.eLC_WARN.ordinal()] = false;
-        self.mEnableLog[(int)LogColor.eLC_ERROR.ordinal()] = false;
+        self.mEnableLog[((int))LogColor.eLC_LOG.ordinal()] = true;
+        self.mEnableLog[((int))LogColor.eLC_WARN.ordinal()] = false;
+        self.mEnableLog[((int))LogColor.eLC_ERROR.ordinal()] = false;
 
-        self.mIsOutStack = new boolean[(int)LogColor.eLC_Count.ordinal()];
-        self.mIsOutStack[(int)LogColor.eLC_LOG.ordinal()] = false;
-        self.mIsOutStack[(int)LogColor.eLC_WARN.ordinal()] = false;
-        self.mIsOutStack[(int)LogColor.eLC_ERROR.ordinal()] = false;
+        self.mIsOutStack = new boolean[((int))LogColor.eLC_Count.ordinal()];
+        self.mIsOutStack[((int))LogColor.eLC_LOG.ordinal()] = false;
+        self.mIsOutStack[((int))LogColor.eLC_WARN.ordinal()] = false;
+        self.mIsOutStack[((int))LogColor.eLC_ERROR.ordinal()] = false;
 
-        self.mIsOutTimeStamp = new boolean[(int)LogColor.eLC_Count.ordinal()];
-        self.mIsOutStack[(int)LogColor.eLC_LOG.ordinal()] = false;
-        self.mIsOutStack[(int)LogColor.eLC_WARN.ordinal()] = false;
-        self.mIsOutStack[(int)LogColor.eLC_ERROR.ordinal()] = false;
+        self.mIsOutTimeStamp = new boolean[((int))LogColor.eLC_Count.ordinal()];
+        self.mIsOutStack[((int))LogColor.eLC_LOG.ordinal()] = false;
+        self.mIsOutStack[((int))LogColor.eLC_WARN.ordinal()] = false;
+        self.mIsOutStack[((int))LogColor.eLC_ERROR.ordinal()] = false;
     }
 
     // 初始化逻辑处理
-    public void init()
+    public (void) init()
     {
         self.registerDevice();
         self.registerFileLogDevice();
     }
 
     // 析构
-    public void dispose()
+    public (void) dispose()
     {
         self.closeDevice();
     }
 
-    public void setEnableLog(boolean value)
+    public (void) setEnableLog(boolean value)
     {
-        self.mEnableLog[(int)LogColor.eLC_LOG.ordinal()] = value;
+        self.mEnableLog[((int))LogColor.eLC_LOG.ordinal()] = value;
     }
 
-    public void setEnableWarn(boolean value)
+    public (void) setEnableWarn(boolean value)
     {
-        self.mEnableLog[(int)LogColor.eLC_WARN.ordinal()] = value;
+        self.mEnableLog[((int))LogColor.eLC_WARN.ordinal()] = value;
     }
 
-    public void setEnableError(boolean value)
+    public (void) setEnableError(boolean value)
     {
-        self.mEnableLog[(int)LogColor.eLC_ERROR.ordinal()] = value;
+        self.mEnableLog[((int))LogColor.eLC_ERROR.ordinal()] = value;
     }
 
-    protected void registerDevice()
+    protected (void) registerDevice()
     {
         LogDeviceBase logDevice = null;
 
@@ -103,7 +103,7 @@ public class LogSys
     }
 
     // 注册文件日志，因为需要账号，因此需要等待输入账号后才能注册，可能多次注册
-    public void registerFileLogDevice()
+    public (void) registerFileLogDevice()
     {
 
         if (MacroDef.ENABLE_FILELOG)
@@ -118,7 +118,7 @@ public class LogSys
         }
     }
 
-    protected void unRegisterFileLogDevice()
+    protected (void) unRegisterFileLogDevice()
     {
         for(LogDeviceBase item : mLogDeviceList.list())
         {
@@ -133,9 +133,9 @@ public class LogSys
 
     protected boolean isInFilter(LogTypeId logTypeId, LogColor logColor)
     {
-        if (self.mEnableLog[(int)logColor.ordinal()])
+        if (self.mEnableLog[((int))logColor.ordinal()])
         {
-            if (self.mEnableLogTypeList[(int)logColor.ordinal()].Contains(logTypeId))
+            if (self.mEnableLogTypeList[((int))logColor.ordinal()].Contains(logTypeId))
             {
                 return true;
             }
@@ -146,21 +146,21 @@ public class LogSys
         return false;
     }
 
-    public void log(String message)
+    public (void) log(String message)
     {
         self.log(message, LogTypeId.eLogCommon);
     }
 
-    public void log(String message, LogTypeId logTypeId)
+    public (void) log(String message, LogTypeId logTypeId)
     {
         if (isInFilter(logTypeId, LogColor.eLC_LOG))
         {
-            if(self.mIsOutTimeStamp[(int)LogColor.eLC_LOG.ordinal()])
+            if(self.mIsOutTimeStamp[((int))LogColor.eLC_LOG.ordinal()])
             {
                 message = String.format("{0}: {1}", UtilApi.getFormatTime(), message);
             }
 
-            if (self.mIsOutStack[(int)LogColor.eLC_LOG.ordinal()])
+            if (self.mIsOutStack[((int))LogColor.eLC_LOG.ordinal()])
             {
                 Throwable ex = new Throwable();
                 String traceStr = ex.toString();
@@ -178,21 +178,21 @@ public class LogSys
         }
     }
 
-    public void warn(String message)
+    public (void) warn(String message)
     {
         self.warn(message, LogTypeId.eLogCommon);
     }
 
-    public void warn(String message, LogTypeId logTypeId)
+    public (void) warn(String message, LogTypeId logTypeId)
     {
         if (isInFilter(logTypeId, LogColor.eLC_WARN))
         {
-            if (self.mIsOutTimeStamp[(int)LogColor.eLC_WARN.ordinal()])
+            if (self.mIsOutTimeStamp[((int))LogColor.eLC_WARN.ordinal()])
             {
                 message = String.format("{0}: {1}", UtilApi.getFormatTime(), message);
             }
 
-            if (self.mIsOutStack[(int)LogColor.eLC_WARN.ordinal()])
+            if (self.mIsOutStack[((int))LogColor.eLC_WARN.ordinal()])
             {
                 Throwable ex = new Throwable();
                 String traceStr = ex.toString();
@@ -210,21 +210,21 @@ public class LogSys
         }
     }
 
-    public void error(String message)
+    public (void) error(String message)
     {
         self.error(message, LogTypeId.eLogCommon);
     }
 
-    public void error(String message, LogTypeId logTypeId)
+    public (void) error(String message, LogTypeId logTypeId)
     {
         if (isInFilter(logTypeId, LogColor.eLC_ERROR))
         {
-            if (self.mIsOutTimeStamp[(int)LogColor.eLC_ERROR.ordinal()])
+            if (self.mIsOutTimeStamp[((int))LogColor.eLC_ERROR.ordinal()])
             {
                 message = String.format("{0}: {1}", UtilApi.getFormatTime(), message);
             }
 
-            if (self.mIsOutStack[(int)LogColor.eLC_ERROR.ordinal()])
+            if (self.mIsOutStack[((int))LogColor.eLC_ERROR.ordinal()])
             {
                 Throwable ex = new Throwable();
                 String traceStr = ex.toString();
@@ -243,29 +243,29 @@ public class LogSys
     }
 
     // 多线程日志
-    protected void asyncLog(String message)
+    protected (void) asyncLog(String message)
     {
         mAsyncLogList.Add(message);
     }
 
     // 多线程日志
-    protected void asyncWarn(String message)
+    protected (void) asyncWarn(String message)
     {
         self.mAsyncWarnList.Add(message);
     }
 
     // 多线程日志
-    protected void asyncError(String message)
+    protected (void) asyncError(String message)
     {
         self.mAsyncErrorList.Add(message);
     }
 
-    public void logout(String message)
+    public (void) logout(String message)
     {
         self.logout(message, LogColor.eLC_LOG);
     }
 
-    public void logout(String message, LogColor type)
+    public (void) logout(String message, LogColor type)
     {
         if (MacroDef.THREAD_CALLCHECK)
         {
@@ -273,8 +273,8 @@ public class LogSys
         }
 
         //foreach (LogDeviceBase logDevice in mLogDeviceList.list())
-        int idx = 0;
-        int len = self.mLogDeviceList.Count();
+        (int) idx = 0;
+        (int) len = self.mLogDeviceList.Count();
         LogDeviceBase logDevice = null;
 
         while (idx < len)
@@ -286,7 +286,7 @@ public class LogSys
         }
     }
 
-    public void updateLog()
+    public (void) updateLog()
     {
         if (MacroDef.THREAD_CALLCHECK)
         {
@@ -309,7 +309,7 @@ public class LogSys
         }
     }
 
-    protected void closeDevice()
+    protected (void) closeDevice()
     {
         for(LogDeviceBase logDevice : mLogDeviceList.list())
         {

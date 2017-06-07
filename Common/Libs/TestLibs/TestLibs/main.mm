@@ -5,7 +5,7 @@
 #import <Foundation/Foundation.h>
 #import "TestA.h"
 
-int main(int argc, const char * argv[]) {
+(int) main((int) argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
         NSLog(@"Hello, World!");

@@ -4,7 +4,7 @@ public class MBitConverter
 {
     public static boolean ToBoolean(
             byte[] bytes,
-            int startIndex
+            (int) startIndex
     )
     {
         return MBitConverter.ToBoolean(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
@@ -12,7 +12,7 @@ public class MBitConverter
 
     public static boolean ToBoolean(
         byte[] bytes,
-        int startIndex,
+        (int) startIndex,
         EEndian endian
         )
     {
@@ -21,7 +21,7 @@ public class MBitConverter
 
     public static char ToChar(
             byte[] bytes,
-            int startIndex
+            (int) startIndex
     )
     {
         return MBitConverter.ToChar(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
@@ -29,7 +29,7 @@ public class MBitConverter
 
     public static char ToChar(
         byte[] bytes,
-        int startIndex,
+        (int) startIndex,
         EEndian endian
         )
     {
@@ -38,7 +38,7 @@ public class MBitConverter
 
     public static short ToInt16(
             byte[] bytes,
-            int startIndex
+            (int) startIndex
     )
     {
         return MBitConverter.ToInt16(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
@@ -46,7 +46,7 @@ public class MBitConverter
 
     public static short ToInt16(
         byte[] bytes,
-        int startIndex,
+        (int) startIndex,
         EEndian endian
         )
     {
@@ -70,7 +70,7 @@ public class MBitConverter
 
     public static short ToUInt16(
             byte[] bytes,
-            int startIndex
+            (int) startIndex
     )
     {
         return MBitConverter.ToUInt16(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
@@ -78,7 +78,7 @@ public class MBitConverter
 
     public static short ToUInt16(
         byte[] bytes,
-        int startIndex,
+        (int) startIndex,
         EEndian endian
         )
     {
@@ -100,24 +100,24 @@ public class MBitConverter
         return retValue;
     }
 
-    public static int ToInt32(
+    public static (int) ToInt32(
             byte[] bytes,
-            int startIndex
+            (int) startIndex
     )
     {
         return MBitConverter.ToInt32(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
     }
 
-    public static int ToInt32(
+    public static (int) ToInt32(
         byte[] bytes,
-        int startIndex,
+        (int) startIndex,
         EEndian endian
         )
     {
-        int retValue = 0;
+        (int) retValue = 0;
         if (endian == EEndian.eLITTLE_ENDIAN)
         {
-            retValue = (int)(
+            retValue = ((int))(
                 (bytes[startIndex + 3] << 24) +
                 (bytes[startIndex + 2] << 16) +
                 (bytes[startIndex + 1] << 8) +
@@ -126,7 +126,7 @@ public class MBitConverter
         }
         else
         {
-            retValue = (int)(
+            retValue = ((int))(
                 (bytes[startIndex] << 24) +
                 (bytes[startIndex + 1] << 16) +
                 (bytes[startIndex + 2] << 8) +
@@ -136,24 +136,24 @@ public class MBitConverter
         return retValue;
     }
 
-    public static int ToUInt32(
+    public static (int) ToUInt32(
             byte[] bytes,
-            int startIndex
+            (int) startIndex
     )
     {
         return MBitConverter.ToUInt32(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
     }
 
-    public static int ToUInt32(
+    public static (int) ToUInt32(
         byte[] bytes,
-        int startIndex,
+        (int) startIndex,
         EEndian endian
         )
     {
-        int retValue = 0;
+        (int) retValue = 0;
         if (endian == EEndian.eLITTLE_ENDIAN)
         {
-            retValue = (int)(
+            retValue = ((int))(
                 (bytes[startIndex + 3] << 24) +
                 (bytes[startIndex + 2] << 16) +
                 (bytes[startIndex + 1] << 8) +
@@ -162,7 +162,7 @@ public class MBitConverter
         }
         else
         {
-            retValue = (int)(
+            retValue = ((int))(
                 (bytes[startIndex] << 24) +
                 (bytes[startIndex + 1] << 16) +
                 (bytes[startIndex + 2] << 8) +
@@ -174,7 +174,7 @@ public class MBitConverter
 
     public static long ToInt64(
             byte[] bytes,
-            int startIndex
+            (int) startIndex
     )
     {
         return MBitConverter.ToInt64(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
@@ -182,7 +182,7 @@ public class MBitConverter
 
     public static long ToInt64(
         byte[] bytes,
-        int startIndex,
+        (int) startIndex,
         EEndian endian
         )
     {
@@ -218,7 +218,7 @@ public class MBitConverter
 
     public static long ToUInt64(
             byte[] bytes,
-            int startIndex
+            (int) startIndex
     )
     {
         return MBitConverter.ToUInt64(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
@@ -226,7 +226,7 @@ public class MBitConverter
 
     public static long ToUInt64(
         byte[] bytes,
-        int startIndex,
+        (int) startIndex,
         EEndian endian
         )
     {
@@ -267,9 +267,9 @@ public class MBitConverter
      * @param index 开始位置
      * @return
      */
-    public static float ToFloat(byte[] b, int index)
+    public static float ToFloat(byte[] b, (int) index)
     {
-        int l;
+        (int) l;
         l = b[index + 0];
         l &= 0xff;
         l |= ((long) b[index + 1] << 8);
@@ -282,68 +282,68 @@ public class MBitConverter
 
     public static double ToDouble(
             byte[] bytes,
-            int startIndex
+            (int) startIndex
     )
     {
         long value = 0;
-        for (int i = 0; i < 8; i++)
+        for ((int) i = 0; i < 8; i++)
         {
             value |= ((long) (bytes[i] & 0xff)) << (8 * i);
         }
         return Double.longBitsToDouble(value);
     }
 
-    public static void GetBytes(
+    public static (void) GetBytes(
             boolean data,
             byte[] bytes,
-            int startIndex
+            (int) startIndex
     )
     {
         MBitConverter.GetBytes(data, bytes, startIndex, EEndian.eLITTLE_ENDIAN);
     }
 
-    public static void GetBytes(
+    public static (void) GetBytes(
         boolean data,
         byte[] bytes,
-        int startIndex,
+        (int) startIndex,
         EEndian endian
         )
     {
         bytes[startIndex] = (byte)(data ? 1 : 0);
     }
 
-    public static void GetBytes(
+    public static (void) GetBytes(
             char data,
             byte[] bytes,
-            int startIndex
+            (int) startIndex
     )
     {
         MBitConverter.GetBytes(data, bytes, startIndex, EEndian.eLITTLE_ENDIAN);
     }
 
-    public static void GetBytes(
+    public static (void) GetBytes(
         char data,
         byte[] bytes,
-        int startIndex,
+        (int) startIndex,
         EEndian endian
         )
     {
         bytes[startIndex] = (byte)data;
     }
 
-    public static void GetBytes(
+    public static (void) GetBytes(
             short data,
             byte[] bytes,
-            int startIndex
+            (int) startIndex
     )
     {
         MBitConverter.GetBytes(data, bytes, startIndex, EEndian.eLITTLE_ENDIAN);
     }
 
-    public static void GetBytes(
+    public static (void) GetBytes(
         short data,
         byte[] bytes,
-        int startIndex,
+        (int) startIndex,
         EEndian endian
         )
     {
@@ -363,10 +363,10 @@ public class MBitConverter
         }
     }
 
-//    public static void GetBytes(
+//    public static (void) GetBytes(
 //        short data,
 //        byte[] bytes,
-//        int startIndex,
+//        (int) startIndex,
 //        EEndian endian = EEndian.eLITTLE_ENDIAN
 //        )
 //    {
@@ -382,19 +382,19 @@ public class MBitConverter
 //        }
 //    }
 
-    public static void GetBytes(
-            int data,
+    public static (void) GetBytes(
+            (int) data,
             byte[] bytes,
-            int startIndex
+            (int) startIndex
     )
     {
         MBitConverter.GetBytes(data, bytes, startIndex, EEndian.eLITTLE_ENDIAN);
     }
 
-    public static void GetBytes(
-        int data,
+    public static (void) GetBytes(
+        (int) data,
         byte[] bytes,
-        int startIndex,
+        (int) startIndex,
         EEndian endian
         )
     {
@@ -414,10 +414,10 @@ public class MBitConverter
         }
     }
 
-//    public static void GetBytes(
-//        int data,
+//    public static (void) GetBytes(
+//        (int) data,
 //        byte[] bytes,
-//        int startIndex,
+//        (int) startIndex,
 //        EEndian endian = EEndian.eLITTLE_ENDIAN
 //        )
 //    {
@@ -437,19 +437,19 @@ public class MBitConverter
 //        }
 //    }
 
-    public static void GetBytes(
+    public static (void) GetBytes(
             long data,
             byte[] bytes,
-            int startIndex
+            (int) startIndex
     )
     {
         MBitConverter.GetBytes(data, bytes, startIndex, EEndian.eLITTLE_ENDIAN);
     }
 
-    public static void GetBytes(
+    public static (void) GetBytes(
         long data,
         byte[] bytes,
-        int startIndex,
+        (int) startIndex,
         EEndian endian
         )
     {
@@ -479,10 +479,10 @@ public class MBitConverter
         }
     }
 
-//    public static void GetBytes(
+//    public static (void) GetBytes(
 //        long data,
 //        byte[] bytes,
-//        int startIndex,
+//        (int) startIndex,
 //        EEndian endian = EEndian.eLITTLE_ENDIAN
 //        )
 //    {
@@ -515,22 +515,22 @@ public class MBitConverter
     public static byte[] GetBytes(float f)
     {
         // 把float转换为byte[]
-        int fbit = Float.floatToIntBits(f);
+        (int) fbit = Float.floatToIntBits(f);
 
         byte[] b = new byte[4];
-        for (int i = 0; i < 4; i++) {
+        for ((int) i = 0; i < 4; i++) {
             b[i] = (byte) (fbit >> (24 - i * 8));
         }
 
         // 翻转数组
-        int len = b.length;
+        (int) len = b.length;
         // 建立一个与源数组元素类型相同的数组
         byte[] dest = new byte[len];
         // 为了防止修改源数组，将源数组拷贝一份副本
         System.arraycopy(b, 0, dest, 0, len);
         byte temp;
         // 将顺位第i个与倒数第i个交换
-        for (int i = 0; i < len / 2; ++i) {
+        for ((int) i = 0; i < len / 2; ++i) {
             temp = dest[i];
             dest[i] = dest[len - i - 1];
             dest[len - i - 1] = temp;
@@ -546,7 +546,7 @@ public class MBitConverter
         long value = Double.doubleToRawLongBits(data);
         byte[] bytes = new byte[8];
 
-        for (int i = 0; i < 8; i++)
+        for ((int) i = 0; i < 8; i++)
         {
             bytes[i] = (byte) ((value >> 8 * i) & 0xff);
         }
@@ -557,13 +557,13 @@ public class MBitConverter
     public static byte[] GetBytes(
             double data,
             byte[] bytes,
-            int startIndex
+            (int) startIndex
     )
     {
         long value = Double.doubleToRawLongBits(data);
         bytes = new byte[8];
 
-        for (int i = 0; i < 8; i++)
+        for ((int) i = 0; i < 8; i++)
         {
             bytes[i] = (byte) ((value >> 8 * i) & 0xff);
         }
@@ -571,12 +571,12 @@ public class MBitConverter
         return bytes;
     }
 
-    static public int ToInt32(String value)
+    static public (int) ToInt32(String value)
     {
         return Integer.parseInt(value);
     }
 
-    static public int toUnsigned(short value)
+    static public (int) toUnsigned(short value)
     {
         return value & 0x0FFFF;
     }

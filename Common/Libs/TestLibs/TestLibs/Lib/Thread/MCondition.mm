@@ -21,7 +21,7 @@ public class MCondition
         return self.mCanEnterWait;
     }
 
-    public void waitImpl()
+    public (void) waitImpl()
     {
         //using (MLock mlock = new MLock(mMutex))
         //{
@@ -40,7 +40,7 @@ public class MCondition
         //}
     }
 
-    public void notifyAllImpl()
+    public (void) notifyAllImpl()
     {
         MLock mlock = new MLock(mMutex);
 

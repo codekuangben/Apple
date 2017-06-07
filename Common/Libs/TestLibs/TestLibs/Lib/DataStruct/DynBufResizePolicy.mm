@@ -3,9 +3,9 @@
 public class DynBufResizePolicy
 {
     // 获取一个最近的大小
-    static public int getCloseSize(int needSize, int capacity, int maxCapacity)
+    static public (int) getCloseSize((int) needSize, (int) capacity, (int) maxCapacity)
     {
-        int ret = 0;
+        (int) ret = 0;
         if (capacity > needSize)        // 使用 > ，不适用 >= ，浪费一个自己，方便判断
         {
             ret = capacity;

@@ -5,6 +5,6 @@
  */
 @implementation ICalleeObjectNoRetNoParam
 
-- (void) call;
+- ((void)) call;
 
 @end

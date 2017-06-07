@@ -28,12 +28,12 @@ public class MEncoding
         return  self.GetString(bytes, 0, bytes.length);
     }
 
-    public String GetString(byte[] bytes, int startIndex)
+    public String GetString(byte[] bytes, (int) startIndex)
     {
         return self.GetString(bytes, startIndex, bytes.length - startIndex);
     }
 
-    public String GetString(byte[] bytes, int startIndex, int len)
+    public String GetString(byte[] bytes, (int) startIndex, (int) len)
     {
         String ret = "";
 
@@ -49,9 +49,9 @@ public class MEncoding
         return ret;
     }
 
-    public int GetByteCount(String str)
+    public (int) GetByteCount(String str)
     {
-        int len = 0;
+        (int) len = 0;
 
         try
         {

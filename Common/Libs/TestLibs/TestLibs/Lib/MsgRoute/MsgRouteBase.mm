@@ -14,7 +14,7 @@ public class MsgRouteBase implements IRecycle, IDispatchObject
         mMsgID = id;
     }
 
-    public void resetDefault()
+    public (void) resetDefault()
     {
 
     }

@@ -22,7 +22,7 @@ public class MDictionary<TKey, TValue>
         return self.mData;
     }
 
-    public int getCount()
+    public (int) getCount()
     {
         return self.mData.keySet().size();
     }
@@ -32,7 +32,7 @@ public class MDictionary<TKey, TValue>
         return self.value(key);
     }
 
-    public void set(TKey key, TValue value)
+    public (void) set(TKey key, TValue value)
     {
         self.Add(key, value);
     }
@@ -71,7 +71,7 @@ public class MDictionary<TKey, TValue>
         return self.mData.values();
     }
 
-    public int Count()
+    public (int) Count()
     {
         return self.mData.keySet().size();
     }
@@ -81,17 +81,17 @@ public class MDictionary<TKey, TValue>
         return self.mData.entrySet();
     }
 
-    public void Add(TKey key, TValue value)
+    public (void) Add(TKey key, TValue value)
     {
         self.mData.put(key, value);
     }
 
-    public void Remove(TKey key)
+    public (void) Remove(TKey key)
     {
         self.mData.remove(key);
     }
 
-    public void Clear()
+    public (void) Clear()
     {
         self.mData.clear();
     }
@@ -121,9 +121,9 @@ public class MDictionary<TKey, TValue>
         return false;
     }
 
-    public TValue at(int idx)
+    public TValue at((int) idx)
     {
-        int curidx = 0;
+        (int) curidx = 0;
         TValue ret = null;
 
         for (TKey key : self.mData.keySet())

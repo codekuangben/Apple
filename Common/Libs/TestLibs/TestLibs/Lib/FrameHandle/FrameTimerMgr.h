@@ -18,25 +18,25 @@ public class FrameTimerMgr extends DelayHandleMgrBase
     }
 
     @Override
-    public void init()
+    public (void) init()
     {
 
     }
 
     @Override
-    public void dispose()
+    public (void) dispose()
     {
 
     }
 
     @Override
-    protected void addObject(IDelayHandleItem delayObject)
+    protected (void) addObject(IDelayHandleItem delayObject)
     {
         self.addObject(delayObject, 0);
     }
 
     @Override
-    protected void addObject(IDelayHandleItem delayObject, float priority)
+    protected (void) addObject(IDelayHandleItem delayObject, float priority)
     {
         // 检查当前是否已经在队列中
         if (!self.mTimerList.Contains((FrameTimerItem)delayObject))
@@ -53,7 +53,7 @@ public class FrameTimerMgr extends DelayHandleMgrBase
     }
 
     @Override
-    protected void removeObject(IDelayHandleItem delayObject)
+    protected (void) removeObject(IDelayHandleItem delayObject)
     {
         // 检查当前是否在队列中
         if (self.mTimerList.Contains((FrameTimerItem)delayObject))
@@ -78,22 +78,22 @@ public class FrameTimerMgr extends DelayHandleMgrBase
         }
     }
 
-    public void addFrameTimer(FrameTimerItem timer)
+    public (void) addFrameTimer(FrameTimerItem timer)
     {
         self.addFrameTimer(timer, 0);
     }
 
-    public void addFrameTimer(FrameTimerItem timer, float priority)
+    public (void) addFrameTimer(FrameTimerItem timer, float priority)
     {
         self.addObject(timer, priority);
     }
 
-    public void removeFrameTimer(FrameTimerItem timer)
+    public (void) removeFrameTimer(FrameTimerItem timer)
     {
         self.removeObject(timer);
     }
 
-    public void Advance(float delta)
+    public (void) Advance(float delta)
     {
         self.mLoopDepth.incDepth();
 

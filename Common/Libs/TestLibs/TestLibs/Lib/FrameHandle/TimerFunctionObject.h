@@ -12,7 +12,7 @@ public class TimerFunctionObject
         self.mHandle = null;
     }
 
-    public void setFuncObject(ICalleeObjectTimer handle)
+    public (void) setFuncObject(ICalleeObjectTimer handle)
     {
         self.mHandle = handle;
     }
@@ -38,7 +38,7 @@ public class TimerFunctionObject
         return ret;
     }
 
-    public void call(TimerItemBase dispObj)
+    public (void) call(TimerItemBase dispObj)
     {
         if (null != self.mHandle)
         {

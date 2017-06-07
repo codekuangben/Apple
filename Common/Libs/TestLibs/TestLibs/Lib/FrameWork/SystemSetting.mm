@@ -9,7 +9,7 @@ public class SystemSetting
     public static final String PASSWORD = "password";
     public static final String NICKNAME = "nickname";
 
-    public void setString(String key, String value)
+    public (void) setString(String key, String value)
     {
 
     }
@@ -19,17 +19,17 @@ public class SystemSetting
         return "";
     }
 
-    public void setInt(String key, int value)
+    public (void) setInt(String key, (int) value)
     {
 
     }
 
-    public int getInt(String key)
+    public (int) getInt(String key)
     {
         return 0;
     }
 
-    public void setFloat(String key, float value)
+    public (void) setFloat(String key, float value)
     {
 
     }
@@ -44,7 +44,7 @@ public class SystemSetting
         return true;
     }
 
-    public void SetServerIP()
+    public (void) SetServerIP()
     {
 
     }

@@ -31,12 +31,12 @@ public class TimerItemBase implements IDelayHandleItem, IDispatchObject
         self.mIsContinuous = false;
     }
 
-    public void setFuncObject(ICalleeObjectTimer handle)
+    public (void) setFuncObject(ICalleeObjectTimer handle)
     {
         self.mTimerDisp.setFuncObject(handle);
     }
 
-    public void setTotalTime(float value)
+    public (void) setTotalTime(float value)
     {
         self.mTotalTime = value;
     }
@@ -62,12 +62,12 @@ public class TimerItemBase implements IDelayHandleItem, IDispatchObject
     }
 
     // 在调用回调函数之前处理
-    protected void onPreCallBack()
+    protected (void) onPreCallBack()
     {
 
     }
 
-    public void OnTimer(float delta)
+    public (void) OnTimer(float delta)
     {
         if (self.mDisposed)
         {
@@ -98,7 +98,7 @@ public class TimerItemBase implements IDelayHandleItem, IDispatchObject
         }
     }
 
-    public void disposeAndDisp()
+    public (void) disposeAndDisp()
     {
         if (self.mIsContinuous)
         {
@@ -110,7 +110,7 @@ public class TimerItemBase implements IDelayHandleItem, IDispatchObject
         }
     }
 
-    protected void continueDisposeAndDisp()
+    protected (void) continueDisposeAndDisp()
     {
         self.mDisposed = true;
 
@@ -127,7 +127,7 @@ public class TimerItemBase implements IDelayHandleItem, IDispatchObject
         }
     }
 
-    protected void discontinueDisposeAndDisp()
+    protected (void) discontinueDisposeAndDisp()
     {
         self.mDisposed = true;
         self.mCurCallTime = self.mTotalTime;
@@ -139,7 +139,7 @@ public class TimerItemBase implements IDelayHandleItem, IDispatchObject
         }
     }
 
-    public void checkAndDisp()
+    public (void) checkAndDisp()
     {
         if(self.mIsContinuous)
         {
@@ -152,7 +152,7 @@ public class TimerItemBase implements IDelayHandleItem, IDispatchObject
     }
 
     // 连续的定时器
-    protected void continueCheckAndDisp()
+    protected (void) continueCheckAndDisp()
     {
         while (self.mIntervalLeftTime >= self.mInternal)
         {
@@ -169,12 +169,12 @@ public class TimerItemBase implements IDelayHandleItem, IDispatchObject
     }
 
     // 不连续的定时器
-    protected void discontinueCheckAndDisp()
+    protected (void) discontinueCheckAndDisp()
     {
         if (self.mIntervalLeftTime >= self.mInternal)
         {
             // 这个地方 m_curCallTime 肯定会小于 m_totalTime，因为在调用这个函数的外部已经进行了判断
-            self.mCurCallTime = self.mCurCallTime + (((int)(self.mIntervalLeftTime / self.mInternal)) * self.mInternal);
+            self.mCurCallTime = self.mCurCallTime + ((((int))(self.mIntervalLeftTime / self.mInternal)) * self.mInternal);
             self.mIntervalLeftTime = self.mIntervalLeftTime % self.mInternal;   // 只保留余数
             self.onPreCallBack();
 
@@ -185,7 +185,7 @@ public class TimerItemBase implements IDelayHandleItem, IDispatchObject
         }
     }
 
-    public void reset()
+    public (void) reset()
     {
         self.mCurRunTime = 0;
         self.mCurCallTime = 0;
@@ -193,7 +193,7 @@ public class TimerItemBase implements IDelayHandleItem, IDispatchObject
         self.mDisposed = false;
     }
 
-    public void setClientDispose(boolean isDispose)
+    public (void) setClientDispose(boolean isDispose)
     {
 
     }
@@ -203,12 +203,12 @@ public class TimerItemBase implements IDelayHandleItem, IDispatchObject
         return false;
     }
 
-    public void startTimer()
+    public (void) startTimer()
     {
         //Ctx.mInstance.mTimerMgr.addTimer(this);
     }
 
-    public void stopTimer()
+    public (void) stopTimer()
     {
         //Ctx.mInstance.mTimerMgr.removeTimer(this);
     }

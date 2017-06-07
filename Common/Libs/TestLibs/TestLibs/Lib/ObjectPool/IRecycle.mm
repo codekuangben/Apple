@@ -2,5 +2,5 @@
 
 public interface IRecycle
 {
-    void resetDefault();
+    (void) resetDefault();
 }

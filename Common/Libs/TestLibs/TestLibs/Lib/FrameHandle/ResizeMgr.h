@@ -7,13 +7,13 @@ import SDK.Lib.Tools.UtilApi;
 
 public class ResizeMgr extends DelayHandleMgrBase implements ITickedObject, IDelayHandleItem
 {
-    protected int mPreWidth;       // 之前宽度
-    protected int mPreHeight;
-    protected int mCurWidth;       // 现在宽度
-    protected int mCurHeight;
+    protected (int) mPreWidth;       // 之前宽度
+    protected (int) mPreHeight;
+    protected (int) mCurWidth;       // 现在宽度
+    protected (int) mCurHeight;
 
-    protected int mCurHalfWidth;       // 当前一半宽度
-    protected int mCurHalfHeight;
+    protected (int) mCurHalfWidth;       // 当前一半宽度
+    protected (int) mCurHalfHeight;
 
     protected MList<IResizeObject> mResizeList;
 
@@ -23,45 +23,45 @@ public class ResizeMgr extends DelayHandleMgrBase implements ITickedObject, IDel
     }
 
     @Override
-    public void init()
+    public (void) init()
     {
 
     }
 
     @Override
-    public void dispose()
+    public (void) dispose()
     {
         self.mResizeList.Clear();
     }
 
-    public int getWidth()
+    public (int) getWidth()
     {
         return self.mCurWidth;
     }
 
-    public int getHeight()
+    public (int) getHeight()
     {
         return self.mCurHeight;
     }
 
-    public int getHalfWidth()
+    public (int) getHalfWidth()
     {
         return self.mCurHalfWidth;
     }
 
-    public int getHalfHeight()
+    public (int) getHalfHeight()
     {
         return self.mCurHalfHeight;
     }
 
     @Override
-    protected void addObject(IDelayHandleItem delayObject)
+    protected (void) addObject(IDelayHandleItem delayObject)
     {
         self.addObject(delayObject, 0);
     }
 
     @Override
-    protected void addObject(IDelayHandleItem delayObject, float priority)
+    protected (void) addObject(IDelayHandleItem delayObject, float priority)
     {
         if(self.mLoopDepth.isInDepth())
         {
@@ -74,7 +74,7 @@ public class ResizeMgr extends DelayHandleMgrBase implements ITickedObject, IDel
     }
 
     @Override
-    protected void removeObject(IDelayHandleItem delayObject)
+    protected (void) removeObject(IDelayHandleItem delayObject)
     {
         if(self.mLoopDepth.isInDepth())
         {
@@ -86,12 +86,12 @@ public class ResizeMgr extends DelayHandleMgrBase implements ITickedObject, IDel
         }
     }
 
-    public void addResizeObject(IResizeObject obj)
+    public (void) addResizeObject(IResizeObject obj)
     {
         self.addResizeObject(obj, 0);
     }
 
-    public void addResizeObject(IResizeObject obj, float priority)
+    public (void) addResizeObject(IResizeObject obj, float priority)
     {
         if (!self.mResizeList.Contains(obj))
         {
@@ -99,7 +99,7 @@ public class ResizeMgr extends DelayHandleMgrBase implements ITickedObject, IDel
         }
     }
 
-    public void removeResizeObject(IResizeObject obj)
+    public (void) removeResizeObject(IResizeObject obj)
     {
         if (self.mResizeList.IndexOf(obj) != -1)
         {
@@ -107,7 +107,7 @@ public class ResizeMgr extends DelayHandleMgrBase implements ITickedObject, IDel
         }
     }
 
-    public void onTick(float delta)
+    public (void) onTick(float delta)
     {
         self.mPreWidth = self.mCurWidth;
         self.mCurWidth = UtilApi.getScreenWidth();
@@ -123,7 +123,7 @@ public class ResizeMgr extends DelayHandleMgrBase implements ITickedObject, IDel
         }
     }
 
-    public void onResize(int viewWidth, int viewHeight)
+    public (void) onResize((int) viewWidth, (int) viewHeight)
     {
         for(IResizeObject resizeObj : mResizeList.list())
         {
@@ -131,7 +131,7 @@ public class ResizeMgr extends DelayHandleMgrBase implements ITickedObject, IDel
         }
     }
 
-    public void setClientDispose(boolean isDispose)
+    public (void) setClientDispose(boolean isDispose)
     {
 
     }

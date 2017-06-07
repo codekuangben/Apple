@@ -15,18 +15,18 @@ public class TickObjectMgrBase extends DelayHandleMgrBase implements ITickedObje
     }
 
     @Override
-    public void init()
+    public (void) init()
     {
 
     }
 
     @Override
-    public void dispose()
+    public (void) dispose()
     {
 
     }
 
-    public void setClientDispose(boolean isDispose)
+    public (void) setClientDispose(boolean isDispose)
     {
 
     }
@@ -36,7 +36,7 @@ public class TickObjectMgrBase extends DelayHandleMgrBase implements ITickedObje
         return false;
     }
 
-    public void onTick(float delta)
+    public (void) onTick(float delta)
     {
         self.mLoopDepth.incDepth();
 
@@ -45,10 +45,10 @@ public class TickObjectMgrBase extends DelayHandleMgrBase implements ITickedObje
         self.mLoopDepth.decDepth();
     }
 
-    protected void onExecTick(float delta)
+    protected (void) onExecTick(float delta)
     {
-        int idx = 0;
-        int count = self.mTickObjectList.Count();
+        (int) idx = 0;
+        (int) count = self.mTickObjectList.Count();
         ITickedObject tickObject = null;
 
         while (idx < count)
@@ -65,13 +65,13 @@ public class TickObjectMgrBase extends DelayHandleMgrBase implements ITickedObje
     }
 
     @Override
-    protected void addObject(IDelayHandleItem tickObject)
+    protected (void) addObject(IDelayHandleItem tickObject)
     {
         self.addObject(tickObject, 0);
     }
 
     @Override
-    protected void addObject(IDelayHandleItem tickObject, float priority)
+    protected (void) addObject(IDelayHandleItem tickObject, float priority)
     {
         if (self.mLoopDepth.isInDepth())
         {
@@ -87,7 +87,7 @@ public class TickObjectMgrBase extends DelayHandleMgrBase implements ITickedObje
     }
 
     @Override
-    protected void removeObject(IDelayHandleItem tickObject)
+    protected (void) removeObject(IDelayHandleItem tickObject)
     {
         if (self.mLoopDepth.isInDepth())
         {

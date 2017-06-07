@@ -15,7 +15,7 @@ public class MEvent
         //self.mEvent = new CyclicBarrier(2);
     }
 
-    synchronized public void WaitOne()
+    synchronized public (void) WaitOne()
     {
         try
         {

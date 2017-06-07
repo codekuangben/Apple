@@ -18,7 +18,7 @@ public class PoolSys
     {
         T retObj = null;
         // 查找
-        int idx = 0;
+        (int) idx = 0;
         for(idx = 0; idx < mPoolList.getCount(); ++idx)
         {
             if (classT == mPoolList.get(idx).getClass())
@@ -57,7 +57,7 @@ public class PoolSys
         return retObj;
     }
 
-    public void deleteObj(IRecycle obj)
+    public (void) deleteObj(IRecycle obj)
     {
         if (mPoolList.IndexOf(obj) == -1)
         {

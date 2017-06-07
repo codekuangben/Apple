@@ -8,10 +8,10 @@ import java.util.List;
  */
 public class MList<T>
 {
-    //public delegate int CompareFunc(T left, T right);
+    //public delegate (int) CompareFunc(T left, T right);
 
     protected ArrayList<T> mList;
-    protected int mUniqueId;       // 唯一 Id ，调试使用
+    protected (int) mUniqueId;       // 唯一 Id ，调试使用
 
     protected MDictionary<T, Integer> mDic;    // 为了加快查找速度，当前 Element 到索引映射
     protected boolean mIsSpeedUpFind;  // 是否加快查询
@@ -23,7 +23,7 @@ public class MList<T>
         self.mIsSpeedUpFind = true;
     }
 
-    public MList(int capacity)
+    public MList((int) capacity)
     {
         self.mList = new ArrayList<T>(capacity);
     }
@@ -38,12 +38,12 @@ public class MList<T>
         return self.mList;
     }
 
-    public int getUniqueId()
+    public (int) getUniqueId()
     {
         return self.mUniqueId;
     }
 
-    public void setUniqueId(int value)
+    public (void) setUniqueId((int) value)
     {
         self.mUniqueId = value;
     }
@@ -53,12 +53,12 @@ public class MList<T>
         return self.mList;
     }
 
-    public int getSize()
+    public (int) getSize()
     {
         return self.mList.size();
     }
 
-    public void Add(T item)
+    public (void) Add(T item)
     {
         self.mList.add(item);
 
@@ -69,7 +69,7 @@ public class MList<T>
     }
 
     // 主要是 Add 一个 float 类型的 Vector3
-    public void Add(T item_1, T item_2, T item_3)
+    public (void) Add(T item_1, T item_2, T item_3)
     {
         self.mList.add(item_1);
         self.mList.add(item_2);
@@ -84,7 +84,7 @@ public class MList<T>
     }
 
     // 主要是 Add 一个 float 类型的 UV
-    public void Add(T item_1, T item_2)
+    public (void) Add(T item_1, T item_2)
     {
         self.mList.add(item_1);
         self.mList.add(item_2);
@@ -97,7 +97,7 @@ public class MList<T>
     }
 
     // 主要是 Add 一个 byte 类型的 Color32
-    public void Add(T item_1, T item_2, T item_3, T item_4)
+    public (void) Add(T item_1, T item_2, T item_3, T item_4)
     {
         self.mList.add(item_1);
         self.mList.add(item_2);
@@ -113,7 +113,7 @@ public class MList<T>
         }
     }
 
-    public void push(T item)
+    public (void) push(T item)
     {
         self.mList.add(item);
 
@@ -135,12 +135,12 @@ public class MList<T>
         }
     }
 
-    public T get(int index)
+    public T get((int) index)
     {
         return self.mList.get(index);
     }
 
-    public void set(int index, T value)
+    public (void) set((int) index, T value)
     {
         if (self.mIsSpeedUpFind)
         {
@@ -150,7 +150,7 @@ public class MList<T>
         self.mList.add(index, value);
     }
 
-    public void Clear()
+    public (void) Clear()
     {
         self.mList.clear();
 
@@ -160,22 +160,22 @@ public class MList<T>
         }
     }
 
-    public int Count()
+    public (int) Count()
     {
         return self.mList.size();
     }
 
-    public int length()
+    public (int) length()
     {
         return self.mList.size();
     }
 
-    public void setLength(int value)
+    public (void) setLength((int) value)
     {
         self.mList.ensureCapacity(value);
     }
 
-    public void RemoveAt(int index)
+    public (void) RemoveAt((int) index)
     {
         if (self.mIsSpeedUpFind)
         {
@@ -187,7 +187,7 @@ public class MList<T>
         }
     }
 
-    public int IndexOf(T item)
+    public (int) IndexOf(T item)
     {
         if (self.mIsSpeedUpFind)
         {
@@ -206,7 +206,7 @@ public class MList<T>
         }
     }
 
-    public void Insert(int index, T item)
+    public (void) Insert((int) index, T item)
     {
         if (index <= self.Count())
         {
@@ -241,12 +241,12 @@ public class MList<T>
         }
     }
 
-//    public void Sort(System.Comparison<T> comparer)
+//    public (void) Sort(System.Comparison<T> comparer)
 //    {
 //        self.mList.Sort(comparer);
 //    }
 
-    public void merge(MList<T> appendList)
+    public (void) merge(MList<T> appendList)
     {
         if(appendList != null)
         {
@@ -271,7 +271,7 @@ public class MList<T>
         {
             ret = true;
 
-            int idx = self.mDic.get(item);
+            (int) idx = self.mDic.get(item);
             self.mDic.Remove(item);
 
             if (idx == self.mList.size() - 1)    // 如果是最后一个元素，直接移除
@@ -291,9 +291,9 @@ public class MList<T>
         return ret;
     }
 
-    protected void updateIndex(int idx)
+    protected (void) updateIndex((int) idx)
     {
-        int len = self.mList.size();
+        (int) len = self.mList.size();
 
         while(idx < len)
         {

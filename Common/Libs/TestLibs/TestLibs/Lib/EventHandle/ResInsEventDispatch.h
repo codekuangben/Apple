@@ -16,12 +16,12 @@
 @property (nonatomic, readwrite, retain) NSObject mInsGO;
 
 - (id) init;
-- (void) setIsValid: (bool) value;
+- ((void)) setIsValid: (bool) value;
 - (bool) getIsValid;
-- (void) setInsGO: (NSObject) go;
+- ((void)) setInsGO: (NSObject) go;
 - (NSObject) getInsGO;
 
-- (void) dispatchEvent: (IDispatchObject) dispatchObject;
+- ((void)) dispatchEvent: (IDispatchObject) dispatchObject;
 
 @end
 

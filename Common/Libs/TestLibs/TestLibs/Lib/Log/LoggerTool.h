@@ -5,17 +5,17 @@
  */
 public class LoggerTool
 {
-    static public void log(String message)
+    static public (void) log(String message)
     {
 
     }
 
-    static public void warn(String message)
+    static public (void) warn(String message)
     {
 
     }
 
-    static public void error(String message)
+    static public (void) error(String message)
     {
 
     }

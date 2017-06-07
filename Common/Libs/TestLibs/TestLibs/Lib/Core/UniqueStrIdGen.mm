@@ -8,7 +8,7 @@ static NSString* SnowBlockPrefix = @"SM";
 
 @implementation UniqueStrIdGen
 
-- (id) init: (NSString*) prefix baseUniqueId: (int) baseUniqueId
+- (id) init: (NSString*) prefix baseUniqueId: ((int)) baseUniqueId
 {
     super(baseUniqueId);
 
@@ -26,7 +26,7 @@ public String getCurStrId()
     return self.mRetId;
 }
 
-public String genStrIdById(int id)
+public String genStrIdById((int) id)
 {
     self.mRetId = String.format("{0}_{1}", mPrefix, id);
     return self.mRetId;

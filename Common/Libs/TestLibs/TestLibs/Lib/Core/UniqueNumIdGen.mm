@@ -2,7 +2,7 @@
 
 @implementation UniqueNumIdGen
 
-- (id) init: (int) baseUniqueId
+- (id) init: ((int)) baseUniqueId
 {
     if(self = [super init])
     {
@@ -13,7 +13,7 @@
     return self;
 }
 
-- (int) genNewId
+- ((int)) genNewId
 {
     mPreIdx = mCurId;
     mCurId++;
@@ -21,7 +21,7 @@
     return mPreIdx;
 }
 
-- (int) getCurId
+- ((int)) getCurId
 {
     return mCurId;
 }

@@ -21,7 +21,7 @@ import SDK.Lib.DelayHandle.*;
     return self;
 }
 
-- (id) init:(int)eventId_
+- (id) init:((int))eventId_
 {
     if(self = [super init])
     {
@@ -37,41 +37,41 @@ import SDK.Lib.DelayHandle.*;
 	return self.mHandleList;
 }
 
-public int getUniqueId()
+public (int) getUniqueId()
 {
 	return self.mUniqueId;
 }
 
-public void setUniqueId(int value)
+public (void) setUniqueId((int) value)
 {
 	self.mUniqueId = value;
 	self.mHandleList.setUniqueId(self.mUniqueId);
 }
 
 @Override
-public void init()
+public (void) init()
 {
 
 }
 
 @Override
-public void dispose()
+public (void) dispose()
 {
 
 }
 
-public void addDispatch(EventDispatchFunctionObject dispatch)
+public (void) addDispatch(EventDispatchFunctionObject dispatch)
 {
 	self.addObject(dispatch);
 }
 
-public void removeDispatch(EventDispatchFunctionObject dispatch)
+public (void) removeDispatch(EventDispatchFunctionObject dispatch)
 {
 	self.removeObject(dispatch);
 }
 
 // 相同的函数只能增加一次，Lua ，Python 这些语言不支持同时存在几个相同名字的函数，只支持参数可以赋值，因此不单独提供同一个名字不同参数的接口了
-public void addEventHandle(ICalleeObject pThis, IDispatchObject handle)
+public (void) addEventHandle(ICalleeObject pThis, IDispatchObject handle)
 {
 	if (null != pThis || null != handle)
 	{
@@ -90,10 +90,10 @@ public void addEventHandle(ICalleeObject pThis, IDispatchObject handle)
 	}
 }
 
-public void removeEventHandle(ICalleeObject pThis, IDispatchObject handle)
+public (void) removeEventHandle(ICalleeObject pThis, IDispatchObject handle)
 {
-	int idx = 0;
-	int elemLen = 0;
+	(int) idx = 0;
+	(int) elemLen = 0;
 	elemLen = self.mHandleList.Count();
 
 	while (idx < elemLen)
@@ -117,13 +117,13 @@ public void removeEventHandle(ICalleeObject pThis, IDispatchObject handle)
 }
 
 @Override
-protected void addObject(IDelayHandleItem delayObject)
+protected (void) addObject(IDelayHandleItem delayObject)
 {
 	self.addObject(delayObject, 0);
 }
 
 @Override
-protected void addObject(IDelayHandleItem delayObject, float priority)
+protected (void) addObject(IDelayHandleItem delayObject, float priority)
 {
 	if (self.mLoopDepth.isInDepth())
 	{
@@ -137,7 +137,7 @@ protected void addObject(IDelayHandleItem delayObject, float priority)
 }
 
 @Override
-protected void removeObject(IDelayHandleItem delayObject)
+protected (void) removeObject(IDelayHandleItem delayObject)
 {
 	if (self.mLoopDepth.isInDepth())
 	{
@@ -152,7 +152,7 @@ protected void removeObject(IDelayHandleItem delayObject)
 	}
 }
 
-public void dispatchEvent(IDispatchObject dispatchObject)
+public (void) dispatchEvent(IDispatchObject dispatchObject)
 {
 	//try
 	//{
@@ -160,8 +160,8 @@ public void dispatchEvent(IDispatchObject dispatchObject)
 
 	//foreach (EventDispatchFunctionObject handle in self.mHandleList.list())
 
-	int idx = 0;
-	int len = self.mHandleList.Count();
+	(int) idx = 0;
+	(int) len = self.mHandleList.Count();
 	EventDispatchFunctionObject handle = null;
 
 	while (idx < len)
@@ -184,13 +184,13 @@ public void dispatchEvent(IDispatchObject dispatchObject)
 	//}
 }
 
-public void clearEventHandle()
+public (void) clearEventHandle()
 {
 	if (self.mLoopDepth.isInDepth())
 	{
 		//foreach (EventDispatchFunctionObject item in self.mHandleList.list())
-		int idx = 0;
-		int len = self.mHandleList.Count();
+		(int) idx = 0;
+		(int) len = self.mHandleList.Count();
 		EventDispatchFunctionObject item = null;
 
 		while (idx < len)
@@ -213,8 +213,8 @@ public boolean isExistEventHandle(ICalleeObject pThis, IDispatchObject handle)
 {
 	boolean bFinded = false;
 	//foreach (EventDispatchFunctionObject item in self.mHandleList.list())
-	int idx = 0;
-	int len = self.mHandleList.Count();
+	(int) idx = 0;
+	(int) len = self.mHandleList.Count();
 	EventDispatchFunctionObject item = null;
 
 	while (idx < len)
@@ -233,11 +233,11 @@ public boolean isExistEventHandle(ICalleeObject pThis, IDispatchObject handle)
 	return bFinded;
 }
 
-public void copyFrom(EventDispatch rhv)
+public (void) copyFrom(EventDispatch rhv)
 {
 	//foreach(EventDispatchFunctionObject handle in rhv.handleList.list())
-	int idx = 0;
-	int len = self.mHandleList.Count();
+	(int) idx = 0;
+	(int) len = self.mHandleList.Count();
 	EventDispatchFunctionObject handle = null;
 
 	while (idx < len)
@@ -255,7 +255,7 @@ public boolean hasEventHandle()
 	return self.mHandleList.Count() > 0;
 }
 
-public int getEventHandle()
+public (int) getEventHandle()
 {
 	return self.mHandleList.Count();
 }

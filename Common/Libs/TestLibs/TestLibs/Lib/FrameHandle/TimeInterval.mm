@@ -16,17 +16,17 @@ public class TimeInterval
         self.mCurTime = 0;
     }
 
-    public void setInterval(float value)
+    public (void) setInterval(float value)
     {
         self.mInterval = value;
     }
 
-    public void setTotalTime(float value)
+    public (void) setTotalTime(float value)
     {
         self.mTotalTime = value;
     }
 
-    public void setCurTime(float value)
+    public (void) setCurTime(float value)
     {
         self.mCurTime = value;
     }

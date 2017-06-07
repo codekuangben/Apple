@@ -68,7 +68,7 @@ public class Ctx
         return mInstance;
     }
 
-    protected void constructInit()
+    protected (void) constructInit()
     {
         self.mMsgRouteNotify = new MsgRouteNotify();
         self.mSystemSetting = new SystemSetting();
@@ -99,7 +99,7 @@ public class Ctx
         self.mSystemFrameData = new SystemFrameData();
     }
 
-    public void logicInit()
+    public (void) logicInit()
     {
         self.mLogSys.init();
         self.mTickMgr.init();
@@ -120,7 +120,7 @@ public class Ctx
         self.addEventHandle();
     }
 
-    public void init()
+    public (void) init()
     {
         // 构造初始化
         constructInit();
@@ -128,7 +128,7 @@ public class Ctx
         logicInit();
     }
 
-    public void dispose()
+    public (void) dispose()
     {
         if (null != self.mResizeMgr)
         {
@@ -179,7 +179,7 @@ public class Ctx
         }
     }
 
-    public void quitApp()
+    public (void) quitApp()
     {
         self.dispose();
 
@@ -187,7 +187,7 @@ public class Ctx
         //mInstance = null;
     }
 
-    protected void addEventHandle()
+    protected (void) addEventHandle()
     {
         self.mTickMgr.addTick((ITickedObject)self.mResizeMgr, TickPriority.eTPResizeMgr);
     }

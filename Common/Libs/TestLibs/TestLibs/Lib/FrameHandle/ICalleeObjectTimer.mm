@@ -5,5 +5,5 @@
  */
 public interface ICalleeObjectTimer
 {
-    public void call(TimerItemBase timer);
+    public (void) call(TimerItemBase timer);
 }
