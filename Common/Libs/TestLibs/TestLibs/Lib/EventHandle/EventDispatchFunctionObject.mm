@@ -52,7 +52,8 @@ public (void) call(IDispatchObject* dispObj)
 {
 	if(nil != self.mThis && nil != self.mHandle)
 	{
-		[mThis performSelector:self.mHandle withObject:self.mEventId withObject:dispObj];
+		//[self.mThis performSelector:self.mHandle withObject:self.mEventId withObject:dispObj];
+		self.mHandleImp(self.mThis, self.mEventId, dispObj);
 	}
 	else if(nil == self.mThis && nil != self.mHandle)
 	{

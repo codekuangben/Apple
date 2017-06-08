@@ -19,7 +19,7 @@ public class MArray
 		}
 	}
 
-	static public <T> (void) Copy(T[] src, long srcIndex, T[] dest, long destIndex, long length)
+	static public (void) Copy(id[] src, long srcIndex, id[] dest, long destIndex, long length)
 	{
 		(int) idx = 0;
 
