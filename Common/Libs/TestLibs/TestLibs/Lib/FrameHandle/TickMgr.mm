@@ -9,7 +9,7 @@ import SDK.Lib.DelayHandle.IDelayHandleItem;
 import SDK.Lib.EventHandle.ICalleeObjectNoRetNoParam;
 import SDK.Lib.Tools.UtilApi;
 
-public class TickMgr extends DelayHandleMgrBase
+public class TickMgr : DelayHandleMgrBase
 {
     protected MList<TickProcessObject> mTickList;
 
@@ -30,7 +30,7 @@ public class TickMgr extends DelayHandleMgrBase
         self.mTickList.Clear();
     }
 
-    public (void) addTick(ITickedObject tickObj)
+    public (void) addTick(id <ITickedObject> tickObj)
     {
         self.addTick(tickObj, 0);
     }

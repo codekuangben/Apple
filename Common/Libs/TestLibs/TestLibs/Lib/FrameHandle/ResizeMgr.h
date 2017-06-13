@@ -5,7 +5,7 @@ import SDK.Lib.DelayHandle.DelayHandleMgrBase;
 import SDK.Lib.DelayHandle.IDelayHandleItem;
 import SDK.Lib.Tools.UtilApi;
 
-public class ResizeMgr extends DelayHandleMgrBase implements ITickedObject, IDelayHandleItem
+public class ResizeMgr : DelayHandleMgrBase <ITickedObject> <IDelayHandleItem>
 {
     protected (int) mPreWidth;       // 之前宽度
     protected (int) mPreHeight;

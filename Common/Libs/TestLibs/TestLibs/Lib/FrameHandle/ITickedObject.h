@@ -1,6 +1,6 @@
 ﻿package SDK.Lib.FrameHandle;
 
-public interface ITickedObject
+@protocol ITickedObject <NSObject>
 {
-    (void) onTick(float delta);
+    - (void) onTick:(float) delta;
 }
