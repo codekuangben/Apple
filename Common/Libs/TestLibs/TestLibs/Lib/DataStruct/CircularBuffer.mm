@@ -2,94 +2,100 @@
 
 @implementation CircularBuffer
 
-public CircularBuffer()
+- (id) init
 {
-	this(BufferCV.INIT_CAPACITY, BufferCV.MAX_CAPACITY);
+	[self init:BufferCV.INIT_CAPACITY maxCapacity:BufferCV.MAX_CAPACITY];
+	
+	return self;
 }
 
-public CircularBuffer((int) initCapacity)
+- (id) init:(int)initCapacity
 {
-	this(initCapacity, BufferCV.MAX_CAPACITY);
+	[self init:initCapacity maxCapacity:BufferCV.MAX_CAPACITY];
+	
+	return self;
 }
 
-public CircularBuffer((int) initCapacity, (int) maxCapacity)
+- (id) init:(int)initCapacity maxCapacity:(int)maxCapacity
 {
-	mDynBuffer = new DynByteBuffer(initCapacity, maxCapacity);
+	self.mDynBuffer = new DynByteBuffer(initCapacity, maxCapacity);
 
-	mFirst = 0;
-	mLast = 0;
+	self.mFirst = 0;
+	self.mLast = 0;
 
-	mTmpBA = new ByteBuffer();
+	self.mTmpBA = [[ByteBuffer alloc] init];
+	
+	return self;
 }
 
-public (int) getFirst()
+- (int) getFirst
 {
 	return mFirst;
 }
 
-public (int) getLast()
+- (int) getLast
 {
 	return mLast;
 }
 
-public byte[] getbuffer()
+- (char[]) getbuffer
 {
 	return mDynBuffer.mBuffer;
 }
 
-public (int) getSize()
+- (int) getSize
 {
 	return mDynBuffer.mSize;
 }
 
-public (void) setSize((int) value)
+- (void) setSize:(int) value
 {
 	mDynBuffer.setSize(value);
 }
 
-public boolean isLinearized()
+- (bool) isLinearized
 {
-	if (self.getSize() == 0)
+	if ([self getSize] == 0)
 	{
 		return true;
 	}
 
-	return mFirst < mLast;
+	return self.mFirst < self.mLast;
 }
 
-public boolean empty()
+- (bool) empty
 {
-	return mDynBuffer.mSize == 0;
+	return self.mDynBuffer->mSize == 0;
 }
 
-public (int) capacity()
+- (int) capacity
 {
-	return mDynBuffer.mCapacity;
+	return self.mDynBuffer->mCapacity;
 }
 
-public boolean full()
+- (bool) full
 {
-	return capacity() == self.getSize();
+	return [self capacity] == [self getSize];
 }
 
 // 清空缓冲区
-public (void) clear()
+- (void) clear
 {
-	mDynBuffer.mSize = 0;
-	mFirst = 0;
-	mLast = 0;
+	self.mDynBuffer->mSize = 0;
+	self.mFirst = 0;
+	self.mLast = 0;
 }
 
 /**
  * @brief 将数据尽量按照存储地址的从小到大排列
  */
-public (void) linearize()
+- (void) linearize
 {
-	if (empty())        // 没有数据
+	if ([self empty])        // 没有数据
 	{
 		return;
 	}
-	if (isLinearized())      // 数据已经是在一块连续的内存空间
+	if ([self isLinearized])      // 数据已经是在一块连续的内存空间
 	{
 		return;
 	}
@@ -101,15 +107,15 @@ public (void) linearize()
 		MArray.Copy(mDynBuffer.mBuffer, mFirst, mDynBuffer.mBuffer, 0, mDynBuffer.mCapacity - mFirst);  // 拷贝第一段数据到 0 索引位置
 		MArray.Copy(tmp, 0, mDynBuffer.mBuffer, mDynBuffer.mCapacity - mFirst, mLast);      // 拷贝第二段数据到缓冲区
 
-		mFirst = 0;
-		mLast = self.getSize();
+		self.mFirst = 0;
+		self.mLast = [self getSize];
 	}
 }
 
 /**
  * @brief 更改存储内容空间大小
  */
-protected (void) setCapacity((int) newCapacity)
+- (void) setCapacity:(int) newCapacity
 {
 	if (newCapacity == capacity())
 	{
@@ -140,7 +146,7 @@ protected (void) setCapacity((int) newCapacity)
 /**
  *@brief 能否添加 num 长度的数据
  */
-protected boolean canAddData((int) num)
+- bool canAddData:(int) num
 {
 	if (mDynBuffer.mCapacity - mDynBuffer.mSize > num) // 浪费一个字节，不用 >= ，使用 >
 	{
@@ -153,7 +159,7 @@ protected boolean canAddData((int) num)
 /**
  *@brief 向存储空尾部添加一段内容
  */
-public (void) pushBackArr(byte[] items, (int) start, (int) len)
+- (void) pushBackArr:char[] items start:(int) start len:(int) len
 {
 	if (!canAddData(len)) // 存储空间必须要比实际数据至少多 1
 	{
@@ -184,7 +190,7 @@ public (void) pushBackArr(byte[] items, (int) start, (int) len)
 	mDynBuffer.mSize += len;
 }
 
-public (void) pushBackBA(ByteBuffer bu)
+- (void) pushBackBA:ByteBuffer* bu
 {
 	//pushBack(bu.dynBuff.buffer, bu.position, bu.bytesAvailable);
 	pushBackArr(bu.getDynBuffer().getBuffer(), 0, bu.getLength());
@@ -193,7 +199,7 @@ public (void) pushBackBA(ByteBuffer bu)
 /**
  *@brief 向存储空头部添加一段内容
  */
-protected (void) pushFrontArr(byte[] items)
+- (void) pushFrontArr:(char[]) items
 {
 	if (!canAddData(((int))items.length)) // 存储空间必须要比实际数据至少多 1
 	{
@@ -232,14 +238,14 @@ protected (void) pushFrontArr(byte[] items)
 /**
  * @brief 从 CB 中读取内容，并且将数据删除
  */
-public (void) popFrontBA(ByteBuffer bytearray, (int) len)
+- (void) popFrontBA:(ByteBuffer*) bytearray len:(int) len
 {
 	frontBA(bytearray, len);
 	popFrontLen(len);
 }
 
 // 仅仅是获取数据，并不删除
-public (void) frontBA(ByteBuffer bytearray, (int) len)
+- (void) frontBA:(ByteBuffer*) bytearray len:(int) len
 {
 	bytearray.clear();          // 设置数据为初始值
 	if (mDynBuffer.mSize >= len)          // 头部占据 4 个字节
@@ -265,7 +271,7 @@ public (void) frontBA(ByteBuffer bytearray, (int) len)
 /**
  * @brief 从 CB 头部删除数据
  */
-public (void) popFrontLen((int) len)
+- (void) popFrontLen:(int) len
 {
 	if (isLinearized())  // 在一段连续的内存
 	{
@@ -284,7 +290,7 @@ public (void) popFrontLen((int) len)
 }
 
 // 向自己尾部添加一个 CircularBuffer
-public (void) pushBackCB(CircularBuffer rhv)
+- (void) pushBackCB:(CircularBuffer*) rhv
 {
 	if(mDynBuffer.mCapacity - mDynBuffer.mSize < rhv.getSize())
 	{

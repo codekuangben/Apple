@@ -4,21 +4,21 @@
 
 @implementation ByteBuffer
 
-- (id)init
+- (id) init
 {
     [self init:BufferCV.INIT_CAPACITY maxCapacity:BufferCV.MAX_CAPACITY endian:EEndian.eLITTLE_ENDIAN]
     
     return self;
 }
 
-- (id)init:((int))initCapacity
+- (id) init:(int) initCapacity
 {
     [self init:initCapacity maxCapacity:BufferCV.MAX_CAPACITY endian:EEndian.eLITTLE_ENDIAN]
     
     return self;
 }
 
-- (id)init:((int))initCapacity maxCapacity:((int))maxCapacity
+- (id) init:(int) initCapacity maxCapacity:(int) maxCapacity
 {
     [self init:initCapacity maxCapacity endian:EEndian.eLITTLE_ENDIAN]
     
