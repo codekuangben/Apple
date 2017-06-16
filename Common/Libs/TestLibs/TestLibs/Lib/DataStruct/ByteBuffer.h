@@ -9,17 +9,17 @@
 /**
  *@brief ByteBuffer 功能
  */
-public class ByteBuffer : IDispatchObject
+@interface ByteBuffer : IDispatchObject
 {
     // 读写临时缓存，这个如果是单线程其实可以共享的
-    @public
+@public
     char[] mWriteFloatBytes;
     char[] mWriteDoubleBytes;
 
     char[] mReadFloatBytes;
     char[] mReadDoubleBytes;
 
-    @protected
+@protected
     DynByteBuffer* mDynBuffer;
     int mPos;          // 当前可以读取的位置索引
     EEndian mEndian;          // 大端小端

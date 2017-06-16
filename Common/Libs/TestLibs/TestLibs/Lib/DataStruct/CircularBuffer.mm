@@ -18,7 +18,7 @@
 
 - (id) init:(int)initCapacity maxCapacity:(int)maxCapacity
 {
-	self.mDynBuffer = new DynByteBuffer(initCapacity, maxCapacity);
+	self.mDynBuffer = [[DynByteBuffer alloc] init:initCapacity maxCapacity:maxCapacity];
 
 	self.mFirst = 0;
 	self.mLast = 0;
@@ -26,6 +26,11 @@
 	self.mTmpBA = [[ByteBuffer alloc] init];
 	
 	return self;
+}
+
+-(void)dealloc
+{
+    //[super dealloc];	// 注意启用了ARC，此处不需要调用
 }
 
 - (int) getFirst
@@ -159,7 +164,7 @@
 /**
  *@brief 向存储空尾部添加一段内容
  */
-- (void) pushBackArr:char[] items start:(int) start len:(int) len
+- (void) pushBackArr:(char[]) items start:(int) start len:(int) len
 {
 	if (!canAddData(len)) // 存储空间必须要比实际数据至少多 1
 	{
