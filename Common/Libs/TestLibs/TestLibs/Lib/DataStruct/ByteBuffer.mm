@@ -25,7 +25,7 @@
     return self;
 }
 
-- (id)init:((int))initCapacity maxCapacity:((int))maxCapacity endian:(EEndian)endian
+- (id)init:(int)initCapacity maxCapacity:(int)maxCapacity endian:(EEndian)endian
 {
     self.mEndian = endian;        // 缓冲区默认是小端的数据，因为服务器是 linux 的
 	self.mDynBuffer = [[DynByteBuffer alloc] init:initCapacity maxCapacity:maxCapacity];
@@ -56,7 +56,7 @@
 	return self.mDynBuffer;
 }
 
-- ((int))getBytesAvailable
+- (int)getBytesAvailable
 {
 	return (self.mDynBuffer->getSize() - self.mPos);
 }
@@ -66,42 +66,42 @@
 	return self.mEndian;
 }
 
-- ((void))setEndian:(EEndian)end
+- (void)setEndian:(EEndian)end
 {
 	self.mEndian = end;
 }
 
-- ((int))getLength
+- (int)getLength
 {
 	return self.mDynBuffer.getSize();
 }
 
-- ((void))setLength:((int))value
+- (void)setLength:(int)value
 {
 	self.mDynBuffer->setSize(value);
 }
 
-- ((void))setPos:((int)) pos
+- (void)setPos:(int) pos
 {
 	self.mPos = pos;
 }
 
-- ((int))getPos
+- (int)getPos
 {
 	return self.mPos;
 }
 
-- ((int))getPosition
+- (int)getPosition
 {
 	return self.mPos;
 }
 
-- ((void))setPosition:((int)) value
+- (void)setPosition:(int) value
 {
 	self.mPos = value;
 }
 
-- ((void))clear
+- (void)clear
 {
 	self.mPos = 0;
 	self.mDynBuffer.setSize(0);
@@ -119,7 +119,7 @@
 }
 
 // 读取检查
-- (bool) canRead:(int) delta)
+- (bool) canRead:(int) delta
 {
 	if (self.mPos + delta > self.mDynBuffer.getSize())
 	{
@@ -129,7 +129,7 @@
 	return true;
 }
 
-- (void) extendDeltaCapicity:(int) delta)
+- (void) extendDeltaCapicity:(int) delta
 {
 	self.mDynBuffer.extendDeltaCapicity(delta);
 }
@@ -152,14 +152,14 @@
 
 - (void) decPosDelta:(int) delta     // 减少 pos delta 数量
 {
-	self.mPos -= ((int))delta;
+	self.mPos -= (int)delta;
 }
 
 - (ByteBuffer*) readInt8:(char) tmpByte
 {
 	if (canRead(Character.SIZE))
 	{
-		tmpByte = (char)mDynBuffer.getBuffer()[((int))mPos];
+		tmpByte = (char)mDynBuffer.getBuffer()[(int)mPos];
 		advPos(Character.SIZE);
 	}
 
@@ -170,7 +170,7 @@
 {
 	if (canRead(Byte.SIZE))
 	{
-		tmpByte = mDynBuffer.getBuffer()[((int))mPos];
+		tmpByte = mDynBuffer.getBuffer()[(int)mPos];
 		advPos(Byte.SIZE);
 	}
 
@@ -181,7 +181,7 @@
 {
 	if (canRead(Short.SIZE))
 	{
-		tmpShort = MBitConverter.ToInt16(mDynBuffer.getBuffer(), ((int))mPos, mEndian);
+		tmpShort = MBitConverter.ToInt16(mDynBuffer.getBuffer(), (int)mPos, mEndian);
 
 		advPos(Short.SIZE);
 	}
@@ -189,11 +189,11 @@
 	return this;
 }
 
-- (ByteBuffer*) readUnsignedInt16(short tmpUshort)
+- (ByteBuffer*) readUnsignedInt16:(short) tmpUshort
 {
 	if (canRead(Short.SIZE))
 	{
-		tmpUshort = MBitConverter.ToUInt16(mDynBuffer.getBuffer(), ((int))mPos, mEndian);
+		tmpUshort = MBitConverter.ToUInt16(mDynBuffer.getBuffer(), (int)mPos, mEndian);
 
 		advPos(Short.SIZE);
 	}
@@ -201,11 +201,11 @@
 	return this;
 }
 
-- (ByteBuffer*) readInt32((int) tmpInt)
+- (ByteBuffer*) readInt32:(int) tmpInt
 {
 	if (canRead(Integer.SIZE))
 	{
-		tmpInt = MBitConverter.ToInt32(mDynBuffer.getBuffer(), ((int))mPos, mEndian);
+		tmpInt = MBitConverter.ToInt32(mDynBuffer.getBuffer(), (int)mPos, mEndian);
 
 		advPos(Integer.SIZE);
 	}
@@ -213,12 +213,12 @@
 	return this;
 }
 
-- (ByteBuffer*) readUnsignedInt32((int) tmpUint)
+- (ByteBuffer*) readUnsignedInt32:(int) tmpUint
 {
 	if (canRead(Integer.SIZE))
 	{
 		// 如果字节序和本地字节序不同，需要转换
-		tmpUint = MBitConverter.ToUInt32(mDynBuffer.getBuffer(), ((int))mPos, mEndian);
+		tmpUint = MBitConverter.ToUInt32(mDynBuffer.getBuffer(), (int)mPos, mEndian);
 
 		advPos(Integer.SIZE);
 	}
@@ -226,11 +226,11 @@
 	return this;
 }
 
-- (ByteBuffer*) readInt64(long tmpLong)
+- (ByteBuffer*) readInt64:(long) tmpLong
 {
 	if (canRead(Long.SIZE))
 	{
-		tmpLong = MBitConverter.ToInt64(mDynBuffer.getBuffer(), ((int))mPos, mEndian);
+		tmpLong = MBitConverter.ToInt64(mDynBuffer.getBuffer(), (int)mPos, mEndian);
 
 		advPos(Long.SIZE);
 	}
@@ -238,11 +238,11 @@
 	return this;
 }
 
-- (ByteBuffer*) readUnsignedInt64(long tmpUlong)
+- (ByteBuffer*) readUnsignedInt64:(long) tmpUlong
 {
 	if (canRead(Long.SIZE))
 	{
-		tmpUlong = MBitConverter.ToUInt64(mDynBuffer.getBuffer(), ((int))mPos, mEndian);
+		tmpUlong = MBitConverter.ToUInt64(mDynBuffer.getBuffer(), (int)mPos, mEndian);
 
 		advPos(Long.SIZE);
 	}
@@ -250,19 +250,19 @@
 	return this;
 }
 
-- (ByteBuffer*) readFloat(float tmpFloat)
+- (ByteBuffer*) readFloat:(float) tmpFloat
 {
 	if (canRead(Float.SIZE))
 	{
 		if (mEndian != SystemEndian.msLocalEndian)
 		{
-			MArray.Copy(mDynBuffer.getBuffer(), ((int))mPos, mReadFloatBytes, 0, Float.SIZE);
+			MArray.Copy(mDynBuffer.getBuffer(), (int)mPos, mReadFloatBytes, 0, Float.SIZE);
 			MArray.Reverse(mReadFloatBytes, 0, Float.SIZE);
-			tmpFloat = MBitConverter.ToFloat(mReadFloatBytes, ((int))mPos);
+			tmpFloat = MBitConverter.ToFloat(mReadFloatBytes, (int)mPos);
 		}
 		else
 		{
-			tmpFloat = MBitConverter.ToFloat(mDynBuffer.getBuffer(), ((int))mPos);
+			tmpFloat = MBitConverter.ToFloat(mDynBuffer.getBuffer(), (int)mPos);
 		}
 
 		advPos(Float.SIZE);
@@ -271,19 +271,19 @@
 	return this;
 }
 
-- (ByteBuffer*) readDouble(double tmpDouble)
+- (ByteBuffer*) readDouble:(double) tmpDouble
 {
 	if (canRead(Double.SIZE))
 	{
 		if (mEndian != SystemEndian.msLocalEndian)
 		{
-			MArray.Copy(mDynBuffer.getBuffer(), ((int))mPos, mReadDoubleBytes, 0, Double.SIZE);
+			MArray.Copy(mDynBuffer.getBuffer(), (int)mPos, mReadDoubleBytes, 0, Double.SIZE);
 			MArray.Reverse(mReadDoubleBytes, 0, Double.SIZE);
-			tmpDouble = MBitConverter.ToDouble(mReadDoubleBytes, ((int))mPos);
+			tmpDouble = MBitConverter.ToDouble(mReadDoubleBytes, (int)mPos);
 		}
 		else
 		{
-			tmpDouble = MBitConverter.ToDouble(mDynBuffer.getBuffer(), ((int))mPos);
+			tmpDouble = MBitConverter.ToDouble(mDynBuffer.getBuffer(), (int)mPos);
 		}
 
 		advPos(Double.SIZE);
@@ -292,14 +292,14 @@
 	return this;
 }
 
-- (ByteBuffer*) readMultiByte(String tmpStr, (int) len, GkEncode gkCharSet)
+- (ByteBuffer*) readMultiByte:(String)tmpStr len:(int)len gkCharSet:(GkEncode)gkCharSet
 {
 	MEncoding charSet = UtilApi.convGkEncode2EncodingEncoding(gkCharSet);
 
 	// 如果是 unicode ，需要大小端判断
 	if (canRead(len))
 	{
-		tmpStr = charSet.GetString(mDynBuffer.getBuffer(), ((int))mPos, ((int))len);
+		tmpStr = charSet.GetString(mDynBuffer.getBuffer(), (int)mPos, (int)len);
 		advPos(len);
 	}
 
@@ -307,11 +307,11 @@
 }
 
 // 这个是字节读取，没有大小端的区别
-- (ByteBuffer*) readBytes(byte[] tmpBytes, (int) len)
+- (ByteBuffer*) readBytes:(char[])tmpBytes, len:(int)len
 {
 	if (canRead(len))
 	{
-		MArray.Copy(mDynBuffer.getBuffer(), ((int))mPos, tmpBytes, 0, ((int))len);
+		MArray.Copy(mDynBuffer.getBuffer(), (int)mPos, tmpBytes, 0, (int)len);
 		advPos(len);
 	}
 
@@ -319,7 +319,7 @@
 }
 
 // 如果要使用 writeInt8 ，直接使用 writeMultiByte 这个函数
-- (void) writeInt8(char value)
+- (void) writeInt8:(char)value
 {
 	if (!canWrite(Byte.SIZE))
 	{
@@ -329,7 +329,7 @@
 	advPosAndLen(Byte.SIZE);
 }
 
-- (void) writeUnsignedInt8(byte value)
+- (void) writeUnsignedInt8:(byte) value
 {
 	if (!canWrite(Byte.SIZE))
 	{
@@ -339,55 +339,55 @@
 	advPosAndLen(Byte.SIZE);
 }
 
-- (void) writeInt16 (short value)
+- (void) writeInt16:(short) value
 {
 	if (!canWrite(Short.SIZE))
 	{
 		extendDeltaCapicity(Short.SIZE);
 	}
 
-	MBitConverter.GetBytes(value, mDynBuffer.getBuffer(), ((int))mPos, mEndian);
+	MBitConverter.GetBytes(value, mDynBuffer.getBuffer(), (int)mPos, mEndian);
 
 	advPosAndLen(Short.SIZE);
 }
 
-- (void) writeUnsignedInt16(short value)
+- (void) writeUnsignedInt16:(short) value
 {
 	if (!canWrite(Short.SIZE))
 	{
 		extendDeltaCapicity(Short.SIZE);
 	}
 
-	MBitConverter.GetBytes(value, mDynBuffer.getBuffer(), ((int))mPos, mEndian);
+	MBitConverter.GetBytes(value, mDynBuffer.getBuffer(), (int)mPos, mEndian);
 
 	advPosAndLen(Short.SIZE);
 }
 
-- (void) writeInt32((int) value)
+- (void) writeInt32:(int) value
 {
 	if (!canWrite(Integer.SIZE))
 	{
 		extendDeltaCapicity(Integer.SIZE);
 	}
 
-	MBitConverter.GetBytes(value, mDynBuffer.getBuffer(), ((int))mPos, mEndian);
+	MBitConverter.GetBytes(value, mDynBuffer.getBuffer(), (int)mPos, mEndian);
 
 	advPosAndLen(Integer.SIZE);
 }
 
-- (void) writeUnsignedInt32 ((int) value)
+- (void) writeUnsignedInt32:(int) value
 {
 	self.writeUnsignedInt32(value, true);
 }
 
-- (void) writeUnsignedInt32 ((int) value, boolean bchangeLen)
+- (void) writeUnsignedInt32:(int) value bchangeLen:(bool) bchangeLen
 {
 	if (!canWrite(Integer.SIZE))
 	{
 		extendDeltaCapicity(Integer.SIZE);
 	}
 
-	MBitConverter.GetBytes(value, mDynBuffer.getBuffer(), ((int))mPos, mEndian);
+	MBitConverter.GetBytes(value, mDynBuffer.getBuffer(), (int)mPos, mEndian);
 
 	if (bchangeLen)
 	{
@@ -399,31 +399,31 @@
 	}
 }
 
-- (void) writeInt64(long value)
+- (void) writeInt64:(long) value
 {
 	if (!canWrite(Long.SIZE))
 	{
 		extendDeltaCapicity(Long.SIZE);
 	}
 
-	MBitConverter.GetBytes(value, mDynBuffer.getBuffer(), ((int))mPos, mEndian);
+	MBitConverter.GetBytes(value, mDynBuffer.getBuffer(), (int)mPos, mEndian);
 
 	advPosAndLen(Long.SIZE);
 }
 
-- (void) writeUnsignedInt64(long value)
+- (void) writeUnsignedInt64:(long) value
 {
 	if (!canWrite(Long.SIZE))
 	{
 		extendDeltaCapicity(Long.SIZE);
 	}
 
-	MBitConverter.GetBytes(value, mDynBuffer.getBuffer(), ((int))mPos, mEndian);
+	MBitConverter.GetBytes(value, mDynBuffer.getBuffer(), (int)mPos, mEndian);
 
 	advPosAndLen(Long.SIZE);
 }
 
-- (void) writeFloat(float value)
+- (void) writeFloat:(float) value
 {
 	if (!canWrite(Float.SIZE))
 	{
@@ -440,7 +440,7 @@
 	advPosAndLen(Float.SIZE);
 }
 
-- (void) writeDouble(double value)
+- (void) writeDouble:(double) value
 {
 	if (!canWrite(Double.SIZE))
 	{
@@ -457,13 +457,13 @@
 	advPosAndLen(Double.SIZE);
 }
 
-- (void) writeBytes(byte[] value, (int) start, (int) len)
+- (void) writeBytes:(char[]) value start:(int) start len:(int) len
 {
 	self.writeBytes(value, start, len, true);
 }
 
 // 写入字节， bchangeLen 是否改变长度
-- (void) writeBytes(byte[] value, (int) start, (int) len, boolean bchangeLen)
+- (void) writeBytes:(char[]) value start:(int) start len:(int) len bchangeLen:(bool) bchangeLen
 {
 	if (len > 0)            // 如果有长度才写入
 	{
@@ -484,7 +484,7 @@
 }
 
 // 写入字符串
-- (void) writeMultiByte(String value, GkEncode gkCharSet, (int) len)
+- (void) writeMultiByte:(String) value, gkCharSet:(GkEncode) gkCharSet len:(int) len
 {
 	MEncoding charSet = UtilApi.convGkEncode2EncodingEncoding(gkCharSet);
 	(int) num = 0;
@@ -499,22 +499,22 @@
 			len = num;
 		}
 
-		if (!canWrite(((int))len))
+		if (!canWrite((int)len))
 		{
-			extendDeltaCapicity(((int))len);
+			extendDeltaCapicity((int)len);
 		}
 
 		if (num < len)
 		{
 			MArray.Copy(charSet.GetBytes(value), 0, mDynBuffer.getBuffer(), mPos, num);
 			// 后面补齐 0
-			MArray.Clear(mDynBuffer.getBuffer(), ((int))(mPos + num), len - num);
+			MArray.Clear(mDynBuffer.getBuffer(), (int)(mPos + num), len - num);
 		}
 		else
 		{
 			MArray.Copy(charSet.GetBytes(value), 0, mDynBuffer.getBuffer(), mPos, len);
 		}
-		advPosAndLen(((int))len);
+		advPosAndLen((int)len);
 	}
 	else
 	{
@@ -527,23 +527,23 @@
 	}
 }
 
-- (void) replace(byte[] srcBytes, (int) srcStartPos)
+- (void) replace:(char[]) srcBytes srcStartPos:(int) srcStartPos
 {
 	self.replace(srcBytes, srcStartPos, 0, 0, 0);
 }
 
-- (void) replace(byte[] srcBytes, (int) srcStartPos, (int) srclen_)
+- (void) replace:(char[]) srcBytes srcStartPos:(int) srcStartPos srclen_:(int) srclen_
 {
 	self.replace(srcBytes, srcStartPos, srclen_, 0, 0);
 }
 
-- (void) replace(byte[] srcBytes, (int) srcStartPos, (int) srclen_, (int) destStartPos)
+- (void) replace:(char[]) srcBytes srcStartPos:(int) srcStartPos srclen_:(int) srclen_ destStartPos:(int) destStartPos
 {
 	self.replace(srcBytes, srcStartPos, srclen_, destStartPos, 0);
 }
 
 // 替换已经有的一段数据
-- (void) replace(byte[] srcBytes, (int) srcStartPos, (int) srclen_, (int) destStartPos, (int) destlen_)
+- (void) replace:(char[]) srcBytes srcStartPos:(int) srcStartPos srclen_:(int) srclen_ destStartPos:(int) destStartPos, destlen_:(int) destlen_)
 {
 	(int) lastLeft = self.getLength() - destStartPos - destlen_;        // 最后一段的长度
 	self.setLength(destStartPos + srclen_ + lastLeft);      // 设置大小，保证足够大小空间
@@ -558,13 +558,13 @@
 	writeBytes(srcBytes, srcStartPos, srclen_, false);
 }
 
-- (void) insertUnsignedInt32((int) value)
+- (void) insertUnsignedInt32:(int) value
 {
 	self.setLength(self.getLength() + Integer.SIZE);       // 扩大长度
 	writeUnsignedInt32(value);     // 写入
 }
 
-- ByteBuffer readUnsignedLongByOffset(long tmpUlong, (int) offset)
+- ByteBuffer* readUnsignedLongByOffset:(long) tmpUlong offset:(int) offset
 {
 	self.setPosition(offset);
 	readUnsignedInt64(tmpUlong);
@@ -572,12 +572,12 @@
 }
 
 // 写入 EOF 结束符
-- (void) end()
+- (void) end
 {
 	mDynBuffer.getBuffer()[self.getLength()] = 0;
 }
 
-- ByteBuffer readBoolean(boolean tmpBool)
+- ByteBuffer* readBoolean:(bool) tmpBool
 {
 	if (canRead(Byte.SIZE))
 	{
