@@ -1,15 +1,20 @@
-﻿package SDK.Lib.FrameHandle;
+﻿#include "TickMgr.h"
 
-public class FixedTickMgr extends TickMgr
+@implementation FixedTickMgr
+
+- (id) init()
 {
-    public FixedTickMgr()
+    if(self = [super init])
     {
-
+        
     }
-
-    @Override
-    protected (void) onExecAdvance(float delta)
-    {
-        super.onExecAdvance(delta);
-    }
+    
+    return self;
 }
+
+- (void) onExecAdvance:(float) delta
+{
+    [super onExecAdvance:delta];
+}
+
+@end

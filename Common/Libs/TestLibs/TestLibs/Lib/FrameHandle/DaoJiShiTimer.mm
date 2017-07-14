@@ -1,68 +1,71 @@
-﻿package SDK.Lib.FrameHandle;
+#include "TimerItemBase.h"
 
-/**
- * @brief 倒计时定时器
- */
-public class DaoJiShiTimer extends TimerItemBase
+@implementation DelayHandleMgrBase
+
+- ((void)) init
 {
-    @Override
-    public (void) setTotalTime(float value)
+    if(self = [super init])
     {
-        super.setTotalTime(value);
-        self.mCurRunTime = value;
+        
+    }
+    
+    return self;
+}
+
+- (void) setTotalTime: (float) value
+{
+    [super setTotalTime: value];
+    self.mCurRunTime = value;
+}
+
+- (float) getRunTime
+{
+    return self.mTotalTime - self.mCurRunTime;
+}
+
+// 如果要获取剩余的倒计时时间，使用 getLeftCallTime
+- (float) getLeftRunTime
+{
+    return self.mCurRunTime;
+}
+
+- (void) OnTimer:(float) delta
+{
+    if (self.mDisposed)
+    {
+        return;
     }
 
-    @Override
-    public float getRunTime()
+    self.mCurRunTime -= delta;
+    if(self.mCurRunTime < 0)
     {
-        return self.mTotalTime - self.mCurRunTime;
+        self.mCurRunTime = 0;
     }
+    self.mIntervalLeftTime += delta;
 
-    // 如果要获取剩余的倒计时时间，使用 getLeftCallTime
-    @Override
-    public float getLeftRunTime()
+    if (self.mIsInfineLoop)
     {
-        return self.mCurRunTime;
+        [self checkAndDisp];
     }
-
-    @Override
-    public (void) OnTimer(float delta)
+    else
     {
-        if (self.mDisposed)
+        if (self.mCurRunTime <= 0)
         {
-            return;
-        }
-
-        self.mCurRunTime -= delta;
-        if(self.mCurRunTime < 0)
-        {
-            self.mCurRunTime = 0;
-        }
-        self.mIntervalLeftTime += delta;
-
-        if (self.mIsInfineLoop)
-        {
-            checkAndDisp();
+            [self disposeAndDisp];
         }
         else
         {
-            if (self.mCurRunTime <= 0)
-            {
-                disposeAndDisp();
-            }
-            else
-            {
-                checkAndDisp();
-            }
+            [self checkAndDisp];
         }
     }
-
-    @Override
-    public (void) reset()
-    {
-        self.mCurRunTime = self.mTotalTime;
-        self.mCurCallTime = 0;
-        self.mIntervalLeftTime = 0;
-        self.mDisposed = false;
-    }
 }
+
+- (void) reset
+{
+    self.mCurRunTime = self.mTotalTime;
+    self.mCurCallTime = 0;
+    self.mIntervalLeftTime = 0;
+    self.mDisposed = false;
+}
+
+@end
