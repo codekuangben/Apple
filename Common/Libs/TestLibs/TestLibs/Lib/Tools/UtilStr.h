@@ -1,9 +1,16 @@
-package SDK.Lib.Tools;
+#ifndef __UtilStr_h
+#define __UtilStr_h
 
 /**
  * @brief 对 api 的进一步 wrap
  */
-public class UtilStr
+@interface UtilStr
 {
 
 }
+
++ (bool) isEqualToString:(NSString*)strA strB:(NSString*)strB;
+
+@end
+
+#endif

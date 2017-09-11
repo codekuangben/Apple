@@ -1,8 +1,12 @@
-﻿package SDK.Lib.Tools;
+﻿#ifndef __SystemEndian_h
+#define __SystemEndian_h
 
-public class SystemEndian
+@interface SystemEndian
 {
-    static public EEndian msLocalEndian = EEndian.eLITTLE_ENDIAN;   // 本地字节序
-    static public EEndian msNetEndian = EEndian.eBIG_ENDIAN;        // 网络字节序
-    static public EEndian msServerEndian = SystemEndian.msNetEndian;// 服务器字节序，规定服务器字节序就是网络字节序
+@public
+    static EEndian msLocalEndian = EEndian.eLITTLE_ENDIAN;   // 本地字节序
+    static EEndian msNetEndian = EEndian.eBIG_ENDIAN;        // 网络字节序
+    static EEndian msServerEndian = SystemEndian.msNetEndian;// 服务器字节序，规定服务器字节序就是网络字节序
 }
+
+#endif

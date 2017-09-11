@@ -1,4 +1,4 @@
-﻿@import "UniqueNumIdGen.h"
+@import "UniqueNumIdGen.h"
 
 @implementation UniqueNumIdGen
 

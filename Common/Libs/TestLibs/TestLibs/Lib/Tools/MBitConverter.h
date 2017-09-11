@@ -1,4 +1,4 @@
-﻿#ifndef __MBitConverter_h
+#ifndef __MBitConverter_h
 #define __MBitConverter_h
 
 @interface MBitConverter
@@ -169,7 +169,7 @@ endian: (EEndian) endian
         (int) startIndex
                               );
 
-+ (int) ToInt32: (String) value;
++ (int) ToInt32: (NSString) value;
 
 + (int) toUnsigned: (short) value;
 
