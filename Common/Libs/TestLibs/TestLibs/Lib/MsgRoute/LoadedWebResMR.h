@@ -1,19 +1,19 @@
-﻿package SDK.Lib.MsgRoute;
+﻿#ifndef __LoadedWebResMR_h
+#define __LoadedWebResMR_h
 
-import SDK.Lib.Task.ITask;
-
-public class LoadedWebResMR extends MsgRouteBase
+@interface LoadedWebResMR : MsgRouteBase
 {
-    public ITask m_task;
-
-    public LoadedWebResMR()
-    {
-        super(MsgRouteID.eMRIDLoadedWebRes);
-    }
-
-    @Override
-    public (void) resetDefault()
-    {
-        m_task = null;
-    }
+@public
+	ITask mTask;
 }
+
+// 属性区域
+@property() ITask mTask;
+
+// 接口区域
+- (id) init;
+- (void) resetDefault;
+
+@end
+
+#endif

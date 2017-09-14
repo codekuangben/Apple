@@ -1,21 +1,21 @@
-﻿package SDK.Lib.MsgRoute;
+﻿#import "MsgRouteBase.h"
 
-import SDK.Lib.EventHandle.IDispatchObject;
-import SDK.Lib.ObjectPool.IRecycle;
+@implementation MsgRouteBase
 
-public class MsgRouteBase implements IRecycle, IDispatchObject
+- (id) init:(MsgRouteID) msgId
 {
-    public MsgRouteType mMsgType;
-    public MsgRouteID mMsgID;          // 只需要一个 ID 就行了
-
-    public MsgRouteBase(MsgRouteID id)
-    {
-        mMsgType = MsgRouteType.eMRT_BASIC;
-        mMsgID = id;
-    }
-
-    public (void) resetDefault()
-    {
-
-    }
+	if(self = [super init])
+	{
+		self.mMsgType = MsgRouteType.eMRT_BASIC;
+		self.mMsgID = msgId;
+	}
+	
+	return self;
 }
+
+- (void) resetDefault
+{
+
+}
+
+@end

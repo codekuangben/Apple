@@ -1,19 +1,20 @@
-﻿package SDK.Lib.MsgRoute;
+﻿#import "LoadedWebResMR.h"
 
-import SDK.Lib.Task.ITask;
+@implementation LoadedWebResMR
 
-public class LoadedWebResMR extends MsgRouteBase
+- (id) init
 {
-    public ITask m_task;
-
-    public LoadedWebResMR()
-    {
-        super(MsgRouteID.eMRIDLoadedWebRes);
-    }
-
-    @Override
-    public (void) resetDefault()
-    {
-        m_task = null;
-    }
+	if(self == [super init])
+	{
+		
+	}
+	
+	return self;
 }
+
+- (void) resetDefault
+{
+	self.mTask = NULL;
+}
+
+@end

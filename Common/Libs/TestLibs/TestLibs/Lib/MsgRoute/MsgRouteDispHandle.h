@@ -1,39 +1,19 @@
-﻿package SDK.Lib.MsgRoute;
+﻿#ifndef __MsgRouteDispHandle_h
+#define __MsgRouteDispHandle_h
 
-import SDK.Lib.EventHandle.EventDispatchGroup;
-import SDK.Lib.EventHandle.IDispatchObject;
-import SDK.Lib.FrameWork.Ctx;
-
-public class MsgRouteDispHandle
+@interface MsgRouteDispHandle
 {
-    protected EventDispatchGroup mEventDispatchGroup;
-
-    public MsgRouteDispHandle()
-    {
-        self.mEventDispatchGroup = new EventDispatchGroup();
-    }
-
-    public (void) addRouteHandle((int) evtId, MsgRouteHandleBase pThis, IDispatchObject handle)
-    {
-        self.mEventDispatchGroup.addEventHandle(evtId, pThis, handle);
-    }
-
-    public (void) removeRouteHandle((int) evtId, MsgRouteHandleBase pThis, IDispatchObject handle)
-    {
-        self.mEventDispatchGroup.removeEventHandle(evtId, pThis, handle);
-    }
-
-    public (void) handleMsg(MsgRouteBase msg)
-    {
-        String textStr = "";
-
-        if(self.mEventDispatchGroup.hasEventHandle(msg.mMsgType.ordinal()))
-        {
-            self.mEventDispatchGroup.dispatchEvent(msg.mMsgType.ordinal(), msg);
-        }
-        else
-        {
-
-        }
-    }
+@protected
+	EventDispatchGroup mEventDispatchGroup;
 }
+
+@property() EventDispatchGroup mEventDispatchGroup;
+
+-(id) init;
+- (void) addRouteHandle:(int) evtId pThis:(MsgRouteHandleBase) pThis handle:(IDispatchObject) handle;
+- (void) removeRouteHandle:(int) evtId pThis:(MsgRouteHandleBase) pThis handle:(IDispatchObject) handle;
+- (void) handleMsg:(MsgRouteBase) msg;
+
+@end
+
+#endif
