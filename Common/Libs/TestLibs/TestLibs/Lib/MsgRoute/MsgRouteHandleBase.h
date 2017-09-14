@@ -1,56 +1,20 @@
-﻿package SDK.Lib.MsgRoute;
+﻿#ifndef __MsgRouteHandleBase_h
+#define __MsgRouteHandleBase_h
 
-import SDK.Lib.Core.GObject;
-import SDK.Lib.DataStruct.MDictionary;
-import SDK.Lib.EventHandle.AddOnceEventDispatch;
-import SDK.Lib.EventHandle.ICalleeObject;
-import SDK.Lib.EventHandle.IDispatchObject;
-
-public class MsgRouteHandleBase extends GObject implements ICalleeObject
+@interface MsgRouteHandleBase : GObject, ICalleeObject
 {
-    public MDictionary<Integer, AddOnceEventDispatch> mId2HandleDic;
-
-    public MsgRouteHandleBase()
-    {
-        self.mTypeId = "MsgRouteHandleBase";
-
-        self.mId2HandleDic = new MDictionary<Integer, AddOnceEventDispatch>();
-    }
-
-    public (void) addMsgRouteHandle(MsgRouteID msgRouteID, IDispatchObject handle)
-    {
-        if(!self.mId2HandleDic.ContainsKey(msgRouteID.ordinal()))
-        {
-            self.mId2HandleDic.set(msgRouteID.ordinal(), new AddOnceEventDispatch());
-        }
-
-        self.mId2HandleDic.get(msgRouteID.ordinal()).addEventHandle(null, handle);
-    }
-
-    public (void) removeMsgRouteHandle(MsgRouteID msgRouteID, IDispatchObject handle)
-    {
-        if (self.mId2HandleDic.ContainsKey(msgRouteID.ordinal()))
-        {
-            self.mId2HandleDic.get(msgRouteID.ordinal()).removeEventHandle(null, handle);
-        }
-    }
-
-    public (void) handleMsg(IDispatchObject dispObj)
-    {
-        MsgRouteBase msg = (MsgRouteBase)dispObj;
-
-        if (self.mId2HandleDic.ContainsKey(msg.mMsgID.ordinal()))
-        {
-            self.mId2HandleDic.get(msg.mMsgID.ordinal()).dispatchEvent(msg);
-        }
-        else
-        {
-
-        }
-    }
-
-    public (void) call(IDispatchObject dispObj)
-    {
-
-    }
+@public 
+	MDictionary mId2HandleDic;
 }
+
+@property() MDictionary mId2HandleDic;
+
+-(id) init;
+- (void) addMsgRouteHandle:(MsgRouteID) msgRouteID handle:(IDispatchObject) handle;
+- (void) removeMsgRouteHandle:(MsgRouteID) msgRouteID, handle:(IDispatchObject) handle;
+- (void) handleMsg:(IDispatchObject) dispObj;
+- (void) call:(IDispatchObject) dispObj;
+
+@end
+
+#endif

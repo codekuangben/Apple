@@ -1,9 +1,12 @@
-﻿package SDK.Lib.MsgRoute;
+﻿#ifndef __MsgRouteID_h
+#define __MsgRouteID_h
 
-public enum MsgRouteID
+enum
 {
     eMRIDSocketOpened,      // socket Opened
     eMRIDSocketClosed,      // socket Closed
     eMRIDLoadedWebRes,      // web 资源加载完成
     eMRIDThreadLog,      // 线程打日志
-}
+} MsgRouteID;
+
+#endif
