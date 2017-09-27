@@ -2,34 +2,34 @@
 
 @implementation DelayHandleMgrBase
 
-- ((void)) init
+-(void) init
 {
     if(self = [super init])
     {
-        
+		
     }
     
     return self;
 }
 
-- (void) setTotalTime: (float) value
+-(void) setTotalTime:(float) value
 {
-    [super setTotalTime: value];
+    [super setTotalTime:value];
     self.mCurRunTime = value;
 }
 
-- (float) getRunTime
+-(float) getRunTime
 {
     return self.mTotalTime - self.mCurRunTime;
 }
 
 // 如果要获取剩余的倒计时时间，使用 getLeftCallTime
-- (float) getLeftRunTime
+-(float) getLeftRunTime
 {
     return self.mCurRunTime;
 }
 
-- (void) OnTimer:(float) delta
+-(void) OnTimer:(float) delta
 {
     if (self.mDisposed)
     {
@@ -60,7 +60,7 @@
     }
 }
 
-- (void) reset
+-(void) reset
 {
     self.mCurRunTime = self.mTotalTime;
     self.mCurCallTime = 0;
