@@ -1,24 +1,17 @@
-﻿package SDK.Lib.MsgRoute;
-
-import SDK.Lib.DataStruct.LockQueue;
+﻿#ifndef __SysMsgRoute_H
+#define __SysMsgRoute_H
 
 /**
  * @brief 系统消息流程，整个系统的消息分发都走这里，仅限单线程
  */
-public class SysMsgRoute extends LockQueue<MsgRouteBase>
+@interface SysMsgRoute : LockQueue<MsgRouteBase>
 {
-    public SysMsgRoute(String name)
-    {
-        super(name);
-    }
-
-    public (void) init()
-    {
-
-    }
-
-    public (void) dispose()
-    {
-
-    }
+    
 }
+
+-(id) init:(String) name;
+-(void) dispose;
+
+@end
+
+#endif

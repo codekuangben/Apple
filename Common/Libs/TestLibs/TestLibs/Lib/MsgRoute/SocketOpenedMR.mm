@@ -1,9 +1,15 @@
-﻿package SDK.Lib.MsgRoute;
+﻿#import "SocketOpenedMR.h"
 
-public class SocketOpenedMR extends MsgRouteBase
+@implementation SocketOpenedMR
+
+-(id) init
 {
-    public SocketOpenedMR()
-    {
-        super(MsgRouteID.eMRIDSocketOpened);
-    }
+	if(self = [super init:MsgRouteID.eMRIDSocketOpened])
+	{
+		
+	}
+	
+	return self;
 }
+
+@end

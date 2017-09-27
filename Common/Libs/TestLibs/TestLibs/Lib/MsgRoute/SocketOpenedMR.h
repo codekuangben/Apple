@@ -1,9 +1,9 @@
-﻿package SDK.Lib.MsgRoute;
+﻿#ifndef __SocketOpenedMR_H
+#define __SocketOpenedMR_H
 
-public class SocketOpenedMR extends MsgRouteBase
+@interface SocketOpenedMR : MsgRouteBase
 {
-    public SocketOpenedMR()
-    {
-        super(MsgRouteID.eMRIDSocketOpened);
-    }
+    
 }
+
+#endif

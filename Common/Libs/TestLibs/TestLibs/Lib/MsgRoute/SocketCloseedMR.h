@@ -1,9 +1,13 @@
-﻿package SDK.Lib.MsgRoute;
+﻿#ifndef __SocketCloseedMR_H
+#define __SocketCloseedMR_H
 
-public class SocketCloseedMR extends MsgRouteBase
+@interface SocketCloseedMR : MsgRouteBase
 {
-    public SocketCloseedMR()
-    {
-        super(MsgRouteID.eMRIDSocketClosed);
-    }
+	
 }
+
+-(id) init;
+
+@end
+
+#endif

@@ -1,9 +1,15 @@
-﻿package SDK.Lib.MsgRoute;
+﻿#import "SocketCloseedMR.h"
 
-public class SocketCloseedMR extends MsgRouteBase
+@implementation SocketCloseedMR
+
+-(id) init
 {
-    public SocketCloseedMR()
-    {
-        super(MsgRouteID.eMRIDSocketClosed);
-    }
+	if(self = [super init:MsgRouteID.eMRIDSocketClosed])
+	{
+		
+	}
+	
+	return self;
 }
+
+@end

@@ -1,7 +1,7 @@
-﻿#ifndef __MsgRouteID_h
-#define __MsgRouteID_h
+﻿#ifndef __MsgRouteID_H
+#define __MsgRouteID_H
 
-enum
+typedef enum
 {
     eMRIDSocketOpened,      // socket Opened
     eMRIDSocketClosed,      // socket Closed

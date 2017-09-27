@@ -1,12 +1,15 @@
-﻿package SDK.Lib.MsgRoute;
+﻿#import "ThreadLogMR.h"
 
-// 线程日志
-public class ThreadLogMR extends MsgRouteBase
+@implementation ThreadLogMR
+
++(id) init
 {
-    public String mLogSys;
+	if(self = [super init:MsgRouteID.eMRIDThreadLog])
+	{
 
-    public ThreadLogMR()
-    {
-        super(MsgRouteID.eMRIDThreadLog);
-    }
+	}
+	
+	return self;
 }
+
+@end
