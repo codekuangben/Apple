@@ -1,21 +1,19 @@
-﻿package SDK.Lib.Log;
+﻿#ifndef __LogDeviceBase_H
+#define __LogDeviceBase_H
 
 /**
  * @brief 日志设备
  */
-public abstract class LogDeviceBase
+@interface LogDeviceBase
 {
-    public (void) initDevice()
-    {
-
-    }
-
-    public (void) closeDevice()
-    {
-
-    }
-
-    abstract public (void) logout(String message);
-
-    abstract public (void) logout(String message, LogColor type);
+    
 }
+
+-(void) initDevice;
+-(void) closeDevice;
+-(void) logout:(String) message;
+-(void) logout:(String) message type:(LogColor) type;
+
+@end
+
+#endif

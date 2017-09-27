@@ -1,6 +1,9 @@
-﻿package SDK.Lib.Log;
+﻿#ifndef __LogTypeId_H
+#define __LogTypeId_H
 
-public enum LogTypeId
+typedef enum
 {
     eLogCommon,         // 通用日志
-}
+}LogTypeId;
+
+#endif

@@ -1,21 +1,25 @@
-﻿package SDK.Lib.Log;
+﻿#import "LogDeviceBase.h"
 
-/**
- * @brief 日志设备
- */
-public abstract class LogDeviceBase
+@implementation LogDeviceBase
+
+-(void) initDevice
 {
-    public (void) initDevice()
-    {
 
-    }
-
-    public (void) closeDevice()
-    {
-
-    }
-
-    abstract public (void) logout(String message);
-
-    abstract public (void) logout(String message, LogColor type);
 }
+
+-(void) closeDevice
+{
+
+}
+
+-(void) logout:(String) message
+{
+	
+}
+
+-(void) logout:(String) message type:(LogColor) type
+{
+	
+}
+
+@end
