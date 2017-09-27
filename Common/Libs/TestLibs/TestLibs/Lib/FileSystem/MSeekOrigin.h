@@ -1,8 +1,11 @@
-package SDK.Lib.FileSystem;
+#ifndef __MSeekOrigin_H
+#define __MSeekOrigin_H
 
-public enum MSeekOrigin
+typedef enum
 {
     Begin,
     Current,
     End
-}
+}MSeekOrigin;
+
+#endif
