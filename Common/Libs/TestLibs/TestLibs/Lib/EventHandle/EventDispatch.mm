@@ -21,7 +21,7 @@ import SDK.Lib.DelayHandle.*;
     return self;
 }
 
-- (id) init:((int))eventId_
+- (id) init:(int)eventId_
 {
     if(self = [super init])
     {
@@ -37,30 +37,30 @@ import SDK.Lib.DelayHandle.*;
 	return self.mHandleList;
 }
 
-public (int) getUniqueId()
+(int) getUniqueId()
 {
 	return self.mUniqueId;
 }
 
-public (void) setUniqueId((int) value)
+(void) setUniqueId:(int) value
 {
 	self.mUniqueId = value;
 	self.mHandleList.setUniqueId(self.mUniqueId);
 }
 
 @Override
-public (void) init()
+(void) init()
 {
 
 }
 
 @Override
-public (void) dispose()
+(void) dispose()
 {
 
 }
 
-public (void) addDispatch(EventDispatchFunctionObject dispatch)
+(void) addDispatch(EventDispatchFunctionObject dispatch)
 {
 	self.addObject(dispatch);
 }
