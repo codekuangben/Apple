@@ -1,6 +1,6 @@
 ﻿package SDK.Lib.FrameWork;
 
-public class MacroDef
+@interface MacroDef
 {
     // 宏定义开始
     // 调试不需要网络

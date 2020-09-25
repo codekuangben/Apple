@@ -8,7 +8,7 @@ import SDK.Lib.DelayHandle.DelayHandleMgrBase;
 import SDK.Lib.DelayHandle.IDelayHandleItem;
 import SDK.Lib.Tools.UtilApi;
 
-public class FrameTimerMgr extends DelayHandleMgrBase
+@interface FrameTimerMgr : DelayHandleMgrBase
 {
     protected MList<FrameTimerItem> mTimerList;     // 当前所有的定时器列表
 

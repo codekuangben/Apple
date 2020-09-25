@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @brief 对系统 List 的封装
  */
-public class MList<T>
+@interface MList<T>
 {
     //public delegate (int) CompareFunc(T left, T right);
 

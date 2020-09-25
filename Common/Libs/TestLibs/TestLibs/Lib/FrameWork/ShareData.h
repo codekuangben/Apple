@@ -5,7 +5,7 @@ import SDK.Lib.DataStruct.ByteBuffer;
 /**
  * @brief 共享内容，主要是数据
  */
-public class ShareData
+@interface ShareData
 {
     public String mTmpStr = "";
     //public string m_retLangStr = "";     // 返回的语言描述，多线程访问会有问题，因此不用了

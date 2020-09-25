@@ -3,7 +3,7 @@
 import SDK.Lib.FrameWork.MacroDef;
 import SDK.Lib.Tools.EEndian;
 
-public class MsgBuffer
+@interface MsgBuffer
 {
     protected CircularBuffer mCircularBuffer;  // 环形缓冲区
 

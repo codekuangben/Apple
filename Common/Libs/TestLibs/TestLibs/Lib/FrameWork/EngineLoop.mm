@@ -5,7 +5,7 @@ import SDK.Lib.MsgRoute.MsgRouteBase;
 /**
  * @brief 主循环
  */
-public class EngineLoop
+@interface EngineLoop
 {
     public (void) MainLoop()
     {

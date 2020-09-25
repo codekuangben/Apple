@@ -1,6 +1,6 @@
 ﻿package SDK.Lib.DataStruct;
 
-public class DynBufResizePolicy
+@interface DynBufResizePolicy
 {
     // 获取一个最近的大小
     static public (int) getCloseSize((int) needSize, (int) capacity, (int) maxCapacity)

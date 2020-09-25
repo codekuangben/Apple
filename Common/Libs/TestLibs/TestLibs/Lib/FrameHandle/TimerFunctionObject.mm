@@ -3,7 +3,7 @@ package SDK.Lib.FrameHandle;
 import SDK.Lib.EventHandle.ICalleeObject;
 import SDK.Lib.Tools.UtilApi;
 
-public class TimerFunctionObject
+@interface TimerFunctionObject
 {
     public ICalleeObjectTimer mHandle;
 

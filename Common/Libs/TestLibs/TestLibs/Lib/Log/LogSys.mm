@@ -7,7 +7,7 @@ import SDK.Lib.Thread.MThread;
 import SDK.Lib.Tools.TClassOp;
 import SDK.Lib.Tools.UtilApi;
 
-public class LogSys
+@interface LogSys
 {
     protected LockList<String> mAsyncLogList;              // 这个是多线程访问的
     protected LockList<String> mAsyncWarnList;            // 这个是多线程访问的

@@ -1,6 +1,6 @@
 ﻿@
 
-public class MsgRouteNotify
+@interface MsgRouteNotify
 {
     protected MList<MsgRouteDispHandle> mDispList;
 

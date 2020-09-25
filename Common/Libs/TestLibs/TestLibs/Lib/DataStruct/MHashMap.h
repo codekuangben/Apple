@@ -3,7 +3,7 @@
 /**
  * @brief MHashMap
  */
-public class MHashMap
+@interface MHashMap
 {
     //protected System.Collections.Hashtable mHashtable;
 }

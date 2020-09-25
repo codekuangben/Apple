@@ -1,6 +1,6 @@
-﻿package SDK.Lib.FrameHandle;
+﻿#import "SDK/Lib/FrameHandle.h"
 
-public class FixedTickMgr extends TickMgr
+@interface FixedTickMgr : TickMgr
 {
     public FixedTickMgr()
     {

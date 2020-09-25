@@ -5,7 +5,7 @@ package SDK.Lib.Thread;
  * @brief 真正的线程实现
  */
 
-public class MThreadImpl extends Thread
+@interface MThreadImpl : Thread
 {
     protected IMRunnable mRunnable;
 

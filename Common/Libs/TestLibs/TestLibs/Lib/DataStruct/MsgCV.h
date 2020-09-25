@@ -1,6 +1,6 @@
 ﻿package SDK.Lib.DataStruct;
 
-public class MsgCV
+@interface MsgCV
 {
     public static final (int) PACKET_ZIP_MIN = 32;
     public static final (int) PACKET_ZIP = 0x40000000;

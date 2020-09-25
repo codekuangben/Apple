@@ -2,7 +2,7 @@
 
 import SDK.Lib.DataStruct.MList;
 
-public class TaskThreadPool
+@interface TaskThreadPool
 {
     protected MList<TaskThread> mList;
 

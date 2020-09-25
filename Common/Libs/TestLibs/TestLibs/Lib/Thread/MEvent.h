@@ -5,7 +5,7 @@
 /**
  * @同步使用的 Event
  */
-public class MEvent
+@interface MEvent
 {
     //private CyclicBarrier mEvent;
     private Object mEvent;

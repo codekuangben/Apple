@@ -8,7 +8,7 @@ import java.lang.reflect.Type;
 /**
  * @brief 模板类型信息操作
  */
-public class TClassOp
+@interface TClassOp
 {
     /**
      * @brief 获取类型信息中父类信息

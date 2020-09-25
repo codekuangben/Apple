@@ -5,9 +5,9 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
 
-//public class MDictionary<TKey, TValue> where TValue : IComparer<TValue>
-//public class MDictionary<TKey, TValue> where TValue : class
-public class MDictionary<TKey, TValue>
+//@interface MDictionary<TKey, TValue> where TValue : IComparer<TValue>
+//@interface MDictionary<TKey, TValue> where TValue : class
+@interface MDictionary<TKey, TValue>
 {
     // 注：Dictionary 此类已过时。新的实现应该实现 Map 接口，而不是扩展此类。
     protected Map<TKey, TValue> mData;

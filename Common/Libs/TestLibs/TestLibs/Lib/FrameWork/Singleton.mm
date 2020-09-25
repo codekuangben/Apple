@@ -2,7 +2,7 @@
 
 import SDK.Lib.Tools.TClassOp;
 
-public class Singleton<T>
+@interface Singleton<T>
 {
     // 模板对象不能是静态对象
     //protected static T msSingleton;

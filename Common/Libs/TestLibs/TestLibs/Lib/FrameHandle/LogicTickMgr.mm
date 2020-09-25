@@ -3,7 +3,7 @@
 /**
  * @brief 逻辑心跳管理器
  */
-public class LogicTickMgr extends TickMgr
+@interface LogicTickMgr : TickMgr
 {
     protected TimeInterval mTimeInterval;
 

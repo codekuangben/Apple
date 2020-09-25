@@ -3,7 +3,7 @@
 /**
  *@brief 基本的线程
  */
-public class MThread implements IMRunnable
+@interface MThread implements IMRunnable
 {
     protected static long msMainThreadID;           // 主线程 id
     protected long mCurThreadID;                    // 当前线程的 id

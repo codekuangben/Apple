@@ -3,7 +3,7 @@
 /**
  * @brief 单一对象同步
  */
-public class MCondition
+@interface MCondition
 {
     protected MMutex mMutex;
     protected MEvent mEvent;

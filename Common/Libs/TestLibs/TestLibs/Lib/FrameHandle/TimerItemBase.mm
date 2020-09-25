@@ -6,7 +6,7 @@ import SDK.Lib.EventHandle.IDispatchObject;
 /**
  * @brief 定时器，这个是不断增长的
  */
-public class TimerItemBase implements IDelayHandleItem, IDispatchObject
+@interface TimerItemBase implements IDelayHandleItem, IDispatchObject
 {
     public float mInternal;        // 定时器间隔
     public float mTotalTime;       // 总共定时器时间

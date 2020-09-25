@@ -3,7 +3,7 @@
 */
 package SDK.Lib.FrameWork;
 
-public class ProcessSys
+@interface ProcessSys
 {
     public ProcessSys()
     {

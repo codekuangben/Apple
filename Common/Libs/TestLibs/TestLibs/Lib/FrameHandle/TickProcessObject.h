@@ -1,6 +1,6 @@
 ﻿package SDK.Lib.FrameHandle;
 
-public class TickProcessObject
+@interface TickProcessObject
 {
     public ITickedObject mTickObject;
     public float mPriority;

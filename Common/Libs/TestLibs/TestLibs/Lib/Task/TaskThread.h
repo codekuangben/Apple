@@ -6,7 +6,7 @@ import SDK.Lib.Thread.MThread;
 /**
  * @brief 任务线程
  */
-public class TaskThread extends MThread
+@interface TaskThread : MThread
 {
     protected TaskQueue mTaskQueue;
     protected MCondition mCondition;

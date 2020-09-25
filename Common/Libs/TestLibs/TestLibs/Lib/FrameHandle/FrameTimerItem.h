@@ -5,7 +5,7 @@ import SDK.Lib.DelayHandle.IDelayHandleItem;
 /**
  * @brief 定时器，这个是不断增长的
  */
-public class FrameTimerItem implements IDelayHandleItem
+@interface FrameTimerItem implements IDelayHandleItem
 {
     public (int) mInternal;              // 帧数间隔
     public (int) mTotalFrameCount;       // 总共次数

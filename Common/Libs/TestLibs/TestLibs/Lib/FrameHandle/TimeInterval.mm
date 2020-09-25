@@ -3,7 +3,7 @@
 /**
  * @brief 事件间隔
  */
-public class TimeInterval
+@interface TimeInterval
 {
     protected float mInterval;
     protected float mTotalTime;

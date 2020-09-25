@@ -2,7 +2,7 @@
 
 import SDK.Lib.DataStruct.LockQueue;
 
-public class TaskQueue extends LockQueue<ITask>
+@interface TaskQueue : LockQueue<ITask>
 {
     public TaskThreadPool mTaskThreadPool;
 

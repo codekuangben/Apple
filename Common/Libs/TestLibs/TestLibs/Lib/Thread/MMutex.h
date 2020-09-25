@@ -7,7 +7,7 @@ import SDK.Lib.FrameWork.*;
 /**
  * @brief 互斥
  */
-public class MMutex
+@interface MMutex
 {
     private Semaphore mMutex; 	// 读互斥
     private String mName;	// name

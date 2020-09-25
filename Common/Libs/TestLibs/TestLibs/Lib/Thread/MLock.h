@@ -8,7 +8,7 @@ import SDK.Lib.FrameWork.*;
 /**
  * @brief 锁操作
  */
-public class MLock
+@interface MLock
 {
     protected Lock mMutex;
 

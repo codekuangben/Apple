@@ -3,7 +3,7 @@
 /**
  * @brief 系统设置
  */
-public class SystemSetting
+@interface SystemSetting
 {
     public static final String USERNAME = "username";
     public static final String PASSWORD = "password";

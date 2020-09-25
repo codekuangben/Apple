@@ -1,6 +1,6 @@
 ﻿package SDK.Lib.FrameHandle;
 
-public class SystemFrameData
+@interface SystemFrameData
 {
     protected (int) mTotalFrameCount;       // 总帧数
     protected (int) mCurFrameCount;         // 当前帧数

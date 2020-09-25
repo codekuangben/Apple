@@ -3,7 +3,7 @@
 /**
  * @brief 文件日志
  */
-public class WinLogDevice extends LogDeviceBase
+@interface WinLogDevice : LogDeviceBase
 {
     @Override
     public (void) logout(String message)

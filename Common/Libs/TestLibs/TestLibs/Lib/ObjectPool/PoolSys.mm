@@ -8,7 +8,7 @@ import SDK.Lib.Tools.TClassOp;
 /**
  * @brief 对象池
  */
-public class PoolSys
+@interface PoolSys
 {
     //protected List<object> mPoolList = new List<object>();
     protected LockList<IRecycle> mPoolList = new LockList<IRecycle>("PoolSys_List");

@@ -1,6 +1,6 @@
 ﻿package SDK.Lib.FrameHandle;
 
-public class TextCompTimer extends DaoJiShiTimer
+@interface TextCompTimer : DaoJiShiTimer
 {
     //protected Text mText;
 

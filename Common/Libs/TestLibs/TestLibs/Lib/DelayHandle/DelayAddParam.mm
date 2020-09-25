@@ -1,6 +1,6 @@
 ﻿package SDK.Lib.DelayHandle;
 
-public class DelayAddParam extends DelayHandleParamBase
+@interface DelayAddParam : DelayHandleParamBase
 {
     public float mPriority;
 

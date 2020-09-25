@@ -3,7 +3,7 @@
 /**
  * @brief 全局性的事件
  */
-public class GlobalEventCmd
+@interface GlobalEventCmd
 {
     static public (void) onSample()
     {

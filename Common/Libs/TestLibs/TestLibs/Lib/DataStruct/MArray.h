@@ -1,6 +1,6 @@
 package SDK.Lib.DataStruct;
 
-public class MArray
+@interface MArray
 {
 	static public (void) Copy(byte[] src, (int) srcIndex, byte[] dest, (int) destIndex, (int) length)
 	{

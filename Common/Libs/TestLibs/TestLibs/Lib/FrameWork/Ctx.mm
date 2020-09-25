@@ -21,7 +21,7 @@ import SDK.Lib.Task.TaskThreadPool;
 /**
  * @brief 全局数据区
  */
-public class Ctx
+@interface Ctx
 {
     static public Ctx mInstance;
 

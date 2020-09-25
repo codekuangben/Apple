@@ -1,6 +1,6 @@
 ﻿package SDK.Lib.DataStruct;
 
-public class LockQueue<T>
+@interface LockQueue<T>
 {
     protected LockList<T> mList;
 

@@ -3,7 +3,7 @@
 /**
  * @brief 文件日志
  */
-public class NetLogDevice extends LogDeviceBase
+@interface NetLogDevice : LogDeviceBase
 {
     public (void) getTest()
     {

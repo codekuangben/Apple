@@ -9,7 +9,7 @@ import SDK.Lib.DataStruct.MList;
 /**
  * @brief 基本的配置
  */
-public class Config
+@interface Config
 {
     public static String StreamingAssets;
 
