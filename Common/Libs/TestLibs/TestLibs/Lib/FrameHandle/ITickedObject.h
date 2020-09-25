@@ -4,3 +4,5 @@
 {
     - (void) onTick:(float) delta;
 }
+
+@end

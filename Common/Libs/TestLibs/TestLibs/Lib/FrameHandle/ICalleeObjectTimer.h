@@ -7,3 +7,5 @@ public interface ICalleeObjectTimer
 {
     public (void) call(TimerItemBase timer);
 }
+
+@end

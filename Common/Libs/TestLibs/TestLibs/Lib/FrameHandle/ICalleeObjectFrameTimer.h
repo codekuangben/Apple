@@ -7,3 +7,5 @@ public interface ICalleeObjectFrameTimer
 {
     public (void) call(FrameTimerItem frameTimer);
 }
+
+@end

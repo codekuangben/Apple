@@ -1,13 +1,12 @@
-﻿package SDK.Lib.FrameHandle;
-
-import SDK.Lib.EventHandle.ICalleeObjectNoRetNoParam;
+﻿#import "Lib/EventHandle/ICalleeObjectNoRetNoParam.h"
 
 @interface LoopDepth
 {
-    private (int) mLoopDepth;         // 是否在循环中，支持多层嵌套，就是循环中再次调用循环
-    private ICalleeObjectNoRetNoParam mIncHandle;     // 增加处理器
-    private ICalleeObjectNoRetNoParam mDecHandle;     // 减少处理器
-    private ICalleeObjectNoRetNoParam mZeroHandle;    // 减少到 0 处理器
+    @private 
+    int mLoopDepth;         // 是否在循环中，支持多层嵌套，就是循环中再次调用循环
+    ICalleeObjectNoRetNoParam mIncHandle;     // 增加处理器
+    ICalleeObjectNoRetNoParam mDecHandle;     // 减少处理器
+    ICalleeObjectNoRetNoParam mZeroHandle;    // 减少到 0 处理器
 
     public LoopDepth()
     {
@@ -71,3 +70,5 @@ import SDK.Lib.EventHandle.ICalleeObjectNoRetNoParam;
         return self.mLoopDepth > 0;
     }
 }
+
+@end
