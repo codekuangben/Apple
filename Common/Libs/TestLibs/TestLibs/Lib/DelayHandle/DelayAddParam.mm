@@ -1,11 +1,10 @@
 ﻿package SDK.Lib.DelayHandle;
 
-@interface DelayAddParam : DelayHandleParamBase
-{
-    public float mPriority;
+@implementation DelayAddParam
 
-    public DelayAddParam()
-    {
-        self.mPriority = 0.0f;
-    }
+- (id)init
+{
+    self.mPriority = 0.0f;
 }
+
+@end

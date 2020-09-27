@@ -1,8 +1,8 @@
 ﻿package SDK.Lib.FrameHandle;
 
 @protocol ITickedObject <NSObject>
-{
-    - (void) onTick:(float) delta;
-}
+
+@required
+- (void) onTick:(float) delta;
 
 @end

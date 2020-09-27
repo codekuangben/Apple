@@ -9,161 +9,155 @@ import SDK.Lib.DelayHandle.IDelayHandleItem;
 import SDK.Lib.EventHandle.ICalleeObjectNoRetNoParam;
 import SDK.Lib.Tools.UtilApi;
 
-@implementation TickMgr : DelayHandleMgrBase
+@implementation TickMgr
+
+- (id) init
 {
-    protected MList<TickProcessObject> mTickList;
+    self.mTickList = new MList<TickProcessObject>();
+}
 
-    public TickMgr()
+- (void) init
+{
+
+}
+
+- (void) dispose
+{
+    self.mTickList.Clear();
+}
+
+- (void) addTick:(ITickedObject*) tickObj
+{
+    self.addTick(tickObj, 0);
+}
+
+- (void) addTick:(ITickedObject*) tickObj  priority:(float) priority
+{
+    self.addObject((IDelayHandleItem)tickObj, priority);
+}
+
+- (void) addObject:(IDelayHandleItem*) delayObject
+{
+    self.addObject(delayObject, 0);
+}
+
+- (void) addObject:(IDelayHandleItem*) delayObject, priority:(float) priority
+{
+    if (self.mLoopDepth.isInDepth())
     {
-        self.mTickList = new MList<TickProcessObject>();
+        super.addObject(delayObject, priority);
     }
-
-    @Override
-    public (void) init()
+    else
     {
-
-    }
-
-    @Override
-    public (void) dispose()
-    {
-        self.mTickList.Clear();
-    }
-
-    public (void) addTick(id <ITickedObject> tickObj)
-    {
-        self.addTick(tickObj, 0);
-    }
-
-    public (void) addTick(ITickedObject tickObj, float priority)
-    {
-        self.addObject((IDelayHandleItem)tickObj, priority);
-    }
-
-    @Override
-    protected (void) addObject(IDelayHandleItem delayObject)
-    {
-        self.addObject(delayObject, 0);
-    }
-
-    @Override
-    protected (void) addObject(IDelayHandleItem delayObject, float priority)
-    {
-        if (self.mLoopDepth.isInDepth())
-        {
-            super.addObject(delayObject, priority);
-        }
-        else
-        {
-            (int) position = -1;
-            (int) idx = 0;
-            (int) elemLen = self.mTickList.Count();
-
-            while(idx < elemLen)
-            {
-                if (self.mTickList.get(idx) == null)
-                {
-                    continue;
-                }
-
-                if (self.mTickList.get(idx).mTickObject == delayObject)
-                {
-                    return;
-                }
-
-                if (self.mTickList.get(idx).mPriority < priority)
-                {
-                    position = idx;
-                    break;
-                }
-
-                idx += 1;
-            }
-
-            TickProcessObject processObject = new TickProcessObject();
-            processObject.mTickObject = (ITickedObject)delayObject;
-            processObject.mPriority = priority;
-
-            if (position < 0 || position >= self.mTickList.Count())
-            {
-                self.mTickList.Add(processObject);
-            }
-            else
-            {
-                self.mTickList.Insert(position, processObject);
-            }
-        }
-    }
-
-    public (void) removeTick(ITickedObject tickObj)
-    {
-        self.removeObject((IDelayHandleItem)tickObj);
-    }
-
-    @Override
-    protected (void) removeObject(IDelayHandleItem delayObject)
-    {
-        if (self.mLoopDepth.isInDepth())
-        {
-            super.removeObject(delayObject);
-        }
-        else
-        {
-            for(TickProcessObject item : self.mTickList.list())
-            {
-                if (UtilApi.isAddressEqual(item.mTickObject, delayObject))
-                {
-                    self.mTickList.Remove(item);
-                    break;
-                }
-            }
-        }
-    }
-
-    public (void) Advance(float delta)
-    {
-        self.mLoopDepth.incDepth();
-
-        //foreach (TickProcessObject tk in self.mTickList.list())
-        //{
-        //    if (!(tk.mTickObject as IDelayHandleItem).isClientDispose())
-        //    {
-        //        (tk.mTickObject as ITickedObject).onTick(delta);
-        //    }
-        //}
-        self.onPreAdvance(delta);
-        self.onExecAdvance(delta);
-        self.onPostAdvance(delta);
-
-        self.mLoopDepth.decDepth();
-    }
-
-    protected (void) onPreAdvance(float delta)
-    {
-
-    }
-
-    protected (void) onExecAdvance(float delta)
-    {
+        (int) position = -1;
         (int) idx = 0;
-        (int) count = self.mTickList.Count();
-        ITickedObject tickObject = null;
+        (int) elemLen = self.mTickList.Count();
 
-        while (idx < count)
+        while(idx < elemLen)
         {
-            tickObject = self.mTickList.get(idx).mTickObject;
-
-            if (!((IDelayHandleItem)tickObject).isClientDispose())
+            if (self.mTickList.get(idx) == null)
             {
-                tickObject.onTick(delta);
+                continue;
             }
 
-            ++idx;
+            if (self.mTickList.get(idx).mTickObject == delayObject)
+            {
+                return;
+            }
+
+            if (self.mTickList.get(idx).mPriority < priority)
+            {
+                position = idx;
+                break;
+            }
+
+            idx += 1;
         }
-    }
 
-    protected (void) onPostAdvance(float delta)
-    {
+        TickProcessObject processObject = new TickProcessObject();
+        processObject.mTickObject = (ITickedObject)delayObject;
+        processObject.mPriority = priority;
 
+        if (position < 0 || position >= self.mTickList.Count())
+        {
+            self.mTickList.Add(processObject);
+        }
+        else
+        {
+            self.mTickList.Insert(position, processObject);
+        }
     }
 }
+
+- (void) removeTick:(ITickedObject*) tickObj
+{
+    self.removeObject((IDelayHandleItem)tickObj);
+}
+
+- (void) removeObject:(IDelayHandleItem*) delayObject
+{
+    if (self.mLoopDepth.isInDepth())
+    {
+        super.removeObject(delayObject);
+    }
+    else
+    {
+        for(TickProcessObject item : self.mTickList.list())
+        {
+            if (UtilApi.isAddressEqual(item.mTickObject, delayObject))
+            {
+                self.mTickList.Remove(item);
+                break;
+            }
+        }
+    }
+}
+
+- (void) Advance:(float) delta
+{
+    self.mLoopDepth.incDepth();
+
+    //foreach (TickProcessObject tk in self.mTickList.list())
+    //{
+    //    if (!(tk.mTickObject as IDelayHandleItem).isClientDispose())
+    //    {
+    //        (tk.mTickObject as ITickedObject).onTick(delta);
+    //    }
+    //}
+    self.onPreAdvance(delta);
+    self.onExecAdvance(delta);
+    self.onPostAdvance(delta);
+
+    self.mLoopDepth.decDepth();
+}
+
+- (void) onPreAdvance:(float) delta
+{
+
+}
+
+- (void) onExecAdvance:(float) delta
+{
+    (int) idx = 0;
+    (int) count = self.mTickList.Count();
+    ITickedObject tickObject = null;
+
+    while (idx < count)
+    {
+        tickObject = self.mTickList.get(idx).mTickObject;
+
+        if (!((IDelayHandleItem)tickObject).isClientDispose())
+        {
+            tickObject.onTick(delta);
+        }
+
+        ++idx;
+    }
+}
+
+- (void) onPostAdvance:(float) delta
+{
+
+}
+
+@end

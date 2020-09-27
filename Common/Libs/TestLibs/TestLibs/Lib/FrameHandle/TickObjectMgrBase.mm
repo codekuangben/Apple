@@ -5,100 +5,89 @@ import SDK.Lib.DelayHandle.DelayHandleMgrBase;
 import SDK.Lib.DelayHandle.IDelayHandleItem;
 
 // 每一帧执行的对象管理器
-@implementation TickObjectMgrBase : DelayHandleMgrBase implements ITickedObject, IDelayHandleItem
+@implementation TickObjectMgrBase
+
+- (id) init
 {
-    protected MList<ITickedObject> mTickObjectList;
 
-    public TickObjectMgrBase()
+}
+
+- (void) dispose
+{
+
+}
+
+- (void) setClientDispose:(boolean) isDispose
+{
+
+}
+
+- (boolean) isClientDispose
+{
+    return false;
+}
+
+- (void) onTick:(float) delta
+{
+    self.mLoopDepth.incDepth();
+
+    self.onExecTick(delta);
+
+    self.mLoopDepth.decDepth();
+}
+
+- (void) onExecTick:(float) delta
+{
+    (int) idx = 0;
+    (int) count = self.mTickObjectList.Count();
+    ITickedObject tickObject = null;
+
+    while (idx < count)
     {
-        self.mTickObjectList = new MList<ITickedObject>();
-    }
+        tickObject = self.mTickObjectList.get(idx);
 
-    @Override
-    public (void) init()
-    {
-
-    }
-
-    @Override
-    public (void) dispose()
-    {
-
-    }
-
-    public (void) setClientDispose(boolean isDispose)
-    {
-
-    }
-
-    public boolean isClientDispose()
-    {
-        return false;
-    }
-
-    public (void) onTick(float delta)
-    {
-        self.mLoopDepth.incDepth();
-
-        self.onExecTick(delta);
-
-        self.mLoopDepth.decDepth();
-    }
-
-    protected (void) onExecTick(float delta)
-    {
-        (int) idx = 0;
-        (int) count = self.mTickObjectList.Count();
-        ITickedObject tickObject = null;
-
-        while (idx < count)
+        if (!((IDelayHandleItem)tickObject).isClientDispose())
         {
-            tickObject = self.mTickObjectList.get(idx);
-
-            if (!((IDelayHandleItem)tickObject).isClientDispose())
-            {
-                tickObject.onTick(delta);
-            }
-
-            ++idx;
+            tickObject.onTick(delta);
         }
-    }
 
-    @Override
-    protected (void) addObject(IDelayHandleItem tickObject)
-    {
-        self.addObject(tickObject, 0);
+        ++idx;
     }
+}
 
-    @Override
-    protected (void) addObject(IDelayHandleItem tickObject, float priority)
+- (void) addObject:(IDelayHandleItem*) tickObject
+{
+    self.addObject(tickObject, 0);
+}
+
+- (void) addObject:(IDelayHandleItem*) tickObject priority:(float) priority
+{
+    if (self.mLoopDepth.isInDepth())
     {
-        if (self.mLoopDepth.isInDepth())
-        {
-            super.addObject(tickObject);
-        }
-        else
-        {
-            if (self.mTickObjectList.IndexOf((ITickedObject)tickObject) == -1)
-            {
-                self.mTickObjectList.Add((ITickedObject)tickObject);
-            }
-        }
+        super.addObject(tickObject);
     }
-
-    @Override
-    protected (void) removeObject(IDelayHandleItem tickObject)
+    else
     {
-        if (self.mLoopDepth.isInDepth())
+        if (self.mTickObjectList.IndexOf((ITickedObject)tickObject) == -1)
         {
-            super.removeObject(tickObject);
-        }
-        else
-        {
-            if (self.mTickObjectList.IndexOf((ITickedObject)tickObject) != -1)
-            {
-                self.mTickObjectList.Remove((ITickedObject)tickObject);
-            }
+            self.mTickObjectList.Add((ITickedObject)tickObject);
         }
     }
 }
+
+- (void) removeObject:(IDelayHandleItem*) tickObject
+{
+    if (self.mLoopDepth.isInDepth())
+    {
+        super.removeObject(tickObject);
+    }
+    else
+    {
+        if (self.mTickObjectList.IndexOf((ITickedObject)tickObject) != -1)
+        {
+            self.mTickObjectList.Remove((ITickedObject)tickObject);
+        }
+    }
+}
+
+@end

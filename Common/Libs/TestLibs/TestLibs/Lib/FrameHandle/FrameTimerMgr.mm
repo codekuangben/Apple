@@ -1,35 +1,26 @@
-﻿#include "MList.h"
-#include "DelayHandleMgrBase.h"
-#include "IDelayHandleItem.h"
-#include "UtilApi.h"
+﻿@import "MList.h"
+@import "DelayHandleMgrBase.h"
+@import "IDelayHandleItem.h"
+@import "UtilApi.h"
 
 @implementation FrameTimerMgr
 
-public FrameTimerMgr()
+- (id) init
 {
     self.mTimerList = new MList<FrameTimerItem>();
 }
 
-@Override
-public (void) init()
+- (void) dispose
 {
 
 }
 
-@Override
-public (void) dispose()
-{
-
-}
-
-@Override
-protected (void) addObject(IDelayHandleItem delayObject)
+- (void) addObject:(IDelayHandleItem*) delayObject
 {
     self.addObject(delayObject, 0);
 }
 
-@Override
-protected (void) addObject(IDelayHandleItem delayObject, float priority)
+- (void) addObject:(IDelayHandleItem*) delayObject priority:(float) priority
 {
     // 检查当前是否已经在队列中
     if (!self.mTimerList.Contains((FrameTimerItem)delayObject))
@@ -45,8 +36,7 @@ protected (void) addObject(IDelayHandleItem delayObject, float priority)
     }
 }
 
-@Override
-protected (void) removeObject(IDelayHandleItem delayObject)
+- (void) removeObject:(IDelayHandleItem*) delayObject
 {
     // 检查当前是否在队列中
     if (self.mTimerList.Contains((FrameTimerItem)delayObject))
@@ -71,22 +61,22 @@ protected (void) removeObject(IDelayHandleItem delayObject)
     }
 }
 
-public (void) addFrameTimer(FrameTimerItem timer)
+- (void) addFrameTimer:(FrameTimerItem) timer
 {
     self.addFrameTimer(timer, 0);
 }
 
-public (void) addFrameTimer(FrameTimerItem timer, float priority)
+- (void) addFrameTimer:(FrameTimerItem*) timer  priority:(float) priority
 {
     self.addObject(timer, priority);
 }
 
-public (void) removeFrameTimer(FrameTimerItem timer)
+- (void) removeFrameTimer:(FrameTimerItem*) timer
 {
     self.removeObject(timer);
 }
 
-public (void) Advance(float delta)
+- (void) Advance:(float) delta
 {
     self.mLoopDepth.incDepth();
 

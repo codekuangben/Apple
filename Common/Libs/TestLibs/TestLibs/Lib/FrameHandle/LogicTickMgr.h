@@ -5,20 +5,20 @@
  */
 @interface LogicTickMgr : TickMgr
 {
-    protected TimeInterval mTimeInterval;
+    @protected
+    TimeInterval* mTimeInterval;
+}
 
-    public LogicTickMgr()
-    {
-        self.mTimeInterval = new TimeInterval();
-    }
+- (id) init
+{
+    self.mTimeInterval = new TimeInterval();
+}
 
-    @Override
-    protected (void) onExecAdvance(float delta)
+- (void) onExecAdvance:(float) delta
+{
+    if(self.mTimeInterval.canExec(delta))
     {
-        if(self.mTimeInterval.canExec(delta))
-        {
-            super.onExecAdvance(delta);
-        }
+        super.onExecAdvance(delta);
     }
 }
 
