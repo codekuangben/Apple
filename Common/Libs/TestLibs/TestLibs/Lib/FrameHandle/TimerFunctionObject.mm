@@ -1,48 +1,46 @@
-package SDK.Lib.FrameHandle;
+@import "MyLibs/FrameHandle/TimerFunctionObject.h"
+@import "MyLibs/EventHandle/ICalleeObject.h"
+@import "MyLibs/Tools/UtilApi.h"
 
-import SDK.Lib.EventHandle.ICalleeObject;
-import SDK.Lib.Tools.UtilApi;
+@implementation TimerFunctionObject
 
-@interface TimerFunctionObject
+- TimerFunctionObject
 {
-    public ICalleeObjectTimer mHandle;
+    self.mHandle = null;
+}
 
-    public TimerFunctionObject()
+- (void) setFuncObject:(ICalleeObjectTimer*) handle
+{
+    self.mHandle = handle;
+}
+
+- (boolean) isValid
+{
+    return self.mHandle != null;
+}
+
+- (boolean) isEqual:(ICalleeObject*) handle
+{
+    boolean ret = false;
+
+    if(handle != null)
     {
-        self.mHandle = null;
-    }
-
-    public (void) setFuncObject(ICalleeObjectTimer handle)
-    {
-        self.mHandle = handle;
-    }
-
-    public boolean isValid()
-    {
-        return self.mHandle != null;
-    }
-
-    public boolean isEqual(ICalleeObject handle)
-    {
-        boolean ret = false;
-
-        if(handle != null)
+        ret = UtilApi.isAddressEqual(self.mHandle, handle);
+        if(!ret)
         {
-            ret = UtilApi.isAddressEqual(self.mHandle, handle);
-            if(!ret)
-            {
-                return ret;
-            }
+            return ret;
         }
-
-        return ret;
     }
 
-    public (void) call(TimerItemBase dispObj)
+    return ret;
+}
+
+- (void) call:(TimerItemBase*) dispObj
+{
+    if (null != self.mHandle)
     {
-        if (null != self.mHandle)
-        {
-            self.mHandle.call(dispObj);
-        }
+        self.mHandle.call(dispObj);
     }
 }
+
+@end

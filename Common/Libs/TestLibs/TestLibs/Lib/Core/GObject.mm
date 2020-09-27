@@ -13,7 +13,7 @@
 }
 
 
-(-) getTypeId
+- getTypeId
 {
     return self.mTypeId;
 }

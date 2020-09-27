@@ -1,7 +1,4 @@
-﻿#ifndef __TimerType_H
-#define __TimerType_H
-
-/**
+﻿/**
 * @brief 定时器类型
 */
 typedef enum
@@ -11,5 +8,3 @@ typedef enum
     eFiveSecTimer,          // 5 秒定时器
     eTimerTotla             // 总共定时器种类
 } TimerType;
-
-#endif
