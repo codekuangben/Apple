@@ -2,7 +2,7 @@
 
 import SDK.Lib.FrameWork.Ctx;
 
-@interface SystemTimeData
+@implementation SystemTimeData
 {
     protected long mPreTime;           // 上一次更新时的秒数
     protected long mCurTime;           // 正在获取的时间

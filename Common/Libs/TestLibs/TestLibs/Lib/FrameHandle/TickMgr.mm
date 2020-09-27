@@ -9,7 +9,7 @@ import SDK.Lib.DelayHandle.IDelayHandleItem;
 import SDK.Lib.EventHandle.ICalleeObjectNoRetNoParam;
 import SDK.Lib.Tools.UtilApi;
 
-@interface TickMgr : DelayHandleMgrBase
+@implementation TickMgr : DelayHandleMgrBase
 {
     protected MList<TickProcessObject> mTickList;
 

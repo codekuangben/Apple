@@ -3,7 +3,7 @@
 /**
  * @brief 逻辑心跳管理器
  */
-@interface LogicTickMgr : TickMgr
+@implementation LogicTickMgr : TickMgr
 {
     protected TimeInterval mTimeInterval;
 

@@ -1,13 +1,11 @@
 ﻿package SDK.Lib.FrameHandle;
 
-@interface TickProcessObject
-{
-    public ITickedObject mTickObject;
-    public float mPriority;
+@implementation TickProcessObject
 
-    public TickProcessObject()
-    {
-        self.mTickObject = null;
-        self.mPriority = 0.0f;
-    }
+- (id) init
+{
+    self.mTickObject = null;
+    self.mPriority = 0.0f;
 }
+
+@end

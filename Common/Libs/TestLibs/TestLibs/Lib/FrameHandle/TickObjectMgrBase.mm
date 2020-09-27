@@ -5,7 +5,7 @@ import SDK.Lib.DelayHandle.DelayHandleMgrBase;
 import SDK.Lib.DelayHandle.IDelayHandleItem;
 
 // 每一帧执行的对象管理器
-@interface TickObjectMgrBase : DelayHandleMgrBase implements ITickedObject, IDelayHandleItem
+@implementation TickObjectMgrBase : DelayHandleMgrBase implements ITickedObject, IDelayHandleItem
 {
     protected MList<ITickedObject> mTickObjectList;
 
