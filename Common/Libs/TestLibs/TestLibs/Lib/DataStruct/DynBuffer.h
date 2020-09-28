@@ -1,7 +1,4 @@
-﻿#ifndef __DynBuffer_h
-#define __DynBuffer_h
-
-/**
+﻿/**
  * @brief 动态增长的缓冲区，不是环形的，从 0 开始增长的
  */
 @interface DynBuffer
@@ -19,5 +16,3 @@
 @property id* mBuffer;
 	
 @end
-
-#endif

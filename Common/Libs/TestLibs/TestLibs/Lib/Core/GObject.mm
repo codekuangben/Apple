@@ -12,7 +12,6 @@
     return self;
 }
 
-
 - getTypeId
 {
     return self.mTypeId;

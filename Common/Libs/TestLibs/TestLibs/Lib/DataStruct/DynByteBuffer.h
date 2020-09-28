@@ -8,89 +8,23 @@ import java.lang.reflect.Array;
  */
 @interface DynByteBuffer
 {
-    public (int) mCapacity;         // 分配的内存空间大小，单位大小是字节
-    public (int) mMaxCapacity;      // 最大允许分配的存储空间大小
-    public (int) mSize;              // 存储在当前缓冲区中的数量
-    public byte[] mBuffer;            // 当前环形缓冲区
-
-    public DynByteBuffer()      // mono 模板类中使用常亮报错， vs 可以
-    {
-        this(1 * 1024/*DataCV.INIT_CAPACITY*/, 8 * 1024 * 1024/*DataCV.MAX_CAPACITY*/);
-    }
-
-    public DynByteBuffer((int) initCapacity)
-    {
-        this(initCapacity, 8 * 1024 * 1024/*DataCV.MAX_CAPACITY*/);
-    }
-
-    public DynByteBuffer((int) initCapacity, (int) maxCapacity)      // mono 模板类中使用常亮报错， vs 可以
-    {
-        self.mMaxCapacity = maxCapacity;
-        self.mCapacity = initCapacity;
-        self.mSize = 0;
-        self.mBuffer = new byte[mCapacity];
-    }
-
-    public byte[] getBuffer()
-    {
-        return self.mBuffer;
-    }
-
-    public (void) setBuffer(byte[] value)
-    {
-        self.mBuffer = value;
-        self.mCapacity = ((int))self.mBuffer.length;
-    }
-
-    public (int) getMaxCapacity()
-    {
-        return self.mMaxCapacity;
-    }
-
-    public (void) setMaxCapacity((int) value)
-    {
-        self.mMaxCapacity = value;
-    }
-
-    public (int) getCapacity()
-    {
-            return self.mCapacity;
-    }
-
-    public (void) setCapacity((int) value)
-    {
-        if (value == self.mCapacity)
-        {
-            return;
-        }
-        if (value < self.getSize())       // 不能分配比当前已经占有的空间还小的空间
-        {
-            return;
-        }
-        byte[] tmpbuff = new byte[value];   // 分配新的空间
-        MArray.Copy(self.mBuffer, 0, tmpbuff, 0, self.mSize);  // 这个地方是 mSize 还是应该是 mCapacity，如果是 CircleBuffer 好像应该是 mCapacity，如果是 ByteBuffer ，好像应该是 mCapacity。但是 DynBuffer 只有 ByteBuffer 才会使用这个函数，因此使用 mSize 就行了，但是如果使用 mCapacity 也没有问题
-
-        self.mBuffer = tmpbuff;
-        self.mCapacity = value;
-    }
-
-    public (int) getSize()
-    {
-        return self.mSize;
-    }
-
-    public (void) setSize((int) value)
-    {
-        if (value > self.getCapacity())
-        {
-            self.extendDeltaCapicity(value - self.getSize());
-        }
-
-        self.mSize = value;
-    }
-
-    public (void) extendDeltaCapicity((int) delta)
-    {
-        self.setCapacity(DynBufResizePolicy.getCloseSize(self.getSize() + delta, self.getCapacity(), self.getMaxCapacity()));
-    }
+@public
+    int mCapacity;         // 分配的内存空间大小，单位大小是字节
+    int mMaxCapacity;      // 最大允许分配的存储空间大小
+    int mSize;              // 存储在当前缓冲区中的数量
+    byte[] mBuffer;            // 当前环形缓冲区
 }
+
+- (id) init
+- (id) initWithParams:(int) initCapacity (int) maxCapacity;
+- byte[] getBuffer
+- (void) setBuffer:(byte[]) value
+- (int) getMaxCapacity
+- (void) setMaxCapacity:(int) value
+- (int) getCapacity
+- (void) setCapacity:(int) value
+- (int) getSize
+- (void) setSize:(int) value
+- (void) extendDeltaCapicity:(int) delta
+
+@end
