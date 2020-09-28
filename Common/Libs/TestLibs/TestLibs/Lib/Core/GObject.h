@@ -1,6 +1,3 @@
-#ifndef __GObject_h
-#define __GObject_h
-
 #import <Foundation/Foundation.h>
 
 @interface GObject : NSObject
@@ -13,5 +10,3 @@
 - (NSString*) getTypeId;
 
 @end
-
-#endif

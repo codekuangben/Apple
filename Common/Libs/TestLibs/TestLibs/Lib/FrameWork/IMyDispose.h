@@ -1,7 +1,8 @@
-﻿package SDK.Lib.FrameWork;
+﻿@protocol IMyDispose <NSObject>
 
-public interface IMyDispose
-{
-    public (void) init();
-    public (void) dispose();
-}
+@required
+
+- (void) init;
+- (void) dispose;
+
+@end

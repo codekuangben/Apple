@@ -1,32 +1,23 @@
-﻿package SDK.Lib.FrameWork;
-
-import SDK.Lib.Tools.TClassOp;
+﻿#import "MyLib/FrameWork/Singleton.h"
 
 @interface Singleton<T>
+
+- (id) getSingletonPtr
 {
-    // 模板对象不能是静态对象
-    //protected static T msSingleton;
-    protected static Object msSingleton;
-
-    //public Singleton(Class<T> classT)
-
-    public static Object getSingletonPtr()
+    if (null == msSingleton)
     {
-        if (null == msSingleton)
-        {
-            //msSingleton = TClassOp.createObject();
-            //msSingleton.init();
-        }
-
-        return msSingleton;
+        
     }
 
-    public static (void) deleteSingletonPtr()
+    return msSingleton;
+}
+
+- (void) deleteSingletonPtr
+{
+    if (null != msSingleton)
     {
-        if (null != msSingleton)
-        {
-            //msSingleton.dispose();
-            msSingleton = null;
-        }
+        msSingleton = null;
     }
 }
+
+@end

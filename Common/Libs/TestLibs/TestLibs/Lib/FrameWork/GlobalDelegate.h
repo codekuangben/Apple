@@ -1,8 +1,6 @@
-﻿package SDK.Lib.FrameWork;
-
-import SDK.Lib.EventHandle.AddOnceEventDispatch;
-import SDK.Lib.EventHandle.ICalleeObject;
-import SDK.Lib.EventHandle.IDispatchObject;
+﻿#import SDK.Lib.EventHandle.AddOnceEventDispatch;
+#import SDK.Lib.EventHandle.ICalleeObject;
+#import SDK.Lib.EventHandle.IDispatchObject;
 
 /**
  * @brief 全局委托，只要初始化后，就可以注册和使用这些委托，不用等到哪一个资源创建完成
@@ -10,25 +8,13 @@ import SDK.Lib.EventHandle.IDispatchObject;
 @interface GlobalDelegate
 {
     // PlayerMainChild 的质量发生改变
-    public AddOnceEventDispatch mMainChildMassChangedDispatch;
-
-    public GlobalDelegate()
-    {
-        self.mMainChildMassChangedDispatch = new AddOnceEventDispatch();
-    }
-
-    public (void) addMainChildChangedHandle(ICalleeObject pThis, IDispatchObject handle)
-    {
-        self.mMainChildMassChangedDispatch.addEventHandle(pThis, handle);
-    }
-
-    public (void) init()
-    {
-
-    }
-
-    public (void) dispose()
-    {
-
-    }
+    @public
+    AddOnceEventDispatch* mMainChildMassChangedDispatch;
 }
+
+- (id) init;
+- (void) addMainChildChangedHandle:(ICalleeObject*) pThis handle:(IDispatchObject) handle;
+- (void) init;
+- (void) dispose;
+
+@end
