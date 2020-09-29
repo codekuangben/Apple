@@ -1,4 +1,4 @@
-﻿@import "MyLibs/FrameWork/Config.h"
+﻿#import "MyLibs/FrameWork/Config.h"
 
 @implementation Config
 

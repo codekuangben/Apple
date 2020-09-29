@@ -1,29 +1,29 @@
-@import "UniqueNumIdGen.h"
+#import "MyLibs/Base/UniqueNumIdGen.h"
 
 @implementation UniqueNumIdGen
 
-- (id) init: ((int)) baseUniqueId
+- (id) init: (int) baseUniqueId
 {
     if(self = [super init])
     {
-        mTypeId = @"UniqueNumIdGen";
-        mCurId = 0;
+        self->mTypeId = @"UniqueNumIdGen";
+        self->mCurId = 0;
     }
     
     return self;
 }
 
-- ((int)) genNewId
+- (int) genNewId
 {
-    mPreIdx = mCurId;
-    mCurId++;
+    self->mPreIdx = self->mCurId;
+    self->mCurId++;
     
-    return mPreIdx;
+    return self->mPreIdx;
 }
 
-- ((int)) getCurId
+- (int) getCurId
 {
-    return mCurId;
+    return self->mCurId;
 }
 
 @end

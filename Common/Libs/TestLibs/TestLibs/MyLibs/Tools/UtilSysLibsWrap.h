@@ -1,7 +1,4 @@
-﻿#ifndef __UtilApi_h
-#define __UtilApi_h
-
-/**
+﻿/**
  * @brief 对 api 的进一步 wrap
  */
 @interface UtilApi
@@ -20,4 +17,4 @@
 + (NSString) getFormatTime;
 + (void) printCallStack;
 
-#endif
+@end

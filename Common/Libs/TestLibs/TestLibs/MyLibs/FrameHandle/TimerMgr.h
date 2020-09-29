@@ -3,10 +3,10 @@
 */
 package SDK.Lib.FrameHandle;
 
-@import "Lib/DataStruct/MList.h";
-@import "Lib/DelayHandle/DelayHandleMgrBase.h";
-@import "Lib/DelayHandle/IDelayHandleItem.h";
-@import "Lib/Tools/UtilApi.h";
+#import "Lib/DataStruct/MList.h";
+#import "Lib/DelayHandle/DelayHandleMgrBase.h";
+#import "Lib/DelayHandle/IDelayHandleItem.h";
+#import "Lib/Tools/UtilApi.h";
 
 @interface TimerMgr : DelayHandleMgrBase
 {

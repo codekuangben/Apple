@@ -1,4 +1,4 @@
-﻿@import "ClientBuffer.h"
+﻿#import "ClientBuffer.h"
 
 @implementation ClientBuffer
 

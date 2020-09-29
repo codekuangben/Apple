@@ -1,8 +1,5 @@
-﻿#ifndef __BufferCV_h
-#define __BufferCV_h
-
-@import "IDispatchObject.h"
-@import "EEndian.h"
+﻿#import "IDispatchObject.h"
+#import "EEndian.h"
 
 @class DynByteBuffer;
 

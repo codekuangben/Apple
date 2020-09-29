@@ -1,7 +1,7 @@
 ﻿#ifndef __CircularBuffer_h
 #define __CircularBuffer_h
 
-@import "GObject.h"
+#import "GObject.h"
 
 /**
  * @brief 环形缓冲区，不支持多线程写操作

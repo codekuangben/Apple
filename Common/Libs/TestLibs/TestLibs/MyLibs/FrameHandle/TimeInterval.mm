@@ -1,4 +1,4 @@
-﻿@import "MyLibs/FrameHandle/TimeInterval.h"
+﻿#import "MyLibs/FrameHandle/TimeInterval.h"
 
 @implementation TimeInterval
 

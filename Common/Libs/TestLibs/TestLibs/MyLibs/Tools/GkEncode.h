@@ -1,7 +1,6 @@
-﻿#ifndef __GkEncode_h
-#define __GkEncode_h
+﻿#import <Foundation/Foundation.h>
 
-enum GkEncode
+enum GkEncode : NSUInteger
 {
     /**
     static public Encoding UTF8 = Encoding.UTF8;
@@ -15,5 +14,3 @@ enum GkEncode
     eUnicode,
     eDefault,
 }
-
-#endif

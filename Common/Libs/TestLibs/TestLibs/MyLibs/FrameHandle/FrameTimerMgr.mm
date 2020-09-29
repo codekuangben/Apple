@@ -1,7 +1,7 @@
-﻿@import "MList.h"
-@import "DelayHandleMgrBase.h"
-@import "IDelayHandleItem.h"
-@import "UtilApi.h"
+﻿#import "MList.h"
+#import "DelayHandleMgrBase.h"
+#import "IDelayHandleItem.h"
+#import "UtilApi.h"
 
 @implementation FrameTimerMgr
 
