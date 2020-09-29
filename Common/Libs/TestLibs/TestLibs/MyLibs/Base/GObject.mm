@@ -1,4 +1,4 @@
-﻿#import "GObject.h"
+﻿#import "MyLibs/Base/GObject.h"
 
 @implementation GObject
 
