@@ -1,20 +1,13 @@
-﻿package SDK.Lib.DataStruct;
-
-import java.util.ArrayList;
-import java.util.List;
-
-/**
+﻿/**
  * @brief 对系统 List 的封装
  */
 @interface MList<T>
 {
-    //public delegate (int) CompareFunc(T left, T right);
-
     protected ArrayList<T> mList;
     protected (int) mUniqueId;       // 唯一 Id ，调试使用
 
     protected MDictionary<T, Integer> mDic;    // 为了加快查找速度，当前 Element 到索引映射
-    protected boolean mIsSpeedUpFind;  // 是否加快查询
+    protected BOOL mIsSpeedUpFind;  // 是否加快查询
 
     public MList()
     {
@@ -123,7 +116,7 @@ import java.util.List;
         }
     }
 
-    public boolean Remove(T item)
+    public BOOL Remove(T item)
     {
         if (self.mIsSpeedUpFind)
         {
@@ -229,7 +222,7 @@ import java.util.List;
         }
     }
 
-    public boolean Contains(T item)
+    public BOOL Contains(T item)
     {
         if (self.mIsSpeedUpFind)
         {
@@ -263,9 +256,9 @@ import java.util.List;
     }
 
     // 快速移除元素
-    protected boolean effectiveRemove(T item)
+    protected BOOL effectiveRemove(T item)
     {
-        boolean ret = false;
+        BOOL ret = false;
 
         if (self.mDic.ContainsKey(item))
         {

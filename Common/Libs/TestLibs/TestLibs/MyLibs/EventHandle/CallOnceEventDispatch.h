@@ -1,7 +1,4 @@
-﻿#ifndef __EventDispatchGroup_h
-#define __EventDispatchGroup_h
-
-#import "EventDispatch.h"
+﻿#import "MyLibs/EventHandle/EventDispatch.h"
 
 /**
  * @brief 一次事件分发，分发一次就清理
@@ -15,5 +12,3 @@
 - ((void)) dispatchEvent: (IDispatchObject) dispatchObject;
 
 @end
-
-#endif

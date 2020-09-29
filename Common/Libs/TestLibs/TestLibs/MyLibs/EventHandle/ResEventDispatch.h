@@ -1,7 +1,4 @@
-﻿#ifndef __EventDispatchGroup_h
-#define __EventDispatchGroup_h
-
-#import "EventDispatch.h"
+﻿#import "MyLibs/EventHandle/EventDispatch.h"
 
 @interface ResEventDispatch : EventDispatch
 {
@@ -12,5 +9,3 @@
 - ((void)) dispatchEvent: (IDispatchObject) dispatchObject;
 
 @end
-
-#endif

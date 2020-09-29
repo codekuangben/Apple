@@ -9,9 +9,9 @@
 
 + (MEncoding) convGkEncode2EncodingEncoding:(GkEncode) gkEncode;
 // 判断两个 GameObject 地址是否相等
-+ (boolean) isAddressEqual:(Object) a b:(Object) b;
++ (BOOL) isAddressEqual:(Object) a b:(Object) b;
 // 判断两个函数是否相等，不能使用 isAddressEqual 判断函数是否相等
-+ (boolean) isDelegateEqual:(IDispatchObject) a b:(IDispatchObject) b;
++ (BOOL) isDelegateEqual:(IDispatchObject) a b:(IDispatchObject) b;
 + (int) getScreenWidth;
 + (int) getScreenHeight;
 + (NSString) getFormatTime;

@@ -1,4 +1,4 @@
-﻿package SDK.Lib.FrameHandle;
+﻿#import <Foundation/Foundation.h>
 
 @protocol ITickedObject <NSObject>
 

@@ -1,13 +1,6 @@
-﻿#import "EventDispatch.h"
-#import "DelayHandleMgrBase.h"
+﻿#import "MyLibs/EventHandle/EventDispatch.h"
+#import "MyLibs/DelayHandle/DelayHandleMgrBase.h"
 
-import SDK.Lib.DataStruct.MList;
-import SDK.Lib.DelayHandle.*;
-
-/**
-* @brief 事件分发，之分发一类事件，不同类型的事件使用不同的事件分发
-* @brief 注意，事件分发缺点就是，可能被调用的对象已经释放，但是没有清掉事件处理器，结果造成空指针
-*/
 @implementation EventDispatch
 
 - (id) init
@@ -209,9 +202,9 @@ public (void) clearEventHandle()
 }
 
 // 这个判断说明相同的函数只能加一次，但是如果不同资源使用相同的回调函数就会有问题，但是这个判断可以保证只添加一次函数，值得，因此不同资源需要不同回调函数
-public boolean isExistEventHandle(ICalleeObject pThis, IDispatchObject handle)
+public BOOL isExistEventHandle(ICalleeObject pThis, IDispatchObject handle)
 {
-	boolean bFinded = false;
+	BOOL bFinded = false;
 	//foreach (EventDispatchFunctionObject item in self.mHandleList.list())
 	(int) idx = 0;
 	(int) len = self.mHandleList.Count();
@@ -250,7 +243,7 @@ public (void) copyFrom(EventDispatch rhv)
 	}
 }
 
-public boolean hasEventHandle()
+public BOOL hasEventHandle()
 {
 	return self.mHandleList.Count() > 0;
 }

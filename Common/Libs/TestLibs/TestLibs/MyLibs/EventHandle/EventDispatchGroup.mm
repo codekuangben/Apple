@@ -1,11 +1,9 @@
-﻿#import "EventDispatchGroup.h"
-
-import SDK.Lib.DataStruct.MDictionary;
+﻿#import "MyLibs/EventHandle/EventDispatchGroup.h"
 
 @implementation EventDispatchGroup
 {
     protected MDictionary<Integer, EventDispatch> mGroupID2DispatchDic;
-    protected boolean mIsInLoop;       // 是否是在循环遍历中
+    protected BOOL mIsInLoop;       // 是否是在循环遍历中
 
     public EventDispatchGroup()
     {
@@ -102,7 +100,7 @@ import SDK.Lib.DataStruct.MDictionary;
         }
     }
 
-    public boolean hasEventHandle((int) groupID)
+    public BOOL hasEventHandle((int) groupID)
     {
         if(self.mGroupID2DispatchDic.ContainsKey(groupID))
         {

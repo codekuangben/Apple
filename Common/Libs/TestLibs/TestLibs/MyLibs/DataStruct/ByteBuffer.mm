@@ -1,6 +1,5 @@
-﻿#import "ByteBuffer.h"
-
-#import "BufferCV.h"
+﻿#import "MyLibs/DataStruct/ByteBuffer.h"
+#import "MyLibs/DataStruct/BufferCV.h"
 
 @implementation ByteBuffer
 
@@ -108,7 +107,7 @@
 }
 
 // 检查是否有足够的大小可以扩展
-- (bool) canWrite:(int) delta
+- (BOOL) canWrite:(int) delta
 {
 	if(self.mDynBuffer.getSize() + delta > self.mDynBuffer.getCapacity())
 	{
@@ -119,7 +118,7 @@
 }
 
 // 读取检查
-- (bool) canRead:(int) delta
+- (BOOL) canRead:(int) delta
 {
 	if (self.mPos + delta > self.mDynBuffer.getSize())
 	{
@@ -380,7 +379,7 @@
 	self.writeUnsignedInt32(value, true);
 }
 
-- (void) writeUnsignedInt32:(int) value bchangeLen:(bool) bchangeLen
+- (void) writeUnsignedInt32:(int) value bchangeLen:(BOOL) bchangeLen
 {
 	if (!canWrite(Integer.SIZE))
 	{
@@ -463,7 +462,7 @@
 }
 
 // 写入字节， bchangeLen 是否改变长度
-- (void) writeBytes:(char[]) value start:(int) start len:(int) len bchangeLen:(bool) bchangeLen
+- (void) writeBytes:(char[]) value start:(int) start len:(int) len bchangeLen:(BOOL) bchangeLen
 {
 	if (len > 0)            // 如果有长度才写入
 	{
@@ -577,7 +576,7 @@
 	mDynBuffer.getBuffer()[self.getLength()] = 0;
 }
 
-- ByteBuffer* readBoolean:(bool) tmpBool
+- ByteBuffer* readBoolean:(BOOL) tmpBool
 {
 	if (canRead(Byte.SIZE))
 	{

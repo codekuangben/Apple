@@ -13,8 +13,8 @@ import SDK.Lib.DelayHandle.IDelayHandleItem;
 
 - (id) init;
 - (void) dispose;
-- (void) setClientDispose:(boolean) isDispose;
-- (boolean) isClientDispose;
+- (void) setClientDispose:(BOOL) isDispose;
+- (BOOL) isClientDispose;
 - (void) onTick:(float) delta;
 - (void) onExecTick:(float) delta;
 - (void) addObject:(IDelayHandleItem*) tickObject;

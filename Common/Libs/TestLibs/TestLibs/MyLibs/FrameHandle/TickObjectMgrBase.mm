@@ -17,12 +17,12 @@ import SDK.Lib.DelayHandle.IDelayHandleItem;
 
 }
 
-- (void) setClientDispose:(boolean) isDispose
+- (void) setClientDispose:(BOOL) isDispose
 {
 
 }
 
-- (boolean) isClientDispose
+- (BOOL) isClientDispose
 {
     return false;
 }

@@ -1,16 +1,11 @@
-﻿#ifndef __EventDispatchGroup_h
-#define __EventDispatchGroup_h
+﻿#import <Foundation/Foundation.h>
 
 /**
  * @brief 可被调用的函数对象
  */
-@interface ICalleeObject
-{
-    
-}
+@protocol ICalleeObject <NSObject>
 
-- ((void)) call: (IDispatchObject) dispObj;
+@required
+- (void) call: (IDispatchObject*) dispObj;
 
 @end
-
-#endif

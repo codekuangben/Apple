@@ -1,7 +1,4 @@
-﻿#ifndef __AddOnceEventDispatch_h
-#define __AddOnceEventDispatch_h
-
-#import "EventDispatch.h"
+﻿#import "MyLibs/EventHandle/EventDispatch.h"
 
 /**
  * @brief 事件回调函数只能添加一次
@@ -16,5 +13,3 @@
 - ((void)) addEventHandle: (ICalleeObject) pThis and: (IDispatchObject) handle;
 
 @end
-
-#endif

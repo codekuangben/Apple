@@ -1,4 +1,4 @@
-﻿#import "ClientBuffer.h"
+﻿#import "MyLibs/DataStruct/ClientBuffer.h"
 
 @implementation ClientBuffer
 
@@ -128,7 +128,7 @@
 	self.mRawBuffer.circularBuffer.clear();
 }
 
-- (void) send:(bool) bnet
+- (void) send:(BOOL) bnet
 {
 	mTmpData.clear();
 	mTmpData.writeUnsignedInt32(mSendData.length);      // 填充长度
@@ -155,7 +155,7 @@
 }
 
 // TODO: KBEngine 引擎发送
-- (void) send_KBE:(bool) isSendToNet
+- (void) send_KBE:(BOOL) isSendToNet
 {
 	mTmpData.clear();
 
@@ -252,7 +252,7 @@
 	uint origMsgLen = 0;    // 原始的消息长度，后面判断头部是否添加压缩标志
 	uint compressMsgLen = 0;
 	uint cryptLen = 0;
-	boolean bHeaderChange = false; // 消息内容最前面的四个字节中消息的长度是否需要最后修正
+	BOOL bHeaderChange = false; // 消息内容最前面的四个字节中消息的长度是否需要最后修正
 
 	while (mSocketSendBA.bytesAvailable > 0)
 	{

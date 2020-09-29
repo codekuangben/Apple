@@ -15,6 +15,6 @@
 - (void) setZeroHandle:(ICalleeObjectNoRetNoParam*) value;
 - (void) incDepth;
 - (void) decDepth;
-- (boolean) isInDepth;
+- (BOOL) isInDepth;
 
 @end

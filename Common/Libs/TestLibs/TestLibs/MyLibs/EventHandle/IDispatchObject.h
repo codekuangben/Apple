@@ -1,14 +1,10 @@
-﻿#ifndef __EventDispatchGroup_h
-#define __EventDispatchGroup_h
+﻿#import <Foundation/Foundation.h>
 
 /**
  * @brief 可分发的对象
  */
-@interface IDispatchObject
-{
+@protocol IDispatchObject <NSObject>
 
-}
+@required
 
 @end
-
-#endif

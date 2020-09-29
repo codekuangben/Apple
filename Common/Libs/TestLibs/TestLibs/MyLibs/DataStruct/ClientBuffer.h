@@ -1,10 +1,9 @@
-﻿#ifndef __ClientBuffer_h
-#define __ClientBuffer_h
+﻿#import "MyLibs/Base/GObject.h"
 
 /**
  *@brief 网络数据缓冲区
  */
-@interface ClientBuffer
+@interface ClientBuffer : GObject
 {
 @protected
 	MsgBuffer* mRawBuffer;      // 直接从服务器接收到的原始的数据，可能压缩和加密过
@@ -58,9 +57,9 @@
 - (void) moveRaw2Msg;
 // KBEngine 引擎消息流程
 - (void) moveRaw2Msg_KBE;
-- (void) send:(bool) bnet;
+- (void) send:(BOOL) bnet;
 // TODO: KBEngine 引擎发送
-- (void) send_KBE:(bool) isSendToNet;
+- (void) send_KBE:(BOOL) isSendToNet;
 - ByteBuffer getMsg;
 // 弹出 KBEngine 消息
 - ByteBuffer getMsg_KBE;
@@ -80,5 +79,3 @@
 - (void) UnCompressAndDecryptAllInOne;
 
 @end
-
-#endif

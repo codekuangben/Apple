@@ -1,12 +1,8 @@
-﻿package SDK.Lib.DataStruct;
+﻿#import <Foundation/Foundation.h>
 
-@interface MsgCV
+enum MsgCV : NSUInteger
 {
-
+    PACKET_ZIP_MIN = 32;
+    PACKET_ZIP = 0x40000000;
+    HEADER_SIZE = 4;   // 包长度占据几个字节
 }
-
-+ (int) PACKET_ZIP_MIN;
-+ (int) PACKET_ZIP;
-+ (int) HEADER_SIZE;
-
-@end

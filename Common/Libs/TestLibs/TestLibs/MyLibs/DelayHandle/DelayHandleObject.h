@@ -1,8 +1,5 @@
-﻿#ifndef __DelayHandleObject_h
-#define __DelayHandleObject_h
-
-#import "IDelayHandleItem.h"
-#import "DelayHandleParamBase.h"
+﻿#import "MyLibs/DelayHandle/IDelayHandleItem.h"
+#import "MyLibs/DelayHandle/DelayHandleParamBase.h"
 
 @interface DelayHandleObject
 {
@@ -16,5 +13,3 @@
 - (id) init;
 
 @end
-
-#endif

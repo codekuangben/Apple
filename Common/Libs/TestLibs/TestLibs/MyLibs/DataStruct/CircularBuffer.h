@@ -1,7 +1,4 @@
-﻿#ifndef __CircularBuffer_h
-#define __CircularBuffer_h
-
-#import "GObject.h"
+﻿#import "MyLibs/Base/GObject.h"
 
 /**
  * @brief 环形缓冲区，不支持多线程写操作
@@ -32,10 +29,10 @@
 - (char[]) getbuffer;
 - (int) getSize;
 - (void) setSize:(int) value;
-- (bool) isLinearized;
-- (bool) empty;
+- (BOOL) isLinearized;
+- (BOOL) empty;
 - (int) capacity;
-- (bool) full;
+- (BOOL) full;
 // 清空缓冲区
 - (void) clear;
 /**
@@ -49,7 +46,7 @@
 /**
  *@brief 能否添加 num 长度的数据
  */
-- bool canAddData:(int) num;
+- BOOL canAddData:(int) num;
 /**
  *@brief 向存储空尾部添加一段内容
  */
@@ -77,5 +74,3 @@
 - (void) pushBackCB:(CircularBuffer*) rhv;
 	
 @end
-
-#endif

@@ -61,7 +61,7 @@ import SDK.Lib.EventHandle.ICalleeObjectNoRetNoParam;
     }
 }
 
-- (boolean) isInDepth
+- (BOOL) isInDepth
 {
     return self.mLoopDepth > 0;
 }

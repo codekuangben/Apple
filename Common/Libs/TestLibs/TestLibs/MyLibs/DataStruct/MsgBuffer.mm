@@ -39,7 +39,7 @@
 /**
     * @brief 检查 CB 中是否有一个完整的消息
     */
-- (boolean) checkHasMsg
+- (BOOL) checkHasMsg
 {
     mCircularBuffer.frontBA(mHeaderBA, MsgCV.HEADER_SIZE);  // 将数据读取到 mHeaderBA
     (int) msglen = 0;
@@ -64,9 +64,9 @@
 /**
  * @brief 获取前面的第一个完整的消息数据块
  */
-- (boolean) popFront
+- (BOOL) popFront
 {
-    boolean ret = false;
+    BOOL ret = false;
     if (mCircularBuffer.getSize() > MsgCV.HEADER_SIZE)         // 至少要是 DataCV.HEADER_SIZE 大小加 1 ，如果正好是 DataCV.HEADER_SIZE ，那只能说是只有大小字段，没有内容
     {
         mCircularBuffer.frontBA(mHeaderBA, MsgCV.HEADER_SIZE);  // 如果不够整个消息的长度，还是不能去掉消息头的
@@ -99,9 +99,9 @@
 /**
  * @brief KBEngine 引擎消息处理
  */
-- (boolean) popFrontAll
+- (BOOL) popFrontAll
 {
-    boolean ret = false;
+    BOOL ret = false;
 
     if (!mCircularBuffer.empty())
     {

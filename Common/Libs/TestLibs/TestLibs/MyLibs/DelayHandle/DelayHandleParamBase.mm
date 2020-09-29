@@ -1,8 +1,8 @@
-﻿#import "DelayHandleParamBase.h"
+﻿#import "MyLibs/DelayHandle/DelayHandleParamBase.h"
 
 @implementation DelayHandleParamBase
 
-- ((void)) init
+- (id) init
 {
 	if(self = [super init])
     {

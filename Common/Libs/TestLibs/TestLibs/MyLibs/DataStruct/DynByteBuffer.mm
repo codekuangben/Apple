@@ -1,4 +1,4 @@
-﻿#import "MyLib/DataStruct/DynByteBuffer.h"
+﻿#import "MyLibs/DataStruct/DynByteBuffer.h"
 
 @implementation DynByteBuffer
 
@@ -15,7 +15,7 @@
     self.mBuffer = new byte[mCapacity];
 }
 
-- byte[] getBuffer
+- (byte[]) getBuffer
 {
     return self.mBuffer;
 }

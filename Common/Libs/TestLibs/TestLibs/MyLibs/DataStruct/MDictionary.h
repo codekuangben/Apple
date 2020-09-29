@@ -1,16 +1,8 @@
-﻿package SDK.Lib.DataStruct;
-
-import java.util.Collection;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Set;
-
-//@interface MDictionary<TKey, TValue> where TValue : IComparer<TValue>
-//@interface MDictionary<TKey, TValue> where TValue : class
-@interface MDictionary<TKey, TValue>
+﻿@interface MDictionary<TKey, TValue>
 {
     // 注：Dictionary 此类已过时。新的实现应该实现 Map 接口，而不是扩展此类。
-    protected Map<TKey, TValue> mData;
+    protected
+    Map<TKey, TValue> mData;
 
     public MDictionary()
     {
@@ -96,18 +88,18 @@ import java.util.Set;
         self.mData.clear();
     }
 
-    public boolean TryGetValue(TKey key, TValue value)
+    public BOOL TryGetValue(TKey key, TValue value)
     {
         value = self.mData.get(key);
         return true;
     }
 
-    public boolean ContainsKey(TKey key)
+    public BOOL ContainsKey(TKey key)
     {
         return self.mData.containsKey(key);
     }
 
-    public boolean ContainsValue(TValue value)
+    public BOOL ContainsValue(TValue value)
     {
         for (TKey key : self.mData.keySet())
         {

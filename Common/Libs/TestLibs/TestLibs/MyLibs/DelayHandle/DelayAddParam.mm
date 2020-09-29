@@ -1,10 +1,10 @@
-﻿package SDK.Lib.DelayHandle;
+﻿#import "MyLibs/DelayHandle/DelayAddParam.h";
 
 @implementation DelayAddParam
 
 - (id)init
 {
-    self.mPriority = 0.0f;
+    self->mPriority = 0.0f;
 }
 
 @end

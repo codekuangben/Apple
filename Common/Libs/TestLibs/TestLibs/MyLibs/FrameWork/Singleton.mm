@@ -1,4 +1,4 @@
-﻿#import "MyLib/FrameWork/Singleton.h"
+﻿#import "MyLibs/FrameWork/Singleton.h"
 
 @interface Singleton<T>
 

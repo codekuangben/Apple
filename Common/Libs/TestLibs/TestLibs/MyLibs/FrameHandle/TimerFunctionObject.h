@@ -9,7 +9,7 @@
 
 - (id) TimerFunctionObject;
 - (void) setFuncObject:(ICalleeObjectTimer*) handle;
-- (boolean) isValid;
-- (boolean) isEqual:(ICalleeObject*) handle;
+- (BOOL) isValid;
+- (BOOL) isEqual:(ICalleeObject*) handle;
 - (void) call:(TimerItemBase*) dispObj;
 @end

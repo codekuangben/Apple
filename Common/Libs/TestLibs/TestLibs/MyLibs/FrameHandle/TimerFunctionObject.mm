@@ -14,14 +14,14 @@
     self.mHandle = handle;
 }
 
-- (boolean) isValid
+- (BOOL) isValid
 {
     return self.mHandle != null;
 }
 
-- (boolean) isEqual:(ICalleeObject*) handle
+- (BOOL) isEqual:(ICalleeObject*) handle
 {
-    boolean ret = false;
+    BOOL ret = false;
 
     if(handle != null)
     {

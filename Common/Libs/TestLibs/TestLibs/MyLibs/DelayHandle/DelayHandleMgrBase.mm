@@ -1,11 +1,11 @@
-﻿#import "DelayHandleMgrBase.h"
+﻿#import "MyLibs/DelayHandle/DelayHandleMgrBase.h"
 
 /**
 * @brief 当需要管理的对象可能在遍历中间添加的时候，需要这个管理器
 */
 @implementation DelayHandleMgrBase
 
-- (id) init()
+- (id) init
 {
 	if(self = [super init])
     {
@@ -19,7 +19,7 @@
     return self;
 }
 
-- ((void)) dealloc
+- (void) dealloc
 {
 	[self dispose];
 	
@@ -27,17 +27,17 @@
     [super dealloc];
 }
 
-- ((void)) dispose
+- (void) dispose
 {
 
 }
 
-- ((void)) addObject(IDelayHandleItem delayObject)
+- (void) addObject:(IDelayHandleItem*) delayObject
 {
 	self.addObject(delayObject, 0);
 }
 
-- ((void)) addObject(IDelayHandleItem delayObject, float priority)
+- (void) addObject:(IDelayHandleItem*) delayObject priority:float priority
 {
 	if (self.mLoopDepth.isInDepth())
 	{
@@ -58,7 +58,7 @@
 	}
 }
 
-- ((void)) removeObject(IDelayHandleItem delayObject)
+- (void) removeObject:(IDelayHandleItem) delayObject
 {
 	if (self.mLoopDepth.isInDepth())
 	{
@@ -80,7 +80,7 @@
 }
 
 // 只有没有添加到列表中的才能添加
-- (bool) existAddList(IDelayHandleItem delayObject)
+- (BOOL) existAddList:(IDelayHandleItem*) delayObject
 {
 	for(DelayHandleObject item : self.mDeferredAddQueue.list())
 	{
@@ -94,7 +94,7 @@
 }
 
 // 只有没有添加到列表中的才能添加
-- (bool) existDelList(IDelayHandleItem delayObject)
+- (BOOL) existDelList:(IDelayHandleItem*) delayObject
 {
 	for (DelayHandleObject item : self.mDeferredDelQueue.list())
 	{
@@ -108,7 +108,7 @@
 }
 
 // 从延迟添加列表删除一个 Item
-- ((void)) delFromDelayAddList(IDelayHandleItem delayObject)
+- (void) delFromDelayAddList:(IDelayHandleItem*) delayObject
 {
 	for (DelayHandleObject item : self.mDeferredAddQueue.list())
 	{
@@ -120,7 +120,7 @@
 }
 
 // 从延迟删除列表删除一个 Item
-- ((void)) delFromDelayDelList(IDelayHandleItem delayObject)
+- (void) delFromDelayDelList:(IDelayHandleItem*) delayObject
 {
 	for (DelayHandleObject item : self.mDeferredDelQueue.list())
 	{
@@ -131,7 +131,7 @@
 	}
 }
 
-- ((void)) processDelayObjects()
+- (void) processDelayObjects
 {
 	(int) idx = 0;
 	// len 是 Python 的关键字
@@ -170,7 +170,7 @@
 	}
 }
 
-- ((void)) call
+- (void) call
 {
 	self.processDelayObjects();
 }

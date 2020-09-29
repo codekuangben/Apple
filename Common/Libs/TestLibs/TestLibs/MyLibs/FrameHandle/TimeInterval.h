@@ -15,6 +15,6 @@
 - (void) setInterval:(float) value;
 - (void) setTotalTime:(float) value;
 - (void) setCurTime:(float) value;
-- (boolean) canExec:(float) delta;
+- (BOOL) canExec:(float) delta;
 
 @end

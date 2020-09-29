@@ -1,10 +1,10 @@
-﻿#import "MyLib/DataStruct/DynBufResizePolicy.h"
+﻿#import "MyLibs/DataStruct/DynBufResizePolicy.h"
 
 @implementation DynBufResizePolicy
 
-- (int) getCloseSize:(int) needSize, (int) capacity maxCapacity:(int) maxCapacity
++ (int) getCloseSize:(int) needSize, capacity:(int) capacity maxCapacity:(int) maxCapacity
 {
-    (int) ret = 0;
+    int ret = 0;
     if (capacity > needSize)        // 使用 > ，不适用 >= ，浪费一个自己，方便判断
     {
         ret = capacity;

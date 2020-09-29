@@ -1,11 +1,11 @@
-﻿package SDK.Lib.DelayHandle;
+﻿#import "MyLibs/DelayHandle/DelayHandleParamBase.h";
 
 @interface DelayAddParam : DelayHandleParamBase
 {
-    @public
+@public
     float mPriority;
 }
 
-- (id)init;
+- (id) init;
 
 @end

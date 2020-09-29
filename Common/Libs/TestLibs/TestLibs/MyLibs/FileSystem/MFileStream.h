@@ -137,7 +137,7 @@
 	}
 }
 
--(bool) isValid
+-(BOOL) isValid
 {
 	return self.mFileOpState == FileOpState.eOpenSuccess;
 }

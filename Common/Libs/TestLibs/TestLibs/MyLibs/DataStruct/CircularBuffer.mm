@@ -1,4 +1,4 @@
-﻿#import "CircularBuffer.h"
+﻿#import "MyLibs/DataStruct/CircularBuffer.h"
 
 @implementation CircularBuffer
 
@@ -58,7 +58,7 @@
 	mDynBuffer.setSize(value);
 }
 
-- (bool) isLinearized
+- (BOOL) isLinearized
 {
 	if ([self getSize] == 0)
 	{
@@ -68,7 +68,7 @@
 	return self.mFirst < self.mLast;
 }
 
-- (bool) empty
+- (BOOL) empty
 {
 	return self.mDynBuffer->mSize == 0;
 }
@@ -78,7 +78,7 @@
 	return self.mDynBuffer->mCapacity;
 }
 
-- (bool) full
+- (BOOL) full
 {
 	return [self capacity] == [self getSize];
 }
@@ -151,7 +151,7 @@
 /**
  *@brief 能否添加 num 长度的数据
  */
-- bool canAddData:(int) num
+- BOOL canAddData:(int) num
 {
 	if (mDynBuffer.mCapacity - mDynBuffer.mSize > num) // 浪费一个字节，不用 >= ，使用 >
 	{

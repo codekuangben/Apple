@@ -1,4 +1,5 @@
-﻿#import "DynBuffer.h"
+﻿#import "MyLibs/DataStruct/DynBuffer.h"
+
 @implementation DynBuffer
 
 - (id)init      // mono 模板类中使用常亮报错， vs 可以

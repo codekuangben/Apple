@@ -75,12 +75,12 @@
     self.mDisposed = false;
 }
 
-- (void) setClientDispose:(bool) isDispose
+- (void) setClientDispose:(BOOL) isDispose
 {
 
 }
 
-- (bool) isClientDispose
+- (BOOL) isClientDispose
 {
     return false;
 }

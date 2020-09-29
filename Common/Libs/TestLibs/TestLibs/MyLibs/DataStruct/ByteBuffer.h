@@ -1,5 +1,5 @@
-﻿#import "IDispatchObject.h"
-#import "EEndian.h"
+﻿#import "MyLibs/EventDispatch/IDispatchObject.h"
+#import "MyLibs/Tools/EEndian.h"
 
 @class DynByteBuffer;
 
@@ -52,9 +52,9 @@
 - (void)setPosition:(int) value;
 - (void)clear;
 // 检查是否有足够的大小可以扩展
-- (bool) canWrite:(int) delta;
+- (BOOL) canWrite:(int) delta;
 // 读取检查
-- (bool) canRead:(int) delta;
+- (BOOL) canRead:(int) delta;
 - (void) extendDeltaCapicity:(int) delta;
 - (void) advPos:(int) num;
 - (void) advPosAndLen:(int) num;
@@ -80,14 +80,14 @@
 - (void) writeUnsignedInt16:(short) value;
 - (void) writeInt32:(int) value;
 - (void) writeUnsignedInt32:(int) value;
-- (void) writeUnsignedInt32:(int) value bchangeLen:(bool) bchangeLen;
+- (void) writeUnsignedInt32:(int) value bchangeLen:(BOOL) bchangeLen;
 - (void) writeInt64:(long) value;
 - (void) writeUnsignedInt64:(long) value;
 - (void) writeFloat:(float) value;
 - (void) writeDouble:(double) value;
 - (void) writeBytes:(char[]) value start:(int) start len:(int) len;
 // 写入字节， bchangeLen 是否改变长度
-- (void) writeBytes:(char[]) value start:(int) start len:(int) len bchangeLen:(bool) bchangeLen;
+- (void) writeBytes:(char[]) value start:(int) start len:(int) len bchangeLen:(BOOL) bchangeLen;
 // 写入字符串
 - (void) writeMultiByte:(String) value, gkCharSet:(GkEncode) gkCharSet len:(int) len;
 - (void) replace:(char[]) srcBytes srcStartPos:(int) srcStartPos;
@@ -99,6 +99,6 @@
 - ByteBuffer* readUnsignedLongByOffset:(long) tmpUlong offset:(int) offset;
 // 写入 EOF 结束符
 - (void) end;
-- ByteBuffer* readBoolean:(bool) tmpBool;
+- ByteBuffer* readBoolean:(BOOL) tmpBool;
 
-#endif
+@end

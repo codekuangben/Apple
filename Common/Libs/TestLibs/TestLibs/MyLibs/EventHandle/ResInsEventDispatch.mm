@@ -1,10 +1,7 @@
-﻿#import "ResInsEventDispatch.h"
-#import "EventDispatch.h"
-#import "IDispatchObject.h"
+﻿#import "MyLibs/EventHandle/ResInsEventDispatch.h"
+#import "MyLibs/EventHandle/EventDispatch.h"
+#import "MyLibs/EventHandle/IDispatchObject.h"
 
-/**
-* @brief 资源实例化事件分发器
-*/
 @implementation ResInsEventDispatch
 
 - (id) init
@@ -17,12 +14,12 @@
     return self;
 }
 
-- ((void)) setIsValid: (bool) value
+- ((void)) setIsValid: (BOOL) value
 {
 	self.mIsValid = value;
 }
 
-- (bool) getIsValid
+- (BOOL) getIsValid
 {
 	return self.mIsValid;
 }

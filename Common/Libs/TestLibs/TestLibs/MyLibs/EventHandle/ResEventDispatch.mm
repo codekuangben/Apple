@@ -1,5 +1,5 @@
-﻿#import "ResEventDispatch.h"
-#import "EventDispatch.h"
+﻿#import "MyLibs/EventHandle/ResEventDispatch.h"
+#import "MyLibs/EventHandle/EventDispatch.h"
 
 @implementation ResEventDispatch
 

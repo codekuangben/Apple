@@ -1,5 +1,5 @@
-﻿#import "EventDispatchFunctionObject.h"
-#import "IDelayHandleItem.h"
+﻿#import "MyLibs/EventHandle/EventDispatchFunctionObject.h"
+#import "MyLibs/Delayhandle/IDelayHandleItem.h"
 
 @implementation EventDispatchFunctionObject
 
@@ -20,14 +20,14 @@
 	self.mHandleImp = [self.mThis methodForSelector:self.mHandle];  
 }
 
-- (bool) isValid()
+- (BOOL) isValid()
 {
 	return self.mThis != nil && self.mHandle != nil;
 }
 
-- (bool) isEqual(ICalleeObject* pThis, SEL handle)
+- (BOOL) isEqual(ICalleeObject* pThis, SEL handle)
 {
-	bool ret = false;
+	BOOL ret = false;
 	if(pThis != nil)
 	{
 		ret = UtilApi.isAddressEqual(self.mThis, pThis);
@@ -61,12 +61,12 @@ public (void) call(IDispatchObject* dispObj)
 	}
 }
 
-public (void) setClientDispose(boolean isDispose)
+public (void) setClientDispose(BOOL isDispose)
 {
 	self.mIsClientDispose = isDispose;
 }
 
-public boolean isClientDispose()
+public BOOL isClientDispose()
 {
 	return self.mIsClientDispose;
 }

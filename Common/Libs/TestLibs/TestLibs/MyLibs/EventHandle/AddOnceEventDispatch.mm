@@ -1,8 +1,5 @@
-﻿#import "AddOnceEventDispatch.h"
+﻿#import "MyLibs/EventHandle/AddOnceEventDispatch.h"
 
-/**
-* @brief 事件回调函数只能添加一次
-*/
 @implementation AddOnceEventDispatch
 
 - (id) init

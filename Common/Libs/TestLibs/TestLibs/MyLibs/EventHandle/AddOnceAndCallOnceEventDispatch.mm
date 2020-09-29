@@ -1,8 +1,8 @@
-﻿#import "AddOnceAndCallOnceEventDispatch.h"
+﻿#import "MyLibs/EventHandle/AddOnceAndCallOnceEventDispatch.h"
 
 @implementation AddOnceAndCallOnceEventDispatch
 
-- ((void)) addEventHandle: ICalleeObject pThis and: (IDispatchObject) handle
+- (void) addEventHandle: ICalleeObject pThis and: (IDispatchObject) handle
 {
 	if (! [self isExistEventHandle: pThis and: handle])
 	{
@@ -10,7 +10,7 @@
 	}
 }
 
-- ((void)) dispatchEvent: (IDispatchObject) dispatchObject
+- (void) dispatchEvent: (IDispatchObject) dispatchObject
 {
 	[super dispatchEvent: dispatchObject];
 

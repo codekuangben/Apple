@@ -2,7 +2,7 @@
 
 @implementation MBitConverter
 
-public static boolean ToBoolean(
+public static BOOL ToBoolean(
                                 byte[] bytes,
                                 (int) startIndex
                                 )
@@ -10,7 +10,7 @@ public static boolean ToBoolean(
     return MBitConverter.ToBoolean(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
 }
 
-public static boolean ToBoolean(
+public static BOOL ToBoolean(
                                 byte[] bytes,
                                 (int) startIndex,
                                 EEndian endian
@@ -294,7 +294,7 @@ public static double ToDouble(
 }
 
 public static (void) GetBytes(
-                              boolean data,
+                              BOOL data,
                               byte[] bytes,
                               (int) startIndex
                               )
@@ -303,7 +303,7 @@ public static (void) GetBytes(
 }
 
 public static (void) GetBytes(
-                              boolean data,
+                              BOOL data,
                               byte[] bytes,
                               (int) startIndex,
                               EEndian endian

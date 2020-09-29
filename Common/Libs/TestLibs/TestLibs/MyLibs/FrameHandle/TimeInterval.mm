@@ -24,9 +24,9 @@
     self.mCurTime = value;
 }
 
-- (boolean) canExec:(float) delta
+- (BOOL) canExec:(float) delta
 {
-    boolean ret = false;
+    BOOL ret = false;
 
     self.mTotalTime += delta;
     self.mCurTime += delta;

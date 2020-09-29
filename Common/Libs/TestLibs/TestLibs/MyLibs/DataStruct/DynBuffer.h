@@ -1,7 +1,9 @@
-﻿/**
+﻿#import "MyLibs/Base/GObject.h"
+
+/**
  * @brief 动态增长的缓冲区，不是环形的，从 0 开始增长的
  */
-@interface DynBuffer
+@interface DynBuffer : GObject
 {
 @public 
 	int mCapacity;         // 分配的内存空间大小，单位大小是字节

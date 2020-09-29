@@ -3,11 +3,11 @@
 
 @interface MBitConverter
 
-+ (bool) ToBoolean:
++ (BOOL) ToBoolean:
         (Byte[]) bytes
         startIndex: (int) startIndex
                    );
-+ (bool) ToBoolean:
++ (BOOL) ToBoolean:
     (byte[]) bytes
     startIndex: (int) startIndex
     endian:(EEndian) endian
@@ -99,13 +99,13 @@ endian: (EEndian) endian
                               );
 
 + (void) GetBytes(
-        boolean data,
+        BOOL data,
         byte[] bytes,
         (int) startIndex
                               );
 
 + (void) GetBytes(
-    boolean data,
+    BOOL data,
     byte[] bytes,
     (int) startIndex,
     EEndian endian

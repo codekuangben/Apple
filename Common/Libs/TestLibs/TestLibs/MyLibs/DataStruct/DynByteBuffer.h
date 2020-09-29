@@ -1,12 +1,10 @@
-﻿package SDK.Lib.DataStruct;
-
-import java.lang.reflect.Array;
+﻿#import "MyLibs/Base/GObject.h"
 
 /**
  * @brief 动态增长的缓冲区，不是环形的，从 0 开始增长的
  * @error java 模板参数不能是基本数据类型(primitive type)，因此只能新建一个类
  */
-@interface DynByteBuffer
+@interface DynByteBuffer : GObject
 {
 @public
     int mCapacity;         // 分配的内存空间大小，单位大小是字节
@@ -17,7 +15,7 @@ import java.lang.reflect.Array;
 
 - (id) init
 - (id) initWithParams:(int) initCapacity (int) maxCapacity;
-- byte[] getBuffer
+- (byte[]) getBuffer
 - (void) setBuffer:(byte[]) value
 - (int) getMaxCapacity
 - (void) setMaxCapacity:(int) value
