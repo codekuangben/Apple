@@ -1,6 +1,6 @@
 #import "MyLibs/FrameHandle/TimerFunctionObject.h"
 #import "MyLibs/EventHandle/ICalleeObject.h"
-#import "MyLibs/Tools/UtilApi.h"
+#import "MyLibs/Tools/UtilSysLibsWrap.h"
 
 @implementation TimerFunctionObject
 

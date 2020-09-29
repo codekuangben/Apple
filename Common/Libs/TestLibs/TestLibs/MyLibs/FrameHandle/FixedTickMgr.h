@@ -1,4 +1,4 @@
-﻿#import "Lib/FrameHandle.h"
+﻿#import "MyLibs/FrameHandle/TickMgr.h"
 
 @interface FixedTickMgr : TickMgr
 {

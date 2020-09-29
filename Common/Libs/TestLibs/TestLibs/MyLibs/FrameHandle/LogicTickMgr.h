@@ -1,4 +1,4 @@
-﻿package SDK.Lib.FrameHandle;
+﻿#import "MyLibs/FrameHandle/TickMgr.h"
 
 /**
  * @brief 逻辑心跳管理器

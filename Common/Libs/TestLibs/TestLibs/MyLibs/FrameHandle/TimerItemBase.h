@@ -1,7 +1,5 @@
-﻿package SDK.Lib.FrameHandle;
-
-import SDK.Lib.DelayHandle.IDelayHandleItem;
-import SDK.Lib.EventHandle.IDispatchObject;
+﻿#import "MyLibs/DelayHandle/IDelayHandleItem.h";
+#import "MyLibs/EventHandle/IDispatchObject.h";
 
 /**
  * @brief 定时器，这个是不断增长的

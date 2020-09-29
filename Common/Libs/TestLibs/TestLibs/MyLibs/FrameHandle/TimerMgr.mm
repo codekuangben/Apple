@@ -1,5 +1,4 @@
-﻿#ifndef __TimerMgr_H
-#define __TimerMgr_H
+﻿#import "MyLibs/FrameHandle/TimerMgr.h"
 
 @implementation TimerMgr
 

@@ -1,8 +1,6 @@
-﻿package SDK.Lib.FrameHandle;
-
-import SDK.Lib.DataStruct.MList;
-import SDK.Lib.DelayHandle.DelayHandleMgrBase;
-import SDK.Lib.DelayHandle.IDelayHandleItem;
+﻿#import "MyLibs/DataStruct/MList.h";
+#import "MyLibs/DelayHandle/DelayHandleMgrBase.h";
+#import "MyLibs/DelayHandle/IDelayHandleItem.h";
 
 // 每一帧执行的对象管理器
 @interface TickObjectMgrBase : DelayHandleMgrBase implements ITickedObject, IDelayHandleItem

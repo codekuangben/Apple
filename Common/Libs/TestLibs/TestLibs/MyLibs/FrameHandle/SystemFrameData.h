@@ -1,6 +1,4 @@
-﻿package SDK.Lib.FrameHandle;
-
-@interface SystemFrameData
+﻿@interface SystemFrameData
 {
     @protected
     (int) mTotalFrameCount;       // 总帧数

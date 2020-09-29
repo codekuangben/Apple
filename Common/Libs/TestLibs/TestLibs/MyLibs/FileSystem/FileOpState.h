@@ -1,6 +1,3 @@
-#ifndef __FileOpState_H
-#define __FileOpState_H
-
 typedef enum
 {
     eNoOp,      	// 无操作
@@ -9,5 +6,3 @@ typedef enum
     eOpenFail,      // 打开失败
     eOpenClose,     // 关闭
 }FileOpState;
-
-#endif

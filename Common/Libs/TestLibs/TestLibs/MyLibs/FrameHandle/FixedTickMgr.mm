@@ -1,4 +1,4 @@
-﻿#include "TickMgr.h"
+﻿#include "MyLibs/FrameHandle/TickMgr.h"
 
 @implementation FixedTickMgr
 

@@ -1,9 +1,9 @@
-﻿package SDK.Lib.FrameHandle;
+﻿#import "MyLibs/FrameHandle/LogicTickMgr.h"
 
 /**
  * @brief 逻辑心跳管理器
  */
-@implementation LogicTickMgr : TickMgr
+@implementation LogicTickMgr
 
 - (id) init
 {

@@ -1,5 +1,5 @@
-﻿#ifndef __MFileStream_H
-#define __MFileStream_H
+﻿#import "MyLibs/Base/GObject.h"
+#import "MyLibs/EventHandle/IDispatchObject.h"
 
 /**
  * @brief 仅支持本地文件操作，仅支持同步操作
@@ -213,12 +213,10 @@
 -(byte[]) readByte:(int) offset count:(int) count;
 -(void) writeText:(String) text;
 -(void) writeText:(String) text gkEncode:(GkEncode) gkEncode;
-public (void) writeByte(byte[] bytes;
-public (void) writeByte(byte[] bytes, (int) offset;
-public (void) writeByte(byte[] bytes, (int) offset, (int) count;
+- (void) writeByte(byte[] bytes;
+- (void) writeByte(byte[] bytes, (int) offset;
+- (void) writeByte(byte[] bytes, (int) offset, (int) count;
 -(void) writeLine:(String) text;
 -(void) writeLine:(String) text gkEncode:(GkEncode) gkEncode;
 
 @end
-
-#endif

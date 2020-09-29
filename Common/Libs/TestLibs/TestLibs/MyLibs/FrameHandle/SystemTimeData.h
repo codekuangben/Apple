@@ -1,8 +1,4 @@
-﻿package SDK.Lib.FrameHandle;
-
-import SDK.Lib.FrameWork.Ctx;
-
-@interface SystemTimeData
+﻿@interface SystemTimeData
 {
     @protected 
     long mPreTime;           // 上一次更新时的秒数

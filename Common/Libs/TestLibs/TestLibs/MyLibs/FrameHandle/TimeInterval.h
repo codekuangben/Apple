@@ -1,6 +1,4 @@
-﻿package SDK.Lib.FrameHandle;
-
-/**
+﻿/**
  * @brief 事件间隔
  */
 @interface TimeInterval

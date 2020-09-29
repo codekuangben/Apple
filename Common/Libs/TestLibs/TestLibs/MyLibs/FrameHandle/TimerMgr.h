@@ -1,12 +1,11 @@
 ﻿/**
 * @brief 定时器管理器
 */
-package SDK.Lib.FrameHandle;
 
-#import "Lib/DataStruct/MList.h";
-#import "Lib/DelayHandle/DelayHandleMgrBase.h";
-#import "Lib/DelayHandle/IDelayHandleItem.h";
-#import "Lib/Tools/UtilApi.h";
+#import "MyLibs/DataStruct/MList.h";
+#import "MyLibs/DelayHandle/DelayHandleMgrBase.h";
+#import "MyLibs/DelayHandle/IDelayHandleItem.h";
+#import "MyLibs/Tools/UtilApi.h";
 
 @interface TimerMgr : DelayHandleMgrBase
 {

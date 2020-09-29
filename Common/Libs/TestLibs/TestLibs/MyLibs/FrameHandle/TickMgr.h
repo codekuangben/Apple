@@ -2,11 +2,11 @@
 * @brief 心跳管理器
 */
 
-#import SDK.Lib.DataStruct.MList;
-#import SDK.Lib.DelayHandle.DelayHandleMgrBase;
-#import SDK.Lib.DelayHandle.IDelayHandleItem;
-#import SDK.Lib.EventHandle.ICalleeObjectNoRetNoParam;
-#import SDK.Lib.Tools.UtilApi;
+#import "MyLibs/DataStruct/MList.h";
+#import "MyLibs/DelayHandle/DelayHandleMgrBase.h";
+#import "MyLibs/DelayHandle/IDelayHandleItem.h";
+#import "MyLibs/EventHandle/ICalleeObjectNoRetNoParam.h";
+#import "MyLibs/Tools/UtilSysLibsWarp.h";
 
 @interface TickMgr : DelayHandleMgrBase
 {

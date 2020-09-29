@@ -1,5 +1,5 @@
 #import "Lib/EventHandle/ICalleeObject.h";
-#import "Lib/Tools/UtilApi.h";
+#import "Lib/Tools/UtilSysLibsWrap.h";
 
 @interface TimerFunctionObject
 {

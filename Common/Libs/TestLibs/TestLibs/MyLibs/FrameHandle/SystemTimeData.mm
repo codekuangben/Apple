@@ -1,6 +1,4 @@
-﻿package SDK.Lib.FrameHandle;
-
-import SDK.Lib.FrameWork.Ctx;
+﻿#import "MyLibs/FrameHandle/SystemTimeData.h"
 
 @implementation SystemTimeData
 

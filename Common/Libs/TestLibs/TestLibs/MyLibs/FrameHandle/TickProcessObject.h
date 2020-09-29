@@ -1,6 +1,4 @@
-﻿package SDK.Lib.FrameHandle;
-
-@interface TickProcessObject
+﻿@interface TickProcessObject
 {
     @public
     ITickedObject mTickObject;

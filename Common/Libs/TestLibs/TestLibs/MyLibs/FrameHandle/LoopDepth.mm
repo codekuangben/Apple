@@ -1,6 +1,4 @@
-﻿package SDK.Lib.FrameHandle;
-
-import SDK.Lib.EventHandle.ICalleeObjectNoRetNoParam;
+﻿#import "MyLibs/FrameHandle/LoopDepth.h"
 
 @implementation LoopDepth
 

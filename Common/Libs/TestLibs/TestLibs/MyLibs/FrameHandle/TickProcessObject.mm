@@ -1,4 +1,4 @@
-﻿package SDK.Lib.FrameHandle;
+﻿#import "MyLibs/FrameHandle/TickProcessObject.h"
 
 @implementation TickProcessObject
 

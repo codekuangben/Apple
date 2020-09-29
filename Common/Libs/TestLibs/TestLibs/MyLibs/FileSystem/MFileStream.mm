@@ -1,4 +1,4 @@
-﻿#import "MFileStream.h"
+﻿#import "MyLibs/FileSystem/MFileStream.h"
 
 @implementation MFileStream
 
@@ -15,7 +15,7 @@
 	}
 }
 
--(void) seek:(long: offset origin:(MSeekOrigin) origin
+-(void) seek:(long) offset origin:(MSeekOrigin) origin
 {
 	if(self.mFileOpState == FileOpState.eOpenSuccess)
 	{
