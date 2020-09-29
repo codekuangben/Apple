@@ -6,6 +6,6 @@
 @protocol ICalleeObjectNoRetNoParam <NSObject>
 
 @required
-- ((void)) call;
+- (void) call;
 
 @end

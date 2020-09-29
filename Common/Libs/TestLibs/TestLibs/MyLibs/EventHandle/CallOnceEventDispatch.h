@@ -8,7 +8,7 @@
     
 }
 
-- ((void)) init;
-- ((void)) dispatchEvent: (IDispatchObject) dispatchObject;
+- (void) init;
+- (void) dispatchEvent: (IDispatchObject*) dispatchObject;
 
 @end

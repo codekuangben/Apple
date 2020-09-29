@@ -2,19 +2,17 @@
 #import "MyLibs/EventHandle/EventDispatch.h"
 
 @implementation CallOnceEventDispatch 
+
+- (void) init
 {
-    public CallOnceEventDispatch()
-    {
 
-    }
+}
 
-    @Override
-    public (void) dispatchEvent(IDispatchObject dispatchObject)
-    {
-        super.dispatchEvent(dispatchObject);
+- (void) dispatchEvent: (IDispatchObject*) dispatchObject
+{
+    super.dispatchEvent(dispatchObject);
 
-        self.clearEventHandle();
-    }
+    self.clearEventHandle();
 }
 
 @end

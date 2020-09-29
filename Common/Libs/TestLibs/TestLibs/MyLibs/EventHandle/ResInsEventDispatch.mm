@@ -14,7 +14,7 @@
     return self;
 }
 
-- ((void)) setIsValid: (BOOL) value
+- (void) setIsValid: (BOOL) value
 {
 	self.mIsValid = value;
 }
@@ -24,17 +24,17 @@
 	return self.mIsValid;
 }
 
-- ((void)) setInsGO: (NSObject) go
+- (void) setInsGO: (NSObject) go
 {
 	self.mInsGO = go;
 }
 
-- (NSObject) getInsGO
+- (NSObject*) getInsGO
 {
 	return self.mInsGO;
 }
 
-- ((void)) dispatchEvent: (IDispatchObject) dispatchObject
+- (void) dispatchEvent: (IDispatchObject*) dispatchObject
 {
 	if(self.mIsValid)
 	{

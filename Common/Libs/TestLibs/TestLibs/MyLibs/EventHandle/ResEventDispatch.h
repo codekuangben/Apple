@@ -6,6 +6,6 @@
 }
 
 - (id) init;
-- ((void)) dispatchEvent: (IDispatchObject) dispatchObject;
+- (void) dispatchEvent: (IDispatchObject*) dispatchObject;
 
 @end

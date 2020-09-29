@@ -3,7 +3,7 @@
 
 @implementation EventDispatchFunctionObject
 
-- (id) init: ((int)) baseUniqueId
+- (id) init: (int) baseUniqueId
 {
     if(self = [super init])
     {
@@ -13,19 +13,19 @@
     return self;
 }
 
-- ((void)) setFuncObject(ICalleeObject* pThis, SEL func)
+- (void) setFuncObject:(ICalleeObject*) pThis, func:(SEL) func
 {
 	self.mThis = pThis;
 	self.mHandle = func;
 	self.mHandleImp = [self.mThis methodForSelector:self.mHandle];  
 }
 
-- (BOOL) isValid()
+- (BOOL) isValid
 {
 	return self.mThis != nil && self.mHandle != nil;
 }
 
-- (BOOL) isEqual(ICalleeObject* pThis, SEL handle)
+- (BOOL) isEqual:(ICalleeObject*) pThis, handle:(SEL*) handle
 {
 	BOOL ret = false;
 	if(pThis != nil)
@@ -48,7 +48,7 @@
 	return ret;
 }
 
-public (void) call(IDispatchObject* dispObj)
+- (void) call:(IDispatchObject*) dispObj
 {
 	if(nil != self.mThis && nil != self.mHandle)
 	{
@@ -61,12 +61,12 @@ public (void) call(IDispatchObject* dispObj)
 	}
 }
 
-public (void) setClientDispose(BOOL isDispose)
+- (void) setClientDispose:(BOOL) isDispose
 {
 	self.mIsClientDispose = isDispose;
 }
 
-public BOOL isClientDispose()
+- (BOOL) isClientDispose
 {
 	return self.mIsClientDispose;
 }

@@ -16,4 +16,12 @@
 @property IMP mHandleImp;
 @property (int) mEventId;
 
+- (id) init: (int) baseUniqueId;
+- (void) setFuncObject:(ICalleeObject*) pThis, func:(SEL) func;
+- (BOOL) isValid;
+- (BOOL) isEqual:(ICalleeObject*) pThis, handle:(SEL*) handle;
+- (void) call:(IDispatchObject*) dispObj;
+- (void) setClientDispose:(BOOL) isDispose;
+- (BOOL) isClientDispose;
+
 @end

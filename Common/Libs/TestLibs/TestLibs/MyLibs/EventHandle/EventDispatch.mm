@@ -14,7 +14,7 @@
     return self;
 }
 
-- (id) init:(int)eventId_
+- (id) init:(int)eventId
 {
     if(self = [super init])
     {
@@ -25,46 +25,39 @@
     return self;
 }
 
-- (MList) getHandleList
+- (void) dispose
+{
+
+}
+
+- (MList*) getHandleList
 {
 	return self.mHandleList;
 }
 
-(int) getUniqueId()
+- (int) getUniqueId
 {
 	return self.mUniqueId;
 }
 
-(void) setUniqueId:(int) value
+- (void) setUniqueId:(int) value
 {
 	self.mUniqueId = value;
 	self.mHandleList.setUniqueId(self.mUniqueId);
 }
 
-@Override
-(void) init()
-{
-
-}
-
-@Override
-(void) dispose()
-{
-
-}
-
-(void) addDispatch(EventDispatchFunctionObject dispatch)
+- (void) addDispatch:(EventDispatchFunctionObject*) dispatch
 {
 	self.addObject(dispatch);
 }
 
-public (void) removeDispatch(EventDispatchFunctionObject dispatch)
+- (void) removeDispatch:(EventDispatchFunctionObject*) dispatch
 {
 	self.removeObject(dispatch);
 }
 
 // 相同的函数只能增加一次，Lua ，Python 这些语言不支持同时存在几个相同名字的函数，只支持参数可以赋值，因此不单独提供同一个名字不同参数的接口了
-public (void) addEventHandle(ICalleeObject pThis, IDispatchObject handle)
+- (void) addEventHandle:(ICalleeObject*) pThis, handle:(IDispatchObject*) handle
 {
 	if (null != pThis || null != handle)
 	{
@@ -83,7 +76,7 @@ public (void) addEventHandle(ICalleeObject pThis, IDispatchObject handle)
 	}
 }
 
-public (void) removeEventHandle(ICalleeObject pThis, IDispatchObject handle)
+- (void) removeEventHandle:(ICalleeObject*) pThis, handle:(IDispatchObject*) handle
 {
 	(int) idx = 0;
 	(int) elemLen = 0;
@@ -109,14 +102,12 @@ public (void) removeEventHandle(ICalleeObject pThis, IDispatchObject handle)
 	}
 }
 
-@Override
-protected (void) addObject(IDelayHandleItem delayObject)
+- (void) addObject:(IDelayHandleItem*) delayObject
 {
 	self.addObject(delayObject, 0);
 }
 
-@Override
-protected (void) addObject(IDelayHandleItem delayObject, float priority)
+- (void) addObject:(IDelayHandleItem*) delayObject, priority:(float) priority
 {
 	if (self.mLoopDepth.isInDepth())
 	{
@@ -129,8 +120,7 @@ protected (void) addObject(IDelayHandleItem delayObject, float priority)
 	}
 }
 
-@Override
-protected (void) removeObject(IDelayHandleItem delayObject)
+- (void) removeObject:(IDelayHandleItem*) delayObject
 {
 	if (self.mLoopDepth.isInDepth())
 	{
@@ -145,7 +135,7 @@ protected (void) removeObject(IDelayHandleItem delayObject)
 	}
 }
 
-public (void) dispatchEvent(IDispatchObject dispatchObject)
+- (void) dispatchEvent:(IDispatchObject*) dispatchObject
 {
 	//try
 	//{
@@ -177,7 +167,7 @@ public (void) dispatchEvent(IDispatchObject dispatchObject)
 	//}
 }
 
-public (void) clearEventHandle()
+- (void) clearEventHandle
 {
 	if (self.mLoopDepth.isInDepth())
 	{
@@ -202,7 +192,7 @@ public (void) clearEventHandle()
 }
 
 // 这个判断说明相同的函数只能加一次，但是如果不同资源使用相同的回调函数就会有问题，但是这个判断可以保证只添加一次函数，值得，因此不同资源需要不同回调函数
-public BOOL isExistEventHandle(ICalleeObject pThis, IDispatchObject handle)
+- (BOOL) isExistEventHandle:(ICalleeObject*) pThis, handle:(IDispatchObject*) handle
 {
 	BOOL bFinded = false;
 	//foreach (EventDispatchFunctionObject item in self.mHandleList.list())
@@ -226,7 +216,7 @@ public BOOL isExistEventHandle(ICalleeObject pThis, IDispatchObject handle)
 	return bFinded;
 }
 
-public (void) copyFrom(EventDispatch rhv)
+- (void) copyFrom:(EventDispatch*) rhv
 {
 	//foreach(EventDispatchFunctionObject handle in rhv.handleList.list())
 	(int) idx = 0;
@@ -243,12 +233,12 @@ public (void) copyFrom(EventDispatch rhv)
 	}
 }
 
-public BOOL hasEventHandle()
+- (BOOL) hasEventHandle
 {
 	return self.mHandleList.Count() > 0;
 }
 
-public (int) getEventHandle()
+- (int) getEventHandle
 {
 	return self.mHandleList.Count();
 }
