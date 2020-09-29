@@ -1,7 +1,7 @@
 ﻿/**
  * @brief 对 api 的进一步 wrap
  */
-@interface UtilApi
+@interface UtilSysLibsWrap
 {
 @public
     static final String CR_LF = "\\r\\n";

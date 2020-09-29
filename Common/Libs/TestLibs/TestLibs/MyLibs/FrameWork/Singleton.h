@@ -1,10 +1,6 @@
-﻿package SDK.Lib.FrameWork;
-
-import SDK.Lib.Tools.TClassOp;
-
-@interface Singleton
+﻿@interface Singleton
 {
-    @protected 
+@protected 
     id msSingleton;
 }
 

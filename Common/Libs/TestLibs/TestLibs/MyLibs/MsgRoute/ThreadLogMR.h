@@ -1,7 +1,4 @@
-﻿#ifndef __ThreadLogMR_H
-#define __ThreadLogMR_H
-
-// 线程日志
+﻿// 线程日志
 @interface ThreadLogMR : MsgRouteBase
 {
 @public
@@ -13,5 +10,3 @@
 -(id) init;
 
 @end
-
-#endif

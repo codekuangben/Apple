@@ -1,4 +1,4 @@
-﻿#import "LoadedWebResMR.h"
+﻿#import "MyLibs/MsgRoute/LoadedWebResMR.h"
 
 @implementation LoadedWebResMR
 

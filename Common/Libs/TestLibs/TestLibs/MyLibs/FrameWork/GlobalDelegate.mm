@@ -1,4 +1,4 @@
-﻿import SDK.Lib.EventHandle.AddOnceEventDispatch;
+﻿#import "MyLibs/EventHandle/AddOnceEventDispatch.h"
 
 @implementation GlobalDelegate
 

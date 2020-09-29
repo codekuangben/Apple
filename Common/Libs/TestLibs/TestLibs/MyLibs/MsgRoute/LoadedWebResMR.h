@@ -1,7 +1,4 @@
-﻿#ifndef __LoadedWebResMR_h
-#define __LoadedWebResMR_h
-
-@interface LoadedWebResMR : MsgRouteBase
+﻿@interface LoadedWebResMR : MsgRouteBase
 {
 @public
 	ITask mTask;
@@ -15,5 +12,3 @@
 - (void) resetDefault;
 
 @end
-
-#endif

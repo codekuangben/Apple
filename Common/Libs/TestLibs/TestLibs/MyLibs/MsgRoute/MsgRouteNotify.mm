@@ -20,7 +20,7 @@
 	}
 }
 
--(void) removeOneDisp(MsgRouteDispHandle) disp
+- (void) removeOneDisp:(MsgRouteDispHandle) disp
 {
 	if([self.mDispList Contains:disp])
 	{

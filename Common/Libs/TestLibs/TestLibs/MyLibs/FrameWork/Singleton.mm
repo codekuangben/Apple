@@ -1,10 +1,10 @@
 ﻿#import "MyLibs/FrameWork/Singleton.h"
 
-@interface Singleton<T>
+@interface Singleton
 
 - (id) getSingletonPtr
 {
-    if (null == msSingleton)
+    if (nil == msSingleton)
     {
         
     }
@@ -14,7 +14,7 @@
 
 - (void) deleteSingletonPtr
 {
-    if (null != msSingleton)
+    if (nil != msSingleton)
     {
         msSingleton = null;
     }

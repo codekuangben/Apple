@@ -12,4 +12,5 @@
 - (void) Advance:(float) delta;
 - (void) ProcessNextFixedFrame;
 - (void) FixedAdvance:(float) delta;
+
 @end

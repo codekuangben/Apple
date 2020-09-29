@@ -1,7 +1,4 @@
-﻿#ifndef __MsgRouteBase_h
-#define __MsgRouteBase_h
-
-@interface MsgRouteBase : IRecycle, IDispatchObject
+﻿@interface MsgRouteBase : IRecycle, IDispatchObject
 {
 @public 
 	MsgRouteType mMsgType;
@@ -16,5 +13,3 @@
 - (void) resetDefault;
 
 @end
-
-#endif

@@ -1,6 +1,3 @@
-#ifndef __MBitConverter_h
-#define __MBitConverter_h
-
 @interface MBitConverter
 
 + (BOOL) ToBoolean:
@@ -175,5 +172,3 @@ endian: (EEndian) endian
 
 
 @end
-
-#endif

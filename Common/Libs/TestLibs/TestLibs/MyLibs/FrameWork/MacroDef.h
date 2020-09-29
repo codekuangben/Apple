@@ -1,37 +1,37 @@
-﻿@interface MacroDef
+﻿enum MacroDef
 {
     // 宏定义开始
     // 调试不需要网络
-    static public BOOL DEBUG_NOTNET = false;
+    DEBUG_NOTNET = 0,
 
     // 网络处理多线程，主要是调试的时候使用单线程，方便调试，运行的时候使用多线程
-    static public BOOL NET_MULTHREAD = true;
+    NET_MULTHREAD = 1,
 
     // 是否检查函数接口调用线程
-    static public BOOL THREAD_CALLCHECK = true;
+    THREAD_CALLCHECK = 1,
 
     // 开启窗口日志
-    static public BOOL ENABLE_WINLOG = true;
+    ENABLE_WINLOG = 1,
 
     // 开启网络日志
-    static public BOOL ENABLE_NETLOG = false;
+    ENABLE_NETLOG = 0,
 
     // 开启文件日志
-    static public BOOL ENABLE_FILELOG = false;
+    ENABLE_FILELOG = 0,
 
     // 单元测试，这个需要宏定义
-    static public BOOL UNIT_TEST = true;
+    UNIT_TEST = 1,
 
     // 开启日志
-    static public BOOL ENABLE_LOG = true;
+    ENABLE_LOG = 1,
 
     // 开启警告
-    static public BOOL ENABLE_WARN = false;
+    ENABLE_WARN = 0,
 
     // 开启错误
-    static public BOOL ENABLE_ERROR = true;
+    ENABLE_ERROR = 1,
 
     // 压缩
-    static public BOOL MSG_COMPRESS = true;
+    MSG_COMPRESS = 1,
     // 宏定义结束
 }

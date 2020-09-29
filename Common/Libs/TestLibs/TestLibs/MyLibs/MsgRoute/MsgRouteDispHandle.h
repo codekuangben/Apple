@@ -1,7 +1,4 @@
-﻿#ifndef __MsgRouteDispHandle_h
-#define __MsgRouteDispHandle_h
-
-@interface MsgRouteDispHandle
+﻿@interface MsgRouteDispHandle
 {
 @protected
 	EventDispatchGroup mEventDispatchGroup;
@@ -15,5 +12,3 @@
 - (void) handleMsg:(MsgRouteBase) msg;
 
 @end
-
-#endif

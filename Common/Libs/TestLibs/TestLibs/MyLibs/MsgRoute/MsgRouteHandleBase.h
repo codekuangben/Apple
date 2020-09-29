@@ -1,7 +1,4 @@
-﻿#ifndef __MsgRouteHandleBase_h
-#define __MsgRouteHandleBase_h
-
-@interface MsgRouteHandleBase : GObject, ICalleeObject
+﻿@interface MsgRouteHandleBase : GObject, ICalleeObject
 {
 @public 
 	MDictionary mId2HandleDic;
@@ -16,5 +13,3 @@
 - (void) call:(IDispatchObject) dispObj;
 
 @end
-
-#endif

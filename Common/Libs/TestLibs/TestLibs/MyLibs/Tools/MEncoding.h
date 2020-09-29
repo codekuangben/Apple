@@ -1,6 +1,3 @@
-#ifndef __MEncoding_h
-#define __MEncoding_h
-
 @interface MEncoding
 {
 @public
@@ -27,4 +24,4 @@
 - (int) GetByteCount: (NSString) str;
 - (byte[]) GetBytes:(NSString) str;
 
-#endif
+@end
