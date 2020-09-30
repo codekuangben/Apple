@@ -4,37 +4,37 @@
 
 - (id) init
 {
-    self.mInterval = 1 / 10;    // 每一秒更新 10 次
-    self.mTotalTime = 0;
-    self.mCurTime = 0;
+    self->mInterval = 1 / 10;    // 每一秒更新 10 次
+    self->mTotalTime = 0;
+    self->mCurTime = 0;
 }
 
 - (void) setInterval:(float) value
 {
-    self.mInterval = value;
+    self->mInterval = value;
 }
 
 - (void) setTotalTime:(float) value
 {
-    self.mTotalTime = value;
+    self->mTotalTime = value;
 }
 
 - (void) setCurTime:(float) value
 {
-    self.mCurTime = value;
+    self->mCurTime = value;
 }
 
 - (BOOL) canExec:(float) delta
 {
     BOOL ret = false;
 
-    self.mTotalTime += delta;
-    self.mCurTime += delta;
+    self->mTotalTime += delta;
+    self->mCurTime += delta;
 
-    if(self.mCurTime >= self.mInterval)
+    if(self->mCurTime >= self->mInterval)
     {
         ret = true;
-        self.mCurTime -= self.mInterval;
+        self->mCurTime -= self->mInterval;
     }
 
     return ret;

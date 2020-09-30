@@ -18,12 +18,12 @@
 
 - (id) init:(int)initCapacity maxCapacity:(int)maxCapacity
 {
-	self.mDynBuffer = [[DynByteBuffer alloc] init:initCapacity maxCapacity:maxCapacity];
+	self->mDynBuffer = [[DynByteBuffer alloc] init:initCapacity maxCapacity:maxCapacity];
 
-	self.mFirst = 0;
-	self.mLast = 0;
+	self->mFirst = 0;
+	self->mLast = 0;
 
-	self.mTmpBA = [[ByteBuffer alloc] init];
+	self->mTmpBA = [[ByteBuffer alloc] init];
 	
 	return self;
 }
@@ -65,17 +65,17 @@
 		return true;
 	}
 
-	return self.mFirst < self.mLast;
+	return self->mFirst < self->mLast;
 }
 
 - (BOOL) empty
 {
-	return self.mDynBuffer->mSize == 0;
+	return self->mDynBuffer->mSize == 0;
 }
 
 - (int) capacity
 {
-	return self.mDynBuffer->mCapacity;
+	return self->mDynBuffer->mCapacity;
 }
 
 - (BOOL) full
@@ -86,9 +86,9 @@
 // 清空缓冲区
 - (void) clear
 {
-	self.mDynBuffer->mSize = 0;
-	self.mFirst = 0;
-	self.mLast = 0;
+	self->mDynBuffer->mSize = 0;
+	self->mFirst = 0;
+	self->mLast = 0;
 }
 
 /**
@@ -112,8 +112,8 @@
 		MArray.Copy(mDynBuffer.mBuffer, mFirst, mDynBuffer.mBuffer, 0, mDynBuffer.mCapacity - mFirst);  // 拷贝第一段数据到 0 索引位置
 		MArray.Copy(tmp, 0, mDynBuffer.mBuffer, mDynBuffer.mCapacity - mFirst, mLast);      // 拷贝第二段数据到缓冲区
 
-		self.mFirst = 0;
-		self.mLast = [self getSize];
+		self->mFirst = 0;
+		self->mLast = [self getSize];
 	}
 }
 
@@ -126,7 +126,7 @@
 	{
 		return;
 	}
-	if (newCapacity < self.getSize())       // 不能分配比当前已经占有的空间还小的空间
+	if (newCapacity < self->getSize())       // 不能分配比当前已经占有的空间还小的空间
 	{
 		return;
 	}
@@ -302,8 +302,8 @@
 		(int) closeSize = DynBufResizePolicy.getCloseSize(rhv.getSize() + mDynBuffer.mSize, mDynBuffer.mCapacity, mDynBuffer.mMaxCapacity);
 		setCapacity(closeSize);
 	}
-	//self.mSize += rhv.size;
-	//self.mLast = self.mSize;
+	//self->mSize += rhv.size;
+	//self->mLast = self->mSize;
 
 	//mTmpBA.clear();
 	rhv.frontBA(mTmpBA, rhv.getSize());

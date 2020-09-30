@@ -15,41 +15,41 @@
 -(void) setTotalTime:(float) value
 {
     [super setTotalTime:value];
-    self.mCurRunTime = value;
+    self->mCurRunTime = value;
 }
 
 -(float) getRunTime
 {
-    return self.mTotalTime - self.mCurRunTime;
+    return self->mTotalTime - self->mCurRunTime;
 }
 
 // 如果要获取剩余的倒计时时间，使用 getLeftCallTime
 -(float) getLeftRunTime
 {
-    return self.mCurRunTime;
+    return self->mCurRunTime;
 }
 
 -(void) OnTimer:(float) delta
 {
-    if (self.mDisposed)
+    if (self->mDisposed)
     {
         return;
     }
 
-    self.mCurRunTime -= delta;
-    if(self.mCurRunTime < 0)
+    self->mCurRunTime -= delta;
+    if(self->mCurRunTime < 0)
     {
-        self.mCurRunTime = 0;
+        self->mCurRunTime = 0;
     }
-    self.mIntervalLeftTime += delta;
+    self->mIntervalLeftTime += delta;
 
-    if (self.mIsInfineLoop)
+    if (self->mIsInfineLoop)
     {
         [self checkAndDisp];
     }
     else
     {
-        if (self.mCurRunTime <= 0)
+        if (self->mCurRunTime <= 0)
         {
             [self disposeAndDisp];
         }
@@ -62,10 +62,10 @@
 
 -(void) reset
 {
-    self.mCurRunTime = self.mTotalTime;
-    self.mCurCallTime = 0;
-    self.mIntervalLeftTime = 0;
-    self.mDisposed = false;
+    self->mCurRunTime = self->mTotalTime;
+    self->mCurCallTime = 0;
+    self->mIntervalLeftTime = 0;
+    self->mDisposed = false;
 }
 
 @end

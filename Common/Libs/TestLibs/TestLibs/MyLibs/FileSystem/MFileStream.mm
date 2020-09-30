@@ -6,10 +6,10 @@
 {
 	if(self = [super init])
 	{
-		self.mTypeId = "MFileStream";
+		self->mTypeId = "MFileStream";
 
-		self.mFilePath = filePath;
-		self.mFileOpState = FileOpState.eNoOp;
+		self->mFilePath = filePath;
+		self->mFileOpState = FileOpState.eNoOp;
 
 		[self checkAndOpen];
 	}
@@ -17,20 +17,20 @@
 
 -(void) seek:(long) offset origin:(MSeekOrigin) origin
 {
-	if(self.mFileOpState == FileOpState.eOpenSuccess)
+	if(self->mFileOpState == FileOpState.eOpenSuccess)
 	{
 		if(MSeekOrigin.Begin == origin)
 		{
 			try
 			{
-				if(null != self.mFileInputStream)
+				if(null != self->mFileInputStream)
 				{
-					self.mFileInputStream.getChannel().position(offset);
+					self->mFileInputStream.getChannel().position(offset);
 				}
 
-				if(null != self.mFileOutputStream)
+				if(null != self->mFileOutputStream)
 				{
-					self.mFileOutputStream.getChannel().position(offset);
+					self->mFileOutputStream.getChannel().position(offset);
 				}
 			}
 			catch (Exception e)
@@ -42,14 +42,14 @@
 		{
 			try
 			{
-				if(null != self.mFileInputStream)
+				if(null != self->mFileInputStream)
 				{
-					self.mFileInputStream.getChannel().position(self.mFile.length() - 1 - offset);
+					self->mFileInputStream.getChannel().position(self->mFile.length() - 1 - offset);
 				}
 
-				if(null != self.mFileOutputStream)
+				if(null != self->mFileOutputStream)
 				{
-					self.mFileOutputStream.getChannel().position(self.mFile.length() - 1 - offset);
+					self->mFileOutputStream.getChannel().position(self->mFile.length() - 1 - offset);
 				}
 			}
 			catch (Exception e)
@@ -61,14 +61,14 @@
 		{
 			try
 			{
-				if(null != self.mFileInputStream)
+				if(null != self->mFileInputStream)
 				{
-					self.mFileInputStream.getChannel().position(self.mFileInputStream.getChannel().position() + offset);
+					self->mFileInputStream.getChannel().position(self->mFileInputStream.getChannel().position() + offset);
 				}
 
-				if(null != self.mFileOutputStream)
+				if(null != self->mFileOutputStream)
 				{
-					self.mFileOutputStream.getChannel().position(self.mFileOutputStream.getChannel().position() + offset);
+					self->mFileOutputStream.getChannel().position(self->mFileOutputStream.getChannel().position() + offset);
 				}
 			}
 			catch (Exception e)
@@ -86,33 +86,33 @@
 
 -(void) checkAndOpen
 {
-	if(self.mFileOpState == FileOpState.eNoOp)
+	if(self->mFileOpState == FileOpState.eNoOp)
 	{
-		self.mFile = new File(self.mFilePath);
+		self->mFile = new File(self->mFilePath);
 	}
 }
 
 -(void) syncOpenFileStream
 {
-	if (self.mFileOpState == FileOpState.eNoOp)
+	if (self->mFileOpState == FileOpState.eNoOp)
 	{
-		self.mFileOpState = FileOpState.eOpening;
+		self->mFileOpState = FileOpState.eOpening;
 
 		try
 		{
-			self.mFile = new File(mFilePath);
-			self.mFileOpState = FileOpState.eOpenSuccess;
+			self->mFile = new File(mFilePath);
+			self->mFileOpState = FileOpState.eOpenSuccess;
 		}
 		catch(Exception exp)
 		{
-			self.mFileOpState = FileOpState.eOpenFail;
+			self->mFileOpState = FileOpState.eOpenFail;
 		}
 	}
 }
 
 -(BOOL) isValid
 {
-	return self.mFileOpState == FileOpState.eOpenSuccess;
+	return self->mFileOpState == FileOpState.eOpenSuccess;
 }
 
 // 获取总共长度
@@ -120,11 +120,11 @@
 {
 	(int) len = 0;
 
-	if (self.mFileOpState == FileOpState.eOpenSuccess)
+	if (self->mFileOpState == FileOpState.eOpenSuccess)
 	{
-		if (self.mFile != null)
+		if (self->mFile != null)
 		{
-			len = ((int))self.mFile.length();
+			len = ((int))self->mFile.length();
 		}
 		/*
 		if (mFileStream != null && mFileStream.CanSeek)
@@ -146,24 +146,24 @@
 
 -(void) close
 {
-	if (self.mFileOpState == FileOpState.eOpenSuccess)
+	if (self->mFileOpState == FileOpState.eOpenSuccess)
 	{
-		if (self.mFile != null)
+		if (self->mFile != null)
 		{
 			try
 			{
-				if(null != self.mFileInputStream)
+				if(null != self->mFileInputStream)
 				{
-					self.mFileInputStream.close();
-					self.mFileInputStream = null;
+					self->mFileInputStream.close();
+					self->mFileInputStream = null;
 				}
 
-				if(null != self.mFileInputStream)
+				if(null != self->mFileInputStream)
 				{
-					self.mFileOutputStream.flush();
+					self->mFileOutputStream.flush();
 
-					self.mFileOutputStream.close();
-					self.mFileOutputStream = null;
+					self->mFileOutputStream.close();
+					self->mFileOutputStream = null;
 				}
 			}
 			catch(Exception e)
@@ -172,29 +172,29 @@
 			}
 		}
 
-		self.mFileOpState = FileOpState.eOpenClose;
-		self.mFileOpState = FileOpState.eNoOp;
+		self->mFileOpState = FileOpState.eOpenClose;
+		self->mFileOpState = FileOpState.eNoOp;
 	}
 }
 
 -(String) readText
 {
-	return self.readText(0, 0, null);
+	return self->readText(0, 0, null);
 }
 
 -(String) readText:(int) offset
 {
-	return self.readText(offset, 0, null);
+	return self->readText(offset, 0, null);
 }
 
 -(String) readText:(int) offset count:(int) count
 {
-	return self.readText(offset, count, null);
+	return self->readText(offset, count, null);
 }
 
 -(String) readText:(int) offset count:(int) count encode:(MEncoding) encode
 {
-	self.checkAndOpen();
+	self->checkAndOpen();
 
 	String retStr = "";
 	byte[] bytes = null;
@@ -209,14 +209,14 @@
 		count = getLength();
 	}
 
-	if (self.mFileOpState == FileOpState.eOpenSuccess)
+	if (self->mFileOpState == FileOpState.eOpenSuccess)
 	{
-		if (self.mFile.canRead())
+		if (self->mFile.canRead())
 		{
 			try
 			{
 				bytes = new byte[count];
-				self.mFileInputStream.read(bytes, 0, count);
+				self->mFileInputStream.read(bytes, 0, count);
 
 				retStr = encode.GetString(bytes);
 			}
@@ -232,17 +232,17 @@
 
 -(byte[]) readByte
 {
-	return self.readByte(0, 0);
+	return self->readByte(0, 0);
 }
 
 -(byte[]) readByte:(int) offset
 {
-	return self.readByte(offset, 0);
+	return self->readByte(offset, 0);
 }
 
 -(byte[]) readByte:(int) offset count:(int) count
 {
-	self.checkAndOpen();
+	self->checkAndOpen();
 
 	if (count == 0)
 	{
@@ -251,12 +251,12 @@
 
 	byte[] bytes = null;
 
-	if (self.mFile.canRead())
+	if (self->mFile.canRead())
 	{
 		try
 		{
 			bytes = new byte[count];
-			self.mFileInputStream.read(bytes, 0, count);
+			self->mFileInputStream.read(bytes, 0, count);
 		}
 		catch (Exception err)
 		{
@@ -269,16 +269,16 @@
 
 -(void) writeText:(String) text
 {
-	self.writeText(text, GkEncode.eUTF8);
+	self->writeText(text, GkEncode.eUTF8);
 }
 
 -(void) writeText:(String) text gkEncode:(GkEncode) gkEncode
 {
 	MEncoding encode = UtilApi.convGkEncode2EncodingEncoding(gkEncode);
 
-	self.checkAndOpen();
+	self->checkAndOpen();
 
-	if (self.mFile.canWrite())
+	if (self->mFile.canWrite())
 	{
 		//if (encode == null)
 		//{
@@ -291,7 +291,7 @@
 		{
 			try
 			{
-				self.mFileOutputStream.write(bytes, 0, bytes.length);
+				self->mFileOutputStream.write(bytes, 0, bytes.length);
 			}
 			catch (Exception err)
 			{
@@ -303,19 +303,19 @@
 
 -(void) writeByte:(byte[]) bytes
 {
-	self.writeByte(bytes, 0, 0);
+	self->writeByte(bytes, 0, 0);
 }
 
 -(void) writeByte:(byte[]) bytes offset:(int) offset
 {
-	self.writeByte(bytes, offset, 0);
+	self->writeByte(bytes, offset, 0);
 }
 
 -(void) writeByte:(byte[]) bytes offset:(int) offset count:(int) count
 {
-	self.checkAndOpen();
+	self->checkAndOpen();
 
-	if (self.mFile.canWrite())
+	if (self->mFile.canWrite())
 	{
 		if (bytes != null)
 		{
@@ -328,7 +328,7 @@
 			{
 				try
 				{
-					self.mFileOutputStream.write(bytes, offset, count);
+					self->mFileOutputStream.write(bytes, offset, count);
 				}
 				catch (Exception err)
 				{
@@ -341,7 +341,7 @@
 
 -(void) writeLine:(String) text
 {
-	self.writeLine(text, GkEncode.eUTF8);
+	self->writeLine(text, GkEncode.eUTF8);
 }
 
 -(void) writeLine:(String) text gkEncode:(GkEncode) gkEncode

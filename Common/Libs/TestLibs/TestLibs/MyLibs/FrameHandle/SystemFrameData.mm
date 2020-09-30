@@ -14,20 +14,20 @@
 
 - (int) getTotalFrameCount()
 {
-    return self.mTotalFrameCount;
+    return self->mTotalFrameCount;
 }
 
 - (void) nextFrame:(float) delta
 {
-    ++self.mTotalFrameCount;
-    ++self.mCurFrameCount;
-    self.mCurTime += delta;
+    ++self->mTotalFrameCount;
+    ++self->mCurFrameCount;
+    self->mCurTime += delta;
 
-    if(self.mCurTime > 1.0f)
+    if(self->mCurTime > 1.0f)
     {
-        self.mFps = ((int))(self.mCurFrameCount / self.mCurTime);
-        self.mCurFrameCount = 0;
-        self.mCurTime = 0;
+        self->mFps = ((int))(self->mCurFrameCount / self->mCurTime);
+        self->mCurFrameCount = 0;
+        self->mCurTime = 0;
     }
 }
 

@@ -12,7 +12,7 @@
 {
     super.dispatchEvent(dispatchObject);
 
-    self.clearEventHandle();
+    self->clearEventHandle();
 }
 
 @end

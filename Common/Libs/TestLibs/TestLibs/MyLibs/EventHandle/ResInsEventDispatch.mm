@@ -8,7 +8,7 @@
 {
     if(self = [super init])
     {
-		self.mIsValid = true;
+		self->mIsValid = true;
     }
     
     return self;
@@ -16,33 +16,33 @@
 
 - (void) setIsValid: (BOOL) value
 {
-	self.mIsValid = value;
+	self->mIsValid = value;
 }
 
 - (BOOL) getIsValid
 {
-	return self.mIsValid;
+	return self->mIsValid;
 }
 
 - (void) setInsGO: (NSObject) go
 {
-	self.mInsGO = go;
+	self->mInsGO = go;
 }
 
 - (NSObject*) getInsGO
 {
-	return self.mInsGO;
+	return self->mInsGO;
 }
 
 - (void) dispatchEvent: (IDispatchObject*) dispatchObject
 {
-	if(self.mIsValid)
+	if(self->mIsValid)
 	{
 		[super dispatchEvent: dispatchObject];
 	}
 	else
 	{
-		self.mInsGO = null;
+		self->mInsGO = null;
 	}
 }
 

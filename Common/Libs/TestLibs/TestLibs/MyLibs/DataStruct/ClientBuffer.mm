@@ -4,22 +4,22 @@
 
 - (id) init
 {
-	self.mRawBuffer = [[MsgBuffer alloc] init];
-	self.mMsgBuffer = [[MsgBuffer alloc] init];
-	self.mSendTmpBuffer = [[MsgBuffer alloc] init];
-	self.mSocketSendBA = [[ByteBuffer alloc] init];
+	self->mRawBuffer = [[MsgBuffer alloc] init];
+	self->mMsgBuffer = [[MsgBuffer alloc] init];
+	self->mSendTmpBuffer = [[MsgBuffer alloc] init];
+	self->mSocketSendBA = [[ByteBuffer alloc] init];
 
-	self.mUnCompressHeaderBA = [[ByteBuffer alloc] init];
-	self.mSendData = [[ByteBuffer alloc] init];
-	self.mTmpData = [[ByteBuffer alloc] init:4];
-	self.mTmp1fData = [[ByteBuffer alloc] init:4];
+	self->mUnCompressHeaderBA = [[ByteBuffer alloc] init];
+	self->mSendData = [[ByteBuffer alloc] init];
+	self->mTmpData = [[ByteBuffer alloc] init:4];
+	self->mTmp1fData = [[ByteBuffer alloc] init:4];
 
-	self.mReadMutex = [[MMutex alloc] init:false name:"ReadMutex"];
-	self.mWriteMutex = [[MMutex alloc] init:false name:"WriteMutex"];
+	self->mReadMutex = [[MMutex alloc] init:false name:"ReadMutex"];
+	self->mWriteMutex = [[MMutex alloc] init:false name:"WriteMutex"];
 
 	if (MacroDef.MSG_ENCRIPT)
 	{
-		self.mCryptContext = [[MMutex alloc] CryptContext];
+		self->mCryptContext = [[MMutex alloc] CryptContext];
 	}
 }
 
@@ -123,9 +123,9 @@
 // KBEngine 引擎消息流程
 - (void) moveRaw2Msg_KBE
 {
-	self.mRawBuffer.circularBuffer.linearize();
-	self.mMsgBuffer.circularBuffer.pushBackCB(self.mRawBuffer.circularBuffer);
-	self.mRawBuffer.circularBuffer.clear();
+	self->mRawBuffer.circularBuffer.linearize();
+	self->mMsgBuffer.circularBuffer.pushBackCB(self->mRawBuffer.circularBuffer);
+	self->mRawBuffer.circularBuffer.clear();
 }
 
 - (void) send:(BOOL) bnet

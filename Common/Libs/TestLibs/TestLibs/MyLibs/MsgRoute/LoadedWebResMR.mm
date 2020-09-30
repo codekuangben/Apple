@@ -14,7 +14,7 @@
 
 - (void) resetDefault
 {
-	self.mTask = NULL;
+	self->mTask = NULL;
 }
 
 @end

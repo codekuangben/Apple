@@ -14,7 +14,7 @@
 
 - getTypeId
 {
-    return self.mTypeId;
+    return self->mTypeId;
 }
 
 @end

@@ -6,17 +6,17 @@
 
 - TimerFunctionObject
 {
-    self.mHandle = null;
+    self->mHandle = null;
 }
 
 - (void) setFuncObject:(ICalleeObjectTimer*) handle
 {
-    self.mHandle = handle;
+    self->mHandle = handle;
 }
 
 - (BOOL) isValid
 {
-    return self.mHandle != null;
+    return self->mHandle != null;
 }
 
 - (BOOL) isEqual:(ICalleeObject*) handle
@@ -25,7 +25,7 @@
 
     if(handle != null)
     {
-        ret = UtilApi.isAddressEqual(self.mHandle, handle);
+        ret = UtilApi.isAddressEqual(self->mHandle, handle);
         if(!ret)
         {
             return ret;
@@ -37,9 +37,9 @@
 
 - (void) call:(TimerItemBase*) dispObj
 {
-    if (null != self.mHandle)
+    if (null != self->mHandle)
     {
-        self.mHandle.call(dispObj);
+        self->mHandle.call(dispObj);
     }
 }
 

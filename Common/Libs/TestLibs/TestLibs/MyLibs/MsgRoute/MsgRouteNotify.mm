@@ -6,7 +6,7 @@
 {
 	if(self = [super init])
 	{
-		self.mDispList = [[MList alloc] init];
+		self->mDispList = [[MList alloc] init];
 	}
 	
 	return self;
@@ -14,23 +14,23 @@
 
 - (void) addOneDisp:(MsgRouteDispHandle) disp
 {
-	if(![self.mDispList Contains:disp])
+	if(![self->mDispList Contains:disp])
 	{
-		[self.mDispList Add:disp];
+		[self->mDispList Add:disp];
 	}
 }
 
 - (void) removeOneDisp:(MsgRouteDispHandle) disp
 {
-	if([self.mDispList Contains:disp])
+	if([self->mDispList Contains:disp])
 	{
-		[self.mDispList Remove:disp];
+		[self->mDispList Remove:disp];
 	}
 }
 
 - (void) handleMsg:(MsgRouteBase) msg
 {
-	for(MsgRouteDispHandle item : self.mDispList.list())
+	for(MsgRouteDispHandle item : self->mDispList.list())
 	{
 		item.handleMsg(msg);
 	}

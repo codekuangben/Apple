@@ -6,9 +6,9 @@
 {
 	if(self = [super init])
 	{
-		self.mTypeId = "MsgRouteHandleBase";
+		self->mTypeId = "MsgRouteHandleBase";
 
-		self.mId2HandleDic = [[MDictionary alloc] init];
+		self->mId2HandleDic = [[MDictionary alloc] init];
 	}
 	
 	return self;
@@ -16,19 +16,19 @@
 
 - (void) addMsgRouteHandle:(MsgRouteID) msgRouteID handle:(IDispatchObject) handle
 {
-	if(![self.mId2HandleDic ContainsKey:msgRouteID])
+	if(![self->mId2HandleDic ContainsKey:msgRouteID])
 	{
-		[self.mId2HandleDic set:msgRouteID value:[[AddOnceEventDispatch alloc] init]];
+		[self->mId2HandleDic set:msgRouteID value:[[AddOnceEventDispatch alloc] init]];
 	}
 
-	[[self.mId2HandleDic get:msgRouteID] addEventHandle:NULL, handle:handle];
+	[[self->mId2HandleDic get:msgRouteID] addEventHandle:NULL, handle:handle];
 }
 
 - (void) removeMsgRouteHandle:(MsgRouteID) msgRouteID, handle:(IDispatchObject) handle
 {
-	if ([self.mId2HandleDic ContainsKey:msgRouteID])
+	if ([self->mId2HandleDic ContainsKey:msgRouteID])
 	{
-		[self.mId2HandleDic get:msgRouteID.] removeEventHandle:null handle:handle];
+		[self->mId2HandleDic get:msgRouteID.] removeEventHandle:null handle:handle];
 	}
 }
 
@@ -36,9 +36,9 @@
 {
 	MsgRouteBase msg = (MsgRouteBase)dispObj;
 
-	if ([self.mId2HandleDic ContainsKey:msg.mMsgID])
+	if ([self->mId2HandleDic ContainsKey:msg.mMsgID])
 	{
-		[self.mId2HandleDic get:msg.mMsgID] dispatchEvent:msg];
+		[self->mId2HandleDic get:msg.mMsgID] dispatchEvent:msg];
 	}
 	else
 	{

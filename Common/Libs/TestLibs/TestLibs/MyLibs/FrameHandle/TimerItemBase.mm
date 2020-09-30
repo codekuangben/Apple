@@ -7,45 +7,45 @@
 
 - (id) init
 {
-    self.mInternal = 1;
-    self.mTotalTime = 1;
-    self.mCurRunTime = 0;
-    self.mCurCallTime = 0;
-    self.mIsInfineLoop = false;
-    self.mIntervalLeftTime = 0;
-    self.mTimerDisp = new TimerFunctionObject();
-    self.mDisposed = false;
-    self.mIsContinuous = false;
+    self->mInternal = 1;
+    self->mTotalTime = 1;
+    self->mCurRunTime = 0;
+    self->mCurCallTime = 0;
+    self->mIsInfineLoop = false;
+    self->mIntervalLeftTime = 0;
+    self->mTimerDisp = new TimerFunctionObject();
+    self->mDisposed = false;
+    self->mIsContinuous = false;
 }
 
 - (void) setFuncObject:(ICalleeObjectTimer*) handle
 {
-    self.mTimerDisp.setFuncObject(handle);
+    self->mTimerDisp.setFuncObject(handle);
 }
 
 - (void) setTotalTime:(float) value
 {
-    self.mTotalTime = value;
+    self->mTotalTime = value;
 }
 
 - (float) getRunTime
 {
-    return self.mCurRunTime;
+    return self->mCurRunTime;
 }
 
 - (float) getCallTime
 {
-    return self.mCurCallTime;
+    return self->mCurCallTime;
 }
 
 - (float) getLeftRunTime
 {
-    return self.mTotalTime - self.mCurRunTime;
+    return self->mTotalTime - self->mCurRunTime;
 }
 
 - (float) getLeftCallTime
 {
-    return self.mTotalTime - self.mCurCallTime;
+    return self->mTotalTime - self->mCurCallTime;
 }
 
 // 在调用回调函数之前处理
@@ -56,25 +56,25 @@
 
 - (void) OnTimer:(float) delta
 {
-    if (self.mDisposed)
+    if (self->mDisposed)
     {
         return;
     }
 
-    self.mCurRunTime += delta;
-    if (self.mCurRunTime > self.mTotalTime)
+    self->mCurRunTime += delta;
+    if (self->mCurRunTime > self->mTotalTime)
     {
-        self.mCurRunTime = self.mTotalTime;
+        self->mCurRunTime = self->mTotalTime;
     }
-    self.mIntervalLeftTime += delta;
+    self->mIntervalLeftTime += delta;
 
-    if (self.mIsInfineLoop)
+    if (self->mIsInfineLoop)
     {
         checkAndDisp();
     }
     else
     {
-        if (self.mCurRunTime >= self.mTotalTime)
+        if (self->mCurRunTime >= self->mTotalTime)
         {
             disposeAndDisp();
         }
@@ -87,48 +87,48 @@
 
 - (void) disposeAndDisp
 {
-    if (self.mIsContinuous)
+    if (self->mIsContinuous)
     {
-        self.continueDisposeAndDisp();
+        self->continueDisposeAndDisp();
     }
     else
     {
-        self.discontinueDisposeAndDisp();
+        self->discontinueDisposeAndDisp();
     }
 }
 
 - (void) continueDisposeAndDisp
 {
-    self.mDisposed = true;
+    self->mDisposed = true;
 
-    while (self.mIntervalLeftTime >= self.mInternal && self.mCurCallTime < self.mTotalTime)
+    while (self->mIntervalLeftTime >= self->mInternal && self->mCurCallTime < self->mTotalTime)
     {
-        self.mCurCallTime = self.mCurCallTime + self.mInternal;
-        self.mIntervalLeftTime = self.mIntervalLeftTime - self.mInternal;
-        self.onPreCallBack();
+        self->mCurCallTime = self->mCurCallTime + self->mInternal;
+        self->mIntervalLeftTime = self->mIntervalLeftTime - self->mInternal;
+        self->onPreCallBack();
 
-        if (self.mTimerDisp.isValid())
+        if (self->mTimerDisp.isValid())
         {
-            self.mTimerDisp.call(this);
+            self->mTimerDisp.call(this);
         }
     }
 }
 
 - (void) discontinueDisposeAndDisp
 {
-    self.mDisposed = true;
-    self.mCurCallTime = self.mTotalTime;
-    self.onPreCallBack();
+    self->mDisposed = true;
+    self->mCurCallTime = self->mTotalTime;
+    self->onPreCallBack();
 
-    if (self.mTimerDisp.isValid())
+    if (self->mTimerDisp.isValid())
     {
-        self.mTimerDisp.call(this);
+        self->mTimerDisp.call(this);
     }
 }
 
 - (void) checkAndDisp
 {
-    if(self.mIsContinuous)
+    if(self->mIsContinuous)
     {
         continueCheckAndDisp();
     }
@@ -141,16 +141,16 @@
 // 连续的定时器
 - (void) continueCheckAndDisp
 {
-    while (self.mIntervalLeftTime >= self.mInternal)
+    while (self->mIntervalLeftTime >= self->mInternal)
     {
         // 这个地方 m_curCallTime 肯定会小于 m_totalTime，因为在调用这个函数的外部已经进行了判断
-        self.mCurCallTime = self.mCurCallTime + self.mInternal;
-        self.mIntervalLeftTime = self.mIntervalLeftTime - self.mInternal;
-        self.onPreCallBack();
+        self->mCurCallTime = self->mCurCallTime + self->mInternal;
+        self->mIntervalLeftTime = self->mIntervalLeftTime - self->mInternal;
+        self->onPreCallBack();
 
-        if (self.mTimerDisp.isValid())
+        if (self->mTimerDisp.isValid())
         {
-            self.mTimerDisp.call(this);
+            self->mTimerDisp.call(this);
         }
     }
 }
@@ -158,26 +158,26 @@
 // 不连续的定时器
 - (void) discontinueCheckAndDisp
 {
-    if (self.mIntervalLeftTime >= self.mInternal)
+    if (self->mIntervalLeftTime >= self->mInternal)
     {
         // 这个地方 m_curCallTime 肯定会小于 m_totalTime，因为在调用这个函数的外部已经进行了判断
-        self.mCurCallTime = self.mCurCallTime + ((((int))(self.mIntervalLeftTime / self.mInternal)) * self.mInternal);
-        self.mIntervalLeftTime = self.mIntervalLeftTime % self.mInternal;   // 只保留余数
-        self.onPreCallBack();
+        self->mCurCallTime = self->mCurCallTime + ((((int))(self->mIntervalLeftTime / self->mInternal)) * self->mInternal);
+        self->mIntervalLeftTime = self->mIntervalLeftTime % self->mInternal;   // 只保留余数
+        self->onPreCallBack();
 
-        if (self.mTimerDisp.isValid())
+        if (self->mTimerDisp.isValid())
         {
-            self.mTimerDisp.call(this);
+            self->mTimerDisp.call(this);
         }
     }
 }
 
 - (void) reset
 {
-    self.mCurRunTime = 0;
-    self.mCurCallTime = 0;
-    self.mIntervalLeftTime = 0;
-    self.mDisposed = false;
+    self->mCurRunTime = 0;
+    self->mCurCallTime = 0;
+    self->mIntervalLeftTime = 0;
+    self->mDisposed = false;
 }
 
 - (void) setClientDispose(BOOL) isDispose

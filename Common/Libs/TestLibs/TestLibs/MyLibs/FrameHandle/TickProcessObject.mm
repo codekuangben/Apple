@@ -4,8 +4,8 @@
 
 - (id) init
 {
-    self.mTickObject = null;
-    self.mPriority = 0.0f;
+    self->mTickObject = null;
+    self->mPriority = 0.0f;
 }
 
 @end

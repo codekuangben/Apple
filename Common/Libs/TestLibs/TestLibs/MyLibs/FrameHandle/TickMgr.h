@@ -16,7 +16,7 @@
 
 - (id) init
 {
-    self.mTickList = new MList<TickProcessObject>();
+    self->mTickList = new MList<TickProcessObject>();
 }
 
 - (void) init;

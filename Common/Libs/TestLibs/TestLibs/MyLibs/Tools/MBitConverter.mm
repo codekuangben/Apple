@@ -2,53 +2,42 @@
 
 @implementation MBitConverter
 
-+ (BOOL) ToBoolean(
-                                byte[] bytes,
-                                (int) startIndex
-                                )
++ (BOOL) ToBoolean:(Byte[]) bytes
+        startIndex: (int) startIndex
 {
     return MBitConverter.ToBoolean(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
 }
 
-+ (BOOL) ToBoolean(
-                                byte[] bytes,
-                                (int) startIndex,
-                                EEndian endian
-                                )
++ (BOOL) ToBoolean:(byte[]) bytes
+        startIndex: (int) startIndex
+        endian:(EEndian) endian
 {
     return bytes[startIndex] != 0;
 }
 
-+ (char) ToChar(
-                          byte[] bytes,
-                          (int) startIndex
-                          )
++ (char) ToChar:(byte[]) bytes
+        startIndex: (int) startIndex
 {
     return MBitConverter.ToChar(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
 }
 
-+ (char) ToChar(
-                          byte[] bytes,
-                          (int) startIndex,
-                          EEndian endian
-                          )
++ (char) ToChar:(byte[]) bytes
+        startIndex: (int) startIndex
+        endian: (EEndian) endian
+
 {
     return (char)bytes[startIndex];
 }
 
-+ (short) ToInt16(
-                            byte[] bytes,
-                            (int) startIndex
-                            )
++ (short) ToInt16:(byte[]) bytes
+        startIndex: (int) startIndex
 {
     return MBitConverter.ToInt16(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
 }
 
-+ (short) ToInt16(
-                            byte[] bytes,
-                            (int) startIndex,
-                            EEndian endian
-                            )
++ (short) ToInt16:(byte[]) bytes
+        startIndex: (int) startIndex
+        endian: (EEndian) endian
 {
     short retValue = 0;
     if (endian == EEndian.eLITTLE_ENDIAN)
@@ -68,19 +57,15 @@
     return retValue;
 }
 
-+ (short) ToUInt16(
-                             byte[] bytes,
-                             (int) startIndex
-                             )
++ (short) ToUInt16:(byte[]) bytes
+        startIndex:(int) startIndex
 {
     return MBitConverter.ToUInt16(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
 }
 
-+ (short) ToUInt16(
-                             byte[] bytes,
-                             (int) startIndex,
-                             EEndian endian
-                             )
++ (short) ToUInt16:(byte[]) bytes
+        startIndex:(int) startIndex
+        endian:(EEndian) endian
 {
     short retValue = 0;
     if (endian == EEndian.eLITTLE_ENDIAN)
@@ -100,19 +85,15 @@
     return retValue;
 }
 
-+ (int) ToInt32(
-                            byte[] bytes,
-                            (int) startIndex
-                            )
++ (int) ToInt32:(byte[]) bytes
+        startIndex:(int) startIndex
 {
     return MBitConverter.ToInt32(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
 }
 
-+ (int) ToInt32(
-                            byte[] bytes,
-                            (int) startIndex,
-                            EEndian endian
-                            )
++ (int) ToInt32:(byte[]) bytes
+        startIndex:(int) startIndex
+        endian:(EEndian) endian
 {
     (int) retValue = 0;
     if (endian == EEndian.eLITTLE_ENDIAN)
@@ -136,19 +117,15 @@
     return retValue;
 }
 
-+ (int) ToUInt32(
-                             byte[] bytes,
-                             (int) startIndex
-                             )
++ (int) ToUInt32:(byte[]) bytes
+        startIndex:(int) startIndex
 {
     return MBitConverter.ToUInt32(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
 }
 
-+ (int) ToUInt32(
-                             byte[] bytes,
-                             (int) startIndex,
-                             EEndian endian
-                             )
++ (int) ToUInt32:(byte[]) bytes
+        startIndex:(int) startIndex
+        endian:(EEndian) endian
 {
     (int) retValue = 0;
     if (endian == EEndian.eLITTLE_ENDIAN)
@@ -172,19 +149,15 @@
     return retValue;
 }
 
-+ (long) ToInt64(
-                           byte[] bytes,
-                           (int) startIndex
-                           )
++ (long) ToInt64:(byte[]) bytes
+        startIndex:(int) startIndex
 {
     return MBitConverter.ToInt64(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
 }
 
-+ (long) ToInt64(
-                           byte[] bytes,
-                           (int) startIndex,
-                           EEndian endian
-                           )
++ (long) ToInt64:(byte[]) bytes
+    startIndex:(int) startIndex
+    endian:(EEndian) endian
 {
     long retValue = 0;
     if (endian == EEndian.eLITTLE_ENDIAN)
@@ -216,19 +189,15 @@
     return retValue;
 }
 
-+ (long) ToUInt64(
-                            byte[] bytes,
-                            (int) startIndex
-                            )
++ (long) ToUInt64:(byte[]) bytes
+        startIndex:(int) startIndex
 {
     return MBitConverter.ToUInt64(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
 }
 
-+ (long) ToUInt64(
-                            byte[] bytes,
-                            (int) startIndex,
-                            EEndian endian
-                            )
++ (long) ToUInt64:(byte[]) bytes
+        startIndex:(int) startIndex
+        endian:(EEndian) endian
 {
     long retValue = 0;
     if (endian == EEndian.eLITTLE_ENDIAN)
@@ -267,7 +236,7 @@
  * @param index 开始位置
  * @return
  */
-+ (float) ToFloat(byte[] b, (int) index)
++ (float) ToFloat:(byte[]) b index:(int) index
 {
     (int) l;
     l = b[index + 0];
@@ -280,10 +249,8 @@
     return Float.intBitsToFloat(l);
 }
 
-+ (double) ToDouble(
-                              byte[] bytes,
-                              (int) startIndex
-                              )
++ (double) ToDouble:(byte[]) bytes
+        (int) startIndex
 {
     long value = 0;
     for ((int) i = 0; i < 8; i++)
@@ -293,59 +260,47 @@
     return Double.longBitsToDouble(value);
 }
 
-+ (void) GetBytes(
-                              BOOL data,
-                              byte[] bytes,
-                              (int) startIndex
-                              )
++ (void) GetBytes:(BOOL) data
+        bytes:(byte[]) bytes
+        startIndex:(int) startIndex
 {
     MBitConverter.GetBytes(data, bytes, startIndex, EEndian.eLITTLE_ENDIAN);
 }
 
-+ (void) GetBytes(
-                              BOOL data,
-                              byte[] bytes,
-                              (int) startIndex,
-                              EEndian endian
-                              )
++ (void) GetBytes:(BOOL) data
+    bytes:(byte[]) bytes
+    startIndex:(int) startIndex
+    endian:(EEndian) endian
 {
     bytes[startIndex] = (byte)(data ? 1 : 0);
 }
 
-+ (void) GetBytes(
-                              char data,
-                              byte[] bytes,
-                              (int) startIndex
-                              )
++ (void) GetBytes:(char) data
+        bytes:(byte[]) bytes
+        startIndex:(int) startIndex
 {
     MBitConverter.GetBytes(data, bytes, startIndex, EEndian.eLITTLE_ENDIAN);
 }
 
-+ (void) GetBytes(
-                              char data,
-                              byte[] bytes,
-                              (int) startIndex,
-                              EEndian endian
-                              )
++ (void) GetBytes:char data
+    bytes:(byte[]) bytes
+    startIndex:(int) startIndex
+    endian:(EEndian) endian
 {
     bytes[startIndex] = (byte)data;
 }
 
-+ (void) GetBytes(
-                              short data,
-                              byte[] bytes,
-                              (int) startIndex
-                              )
++ (void) GetBytes:(short) data
+        bytes:(byte[]) bytes
+        startIndex:(int) startIndex
 {
     MBitConverter.GetBytes(data, bytes, startIndex, EEndian.eLITTLE_ENDIAN);
 }
 
-+ (void) GetBytes(
-                              short data,
-                              byte[] bytes,
-                              (int) startIndex,
-                              EEndian endian
-                              )
++ (void) GetBytes:(short) data
+    bytes:(byte[]) bytes
+    startIndex:(int) startIndex
+    endian:(EEndian) endian
 {
     if (endian == EEndian.eLITTLE_ENDIAN)
     {
@@ -363,40 +318,17 @@
     }
 }
 
-//    public static (void) GetBytes(
-//        short data,
-//        byte[] bytes,
-//        (int) startIndex,
-//        EEndian endian = EEndian.eLITTLE_ENDIAN
-//        )
-//    {
-//        if (endian == EEndian.eLITTLE_ENDIAN)
-//        {
-//            bytes[startIndex] = (byte)(data << 8 >> 8);
-//            bytes[startIndex + 1] = (byte)(data >> 8);
-//        }
-//        else
-//        {
-//            bytes[startIndex] = (byte)(data >> 8);
-//            bytes[startIndex + 1] = (byte)(data << 8 >> 8);
-//        }
-//    }
-
-+ (void) GetBytes(
-                              (int) data,
-                              byte[] bytes,
-                              (int) startIndex
-                              )
++ (void) GetBytes:(int) data
+        bytes:(byte[]) bytes
+        startIndex:(int) startIndex
 {
     MBitConverter.GetBytes(data, bytes, startIndex, EEndian.eLITTLE_ENDIAN);
 }
 
-+ (void) GetBytes(
-                              (int) data,
-                              byte[] bytes,
-                              (int) startIndex,
-                              EEndian endian
-                              )
++ (void) GetBytes:(int) data
+    bytes:(byte[]) bytes
+    startIndex:(int) startIndex
+    endian:(EEndian) endian
 {
     if (endian == EEndian.eLITTLE_ENDIAN)
     {
@@ -414,44 +346,17 @@
     }
 }
 
-//    public static (void) GetBytes(
-//        (int) data,
-//        byte[] bytes,
-//        (int) startIndex,
-//        EEndian endian = EEndian.eLITTLE_ENDIAN
-//        )
-//    {
-//        if (endian == EEndian.eLITTLE_ENDIAN)
-//        {
-//            bytes[startIndex] = (byte)(data << 24 >> 24);
-//            bytes[startIndex + 1] = (byte)(data << 16 >> 24);
-//            bytes[startIndex + 2] = (byte)(data << 8 >> 24);
-//            bytes[startIndex + 3] = (byte)(data >> 24);
-//        }
-//        else
-//        {
-//            bytes[startIndex] = (byte)(data >> 24);
-//            bytes[startIndex + 1] = (byte)(data << 8 >> 24);
-//            bytes[startIndex + 2] = (byte)(data << 16 >> 24);
-//            bytes[startIndex + 3] = (byte)(data << 24 >> 24);
-//        }
-//    }
-
-+ (void) GetBytes(
-                              long data,
-                              byte[] bytes,
-                              (int) startIndex
-                              )
++ (void) GetBytes:(long) data
+        bytes:(byte[]) bytes
+        startIndex:(int) startIndex
 {
     MBitConverter.GetBytes(data, bytes, startIndex, EEndian.eLITTLE_ENDIAN);
 }
 
-+ (void) GetBytes(
-                              long data,
-                              byte[] bytes,
-                              (int) startIndex,
-                              EEndian endian
-                              )
++ (void) GetBytes:(long) data
+    bytes:(byte[]) bytes
+    startIndex:(int) startIndex
+    endian:(EEndian) endian
 {
     if (endian == EEndian.eLITTLE_ENDIAN)
     {
@@ -479,40 +384,7 @@
     }
 }
 
-//    public static (void) GetBytes(
-//        long data,
-//        byte[] bytes,
-//        (int) startIndex,
-//        EEndian endian = EEndian.eLITTLE_ENDIAN
-//        )
-//    {
-//        if (endian == EEndian.eLITTLE_ENDIAN)
-//        {
-//            bytes[startIndex] = (byte)(data << 56 >> 56);
-//            bytes[startIndex + 1] = (byte)(data << 48 >> 56);
-//            bytes[startIndex + 2] = (byte)(data << 40 >> 56);
-//            bytes[startIndex + 3] = (byte)(data << 32 >> 56);
-//
-//            bytes[startIndex + 4] = (byte)(data << 24 >> 56);
-//            bytes[startIndex + 5] = (byte)(data << 16 >> 56);
-//            bytes[startIndex + 6] = (byte)(data << 8 >> 56);
-//            bytes[startIndex + 7] = (byte)(data >> 56);
-//        }
-//        else
-//        {
-//            bytes[startIndex] = (byte)(data >> 56);
-//            bytes[startIndex + 1] = (byte)(data << 8 >> 56);
-//            bytes[startIndex + 2] = (byte)(data << 16 >> 56);
-//            bytes[startIndex + 3] = (byte)(data << 24 >> 56);
-//
-//            bytes[startIndex + 4] = (byte)(data << 32 >> 56);
-//            bytes[startIndex + 5] = (byte)(data << 40 >> 56);
-//            bytes[startIndex + 6] = (byte)(data << 48 >> 56);
-//            bytes[startIndex + 7] = (byte)(data << 56 >> 56);
-//        }
-//    }
-
-+ (byte[]) GetBytes(float f)
++ (byte[]) GetBytes:(float) f
 {
     // 把float转换为byte[]
     (int) fbit = Float.floatToIntBits(f);
@@ -539,9 +411,7 @@
     return dest;
 }
 
-+ (byte[]) GetBytes(
-                              double data
-                              )
++ (byte[]) GetBytes:(double) data
 {
     long value = Double.doubleToRawLongBits(data);
     byte[] bytes = new byte[8];
@@ -554,11 +424,9 @@
     return bytes;
 }
 
-+ (byte[]) GetBytes(
-                              double data,
-                              byte[] bytes,
-                              (int) startIndex
-                              )
++ (byte[]) GetBytes:(double) data
+        bytes:(byte[]) bytes
+        startIndex:(int) startIndex
 {
     long value = Double.doubleToRawLongBits(data);
     bytes = new byte[8];
@@ -571,12 +439,12 @@
     return bytes;
 }
 
-+ (int) ToInt32(String value)
++ (int) ToInt32: (NSString*) value
 {
     return Integer.parseInt(value);
 }
 
-+ (int) toUnsigned(short value)
++ (int) toUnsigned: (short) value
 {
     return value & 0x0FFFF;
 }

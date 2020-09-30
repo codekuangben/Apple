@@ -26,15 +26,15 @@
 
 - (id)init:(int)initCapacity maxCapacity:(int)maxCapacity endian:(EEndian)endian
 {
-    self.mEndian = endian;        // 缓冲区默认是小端的数据，因为服务器是 linux 的
-	self.mDynBuffer = [[DynByteBuffer alloc] init:initCapacity maxCapacity:maxCapacity];
+    self->mEndian = endian;        // 缓冲区默认是小端的数据，因为服务器是 linux 的
+	self->mDynBuffer = [[DynByteBuffer alloc] init:initCapacity maxCapacity:maxCapacity];
 
 	(int) index = 0;
 	(int) listLen = sizeof(float);
 	
 	while(index < listLen)
 	{
-		self.mReadFloatBytes[index] = 0;
+		self->mReadFloatBytes[index] = 0;
 		index += 1;
 	}
 	
@@ -43,7 +43,7 @@
 	
 	while(index < listLen)
 	{
-		self.mReadDoubleBytes[index] = 0;
+		self->mReadDoubleBytes[index] = 0;
 		index += 1;
 	}
     
@@ -52,64 +52,64 @@
 
 - (DynByteBuffer*)getDynBuffer
 {
-	return self.mDynBuffer;
+	return self->mDynBuffer;
 }
 
 - (int)getBytesAvailable
 {
-	return (self.mDynBuffer->getSize() - self.mPos);
+	return (self->mDynBuffer->getSize() - self->mPos);
 }
 
 - (EEndian)getEndian
 {
-	return self.mEndian;
+	return self->mEndian;
 }
 
 - (void)setEndian:(EEndian)end
 {
-	self.mEndian = end;
+	self->mEndian = end;
 }
 
 - (int)getLength
 {
-	return self.mDynBuffer.getSize();
+	return self->mDynBuffer.getSize();
 }
 
 - (void)setLength:(int)value
 {
-	self.mDynBuffer->setSize(value);
+	self->mDynBuffer->setSize(value);
 }
 
 - (void)setPos:(int) pos
 {
-	self.mPos = pos;
+	self->mPos = pos;
 }
 
 - (int)getPos
 {
-	return self.mPos;
+	return self->mPos;
 }
 
 - (int)getPosition
 {
-	return self.mPos;
+	return self->mPos;
 }
 
 - (void)setPosition:(int) value
 {
-	self.mPos = value;
+	self->mPos = value;
 }
 
 - (void)clear
 {
-	self.mPos = 0;
-	self.mDynBuffer.setSize(0);
+	self->mPos = 0;
+	self->mDynBuffer.setSize(0);
 }
 
 // 检查是否有足够的大小可以扩展
 - (BOOL) canWrite:(int) delta
 {
-	if(self.mDynBuffer.getSize() + delta > self.mDynBuffer.getCapacity())
+	if(self->mDynBuffer.getSize() + delta > self->mDynBuffer.getCapacity())
 	{
 		return false;
 	}
@@ -120,7 +120,7 @@
 // 读取检查
 - (BOOL) canRead:(int) delta
 {
-	if (self.mPos + delta > self.mDynBuffer.getSize())
+	if (self->mPos + delta > self->mDynBuffer.getSize())
 	{
 		return false;
 	}
@@ -130,28 +130,28 @@
 
 - (void) extendDeltaCapicity:(int) delta
 {
-	self.mDynBuffer.extendDeltaCapicity(delta);
+	self->mDynBuffer.extendDeltaCapicity(delta);
 }
 
 - (void) advPos:(int) num
 {
-	self.mPos += num;
+	self->mPos += num;
 }
 
 - (void) advPosAndLen:(int) num
 {
-	self.mPos += num;
-	self.setLength(self.mPos);
+	self->mPos += num;
+	self->setLength(self->mPos);
 }
 
 - (void) incPosDelta:(int) delta        // 添加 pos delta 数量
 {
-	self.mPos += (int)delta;
+	self->mPos += (int)delta;
 }
 
 - (void) decPosDelta:(int) delta     // 减少 pos delta 数量
 {
-	self.mPos -= (int)delta;
+	self->mPos -= (int)delta;
 }
 
 - (ByteBuffer*) readInt8:(char) tmpByte
@@ -376,7 +376,7 @@
 
 - (void) writeUnsignedInt32:(int) value
 {
-	self.writeUnsignedInt32(value, true);
+	self->writeUnsignedInt32(value, true);
 }
 
 - (void) writeUnsignedInt32:(int) value bchangeLen:(BOOL) bchangeLen
@@ -458,7 +458,7 @@
 
 - (void) writeBytes:(char[]) value start:(int) start len:(int) len
 {
-	self.writeBytes(value, start, len, true);
+	self->writeBytes(value, start, len, true);
 }
 
 // 写入字节， bchangeLen 是否改变长度
@@ -528,44 +528,44 @@
 
 - (void) replace:(char[]) srcBytes srcStartPos:(int) srcStartPos
 {
-	self.replace(srcBytes, srcStartPos, 0, 0, 0);
+	self->replace(srcBytes, srcStartPos, 0, 0, 0);
 }
 
 - (void) replace:(char[]) srcBytes srcStartPos:(int) srcStartPos srclen_:(int) srclen_
 {
-	self.replace(srcBytes, srcStartPos, srclen_, 0, 0);
+	self->replace(srcBytes, srcStartPos, srclen_, 0, 0);
 }
 
 - (void) replace:(char[]) srcBytes srcStartPos:(int) srcStartPos srclen_:(int) srclen_ destStartPos:(int) destStartPos
 {
-	self.replace(srcBytes, srcStartPos, srclen_, destStartPos, 0);
+	self->replace(srcBytes, srcStartPos, srclen_, destStartPos, 0);
 }
 
 // 替换已经有的一段数据
 - (void) replace:(char[]) srcBytes srcStartPos:(int) srcStartPos srclen_:(int) srclen_ destStartPos:(int) destStartPos, destlen_:(int) destlen_)
 {
-	(int) lastLeft = self.getLength() - destStartPos - destlen_;        // 最后一段的长度
-	self.setLength(destStartPos + srclen_ + lastLeft);      // 设置大小，保证足够大小空间
+	(int) lastLeft = self->getLength() - destStartPos - destlen_;        // 最后一段的长度
+	self->setLength(destStartPos + srclen_ + lastLeft);      // 设置大小，保证足够大小空间
 
-	self.setPosition(destStartPos + srclen_);
+	self->setPosition(destStartPos + srclen_);
 	if (lastLeft > 0)
 	{
 		writeBytes(mDynBuffer.getBuffer(), destStartPos + destlen_, lastLeft, false);          // 这个地方自己区域覆盖自己区域，可以保证自己不覆盖自己区域
 	}
 
-	self.setPosition(destStartPos);
+	self->setPosition(destStartPos);
 	writeBytes(srcBytes, srcStartPos, srclen_, false);
 }
 
 - (void) insertUnsignedInt32:(int) value
 {
-	self.setLength(self.getLength() + Integer.SIZE);       // 扩大长度
+	self->setLength(self->getLength() + Integer.SIZE);       // 扩大长度
 	writeUnsignedInt32(value);     // 写入
 }
 
 - ByteBuffer* readUnsignedLongByOffset:(long) tmpUlong offset:(int) offset
 {
-	self.setPosition(offset);
+	self->setPosition(offset);
 	readUnsignedInt64(tmpUlong);
 	return this;
 }
@@ -573,7 +573,7 @@
 // 写入 EOF 结束符
 - (void) end
 {
-	mDynBuffer.getBuffer()[self.getLength()] = 0;
+	mDynBuffer.getBuffer()[self->getLength()] = 0;
 }
 
 - ByteBuffer* readBoolean:(BOOL) tmpBool

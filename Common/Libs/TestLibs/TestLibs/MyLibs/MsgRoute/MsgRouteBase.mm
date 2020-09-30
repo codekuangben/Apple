@@ -6,8 +6,8 @@
 {
 	if(self = [super init])
 	{
-		self.mMsgType = MsgRouteType.eMRT_BASIC;
-		self.mMsgID = msgId;
+		self->mMsgType = MsgRouteType.eMRT_BASIC;
+		self->mMsgID = msgId;
 	}
 	
 	return self;

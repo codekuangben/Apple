@@ -10,7 +10,7 @@
 - (void) ProcessNextFrame
 {
     Ctx.mInstance.mSystemTimeData.nextFrame();
-    self.Advance(Ctx.mInstance.mSystemTimeData.getDeltaSec());
+    self->Advance(Ctx.mInstance.mSystemTimeData.getDeltaSec());
 }
 
 - (void) Advance:(float) delta
@@ -23,7 +23,7 @@
 
 - (void) ProcessNextFixedFrame
 {
-    self.FixedAdvance(Ctx.mInstance.mSystemTimeData.getFixedTimestep());
+    self->FixedAdvance(Ctx.mInstance.mSystemTimeData.getFixedTimestep());
 }
 
 - (void) FixedAdvance:(float) delta

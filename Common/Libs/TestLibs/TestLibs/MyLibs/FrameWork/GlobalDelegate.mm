@@ -4,12 +4,12 @@
 
 - (id) init
 {
-    self.mMainChildMassChangedDispatch = new AddOnceEventDispatch();
+    self->mMainChildMassChangedDispatch = new AddOnceEventDispatch();
 }
 
 - (void) addMainChildChangedHandle:(ICalleeObject*) pThis handle:(IDispatchObject) handle
 {
-    self.mMainChildMassChangedDispatch.addEventHandle(pThis, handle);
+    self->mMainChildMassChangedDispatch.addEventHandle(pThis, handle);
 }
 
 - (void) init

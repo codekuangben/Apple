@@ -6,8 +6,8 @@
 {
     if(self = [super init])
     {
-        self.mTypeId = @"MEncoding";
-        self.mEncodeStr = encodeStr;
+        self->mTypeId = @"MEncoding";
+        self->mEncodeStr = encodeStr;
     }
     
     return self;
@@ -15,12 +15,12 @@
 
 - (NSString) GetString: (byte[]) bytes
 {
-    return  self.GetString(bytes, 0, bytes.length);
+    return  self->GetString(bytes, 0, bytes.length);
 }
 
 - (NSString) GetString: (byte[]): bytes, startIndex: (int) startIndex
 {
-    return self.GetString(bytes, startIndex, bytes.length - startIndex);
+    return self->GetString(bytes, startIndex, bytes.length - startIndex);
 }
 
 - (NSString) GetString:(byte[]) bytes, startIndex: (int) startIndex, len:(int) len
@@ -29,7 +29,7 @@
     
     try
     {
-        ret = new String(MArray.getSubBytes(bytes, startIndex, len), self.mEncodeStr);
+        ret = new String(MArray.getSubBytes(bytes, startIndex, len), self->mEncodeStr);
     }
     catch(UnsupportedEncodingException e)
     {
@@ -45,7 +45,7 @@
     
     try
     {
-        byte[] bytes = str.getBytes(self.mEncodeStr);
+        byte[] bytes = str.getBytes(self->mEncodeStr);
         len = bytes.length;
     }
     catch(UnsupportedEncodingException e)
@@ -62,7 +62,7 @@
     
     try
     {
-        bytes = str.getBytes(self.mEncodeStr);
+        bytes = str.getBytes(self->mEncodeStr);
     }
     catch(UnsupportedEncodingException e)
     {
