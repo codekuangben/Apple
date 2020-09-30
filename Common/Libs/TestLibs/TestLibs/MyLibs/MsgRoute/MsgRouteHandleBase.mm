@@ -21,14 +21,14 @@
 		[self->mId2HandleDic set:msgRouteID value:[[AddOnceEventDispatch alloc] init]];
 	}
 
-	[[self->mId2HandleDic get:msgRouteID] addEventHandle:NULL, handle:handle];
+	[[self->mId2HandleDic get:msgRouteID] addEventHandle:nil, handle:handle];
 }
 
 - (void) removeMsgRouteHandle:(MsgRouteID) msgRouteID, handle:(IDispatchObject) handle
 {
 	if ([self->mId2HandleDic ContainsKey:msgRouteID])
 	{
-		[self->mId2HandleDic get:msgRouteID.] removeEventHandle:nil handle:handle];
+		[self->mId2HandleDic get:msgRouteID] removeEventHandle:nil handle:handle];
 	}
 }
 
