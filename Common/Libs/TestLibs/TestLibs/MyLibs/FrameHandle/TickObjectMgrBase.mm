@@ -25,26 +25,26 @@
 
 - (void) onTick:(float) delta
 {
-    self->mLoopDepth.incDepth();
+    [self->mLoopDepth incDepth];
 
-    self->onExecTick(delta);
+    [self onExecTick:delta];
 
-    self->mLoopDepth.decDepth();
+    [self->mLoopDepth decDepth];
 }
 
 - (void) onExecTick:(float) delta
 {
-    (int) idx = 0;
-    (int) count = self->mTickObjectList.Count();
-    ITickedObject tickObject = nil;
+    int idx = 0;
+    int count = [self->mTickObjectList Count];
+    ITickedObject* tickObject = nil;
 
     while (idx < count)
     {
-        tickObject = self->mTickObjectList.get(idx);
+        tickObject = [self->mTickObjectList get:idx];
 
-        if (!((IDelayHandleItem)tickObject).isClientDispose())
+        if (![(IDelayHandleItem*)tickObject isClientDispose]
         {
-            tickObject.onTick(delta);
+            [tickObject onTick:delta];
         }
 
         ++idx;
@@ -53,35 +53,35 @@
 
 - (void) addObject:(IDelayHandleItem*) tickObject
 {
-    self->addObject(tickObject, 0);
+    [self->addObject:tickObject priority:0];
 }
 
 - (void) addObject:(IDelayHandleItem*) tickObject priority:(float) priority
 {
-    if (self->mLoopDepth.isInDepth())
+    if ([self->mLoopDepth isInDepth]
     {
-        super.addObject(tickObject);
+        [super addObject:tickObject];
     }
     else
     {
-        if (self->mTickObjectList.IndexOf((ITickedObject)tickObject) == -1)
+        if ([self->mTickObjectList IndexOf:(ITickedObject*)tickObject] == -1)
         {
-            self->mTickObjectList.Add((ITickedObject)tickObject);
+            [self->mTickObjectList Add:(ITickedObject*)tickObject];
         }
     }
 }
 
 - (void) removeObject:(IDelayHandleItem*) tickObject
 {
-    if (self->mLoopDepth.isInDepth())
+    if ([self->mLoopDepth isInDepth])
     {
-        super.removeObject(tickObject);
+        [super removeObject:tickObject];
     }
     else
     {
-        if (self->mTickObjectList.IndexOf((ITickedObject)tickObject) != -1)
+        if ([self->mTickObjectList.IndexOf:(ITickedObject*)tickObject] != -1)
         {
-            self->mTickObjectList.Remove((ITickedObject)tickObject);
+            [self->mTickObjectList Remove:(ITickedObject*)tickObject];
         }
     }
 }

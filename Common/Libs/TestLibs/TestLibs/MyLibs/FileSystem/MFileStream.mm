@@ -274,7 +274,7 @@
 
 -(void) writeText:(String) text gkEncode:(GkEncode) gkEncode
 {
-	MEncoding encode = UtilApi.convGkEncode2EncodingEncoding(gkEncode);
+	MEncoding encode = UtilSysLibsWrap.convGkEncode2EncodingEncoding(gkEncode);
 
 	self->checkAndOpen();
 
@@ -346,7 +346,7 @@
 
 -(void) writeLine:(String) text gkEncode:(GkEncode) gkEncode
 {
-	text = text + UtilApi.CR_LF;
+	text = text + UtilSysLibsWrap.CR_LF;
 	writeText(text, gkEncode);
 }
 

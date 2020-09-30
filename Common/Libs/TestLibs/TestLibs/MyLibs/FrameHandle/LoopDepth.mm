@@ -31,7 +31,7 @@
 
     if(nil != self->mIncHandle)
     {
-        self->mIncHandle.call();
+        [self->mIncHandle call];
     }
 }
 
@@ -41,14 +41,14 @@
 
     if (nil != self->mDecHandle)
     {
-        self->mDecHandle.call();
+        [self->mDecHandle call];
     }
 
     if(0 == self->mLoopDepth)
     {
         if (nil != self->mZeroHandle)
         {
-            self->mZeroHandle.call();
+            [self->mZeroHandle call];
         }
     }
 

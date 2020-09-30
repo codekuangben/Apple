@@ -5,7 +5,7 @@
 #import "MyLibs/DataStruct/MList.h";
 #import "MyLibs/DelayHandle/DelayHandleMgrBase.h";
 #import "MyLibs/DelayHandle/IDelayHandleItem.h";
-#import "MyLibs/Tools/UtilApi.h";
+#import "MyLibs/Tools/UtilSysLibsWrap.h";
 
 @interface TimerMgr : DelayHandleMgrBase
 {

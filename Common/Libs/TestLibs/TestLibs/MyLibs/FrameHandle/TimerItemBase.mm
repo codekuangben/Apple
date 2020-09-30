@@ -13,14 +13,14 @@
     self->mCurCallTime = 0;
     self->mIsInfineLoop = false;
     self->mIntervalLeftTime = 0;
-    self->mTimerDisp = new TimerFunctionObject();
+    self->mTimerDisp = [[TimerFunctionObject alloc] init];
     self->mDisposed = false;
     self->mIsContinuous = false;
 }
 
 - (void) setFuncObject:(ICalleeObjectTimer*) handle
 {
-    self->mTimerDisp.setFuncObject(handle);
+    [self->mTimerDisp setFuncObject:handle];
 }
 
 - (void) setTotalTime:(float) value
@@ -70,17 +70,17 @@
 
     if (self->mIsInfineLoop)
     {
-        checkAndDisp();
+        [self checkAndDisp];
     }
     else
     {
         if (self->mCurRunTime >= self->mTotalTime)
         {
-            disposeAndDisp();
+            [self disposeAndDisp];
         }
         else
         {
-            checkAndDisp();
+            [self checkAndDisp];
         }
     }
 }
@@ -89,11 +89,11 @@
 {
     if (self->mIsContinuous)
     {
-        self->continueDisposeAndDisp();
+        [self continueDisposeAndDisp];
     }
     else
     {
-        self->discontinueDisposeAndDisp();
+        [self discontinueDisposeAndDisp];
     }
 }
 
@@ -105,11 +105,11 @@
     {
         self->mCurCallTime = self->mCurCallTime + self->mInternal;
         self->mIntervalLeftTime = self->mIntervalLeftTime - self->mInternal;
-        self->onPreCallBack();
+        [self->onPreCallBack();
 
-        if (self->mTimerDisp.isValid())
+        if ([self->mTimerDisp isValid])
         {
-            self->mTimerDisp.call(this);
+            [self->mTimerDisp call:this];
         }
     }
 }
@@ -118,11 +118,11 @@
 {
     self->mDisposed = true;
     self->mCurCallTime = self->mTotalTime;
-    self->onPreCallBack();
+    [self onPreCallBack];
 
-    if (self->mTimerDisp.isValid())
+    if ([self->mTimerDisp isValid])
     {
-        self->mTimerDisp.call(this);
+        [self->mTimerDisp call:this];
     }
 }
 
@@ -130,11 +130,11 @@
 {
     if(self->mIsContinuous)
     {
-        continueCheckAndDisp();
+        [self continueCheckAndDisp];
     }
     else
     {
-        discontinueCheckAndDisp();
+        [self discontinueCheckAndDisp];
     }
 }
 
@@ -146,11 +146,11 @@
         // 这个地方 m_curCallTime 肯定会小于 m_totalTime，因为在调用这个函数的外部已经进行了判断
         self->mCurCallTime = self->mCurCallTime + self->mInternal;
         self->mIntervalLeftTime = self->mIntervalLeftTime - self->mInternal;
-        self->onPreCallBack();
+        [self onPreCallBack];
 
-        if (self->mTimerDisp.isValid())
+        if ([self->mTimerDisp isValid]
         {
-            self->mTimerDisp.call(this);
+            [self->mTimerDisp call:this];
         }
     }
 }
@@ -163,11 +163,11 @@
         // 这个地方 m_curCallTime 肯定会小于 m_totalTime，因为在调用这个函数的外部已经进行了判断
         self->mCurCallTime = self->mCurCallTime + ((((int))(self->mIntervalLeftTime / self->mInternal)) * self->mInternal);
         self->mIntervalLeftTime = self->mIntervalLeftTime % self->mInternal;   // 只保留余数
-        self->onPreCallBack();
+        [self onPreCallBack];
 
-        if (self->mTimerDisp.isValid())
+        if ([self->mTimerDisp isValid])
         {
-            self->mTimerDisp.call(this);
+            [self->mTimerDisp call:this];
         }
     }
 }

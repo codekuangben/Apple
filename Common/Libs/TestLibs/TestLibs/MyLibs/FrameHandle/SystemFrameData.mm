@@ -25,7 +25,7 @@
 
     if(self->mCurTime > 1.0f)
     {
-        self->mFps = ((int))(self->mCurFrameCount / self->mCurTime);
+        self->mFps = (int)(self->mCurFrameCount / self->mCurTime);
         self->mCurFrameCount = 0;
         self->mCurTime = 0;
     }

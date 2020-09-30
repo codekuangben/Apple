@@ -293,7 +293,7 @@
 
 - (ByteBuffer*) readMultiByte:(String)tmpStr len:(int)len gkCharSet:(GkEncode)gkCharSet
 {
-	MEncoding charSet = UtilApi.convGkEncode2EncodingEncoding(gkCharSet);
+	MEncoding charSet = UtilSysLibsWrap.convGkEncode2EncodingEncoding(gkCharSet);
 
 	// 如果是 unicode ，需要大小端判断
 	if (canRead(len))
@@ -485,7 +485,7 @@
 // 写入字符串
 - (void) writeMultiByte:(String) value, gkCharSet:(GkEncode) gkCharSet len:(int) len
 {
-	MEncoding charSet = UtilApi.convGkEncode2EncodingEncoding(gkCharSet);
+	MEncoding charSet = UtilSysLibsWrap.convGkEncode2EncodingEncoding(gkCharSet);
 	(int) num = 0;
 
 	if (nil != value)

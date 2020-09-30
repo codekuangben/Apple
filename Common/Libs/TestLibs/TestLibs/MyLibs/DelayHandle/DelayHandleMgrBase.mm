@@ -84,7 +84,7 @@
 {
 	for(DelayHandleObject item : self->mDeferredAddQueue.list())
 	{
-		if(UtilApi.isAddressEqual(item.mDelayObject, delayObject))
+		if(UtilSysLibsWrap.isAddressEqual(item.mDelayObject, delayObject))
 		{
 			return true;
 		}
@@ -98,7 +98,7 @@
 {
 	for (DelayHandleObject item : self->mDeferredDelQueue.list())
 	{
-		if (UtilApi.isAddressEqual(item.mDelayObject, delayObject))
+		if (UtilSysLibsWrap.isAddressEqual(item.mDelayObject, delayObject))
 		{
 			return true;
 		}
@@ -112,7 +112,7 @@
 {
 	for (DelayHandleObject item : self->mDeferredAddQueue.list())
 	{
-		if (UtilApi.isAddressEqual(item.mDelayObject, delayObject))
+		if (UtilSysLibsWrap.isAddressEqual(item.mDelayObject, delayObject))
 		{
 			self->mDeferredAddQueue.Remove(item);
 		}
@@ -124,7 +124,7 @@
 {
 	for (DelayHandleObject item : self->mDeferredDelQueue.list())
 	{
-		if(UtilApi.isAddressEqual(item.mDelayObject, delayObject))
+		if(UtilSysLibsWrap.isAddressEqual(item.mDelayObject, delayObject))
 		{
 			self->mDeferredDelQueue.Remove(item);
 		}

@@ -12,54 +12,50 @@
 	return self;
 }
 
-@Override
-public (void) dispose()
+- (void) dispose
 {
 
 }
 
-@Override
-protected (void) addObject(IDelayHandleItem delayObject)
+- (void) addObject:(IDelayHandleItem*) delayObject
 {
-	self->addObject(delayObject, 0);
+	[self addObject:delayObject priority:0];
 }
 
-@Override
-protected (void) addObject(IDelayHandleItem delayObject, float priority)
+- (void) addObject:(IDelayHandleItem*) delayObject priority:(float) priority
 {
 	// 检查当前是否已经在队列中
-	if (!self->mTimerList.Contains((TimerItemBase)delayObject))
+	if (![self->mTimerList Contains:(TimerItemBase*)delayObject])
 	{
-		if (self->mLoopDepth.isInDepth())
+		if ([self->mLoopDepth isInDepth])
 		{
-			super.addObject(delayObject, priority);
+			[super addObject:delayObject priority:priority];
 		}
 		else
 		{
-			self->mTimerList.Add((TimerItemBase)delayObject);
+			[self->mTimerList Add:(TimerItemBase*)delayObject];
 		}
 	}
 }
 
-@Override
-protected (void) removeObject(IDelayHandleItem delayObject)
+- (void) removeObject:(IDelayHandleItem*) delayObject
 {
 	// 检查当前是否在队列中
-	if (self->mTimerList.Contains((TimerItemBase)delayObject))
+	if ([self->mTimerList Contains:(TimerItemBase*)delayObject])
 	{
-		((TimerItemBase)delayObject).mDisposed = true;
+		((TimerItemBase*)delayObject)->mDisposed = true;
 
-		if (self->mLoopDepth.isInDepth())
+		if ([self->mLoopDepth isInDepth])
 		{
-			super.removeObject(delayObject);
+			[super removeObject:delayObject];
 		}
 		else
 		{
-			for(TimerItemBase item : self->mTimerList.list())
+			for(TimerItemBase* item in [self->mTimerList list])
 			{
-				if (UtilApi.isAddressEqual(item, delayObject))
+				if ([UtilSysLibsWrap isAddressEqual:item b:delayObject])
 				{
-					self->mTimerList.Remove(item);
+					[self->mTimerList Remove:item];
 					break;
 				}
 			}
@@ -67,40 +63,40 @@ protected (void) removeObject(IDelayHandleItem delayObject)
 	}
 }
 
-public (void) addTimer(TimerItemBase delayObject)
+- (void) addTimer:(TimerItemBase*) delayObject
 {
-	self->addTimer(delayObject, 0);
+	[self addTimer:delayObject priority:0];
 }
 
 // 从 Lua 中添加定时器，这种定时器尽量整个定时器周期只与 Lua 通信一次
-public (void) addTimer(TimerItemBase delayObject, float priority)
+- (void) addTimer:(TimerItemBase*) delayObject, priority:(float) priority
 {
-	self->addObject(delayObject, priority);
+	[self addObject:delayObject priority:priority];
 }
 
-public (void) removeTimer(TimerItemBase timer)
+- (void) removeTimer:(TimerItemBase*) timer
 {
-	self->removeObject(timer);
+	[self removeObject:timer];
 }
 
-public (void) Advance(float delta)
+- (void) Advance:(float) delta
 {
-	self->mLoopDepth.incDepth();
+	[self->mLoopDepth incDepth];
 
-	for(TimerItemBase timerItem : self->mTimerList.list())
+	for(TimerItemBase* timerItem in [self->mTimerList list])
 	{
-		if (!timerItem.isClientDispose())
+		if (![timerItem isClientDispose])
 		{
-			timerItem.OnTimer(delta);
+			[timerItem OnTimer:delta];
 		}
 
 		if (timerItem.mDisposed)        // 如果已经结束
 		{
-			self->removeObject(timerItem);
+			[self removeObject:timerItem];
 		}
 	}
 
-	self->mLoopDepth.decDepth();
+	[self->mLoopDepth decDepth];
 }
 
-#endif
+@end

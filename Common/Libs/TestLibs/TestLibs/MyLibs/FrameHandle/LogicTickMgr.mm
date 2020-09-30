@@ -7,14 +7,14 @@
 
 - (id) init
 {
-    self->mTimeInterval = new TimeInterval();
+    self->mTimeInterval = [[TimeInterval alloc] init];
 }
 
 - (void) onExecAdvance:(float) delta
 {
-    if(self->mTimeInterval.canExec(delta))
+    if(self->mTimeInterval canExec:delta])
     {
-        super.onExecAdvance(delta);
+        [super onExecAdvance:delta];
     }
 }
 

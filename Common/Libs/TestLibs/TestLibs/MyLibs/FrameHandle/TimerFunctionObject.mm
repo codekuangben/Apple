@@ -25,7 +25,7 @@
 
     if(handle != nil)
     {
-        ret = UtilApi.isAddressEqual(self->mHandle, handle);
+        ret = [UtilSysLibsWrap isAddressEqual:self->mHandle b:handle];
         if(!ret)
         {
             return ret;
@@ -39,7 +39,7 @@
 {
     if (nil != self->mHandle)
     {
-        self->mHandle.call(dispObj);
+        [self->mHandle call:dispObj];
     }
 }
 
