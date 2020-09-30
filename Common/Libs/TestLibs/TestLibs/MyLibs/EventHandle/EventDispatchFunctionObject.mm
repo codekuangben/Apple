@@ -30,7 +30,7 @@
 	BOOL ret = false;
 	if(pThis != nil)
 	{
-		ret = UtilApi.isAddressEqual(self->mThis, pThis);
+		ret = [UtilSysLibsWrap isAddressEqual:self->mThis b:pThis];
 		if (!ret)
 		{
 			return ret;
@@ -38,7 +38,7 @@
 	}
 	if (handle != nil)
 	{
-		ret = UtilApi.isDelegateEqual(self->mHandle, handle);
+		ret = [UtilSysLibsWrap isDelegateEqual:self->mHandle b:handle];
 		if (!ret)
 		{
 			return ret;

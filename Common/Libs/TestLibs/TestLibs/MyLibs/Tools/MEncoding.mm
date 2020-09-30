@@ -58,7 +58,7 @@
 
 - (byte[]) GetBytes:(NSString) str
 {
-    byte[] bytes = null;
+    byte[] bytes = nil;
     
     try
     {

@@ -4,40 +4,40 @@
 
 - (id) init
 {
-    self->mGroupID2DispatchDic = new MDictionary<Integer, EventDispatch>();
+    self->mGroupID2DispatchDic = [MDictionary alloc] init];
     self->mIsInLoop = false;
 }
 
 // 添加分发器
 - (void) addEventDispatch:(int) groupID disp:(EventDispatch*) disp
 {
-    if (!self->mGroupID2DispatchDic.ContainsKey(groupID))
+    if (![self->mGroupID2DispatchDic ContainsKey:groupID])
     {
-        self->mGroupID2DispatchDic.set(groupID, disp);
+        [self->mGroupID2DispatchDic:set:groupID, value:disp];
     }
 }
 
 - (void) addEventHandle:(int) groupID pThis:(ICalleeObject*) pThis handle:(IDispatchObject*) handle
 {
     // 如果没有就创建一个
-    if (!self->mGroupID2DispatchDic.ContainsKey(groupID))
+    if (![self->mGroupID2DispatchDic ContainsKey:groupID])
     {
-        addEventDispatch(groupID, new EventDispatch());
+        [self addEventDispatch:groupID, [[EventDispatch alloc] init];
     }
 
-    self->mGroupID2DispatchDic.get(groupID).addEventHandle(pThis, handle);
+    [[self->mGroupID2DispatchDic get:groupID] addEventHandle:pThis handle:handle];
 }
 
 - (void) removeEventHandle:(int) groupID pThis:(ICalleeObject*) pThis handle:(IDispatchObject*) handle
 {
-    if (self->mGroupID2DispatchDic.ContainsKey(groupID))
+    if ([self->mGroupID2DispatchDic ContainsKey:groupID)
     {
-        self->mGroupID2DispatchDic.get(groupID).removeEventHandle(pThis, handle);
+        [[self->mGroupID2DispatchDic get:groupID] removeEventHandle:pThis handle:handle];
 
         // 如果已经没有了
-        if (!self->mGroupID2DispatchDic.get(groupID).hasEventHandle())
+        if (![[self->mGroupID2DispatchDic get:groupID] hasEventHandle]
         {
-            self->mGroupID2DispatchDic.Remove(groupID);
+            [self->mGroupID2DispatchDic Remove:groupID];
         }
     }
     else
@@ -49,9 +49,9 @@
 - (void) dispatchEvent:(int) groupID dispatchObject:(IDispatchObject*) dispatchObject
 {
     self->mIsInLoop = true;
-    if (self->mGroupID2DispatchDic.ContainsKey(groupID))
+    if ([self->mGroupID2DispatchDic ContainsKey:groupID])
     {
-        self->mGroupID2DispatchDic.get(groupID).dispatchEvent(dispatchObject);
+        [[self->mGroupID2DispatchDic get:groupID] dispatchEvent:dispatchObject];
     }
     else
     {
@@ -64,12 +64,15 @@
 {
     if (!self->mIsInLoop)
     {
-        for (EventDispatch dispatch : self->mGroupID2DispatchDic.getValues())
+        [[self->mGroupID2DispatchDic getData] enumerateKeysAndObjectsUsingBlock:^(id key, id obj,BOOL *stop) {
+         NSLog(@"key = %@ and obj = %@", key, obj);
+       }];
+        for (EventDispatch* dispatch in [self->mGroupID2DispatchDic getValues])
         {
-            dispatch.clearEventHandle();
+            [dispatch clearEventHandle];
         }
 
-        self->mGroupID2DispatchDic.Clear();
+        [self->mGroupID2DispatchDic Clear];
     }
     else
     {
@@ -81,10 +84,10 @@
 {
     if (!self->mIsInLoop)
     {
-        if (self->mGroupID2DispatchDic.ContainsKey(groupID))
+        if ([self->mGroupID2DispatchDic ContainsKey:groupID])
         {
-            self->mGroupID2DispatchDic.get(groupID).clearEventHandle();
-            self->mGroupID2DispatchDic.Remove(groupID);
+            [[self->mGroupID2DispatchDic.get:groupID] clearEventHandle];
+            [self->mGroupID2DispatchDic Remove:groupID];
         }
         else
         {
@@ -99,9 +102,9 @@
 
 - (BOOL) hasEventHandle:(int) groupID
 {
-    if(self->mGroupID2DispatchDic.ContainsKey(groupID))
+    if([self->mGroupID2DispatchDic ContainsKey:groupID])
     {
-        return self->mGroupID2DispatchDic.get(groupID).hasEventHandle();
+        return [[self->mGroupID2DispatchDic get:groupID] hasEventHandle];
     }
 
     return false;

@@ -46,7 +46,7 @@
 
         while(idx < elemLen)
         {
-            if (self->mTickList.get(idx) == null)
+            if (self->mTickList.get(idx) == nil)
             {
                 continue;
             }
@@ -131,7 +131,7 @@
 {
     (int) idx = 0;
     (int) count = self->mTickList.Count();
-    ITickedObject tickObject = null;
+    ITickedObject tickObject = nil;
 
     while (idx < count)
     {

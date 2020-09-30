@@ -29,8 +29,8 @@
     self->mEndian = endian;        // 缓冲区默认是小端的数据，因为服务器是 linux 的
 	self->mDynBuffer = [[DynByteBuffer alloc] init:initCapacity maxCapacity:maxCapacity];
 
-	(int) index = 0;
-	(int) listLen = sizeof(float);
+	int index = 0;
+	int listLen = sizeof(float);
 	
 	while(index < listLen)
 	{
@@ -488,7 +488,7 @@
 	MEncoding charSet = UtilApi.convGkEncode2EncodingEncoding(gkCharSet);
 	(int) num = 0;
 
-	if (null != value)
+	if (nil != value)
 	{
 		//char[] charPtr = value.ToCharArray();
 		num = charSet.GetByteCount(value);

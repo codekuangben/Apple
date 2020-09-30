@@ -4,7 +4,7 @@
 
 - (id) init
 {
-    self->mTickObject = null;
+    self->mTickObject = nil;
     self->mPriority = 0.0f;
 }
 

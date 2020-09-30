@@ -11,7 +11,7 @@ static Ctx* mInstance;
 
 + (Ctx) ins
 {
-    if (mInstance == null)
+    if (mInstance == nil)
     {
         mInstance = new Ctx();
     }
@@ -80,52 +80,52 @@ static Ctx* mInstance;
 
 - (void) dispose
 {
-    if (null != self->mResizeMgr)
+    if (nil != self->mResizeMgr)
     {
         self->mResizeMgr.dispose();
-        self->mResizeMgr = null;
+        self->mResizeMgr = nil;
     }
-    if (null != self->mTickMgr)
+    if (nil != self->mTickMgr)
     {
         self->mTickMgr.dispose();
-        self->mTickMgr = null;
+        self->mTickMgr = nil;
     }
-    if (null != self->mFixedTickMgr)
+    if (nil != self->mFixedTickMgr)
     {
         self->mFixedTickMgr.dispose();
-        self->mFixedTickMgr = null;
+        self->mFixedTickMgr = nil;
     }
 
     // 关闭日志设备
-    if (null != self->mLogSys)
+    if (nil != self->mLogSys)
     {
         self->mLogSys.dispose();
-        self->mLogSys = null;
+        self->mLogSys = nil;
     }
-    if(null != self->mIdPoolSys)
+    if(nil != self->mIdPoolSys)
     {
         self->mIdPoolSys.dispose();
-        self->mIdPoolSys = null;
+        self->mIdPoolSys = nil;
     }
-    if(null != self->mLogicTickMgr)
+    if(nil != self->mLogicTickMgr)
     {
         self->mLogicTickMgr.dispose();
-        self->mLogicTickMgr = null;
+        self->mLogicTickMgr = nil;
     }
-    if(null != self->mSysMsgRoute)
+    if(nil != self->mSysMsgRoute)
     {
         self->mSysMsgRoute.dispose();
-        self->mSysMsgRoute = null;
+        self->mSysMsgRoute = nil;
     }
-    if(null != self->mSystemTimeData)
+    if(nil != self->mSystemTimeData)
     {
         self->mSystemTimeData.dispose();
-        self->mSystemTimeData = null;
+        self->mSystemTimeData = nil;
     }
-    if(null != self->mSystemFrameData)
+    if(nil != self->mSystemFrameData)
     {
         self->mSystemFrameData.dispose();
-        self->mSystemFrameData = null;
+        self->mSystemFrameData = nil;
     }
 }
 
@@ -134,7 +134,7 @@ static Ctx* mInstance;
     self->dispose();
 
     // 释放自己
-    //mInstance = null;
+    //mInstance = nil;
 }
 
 - (void) addEventHandle

@@ -50,12 +50,12 @@
 		{
 			try
 			{
-				if(null != self->mFileInputStream)
+				if(nil != self->mFileInputStream)
 				{
 					self->mFileInputStream.getChannel().position(offset);
 				}
 
-				if(null != self->mFileOutputStream)
+				if(nil != self->mFileOutputStream)
 				{
 					self->mFileOutputStream.getChannel().position(offset);
 				}
@@ -69,12 +69,12 @@
 		{
 			try
 			{
-				if(null != self->mFileInputStream)
+				if(nil != self->mFileInputStream)
 				{
 					self->mFileInputStream.getChannel().position(self->mFile.length() - 1 - offset);
 				}
 
-				if(null != self->mFileOutputStream)
+				if(nil != self->mFileOutputStream)
 				{
 					self->mFileOutputStream.getChannel().position(self->mFile.length() - 1 - offset);
 				}
@@ -88,12 +88,12 @@
 		{
 			try
 			{
-				if(null != self->mFileInputStream)
+				if(nil != self->mFileInputStream)
 				{
 					self->mFileInputStream.getChannel().position(self->mFileInputStream.getChannel().position() + offset);
 				}
 
-				if(null != self->mFileOutputStream)
+				if(nil != self->mFileOutputStream)
 				{
 					self->mFileOutputStream.getChannel().position(self->mFileOutputStream.getChannel().position() + offset);
 				}
@@ -149,12 +149,12 @@
 
 	if (self->mFileOpState == FileOpState.eOpenSuccess)
 	{
-		if (self->mFile != null)
+		if (self->mFile != nil)
 		{
 			len = ((int))self->mFile.length();
 		}
 		/*
-		if (mFileStream != null && mFileStream.CanSeek)
+		if (mFileStream != nil && mFileStream.CanSeek)
 		{
 			try
 			{
@@ -175,22 +175,22 @@
 {
 	if (self->mFileOpState == FileOpState.eOpenSuccess)
 	{
-		if (self->mFile != null)
+		if (self->mFile != nil)
 		{
 			try
 			{
-				if(null != self->mFileInputStream)
+				if(nil != self->mFileInputStream)
 				{
 					self->mFileInputStream.close();
-					self->mFileInputStream = null;
+					self->mFileInputStream = nil;
 				}
 
-				if(null != self->mFileInputStream)
+				if(nil != self->mFileInputStream)
 				{
 					self->mFileOutputStream.flush();
 
 					self->mFileOutputStream.close();
-					self->mFileOutputStream = null;
+					self->mFileOutputStream = nil;
 				}
 			}
 			catch(Exception e)

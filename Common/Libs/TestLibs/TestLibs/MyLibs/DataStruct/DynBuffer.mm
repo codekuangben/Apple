@@ -49,7 +49,7 @@
 
 - T createObject()
 {
-	Constructor constructor = null;
+	Constructor constructor = nil;
 
 	try
 	{
@@ -60,11 +60,11 @@
 
 	}
 
-	T ret = null;
+	T ret = nil;
 
 	try
 	{
-		if(null != constructor)
+		if(nil != constructor)
 		{
 			ret = (T) constructor.newInstance();
 		}

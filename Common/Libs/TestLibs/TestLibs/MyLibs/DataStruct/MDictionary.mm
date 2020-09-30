@@ -58,4 +58,9 @@
     return [self->mData allKeys];
 }
 
+- (NSMutableArray*) getValues
+{
+    return [self->mData allValues];
+}
+
 @end

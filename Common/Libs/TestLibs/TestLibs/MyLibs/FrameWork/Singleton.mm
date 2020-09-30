@@ -16,7 +16,7 @@
 {
     if (nil != msSingleton)
     {
-        msSingleton = null;
+        msSingleton = nil;
     }
 }
 

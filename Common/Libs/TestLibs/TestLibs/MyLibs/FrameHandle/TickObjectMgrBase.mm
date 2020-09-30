@@ -36,7 +36,7 @@
 {
     (int) idx = 0;
     (int) count = self->mTickObjectList.Count();
-    ITickedObject tickObject = null;
+    ITickedObject tickObject = nil;
 
     while (idx < count)
     {

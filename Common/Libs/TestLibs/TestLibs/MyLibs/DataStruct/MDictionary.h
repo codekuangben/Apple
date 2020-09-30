@@ -16,6 +16,8 @@
 - (void) Clear;
 - (BOOL) TryGetValue:(id) key value:(TValue) value;
 - (BOOL) ContainsKey:(id) key;
+// https://blog.csdn.net/q_023/article/details/78438000
 - (NSMutableArray*) allKeys;
+- (NSMutableArray*) getValues;
 
 @end

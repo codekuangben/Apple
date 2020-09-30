@@ -28,7 +28,7 @@
 {
 	if ([self->mId2HandleDic ContainsKey:msgRouteID])
 	{
-		[self->mId2HandleDic get:msgRouteID.] removeEventHandle:null handle:handle];
+		[self->mId2HandleDic get:msgRouteID.] removeEventHandle:nil handle:handle];
 	}
 }
 

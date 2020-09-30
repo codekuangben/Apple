@@ -1,5 +1,6 @@
 ﻿#import "MyLibs/EventHandle/EventDispatch.h"
 #import "MyLibs/DelayHandle/DelayHandleMgrBase.h"
+#import "MyLibs/DataStruct/MList.h"
 
 @implementation EventDispatch
 
@@ -8,7 +9,7 @@
     if(self = [super init])
     {
         self->mEventId = 0;
-		self->mHandleList = new MList<EventDispatchFunctionObject>();
+		self->mHandleList = [[MList alloc] init];
     }
     
     return self;
@@ -19,7 +20,7 @@
     if(self = [super init])
     {
         self->mEventId = 0;
-		self->mHandleList = new MList<EventDispatchFunctionObject>();
+		self->mHandleList = [[MList alloc] init];
     }
     
     return self;
@@ -43,32 +44,32 @@
 - (void) setUniqueId:(int) value
 {
 	self->mUniqueId = value;
-	self->mHandleList.setUniqueId(self->mUniqueId);
+	[self->mHandleList setUniqueId:self->mUniqueId];
 }
 
 - (void) addDispatch:(EventDispatchFunctionObject*) dispatch
 {
-	self->addObject(dispatch);
+	[self addObject:dispatch];
 }
 
 - (void) removeDispatch:(EventDispatchFunctionObject*) dispatch
 {
-	self->removeObject(dispatch);
+	[self removeObject:dispatch];
 }
 
 // 相同的函数只能增加一次，Lua ，Python 这些语言不支持同时存在几个相同名字的函数，只支持参数可以赋值，因此不单独提供同一个名字不同参数的接口了
 - (void) addEventHandle:(ICalleeObject*) pThis, handle:(IDispatchObject*) handle
 {
-	if (null != pThis || null != handle)
+	if (nil != pThis || nil != handle)
 	{
-		EventDispatchFunctionObject funcObject = new EventDispatchFunctionObject();
+		EventDispatchFunctionObject* funcObject = [[EventDispatchFunctionObject alloc] init];
 
-		if (null != handle)
+		if (nil != handle)
 		{
-			funcObject.setFuncObject(pThis, handle);
+			[funcObject setFuncObject:pThis, func:handle;
 		}
 
-		self->addDispatch(funcObject);
+		[self addDispatch:funcObject];
 	}
 	else
 	{
@@ -78,13 +79,13 @@
 
 - (void) removeEventHandle:(ICalleeObject*) pThis, handle:(IDispatchObject*) handle
 {
-	(int) idx = 0;
-	(int) elemLen = 0;
-	elemLen = self->mHandleList.Count();
+	int idx = 0;
+	int elemLen = 0;
+	elemLen = [self->mHandleList Count];
 
 	while (idx < elemLen)
 	{
-		if (self->mHandleList.get(idx).isEqual(pThis, handle))
+		if ([self->mHandleList get:idx] isEqual:pThis, func:handle])
 		{
 			break;
 		}
@@ -92,9 +93,9 @@
 		idx += 1;
 	}
 
-	if (idx < self->mHandleList.Count())
+	if (idx < [self->mHandleList Count])
 	{
-		self->removeDispatch(self->mHandleList.get(idx));
+		[self removeDispatch:[self->mHandleList get:idx]];
 	}
 	else
 	{
@@ -104,31 +105,31 @@
 
 - (void) addObject:(IDelayHandleItem*) delayObject
 {
-	self->addObject(delayObject, 0);
+	[self addObject:delayObject priority:0];
 }
 
 - (void) addObject:(IDelayHandleItem*) delayObject, priority:(float) priority
 {
-	if (self->mLoopDepth.isInDepth())
+	if ([self->mLoopDepth isInDepth]
 	{
-		super.addObject(delayObject, priority);
+		[super addObject:delayObject priority:priority];
 	}
 	else
 	{
 		// 这个判断说明相同的函数只能加一次，但是如果不同资源使用相同的回调函数就会有问题，但是这个判断可以保证只添加一次函数，值得，因此不同资源需要不同回调函数
-		self->mHandleList.Add((EventDispatchFunctionObject)delayObject);
+		[self->mHandleList Add:(EventDispatchFunctionObject*)delayObject];
 	}
 }
 
 - (void) removeObject:(IDelayHandleItem*) delayObject
 {
-	if (self->mLoopDepth.isInDepth())
+	if ([self->mLoopDepth isInDepth])
 	{
-		super.removeObject(delayObject);
+		[super removeObject:delayObject];
 	}
 	else
 	{
-		if (!self->mHandleList.Remove((EventDispatchFunctionObject)delayObject))
+		if (![self->mHandleList Remove:(EventDispatchFunctionObject*)delayObject])
 		{
 
 		}
@@ -139,27 +140,27 @@
 {
 	//try
 	//{
-	self->mLoopDepth.incDepth();
+	[self->mLoopDepth incDepth];
 
 	//foreach (EventDispatchFunctionObject handle in self->mHandleList.list())
 
-	(int) idx = 0;
-	(int) len = self->mHandleList.Count();
-	EventDispatchFunctionObject handle = null;
+	int idx = 0;
+	int len = [self->mHandleList Count];
+	EventDispatchFunctionObject* handle = nil;
 
 	while (idx < len)
 	{
-		handle = self->mHandleList.get(idx);
+		handle = [self->mHandleList get:idx];
 
 		if (!handle.mIsClientDispose)
 		{
-			handle.call(dispatchObject);
+			[handle call:dispatchObject];
 		}
 
 		++idx;
 	}
 
-	self->mLoopDepth.decDepth();
+	[self->mLoopDepth decDepth];
 	//}
 	//catch (Exception ex)
 	//{
@@ -169,25 +170,25 @@
 
 - (void) clearEventHandle
 {
-	if (self->mLoopDepth.isInDepth())
+	if ([self->mLoopDepth isInDepth]
 	{
 		//foreach (EventDispatchFunctionObject item in self->mHandleList.list())
-		(int) idx = 0;
-		(int) len = self->mHandleList.Count();
-		EventDispatchFunctionObject item = null;
+		int idx = 0;
+		int len = [self->mHandleList Count];
+		EventDispatchFunctionObject* item = nil;
 
 		while (idx < len)
 		{
-			item = self->mHandleList.get(idx);
+			item = [self->mHandleList get:idx];
 
-			self->removeDispatch(item);
+			[self removeDispatch:item];
 
 			++idx;
 		}
 	}
 	else
 	{
-		self->mHandleList.Clear();
+		[self->mHandleList Clear];
 	}
 }
 
@@ -196,15 +197,15 @@
 {
 	BOOL bFinded = false;
 	//foreach (EventDispatchFunctionObject item in self->mHandleList.list())
-	(int) idx = 0;
-	(int) len = self->mHandleList.Count();
-	EventDispatchFunctionObject item = null;
+	int idx = 0;
+	int len = [self->mHandleList Count];
+	EventDispatchFunctionObject* item = nil;
 
 	while (idx < len)
 	{
-		item = self->mHandleList.get(idx);
+		item = [self->mHandleList get:idx];
 
-		if (item.isEqual(pThis, handle))
+		if ([item isEqual:pThis handle:handle])
 		{
 			bFinded = true;
 			break;
@@ -219,15 +220,15 @@
 - (void) copyFrom:(EventDispatch*) rhv
 {
 	//foreach(EventDispatchFunctionObject handle in rhv.handleList.list())
-	(int) idx = 0;
-	(int) len = self->mHandleList.Count();
-	EventDispatchFunctionObject handle = null;
+	int idx = 0;
+	int len = [self->mHandleList Count];
+	EventDispatchFunctionObject* handle = nil;
 
 	while (idx < len)
 	{
-		handle = self->mHandleList.get(idx);
+		handle = 【self->mHandleList get:idx];
 
-		self->mHandleList.Add(handle);
+		[self->mHandleList Add:handle];
 
 		++idx;
 	}
@@ -235,12 +236,12 @@
 
 - (BOOL) hasEventHandle
 {
-	return self->mHandleList.Count() > 0;
+	return [self->mHandleList Count] > 0;
 }
 
 - (int) getEventHandle
 {
-	return self->mHandleList.Count();
+	return [self->mHandleList Count];
 }
 
 @end

@@ -5,9 +5,9 @@
 - (id) init
 {
     self->mLoopDepth = 0;
-    self->mIncHandle = null;
-    self->mDecHandle = null;
-    self->mZeroHandle = null;
+    self->mIncHandle = nil;
+    self->mDecHandle = nil;
+    self->mZeroHandle = nil;
 }
 
 - (void) setIncHandle:(ICalleeObjectNoRetNoParam*) value
@@ -29,7 +29,7 @@
 {
     ++self->mLoopDepth;
 
-    if(null != self->mIncHandle)
+    if(nil != self->mIncHandle)
     {
         self->mIncHandle.call();
     }
@@ -39,14 +39,14 @@
 {
     --self->mLoopDepth;
 
-    if (null != self->mDecHandle)
+    if (nil != self->mDecHandle)
     {
         self->mDecHandle.call();
     }
 
     if(0 == self->mLoopDepth)
     {
-        if (null != self->mZeroHandle)
+        if (nil != self->mZeroHandle)
         {
             self->mZeroHandle.call();
         }

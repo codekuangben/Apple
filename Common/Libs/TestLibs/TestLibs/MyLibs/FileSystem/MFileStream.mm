@@ -23,12 +23,12 @@
 		{
 			try
 			{
-				if(null != self->mFileInputStream)
+				if(nil != self->mFileInputStream)
 				{
 					self->mFileInputStream.getChannel().position(offset);
 				}
 
-				if(null != self->mFileOutputStream)
+				if(nil != self->mFileOutputStream)
 				{
 					self->mFileOutputStream.getChannel().position(offset);
 				}
@@ -42,12 +42,12 @@
 		{
 			try
 			{
-				if(null != self->mFileInputStream)
+				if(nil != self->mFileInputStream)
 				{
 					self->mFileInputStream.getChannel().position(self->mFile.length() - 1 - offset);
 				}
 
-				if(null != self->mFileOutputStream)
+				if(nil != self->mFileOutputStream)
 				{
 					self->mFileOutputStream.getChannel().position(self->mFile.length() - 1 - offset);
 				}
@@ -61,12 +61,12 @@
 		{
 			try
 			{
-				if(null != self->mFileInputStream)
+				if(nil != self->mFileInputStream)
 				{
 					self->mFileInputStream.getChannel().position(self->mFileInputStream.getChannel().position() + offset);
 				}
 
-				if(null != self->mFileOutputStream)
+				if(nil != self->mFileOutputStream)
 				{
 					self->mFileOutputStream.getChannel().position(self->mFileOutputStream.getChannel().position() + offset);
 				}
@@ -122,12 +122,12 @@
 
 	if (self->mFileOpState == FileOpState.eOpenSuccess)
 	{
-		if (self->mFile != null)
+		if (self->mFile != nil)
 		{
 			len = ((int))self->mFile.length();
 		}
 		/*
-		if (mFileStream != null && mFileStream.CanSeek)
+		if (mFileStream != nil && mFileStream.CanSeek)
 		{
 			try
 			{
@@ -148,22 +148,22 @@
 {
 	if (self->mFileOpState == FileOpState.eOpenSuccess)
 	{
-		if (self->mFile != null)
+		if (self->mFile != nil)
 		{
 			try
 			{
-				if(null != self->mFileInputStream)
+				if(nil != self->mFileInputStream)
 				{
 					self->mFileInputStream.close();
-					self->mFileInputStream = null;
+					self->mFileInputStream = nil;
 				}
 
-				if(null != self->mFileInputStream)
+				if(nil != self->mFileInputStream)
 				{
 					self->mFileOutputStream.flush();
 
 					self->mFileOutputStream.close();
-					self->mFileOutputStream = null;
+					self->mFileOutputStream = nil;
 				}
 			}
 			catch(Exception e)
@@ -179,17 +179,17 @@
 
 -(String) readText
 {
-	return self->readText(0, 0, null);
+	return self->readText(0, 0, nil);
 }
 
 -(String) readText:(int) offset
 {
-	return self->readText(offset, 0, null);
+	return self->readText(offset, 0, nil);
 }
 
 -(String) readText:(int) offset count:(int) count
 {
-	return self->readText(offset, count, null);
+	return self->readText(offset, count, nil);
 }
 
 -(String) readText:(int) offset count:(int) count encode:(MEncoding) encode
@@ -197,9 +197,9 @@
 	self->checkAndOpen();
 
 	String retStr = "";
-	byte[] bytes = null;
+	byte[] bytes = nil;
 
-	if (encode == null)
+	if (encode == nil)
 	{
 		encode = MEncoding.UTF8;
 	}
@@ -249,7 +249,7 @@
 		count = getLength();
 	}
 
-	byte[] bytes = null;
+	byte[] bytes = nil;
 
 	if (self->mFile.canRead())
 	{
@@ -280,14 +280,14 @@
 
 	if (self->mFile.canWrite())
 	{
-		//if (encode == null)
+		//if (encode == nil)
 		//{
 		//    encode = GkEncode.UTF8;
 		//}
 
 		byte[] bytes = encode.GetBytes(text);
 
-		if (bytes != null)
+		if (bytes != nil)
 		{
 			try
 			{
@@ -317,7 +317,7 @@
 
 	if (self->mFile.canWrite())
 	{
-		if (bytes != null)
+		if (bytes != nil)
 		{
 			if (count == 0)
 			{

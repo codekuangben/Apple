@@ -67,7 +67,7 @@
 
 - (void) checkDES
 {
-	if (mCryptContext.m_cryptKey != null && mCryptContext.m_cryptAlgorithm != CryptAlgorithm.DES)
+	if (mCryptContext.m_cryptKey != nil && mCryptContext.m_cryptAlgorithm != CryptAlgorithm.DES)
 	{
 		mCryptContext.m_cryptAlgorithm = CryptAlgorithm.DES;
 	}
@@ -182,7 +182,7 @@
 		}
 	}
 
-	return null;
+	return nil;
 }
 
 // 弹出 KBEngine 消息
@@ -196,7 +196,7 @@
 		}
 	}
 
-	return null;
+	return nil;
 }
 
 // 获取数据，然后压缩加密

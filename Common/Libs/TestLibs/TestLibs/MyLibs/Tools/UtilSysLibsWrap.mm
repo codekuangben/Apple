@@ -64,7 +64,7 @@ static final String CR_LF = "\\r\\n";
 
     StackTraceElement[] stackElements = ex.getStackTrace();
 
-    if(stackElements != null)
+    if(stackElements != nil)
     {
         for((int) i = 0; i < stackElements.length; i++)
         {

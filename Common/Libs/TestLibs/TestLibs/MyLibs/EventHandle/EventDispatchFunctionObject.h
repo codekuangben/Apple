@@ -14,12 +14,12 @@
 @property ICalleeObject* mThis;
 @property SEL mHandle;					// 选择器
 @property IMP mHandleImp;
-@property (int) mEventId;
+@property int mEventId;
 
 - (id) init: (int) baseUniqueId;
 - (void) setFuncObject:(ICalleeObject*) pThis, func:(SEL) func;
 - (BOOL) isValid;
-- (BOOL) isEqual:(ICalleeObject*) pThis, handle:(SEL*) handle;
+- (BOOL) isEqual:(ICalleeObject*) pThis, handle:(SEL) handle;
 - (void) call:(IDispatchObject*) dispObj;
 - (void) setClientDispose:(BOOL) isDispose;
 - (BOOL) isClientDispose;

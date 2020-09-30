@@ -42,7 +42,7 @@
 	}
 	else
 	{
-		self->mInsGO = null;
+		self->mInsGO = nil;
 	}
 }
 

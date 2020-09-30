@@ -11,8 +11,8 @@
 - (void) MainLoop
 {
     // 处理客户端自己的消息机制
-    MsgRouteBase routeMsg = null;
-    while ((routeMsg = Ctx.mInstance.mSysMsgRoute.pop()) != null)
+    MsgRouteBase routeMsg = nil;
+    while ((routeMsg = Ctx.mInstance.mSysMsgRoute.pop()) != nil)
     {
         Ctx.mInstance.mMsgRouteNotify.handleMsg(routeMsg);
     }
