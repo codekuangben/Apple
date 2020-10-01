@@ -12,24 +12,24 @@
     FileOutputStream mFileOutputStream;
 
 @protected
-	String mFilePath;
+	NSString* mFilePath;
     FileOpState mFileOpState;
 
-    String mText;
+    NSString* mText;
     char[] mBytes;
 }
 
 @property() File mFile;
 @property() FileInputStream mFileInputStream;
 @property() FileOutputStream mFileOutputStream;
-@property() String mFilePath;
+@property() NSString* mFilePath;
 
 @property() FileOpState mFileOpState;
-@property() String mText;
+@property() NSString* mText;
 @property() char[] mBytes;
 
 
--(id) init:(String) filePath
+-(id) init:(NSString*) filePath
 {
 	if(self = [super init])
 	{
@@ -204,19 +204,19 @@
 	}
 }
 
--(String) readText;
--(String) readText:(int) offset;
--(String) readText:(int) offset count:(int) count;
--(String) readText:(int) offset count:(int) count encode:(MEncoding) encode;
+-(NSString*) readText;
+-(NSString*) readText:(int) offset;
+-(NSString*) readText:(int) offset count:(int) count;
+-(NSString*) readText:(int) offset count:(int) count encode:(MEncoding) encode;
 -(char[]) readByte;
 -(char[]) readByte:(int) offset;
 -(char[]) readByte:(int) offset count:(int) count;
--(void) writeText:(String) text;
--(void) writeText:(String) text gkEncode:(GkEncode) gkEncode;
+-(void) writeText:(NSString*) text;
+-(void) writeText:(NSString*) text gkEncode:(GkEncode) gkEncode;
 - (void) writeByte(char[] bytes;
 - (void) writeByte(char[] bytes, (int) offset;
 - (void) writeByte(char[] bytes, (int) offset, (int) count;
--(void) writeLine:(String) text;
--(void) writeLine:(String) text gkEncode:(GkEncode) gkEncode;
+-(void) writeLine:(NSString*) text;
+-(void) writeLine:(NSString*) text gkEncode:(GkEncode) gkEncode;
 
 @end

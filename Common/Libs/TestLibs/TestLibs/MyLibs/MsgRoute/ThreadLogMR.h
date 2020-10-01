@@ -2,10 +2,10 @@
 @interface ThreadLogMR : MsgRouteBase
 {
 @public
-	String mLogSys;
+	NSString* mLogSys;
 }
 
-@property() String mLogSys;
+@property() NSString* mLogSys;
 
 -(id) init;
 

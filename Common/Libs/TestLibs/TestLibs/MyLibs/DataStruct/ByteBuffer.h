@@ -73,7 +73,7 @@
 - (ByteBuffer*) readUnsignedInt64:(long) tmpUlong;
 - (ByteBuffer*) readFloat:(float) tmpFloat;
 - (ByteBuffer*) readDouble:(double) tmpDouble;
-- (ByteBuffer*) readMultiByte:(String)tmpStr len:(int)len gkCharSet:(GkEncode)gkCharSet;
+- (ByteBuffer*) readMultiByte:(NSString*)tmpStr len:(int)len gkCharSet:(GkEncode)gkCharSet;
 // 这个是字节读取，没有大小端的区别
 - (ByteBuffer*) readBytes:(char[])tmpBytes len:(int)len;
 // 如果要使用 writeInt8 ，直接使用 writeMultiByte 这个函数
@@ -92,7 +92,7 @@
 // 写入字节， bchangeLen 是否改变长度
 - (void) writeBytes:(char[]) value start:(int) start len:(int) len bchangeLen:(BOOL) bchangeLen;
 // 写入字符串
-- (void) writeMultiByte:(String) value, gkCharSet:(GkEncode) gkCharSet len:(int) len;
+- (void) writeMultiByte:(NSString*) value, gkCharSet:(GkEncode) gkCharSet len:(int) len;
 - (void) replace:(char[]) srcBytes srcStartPos:(int) srcStartPos;
 - (void) replace:(char[]) srcBytes srcStartPos:(int) srcStartPos srclen_:(int) srclen_;
 - (void) replace:(char[]) srcBytes srcStartPos:(int) srcStartPos srclen_:(int) srclen_; destStartPos:(int) destStartPos;

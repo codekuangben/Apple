@@ -291,7 +291,7 @@
 	return this;
 }
 
-- (ByteBuffer*) readMultiByte:(String)tmpStr len:(int)len gkCharSet:(GkEncode)gkCharSet
+- (ByteBuffer*) readMultiByte:(NSString*)tmpStr len:(int)len gkCharSet:(GkEncode)gkCharSet
 {
 	MEncoding charSet = UtilSysLibsWrap.convGkEncode2EncodingEncoding(gkCharSet);
 
@@ -483,7 +483,7 @@
 }
 
 // 写入字符串
-- (void) writeMultiByte:(String) value, gkCharSet:(GkEncode) gkCharSet len:(int) len
+- (void) writeMultiByte:(NSString*) value, gkCharSet:(GkEncode) gkCharSet len:(int) len
 {
 	MEncoding charSet = UtilSysLibsWrap.convGkEncode2EncodingEncoding(gkCharSet);
 	(int) num = 0;

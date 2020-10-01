@@ -9,7 +9,7 @@
 
 }
 
-+ (BOOL) isEqualToString:(String)strA strB:(String)strB;
++ (BOOL) isEqualToString:(NSString*)strA strB:(NSString*)strB;
 
 @end
 

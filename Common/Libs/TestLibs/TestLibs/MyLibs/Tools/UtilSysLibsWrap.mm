@@ -2,7 +2,7 @@
 
 @implementation UtilSysLibsWrap
 
-static final String CR_LF = "\\r\\n";
+static final NSString* CR_LF = "\\r\\n";
 
 + (MEncoding) convGkEncode2EncodingEncoding:(GkEncode) gkEncode
 {
@@ -54,7 +54,7 @@ static final String CR_LF = "\\r\\n";
 {
     Date currentTime = new Date();
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    String dateString = formatter.format(currentTime);
+    NSString* dateString = formatter.format(currentTime);
     return dateString;
 }
 

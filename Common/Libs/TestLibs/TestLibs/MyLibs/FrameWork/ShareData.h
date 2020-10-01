@@ -6,6 +6,6 @@
 @interface ShareData
 {
 @public
-    String mTmpStr = "";
+    NSString* mTmpStr = "";
     ByteBuffer mTmpBA;
 }

@@ -6,7 +6,7 @@
     
 }
 
--(id) init:(String) name;
+-(id) init:(NSString*) name;
 -(void) dispose;
 
 @end

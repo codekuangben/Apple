@@ -2,7 +2,7 @@
 
 @implementation MFileStream
 
--(id) init:(String) filePath
+-(id) init:(NSString*) filePath
 {
 	if(self = [super init])
 	{
@@ -177,26 +177,26 @@
 	}
 }
 
--(String) readText
+-(NSString*) readText
 {
 	return self->readText(0, 0, nil);
 }
 
--(String) readText:(int) offset
+-(NSString*) readText:(int) offset
 {
 	return self->readText(offset, 0, nil);
 }
 
--(String) readText:(int) offset count:(int) count
+-(NSString*) readText:(int) offset count:(int) count
 {
 	return self->readText(offset, count, nil);
 }
 
--(String) readText:(int) offset count:(int) count encode:(MEncoding) encode
+-(NSString*) readText:(int) offset count:(int) count encode:(MEncoding) encode
 {
 	self->checkAndOpen();
 
-	String retStr = "";
+	NSString* retStr = "";
 	char[] bytes = nil;
 
 	if (encode == nil)
@@ -267,12 +267,12 @@
 	return bytes;
 }
 
--(void) writeText:(String) text
+-(void) writeText:(NSString*) text
 {
 	self->writeText(text, GkEncode.eUTF8);
 }
 
--(void) writeText:(String) text gkEncode:(GkEncode) gkEncode
+-(void) writeText:(NSString*) text gkEncode:(GkEncode) gkEncode
 {
 	MEncoding encode = UtilSysLibsWrap.convGkEncode2EncodingEncoding(gkEncode);
 
@@ -339,12 +339,12 @@
 	}
 }
 
--(void) writeLine:(String) text
+-(void) writeLine:(NSString*) text
 {
 	self->writeLine(text, GkEncode.eUTF8);
 }
 
--(void) writeLine:(String) text gkEncode:(GkEncode) gkEncode
+-(void) writeLine:(NSString*) text gkEncode:(GkEncode) gkEncode
 {
 	text = text + UtilSysLibsWrap.CR_LF;
 	writeText(text, gkEncode);

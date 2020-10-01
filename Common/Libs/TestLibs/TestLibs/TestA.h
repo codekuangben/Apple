@@ -5,7 +5,7 @@
     // 数据成员
 @protected
     int mA;
-    String mStr;
+    NSString* mStr;
 }
 
 @property (nonatomic, readwrite/*, retain*/) int mIntValue;
@@ -25,8 +25,8 @@
 // 测试一个参数
 - (void) setA: (int) paramA;
 // 测试多个参数
-- (void) setAll: (int) paramA paramStr: (String) paramC;
+- (void) setAll: (int) paramA paramStr: (NSString*) paramC;
 // 定义抽象方法
-- (String) stepMsg;
+- (NSString*) stepMsg;
 
 @end

@@ -24,7 +24,7 @@
 
 - (void) handleMsg:(MsgRouteBase) msg
 {
-	String textStr = "";
+	NSString* textStr = "";
 
 	if([self->mEventDispatchGroup hasEventHandle:msg.mMsgType])
 	{

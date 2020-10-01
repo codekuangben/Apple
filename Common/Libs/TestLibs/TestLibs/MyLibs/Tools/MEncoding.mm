@@ -25,11 +25,11 @@
 
 - (NSString) GetString:(char[]) bytes, startIndex: (int) startIndex, len:(int) len
 {
-    String ret = "";
+    NSString* ret = "";
     
     try
     {
-        ret = new String(MArray.getSubBytes(bytes, startIndex, len), self->mEncodeStr);
+        ret = new NSString*(MArray.getSubBytes(bytes, startIndex, len), self->mEncodeStr);
     }
     catch(UnsupportedEncodingException e)
     {

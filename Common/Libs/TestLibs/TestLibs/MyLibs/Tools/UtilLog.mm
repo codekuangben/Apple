@@ -2,17 +2,17 @@
 
 @implementation UtilLog
 
-+ (void) log:(String) strContent
++ (void) log:(NSString*) strContent
 {
     NSLog(strContent);
 }
 
-+ (void) warn:(String) strContent
++ (void) warn:(NSString*) strContent
 {
     NSLog(strContent);
 }
 
-+ (void) error:(String) strContent
++ (void) error:(NSString*) strContent
 {
     NSLog(strContent);
 }

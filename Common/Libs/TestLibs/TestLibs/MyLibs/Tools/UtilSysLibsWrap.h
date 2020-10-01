@@ -4,7 +4,7 @@
 @interface UtilSysLibsWrap
 {
 @public
-    static final String CR_LF = "\\r\\n";
+    static final NSString* CR_LF = "\\r\\n";
 }
 
 + (MEncoding) convGkEncode2EncodingEncoding:(GkEncode) gkEncode;

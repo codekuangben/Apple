@@ -109,7 +109,7 @@
         bytes:(char[]) bytes
         startIndex:(int) startIndex;
 
-+ (int) ToInt32: (String) value;
++ (int) ToInt32: (NSString*) value;
 
 + (int) toUnsigned: (short) value;
 

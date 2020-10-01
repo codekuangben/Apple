@@ -2,7 +2,7 @@
 
 @implementation SysMsgRoute
 
--(id) init:(String) name
+-(id) init:(NSString*) name
 {
 	if([self = [super init:name]])
 	{

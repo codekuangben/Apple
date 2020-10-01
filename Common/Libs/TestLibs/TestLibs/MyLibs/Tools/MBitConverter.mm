@@ -439,7 +439,7 @@
     return bytes;
 }
 
-+ (int) ToInt32: (String) value
++ (int) ToInt32: (NSString*) value
 {
     return Integer.parseInt(value);
 }
