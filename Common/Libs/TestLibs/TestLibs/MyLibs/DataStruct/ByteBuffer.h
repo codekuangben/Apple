@@ -1,12 +1,13 @@
 #import "MyLibs/EventHandle/IDispatchObject.h"
 #import "MyLibs/Tools/EEndian.h"
+#import "MyLibs/Tools/GkEncode.h"
 
 @class DynByteBuffer;
 
 /**
  *@brief ByteBuffer 功能
  */
-@interface ByteBuffer : IDispatchObject
+@interface ByteBuffer <IDispatchObject>
 {
     // 读写临时缓存，这个如果是单线程其实可以共享的
 @public
@@ -72,12 +73,12 @@
 - (ByteBuffer*) readUnsignedInt64:(long) tmpUlong;
 - (ByteBuffer*) readFloat:(float) tmpFloat;
 - (ByteBuffer*) readDouble:(double) tmpDouble;
-- (ByteBuffer*) readMultiByte:(String)tmpStr len:(int)len gkCharSet:(GkEncode)gkCharSet;
+- (ByteBuffer*) readMultiByte:(NSString*)tmpStr len:(int)len gkCharSet:(GkEncode)gkCharSet;
 // 这个是字节读取，没有大小端的区别
-- (ByteBuffer*) readBytes:(char[])tmpBytes, len:(int)len;
+- (ByteBuffer*) readBytes:(char[])tmpBytes len:(int)len;
 // 如果要使用 writeInt8 ，直接使用 writeMultiByte 这个函数
 - (void) writeInt8:(char)value;
-- (void) writeUnsignedInt8:(byte) value;
+- (void) writeUnsignedInt8:(char) value;
 - (void) writeInt16:(short) value;
 - (void) writeUnsignedInt16:(short) value;
 - (void) writeInt32:(int) value;
