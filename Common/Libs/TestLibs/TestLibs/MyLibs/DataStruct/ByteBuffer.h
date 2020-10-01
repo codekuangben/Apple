@@ -1,4 +1,4 @@
-﻿#import "MyLibs/EventDispatch/IDispatchObject.h"
+#import "MyLibs/EventHandle/IDispatchObject.h"
 #import "MyLibs/Tools/EEndian.h"
 
 @class DynByteBuffer;
@@ -10,41 +10,43 @@
 {
     // 读写临时缓存，这个如果是单线程其实可以共享的
 @public
-    char[] mWriteFloatBytes;
-    char[] mWriteDoubleBytes;
+    char mWriteFloatBytes[];
+    char mWriteDoubleBytes[];
 
-    char[] mReadFloatBytes;
-    char[] mReadDoubleBytes;
+    char mReadFloatBytes[];
+    char mReadDoubleBytes[];
 
 @protected
     DynByteBuffer* mDynBuffer;
     int mPos;          // 当前可以读取的位置索引
     EEndian mEndian;          // 大端小端
 
-    char[] mPadBytes;
+    char mPadBytes[];
 }
 
-@property (nonatomic, readwrite, retain) char[] mWriteFloatBytes;
-@property (nonatomic, readwrite, retain) char[] mWriteDoubleBytes;
+/*
+@property (nonatomic, readwrite, retain) char mWriteFloatBytes[];
+@property (nonatomic, readwrite, retain) char mWriteDoubleBytes[];
 
-@property (nonatomic, readwrite, retain) char[] mReadFloatBytes;
-@property (nonatomic, readwrite, retain) char[] mReadDoubleBytes;
+@property (nonatomic, readwrite, retain) char mReadFloatBytes[];
+@property (nonatomic, readwrite, retain) char mReadDoubleBytes[];
 
-@property (nonatomic, readwrite, retain) DynByteBuffer* mDynBuffer;
+@property (nonatomic, readwrite, retain) DynByteBuffer* mDynBuffer[];
 @property (nonatomic, readwrite, retain) int mPos;          // 当前可以读取的位置索引
 @property (nonatomic, readwrite, retain) EEndian mEndian;          // 大端小端
 
 @property (nonatomic, readwrite, retain) char[] mPadBytes;
+*/
 
 - (id) init;
 - (id) init:(int) initCapacity;
 - (id) init:(int) initCapacity maxCapacity:(int) maxCapacity;
-- (id)init:((int))initCapacity maxCapacity:(int)maxCapacity endian:(EEndian)endian;
+- (id)init:(int)initCapacity maxCapacity:(int)maxCapacity endian:(EEndian)endian;
 - (DynByteBuffer*)getDynBuffer;
 - (int)getBytesAvailable;
 - (EEndian)getEndian;
 - (void)setEndian:(EEndian)end;
-- (int)getLength
+- (int)getLength;
 - (void)setLength:(int)value;
 - (void)setPos:(int) pos;
 - (int)getPos;

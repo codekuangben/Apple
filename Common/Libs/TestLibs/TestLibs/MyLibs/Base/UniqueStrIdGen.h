@@ -1,5 +1,5 @@
-﻿#import <Foundation/Foundation.h>
-#import "MyLibs/Test/UniqueNumIdGen.h"
+#import <Foundation/Foundation.h>
+#import "MyLibs/Base/UniqueNumIdGen.h"
 
 /**
  * @brief 唯一字符串生成器
@@ -12,8 +12,8 @@
 }
 
 - (id) init: (NSString*) prefix baseUniqueId: (int) baseUniqueId;
-- (NSString*) genNewStrId();
-- (NSString*) getCurStrId();
+- (NSString*) genNewStrId;
+- (NSString*) getCurStrId;
 - (NSString*) genStrIdById: (int) id;
 
 @end
