@@ -7,13 +7,13 @@
 @interface UniqueStrIdGen : UniqueNumIdGen
 {
 @protected
-    NSString* mPrefix;
-    NSString* mRetId;
+    String mPrefix;
+    String mRetId;
 }
 
-- (id) init: (NSString*) prefix baseUniqueId: (int) baseUniqueId;
-- (NSString*) genNewStrId;
-- (NSString*) getCurStrId;
-- (NSString*) genStrIdById: (int) id;
+- (id) init: (String) prefix baseUniqueId: (int) baseUniqueId;
+- (String) genNewStrId;
+- (String) getCurStrId;
+- (String) genStrIdById: (int) id;
 
 @end

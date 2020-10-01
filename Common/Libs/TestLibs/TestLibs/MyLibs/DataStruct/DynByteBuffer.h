@@ -10,13 +10,13 @@
     int mCapacity;         // 分配的内存空间大小，单位大小是字节
     int mMaxCapacity;      // 最大允许分配的存储空间大小
     int mSize;              // 存储在当前缓冲区中的数量
-    byte[] mBuffer;            // 当前环形缓冲区
+    char[] mBuffer;            // 当前环形缓冲区
 }
 
 - (id) init
 - (id) initWithParams:(int) initCapacity (int) maxCapacity;
-- (byte[]) getBuffer
-- (void) setBuffer:(byte[]) value
+- (char[]) getBuffer
+- (void) setBuffer:(char[]) value
 - (int) getMaxCapacity
 - (void) setMaxCapacity:(int) value
 - (int) getCapacity

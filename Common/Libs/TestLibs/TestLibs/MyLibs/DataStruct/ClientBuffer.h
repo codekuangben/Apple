@@ -12,7 +12,7 @@
 	MsgBuffer* mSendTmpBuffer;  // 发送临时缓冲区，发送的数据都暂时放在这里
 	ByteBuffer* mSocketSendBA;       // 真正发送缓冲区
 	
-	DynBuffer<byte> mDynBuffer;        // 接收到的临时数据，将要放到 mRawBuffer 中去
+	DynBuffer<char> mDynBuffer;        // 接收到的临时数据，将要放到 mRawBuffer 中去
 	ByteBuffer* mUnCompressHeaderBA;  // 存放解压后的头的长度
 	ByteBuffer* mSendData;            // 存放将要发送的数据，将要放到 m_sendBuffer 中去
 	ByteBuffer* mTmpData;             // 临时需要转换的数据放在这里
@@ -29,7 +29,7 @@
 @property MsgBuffer* mSendTmpBuffer;
 @property ByteBuffer* mSocketSendBA;
 
-@property DynBuffer<byte> mDynBuffer;
+@property DynBuffer<char> mDynBuffer;
 @property ByteBuffer* mUnCompressHeaderBA;
 @property ByteBuffer* mSendData;
 @property ByteBuffer* mTmpData;
@@ -47,7 +47,7 @@
 - (ByteBuffer*) getSendData;
 // 设置 ClientBuffer 字节序
 - (void) setEndian:(EEndian) end;
-- (void) setCryptKey:(byte[]) encrypt;
+- (void) setCryptKey:(char[]) encrypt;
 - (void) checkDES;
 - (MsgBuffer*) getRawBuffer;
 - (void) SetRevBufferSize:(int) size;

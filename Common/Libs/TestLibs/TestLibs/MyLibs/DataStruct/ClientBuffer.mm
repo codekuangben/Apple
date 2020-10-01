@@ -58,7 +58,7 @@
 	mTmp1fData.setEndian(end);
 }
 
-- (void) setCryptKey:(byte[]) encrypt
+- (void) setCryptKey:(char[]) encrypt
 {
 	//mCryptContext.cryptAlgorithm = CryptAlgorithm.DES;
 	mCryptContext.m_cryptKey = encrypt;
@@ -80,7 +80,7 @@
 
 - (void) SetRevBufferSize:(int) size
 {
-	mDynBuffer = new DynBuffer<byte>((uint)size);
+	mDynBuffer = new DynBuffer<char>((uint)size);
 }
 
 - (void) moveDyn2Raw

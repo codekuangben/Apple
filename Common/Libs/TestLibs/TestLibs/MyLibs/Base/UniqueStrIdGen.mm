@@ -1,14 +1,14 @@
 ﻿#import "MyLibs/Base/UniqueStrIdGen.h"
 
-static NSString* PlayerPrefix = @"PL";
-static NSString* PlayerChildPrefix = @"PC";
-static NSString* PlayerSnowBlockPrefix = @"PSM";
-static NSString* RobotPrefix = @"RT";
-static NSString* SnowBlockPrefix = @"SM";
+static String PlayerPrefix = @"PL";
+static String PlayerChildPrefix = @"PC";
+static String PlayerSnowBlockPrefix = @"PSM";
+static String RobotPrefix = @"RT";
+static String SnowBlockPrefix = @"SM";
 
 @implementation UniqueStrIdGen
 
-- (id) init: (NSString*) prefix baseUniqueId: (int) baseUniqueId
+- (id) init: (String) prefix baseUniqueId: (int) baseUniqueId
 {
     if(self = [super init: baseUniqueId])
     {
@@ -18,18 +18,18 @@ static NSString* SnowBlockPrefix = @"SM";
     return self;
 }
 
-- (NSString*) genNewStrId
+- (String) genNewStrId
 {
     self->mRetId = [NSString stringWithFormat:@"%s_%s", self->mPrefix, self->genNewId()];
     return self->mRetId;
 }
 
-- (NSString*) getCurStrId
+- (String) getCurStrId
 {
     return self->mRetId;
 }
 
-- (NSString*) genStrIdById:(int) id
+- (String) genStrIdById:(int) id
 {
     self->mRetId = [NSString stringWithFormat:"%s_%d", mPrefix, id);
     return self->mRetId;

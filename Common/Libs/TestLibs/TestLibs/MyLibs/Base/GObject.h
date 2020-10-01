@@ -3,10 +3,10 @@
 @interface GObject : NSObject
 {
 @protected
-    NSString* mTypeId;     // 名字
+    String mTypeId;     // 名字
 }
 
 - (id) init;
-- (NSString*) getTypeId;
+- (String) getTypeId;
 
 @end

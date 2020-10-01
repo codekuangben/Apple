@@ -2,8 +2,8 @@
 
 @interface UtilLog : NSObject
 
-+ (void) log:(NSString*) strContent;
-+ (void) warn:(NSString*) strContent;
-+ (void) error:(NSString*) strContent;
++ (void) log:(String) strContent;
++ (void) warn:(String) strContent;
++ (void) error:(String) strContent;
 
 @end

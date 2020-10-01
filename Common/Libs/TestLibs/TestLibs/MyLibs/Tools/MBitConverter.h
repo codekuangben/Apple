@@ -2,52 +2,52 @@
 
 + (BOOL) ToBoolean:(Byte[]) bytes
         startIndex: (int) startIndex;
-+ (BOOL) ToBoolean:(byte[]) bytes
++ (BOOL) ToBoolean:(char[]) bytes
         startIndex: (int) startIndex
         endian:(EEndian) endian;
 
-+ (char) ToChar:(byte[]) bytes
++ (char) ToChar:(char[]) bytes
         startIndex: (int) startIndex;
 
-+ (char) ToChar:(byte[]) bytes
++ (char) ToChar:(char[]) bytes
         startIndex: (int) startIndex
         endian: (EEndian) endian;
 
-+ (short) ToInt16:(byte[]) bytes
++ (short) ToInt16:(char[]) bytes
         startIndex: (int) startIndex;
 
-+ (short) ToInt16:(byte[]) bytes
++ (short) ToInt16:(char[]) bytes
         startIndex: (int) startIndex
         endian: (EEndian) endian;
 
-+ (short) ToUInt16:(byte[]) bytes
++ (short) ToUInt16:(char[]) bytes
         startIndex:(int) startIndex;
 
-+ (short) ToUInt16:(byte[]) bytes
++ (short) ToUInt16:(char[]) bytes
         startIndex:(int) startIndex
         endian:(EEndian) endian;
 
-+ (int) ToInt32:(byte[]) bytes
++ (int) ToInt32:(char[]) bytes
         startIndex:(int) startIndex;
 
-+ (int) ToInt32:(byte[]) bytes
++ (int) ToInt32:(char[]) bytes
         startIndex:(int) startIndex
         endian:(EEndian) endian;
-+ (int) ToUInt32:(byte[]) bytes
++ (int) ToUInt32:(char[]) bytes
         startIndex:(int) startIndex;
 
-+ (int) ToUInt32:(byte[]) bytes
++ (int) ToUInt32:(char[]) bytes
         startIndex:(int) startIndex
         endian:(EEndian) endian;
-+ (long) ToInt64:(byte[]) bytes
++ (long) ToInt64:(char[]) bytes
         startIndex:(int) startIndex;
 
-+ (long) ToInt64:(byte[]) bytes
++ (long) ToInt64:(char[]) bytes
     startIndex:(int) startIndex
     endian:(EEndian) endian;
-+ (long) ToUInt64:(byte[]) bytes
++ (long) ToUInt64:(char[]) bytes
         startIndex:(int) startIndex;
-+ (long) ToUInt64:(byte[]) bytes
++ (long) ToUInt64:(char[]) bytes
         startIndex:(int) startIndex
         endian:(EEndian) endian;
 /**
@@ -57,59 +57,59 @@
  * @param index 开始位置
  * @return
  */
-+ (float) ToFloat:(byte[]) b index:(int) index;
++ (float) ToFloat:(char[]) b index:(int) index;
 
-+ (double) ToDouble:(byte[]) bytes
++ (double) ToDouble:(char[]) bytes
         (int) startIndex;
 
 + (void) GetBytes:(BOOL) data
-        bytes:(byte[]) bytes
+        bytes:(char[]) bytes
         startIndex:(int) startIndex;
 
 + (void) GetBytes:(BOOL) data
-    bytes:(byte[]) bytes
+    bytes:(char[]) bytes
     startIndex:(int) startIndex
     endian:(EEndian) endian;
 + (void) GetBytes:(char) data
-        bytes:(byte[]) bytes
+        bytes:(char[]) bytes
         startIndex:(int) startIndex;
 
 + (void) GetBytes:char data
-    bytes:(byte[]) bytes
+    bytes:(char[]) bytes
     startIndex:(int) startIndex
     endian:(EEndian) endian;
 
 + (void) GetBytes:(short) data
-        bytes:(byte[]) bytes
+        bytes:(char[]) bytes
         startIndex:(int) startIndex;
 + (void) GetBytes:(short) data
-    bytes:(byte[]) bytes
+    bytes:(char[]) bytes
     startIndex:(int) startIndex
     endian:(EEndian) endian;
 
 + (void) GetBytes:(int) data
-        bytes:(byte[]) bytes
+        bytes:(char[]) bytes
         startIndex:(int) startIndex;
 + (void) GetBytes:(int) data
-    bytes:(byte[]) bytes
+    bytes:(char[]) bytes
     startIndex:(int) startIndex
     endian:(EEndian) endian;
 + (void) GetBytes:(long) data
-        bytes:(byte[]) bytes
+        bytes:(char[]) bytes
         startIndex:(int) startIndex;
 
 + (void) GetBytes:(long) data
-    bytes:(byte[]) bytes
+    bytes:(char[]) bytes
     startIndex:(int) startIndex
     endian:(EEndian) endian;
-+ (byte[]) GetBytes:(float) f;
-+ (byte[]) GetBytes:(double) data;
++ (char[]) GetBytes:(float) f;
++ (char[]) GetBytes:(double) data;
 
-+ (byte[]) GetBytes:(double) data
-        bytes:(byte[]) bytes
++ (char[]) GetBytes:(double) data
+        bytes:(char[]) bytes
         startIndex:(int) startIndex;
 
-+ (int) ToInt32: (NSString*) value;
++ (int) ToInt32: (String) value;
 
 + (int) toUnsigned: (short) value;
 

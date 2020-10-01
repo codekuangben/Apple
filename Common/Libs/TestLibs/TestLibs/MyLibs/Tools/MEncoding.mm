@@ -13,17 +13,17 @@
     return self;
 }
 
-- (NSString) GetString: (byte[]) bytes
+- (NSString) GetString: (char[]) bytes
 {
     return  self->GetString(bytes, 0, bytes.length);
 }
 
-- (NSString) GetString: (byte[]): bytes, startIndex: (int) startIndex
+- (NSString) GetString: (char[]): bytes, startIndex: (int) startIndex
 {
     return self->GetString(bytes, startIndex, bytes.length - startIndex);
 }
 
-- (NSString) GetString:(byte[]) bytes, startIndex: (int) startIndex, len:(int) len
+- (NSString) GetString:(char[]) bytes, startIndex: (int) startIndex, len:(int) len
 {
     String ret = "";
     
@@ -45,7 +45,7 @@
     
     try
     {
-        byte[] bytes = str.getBytes(self->mEncodeStr);
+        char[] bytes = str.getBytes(self->mEncodeStr);
         len = bytes.length;
     }
     catch(UnsupportedEncodingException e)
@@ -56,9 +56,9 @@
     return len;
 }
 
-- (byte[]) GetBytes:(NSString) str
+- (char[]) GetBytes:(NSString) str
 {
-    byte[] bytes = nil;
+    char[] bytes = nil;
     
     try
     {

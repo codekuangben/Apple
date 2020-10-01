@@ -324,11 +324,11 @@
 	{
 		extendDeltaCapicity(Byte.SIZE);
 	}
-	mDynBuffer.getBuffer()[mPos] = (byte)value;
+	mDynBuffer.getBuffer()[mPos] = (char)value;
 	advPosAndLen(Byte.SIZE);
 }
 
-- (void) writeUnsignedInt8:(byte) value
+- (void) writeUnsignedInt8:(char) value
 {
 	if (!canWrite(Byte.SIZE))
 	{

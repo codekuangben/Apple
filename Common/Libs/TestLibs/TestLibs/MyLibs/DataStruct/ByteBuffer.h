@@ -73,7 +73,7 @@
 - (ByteBuffer*) readUnsignedInt64:(long) tmpUlong;
 - (ByteBuffer*) readFloat:(float) tmpFloat;
 - (ByteBuffer*) readDouble:(double) tmpDouble;
-- (ByteBuffer*) readMultiByte:(NSString*)tmpStr len:(int)len gkCharSet:(GkEncode)gkCharSet;
+- (ByteBuffer*) readMultiByte:(String)tmpStr len:(int)len gkCharSet:(GkEncode)gkCharSet;
 // 这个是字节读取，没有大小端的区别
 - (ByteBuffer*) readBytes:(char[])tmpBytes len:(int)len;
 // 如果要使用 writeInt8 ，直接使用 writeMultiByte 这个函数

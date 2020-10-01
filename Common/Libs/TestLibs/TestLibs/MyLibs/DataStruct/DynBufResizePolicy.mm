@@ -24,7 +24,7 @@
 
         if (ret < needSize)      // 分配失败
         {
-            //Ctx.mInstance.mLogSys.error(string.Format("Malloc byte buffer failed，cannot malloc {0} byte buffer", needSize));
+            //Ctx.mInstance.mLogSys.error(string.Format("Malloc char buffer failed，cannot malloc {0} char buffer", needSize));
         }
     }
 

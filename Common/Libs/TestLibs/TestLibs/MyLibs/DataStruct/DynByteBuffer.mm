@@ -12,15 +12,15 @@
     self->mMaxCapacity = maxCapacity;
     self->mCapacity = initCapacity;
     self->mSize = 0;
-    self->mBuffer = new byte[mCapacity];
+    self->mBuffer = new char[mCapacity];
 }
 
-- (byte[]) getBuffer
+- (char[]) getBuffer
 {
     return self->mBuffer;
 }
 
-- (void) setBuffer:(byte[]) value
+- (void) setBuffer:(char[]) value
 {
     self->mBuffer = value;
     self->mCapacity = ((int))self->mBuffer.length;
@@ -51,7 +51,7 @@
     {
         return;
     }
-    byte[] tmpbuff = new byte[value];   // 分配新的空间
+    char[] tmpbuff = new char[value];   // 分配新的空间
     MArray.Copy(self->mBuffer, 0, tmpbuff, 0, self->mSize);  // 这个地方是 mSize 还是应该是 mCapacity，如果是 CircleBuffer 好像应该是 mCapacity，如果是 ByteBuffer ，好像应该是 mCapacity。但是 DynBuffer 只有 ByteBuffer 才会使用这个函数，因此使用 mSize 就行了，但是如果使用 mCapacity 也没有问题
 
     self->mBuffer = tmpbuff;

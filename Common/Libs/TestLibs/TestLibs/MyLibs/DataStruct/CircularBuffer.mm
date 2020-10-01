@@ -107,7 +107,7 @@
 	else
 	{
 		// 数据在两个不连续的内存空间中
-		byte[] tmp = new byte[mLast];
+		char[] tmp = new char[mLast];
 		MArray.Copy(mDynBuffer.mBuffer, 0, tmp, 0, mLast);  // 拷贝一段内存空间中的数据到 tmp
 		MArray.Copy(mDynBuffer.mBuffer, mFirst, mDynBuffer.mBuffer, 0, mDynBuffer.mCapacity - mFirst);  // 拷贝第一段数据到 0 索引位置
 		MArray.Copy(tmp, 0, mDynBuffer.mBuffer, mDynBuffer.mCapacity - mFirst, mLast);      // 拷贝第二段数据到缓冲区
@@ -130,7 +130,7 @@
 	{
 		return;
 	}
-	byte[] tmpbuff = new byte[newCapacity];   // 分配新的空间
+	char[] tmpbuff = new char[newCapacity];   // 分配新的空间
 	if (isLinearized()) // 如果是在一段内存空间
 	{
 		// 已经是线性空间了仍然将数据移动到索引 0 的位置

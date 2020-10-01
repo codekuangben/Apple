@@ -32,13 +32,13 @@ static int msB = 0;
     mA = paramA;
 }
 
-- (void) setAll: (int) paramA paramStr: (NSString*) paramC
+- (void) setAll: (int) paramA paramStr: (String) paramC
 {
     mA = paramA;
     mStr = paramC;
 }
 
-- (NSString*) stepMsg
+- (String) stepMsg
 {
     [self doesNotRecognizeSelector:_cmd];
     return nil;

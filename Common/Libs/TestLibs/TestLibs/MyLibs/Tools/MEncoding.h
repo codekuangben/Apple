@@ -18,10 +18,10 @@
 @property() NSString mEncodeStr;
 
 - (id) init: (NSString) encodeStr;
-- (NSString) GetString: (byte[]) bytes;
-- (NSString) GetString: (byte[]): bytes, startIndex: (int) startIndex;
-- (NSString) GetString:(byte[]) bytes, startIndex: (int) startIndex, len:(int) len;
+- (NSString) GetString: (char[]) bytes;
+- (NSString) GetString: (char[]): bytes, startIndex: (int) startIndex;
+- (NSString) GetString:(char[]) bytes, startIndex: (int) startIndex, len:(int) len;
 - (int) GetByteCount: (NSString) str;
-- (byte[]) GetBytes:(NSString) str;
+- (char[]) GetBytes:(NSString) str;
 
 @end

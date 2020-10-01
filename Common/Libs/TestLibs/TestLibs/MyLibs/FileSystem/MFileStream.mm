@@ -197,7 +197,7 @@
 	self->checkAndOpen();
 
 	String retStr = "";
-	byte[] bytes = nil;
+	char[] bytes = nil;
 
 	if (encode == nil)
 	{
@@ -215,7 +215,7 @@
 		{
 			try
 			{
-				bytes = new byte[count];
+				bytes = new char[count];
 				self->mFileInputStream.read(bytes, 0, count);
 
 				retStr = encode.GetString(bytes);
@@ -230,17 +230,17 @@
 	return retStr;
 }
 
--(byte[]) readByte
+-(char[]) readByte
 {
 	return self->readByte(0, 0);
 }
 
--(byte[]) readByte:(int) offset
+-(char[]) readByte:(int) offset
 {
 	return self->readByte(offset, 0);
 }
 
--(byte[]) readByte:(int) offset count:(int) count
+-(char[]) readByte:(int) offset count:(int) count
 {
 	self->checkAndOpen();
 
@@ -249,13 +249,13 @@
 		count = getLength();
 	}
 
-	byte[] bytes = nil;
+	char[] bytes = nil;
 
 	if (self->mFile.canRead())
 	{
 		try
 		{
-			bytes = new byte[count];
+			bytes = new char[count];
 			self->mFileInputStream.read(bytes, 0, count);
 		}
 		catch (Exception err)
@@ -285,7 +285,7 @@
 		//    encode = GkEncode.UTF8;
 		//}
 
-		byte[] bytes = encode.GetBytes(text);
+		char[] bytes = encode.GetBytes(text);
 
 		if (bytes != nil)
 		{
@@ -301,17 +301,17 @@
 	}
 }
 
--(void) writeByte:(byte[]) bytes
+-(void) writeByte:(char[]) bytes
 {
 	self->writeByte(bytes, 0, 0);
 }
 
--(void) writeByte:(byte[]) bytes offset:(int) offset
+-(void) writeByte:(char[]) bytes offset:(int) offset
 {
 	self->writeByte(bytes, offset, 0);
 }
 
--(void) writeByte:(byte[]) bytes offset:(int) offset count:(int) count
+-(void) writeByte:(char[]) bytes offset:(int) offset count:(int) count
 {
 	self->checkAndOpen();
 

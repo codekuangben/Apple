@@ -16,7 +16,7 @@
     FileOpState mFileOpState;
 
     String mText;
-    byte[] mBytes;
+    char[] mBytes;
 }
 
 @property() File mFile;
@@ -26,7 +26,7 @@
 
 @property() FileOpState mFileOpState;
 @property() String mText;
-@property() byte[] mBytes;
+@property() char[] mBytes;
 
 
 -(id) init:(String) filePath
@@ -208,14 +208,14 @@
 -(String) readText:(int) offset;
 -(String) readText:(int) offset count:(int) count;
 -(String) readText:(int) offset count:(int) count encode:(MEncoding) encode;
--(byte[]) readByte;
--(byte[]) readByte:(int) offset;
--(byte[]) readByte:(int) offset count:(int) count;
+-(char[]) readByte;
+-(char[]) readByte:(int) offset;
+-(char[]) readByte:(int) offset count:(int) count;
 -(void) writeText:(String) text;
 -(void) writeText:(String) text gkEncode:(GkEncode) gkEncode;
-- (void) writeByte(byte[] bytes;
-- (void) writeByte(byte[] bytes, (int) offset;
-- (void) writeByte(byte[] bytes, (int) offset, (int) count;
+- (void) writeByte(char[] bytes;
+- (void) writeByte(char[] bytes, (int) offset;
+- (void) writeByte(char[] bytes, (int) offset, (int) count;
 -(void) writeLine:(String) text;
 -(void) writeLine:(String) text gkEncode:(GkEncode) gkEncode;
 

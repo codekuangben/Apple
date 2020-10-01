@@ -2,7 +2,7 @@
 
 @implementation UtilStr
 
-+ (BOOL) isEqualToString:(NSString*)strA strB:(NSString*)strB
++ (BOOL) isEqualToString:(String)strA strB:(String)strB
 {
 	BOOL ret = [strA isEqualToString:strB];
 	return	ret;
