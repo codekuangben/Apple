@@ -1,9 +1,9 @@
-﻿#import "MyLibs/DataStruct/MList.h"
+#import "MyLibs/Base/GObject.h"
 
 /**
  * @brief 基本的配置
  */
-@interface Config
+@interface Config : GObject
 {
     
 }

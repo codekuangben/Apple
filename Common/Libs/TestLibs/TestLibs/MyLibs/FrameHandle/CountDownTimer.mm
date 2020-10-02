@@ -1,8 +1,8 @@
-#import "MyLibs/FrameHandle/TimerItemBase.h"
+#import "MyLibs/FrameHandle/CountDownTimer.h"
 
 @implementation CountDownTimer
 
--(void) init
+-(id) init
 {
     if(self = [super init])
     {

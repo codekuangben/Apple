@@ -1,4 +1,4 @@
-﻿#import "MyLibs/FrameHandle/TickProcessObject.h"
+#import "MyLibs/FrameHandle/TickProcessObject.h"
 
 @implementation TickProcessObject
 
@@ -6,6 +6,7 @@
 {
     self->mTickObject = nil;
     self->mPriority = 0.0f;
+    return self;
 }
 
 @end

@@ -2,11 +2,11 @@
 #import "MyLibs/EventHandle/IDispatchObject.h"
 #import "MyLibs/FrameHandle/TimerFunctionObject.h"
 #import "MyLibs/FrameHandle/ICalleeObjectTimer.h"
-
+#import "MyLibs/Base/GObject.h"
 /**
  * @brief 定时器，这个是不断增长的
  */
-@interface TimerItemBase <IDelayHandleItem, IDispatchObject>
+@interface TimerItemBase : GObject <IDelayHandleItem, IDispatchObject>
 {
     float mInternal;        // 定时器间隔
     float mTotalTime;       // 总共定时器时间
@@ -20,12 +20,12 @@
 }
 
 - (id) init;
-- (void) setFuncObject:(ICalleeObjectTimer*) handle;
+- (void) setFuncObject:(GObject<ICalleeObjectTimer>*) handle;
 - (void) setTotalTime:(float) value;
-- float getRunTime;
-- float getCallTime;
-- float getLeftRunTime;
-- float getLeftCallTime;
+- (float) getRunTime;
+- (float) getCallTime;
+- (float) getLeftRunTime;
+- (float) getLeftCallTime;
 // 在调用回调函数之前处理
 - (void) onPreCallBack;
 - (void) OnTimer:(float) delta;
@@ -39,7 +39,7 @@
 - (void) discontinueCheckAndDisp;
 - (void) reset;
 - (void) setClientDispose:(BOOL) isDispose;
-- BOOL isClientDispose;
+- (BOOL) isClientDispose;
 - (void) startTimer;
 - (void) stopTimer;
 

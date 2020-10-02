@@ -1,6 +1,6 @@
-﻿#import "MyLibs/DelayHandle/DelayDelParam.h";
+#import "MyLibs/DelayHandle/DelayDelParam.h";
 
-@implement DelayDelParam
+@implementation DelayDelParam
 
 
 @end

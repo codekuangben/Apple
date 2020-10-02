@@ -15,7 +15,7 @@
     self->mIsContinuous = false;
 }
 
-- (void) setFuncObject:(ICalleeObjectTimer*) handle
+- (void) setFuncObject:(GObject<ICalleeObjectTimer>*) handle
 {
     [self->mTimerDisp setFuncObject:handle];
 }

@@ -1,13 +1,13 @@
-﻿#import "MyLibs/DelayHandle/DelayHandleObject.h"
+#import "MyLibs/DelayHandle/DelayHandleObject.h"
 
 @implementation DelayHandleObject
 
-- ((void)) init
+- (id) init
 {
 	if(self = [super init])
     {
-        self->mDelayObject = nil;
-		self->mDelayParam = nil;
+        self.mDelayObject = nil;
+        self.mDelayParam = nil;
     }
     
     return self;

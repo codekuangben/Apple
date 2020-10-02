@@ -1,13 +1,15 @@
 #import "MyLibs/Tools/UtilSysLibsWrap.h"
 #import <Foundation/Foundation.h>
-
+#import "MyLibs/Base/GObject.h"
+"
 static NSString* CR_LF = @"\\r\\n";
 
 @implementation UtilSysLibsWrap
 
-+ (MEncoding) convGkEncode2EncodingEncoding:(GkEncode) gkEncode
++ (MEncoding*) convGkEncode2EncodingEncoding:(GkEncode) gkEncode
 {
-    MEncoding retEncode = MEncoding.UTF8;
+    /*
+    MEncoding* retEncode = MEncoding.UTF8;
 
     if (GkEncode.eUTF8 == gkEncode)
     {
@@ -25,18 +27,20 @@ static NSString* CR_LF = @"\\r\\n";
     {
         retEncode = MEncoding.Default;
     }
+     */
 
+    MEncoding* retEncode = nil;
     return retEncode;
 }
 
 // 判断两个 GameObject 地址是否相等
-+ (BOOL) isAddressEqual:(Object) a b:(Object) b
++ (BOOL) isAddressEqual:(GObject*) a b:(GObject*) b
 {
-    return a.equals(b);
+    return a == b;
 }
 
 // 判断两个函数是否相等，不能使用 isAddressEqual 判断函数是否相等
-+ (BOOL) isDelegateEqual:(IDispatchObject) a b:(IDispatchObject) b
++ (BOOL) isDelegateEqual:(GObject<IDispatchObject>*) a b:(GObject<IDispatchObject>*) b
 {
     return a == b;
 }

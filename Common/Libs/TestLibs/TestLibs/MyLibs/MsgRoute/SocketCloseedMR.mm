@@ -1,4 +1,5 @@
-﻿#import "MyLibs/MsgRoute/SocketCloseedMR.h"
+#import "MyLibs/MsgRoute/SocketCloseedMR.h"
+#import "MyLibs/MsgRoute/MsgRouteID.h"
 
 @implementation SocketCloseedMR
 

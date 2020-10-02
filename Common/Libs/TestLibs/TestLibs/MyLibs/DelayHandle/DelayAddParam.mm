@@ -5,6 +5,7 @@
 - (id)init
 {
     self->mPriority = 0.0f;
+    return self;
 }
 
 @end
