@@ -1,4 +1,8 @@
-﻿/**
+#import <MyLibs/Tools/MEncoding.h>
+#import <MyLibs/Tools/GkEncode.h>
+#import <MyLibs/EventHandle/IDispatchObject.h>
+
+/**
  * @brief 对 api 的进一步 wrap
  */
 @interface UtilSysLibsWrap

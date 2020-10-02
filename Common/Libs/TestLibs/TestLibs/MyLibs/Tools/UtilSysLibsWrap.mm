@@ -1,8 +1,9 @@
-﻿#import "MyLibs/Tools/UtilSysLibsWrap.h"
+#import "MyLibs/Tools/UtilSysLibsWrap.h"
+#import <Foundation/Foundation.h>
+
+static NSString* CR_LF = @"\\r\\n";
 
 @implementation UtilSysLibsWrap
-
-static final NSString* CR_LF = "\\r\\n";
 
 + (MEncoding) convGkEncode2EncodingEncoding:(GkEncode) gkEncode
 {

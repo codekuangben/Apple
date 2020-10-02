@@ -1,4 +1,4 @@
-﻿#import "MyLibs/Base/UniqueStrIdGen.h"
+#import "MyLibs/Base/UniqueStrIdGen.h"
 
 static NSString* PlayerPrefix = @"PL";
 static NSString* PlayerChildPrefix = @"PC";
@@ -31,7 +31,7 @@ static NSString* SnowBlockPrefix = @"SM";
 
 - (NSString*) genStrIdById:(int) id
 {
-    self->mRetId = [NSString stringWithFormat:"%s_%d", mPrefix, id);
+    self->mRetId = [NSString stringWithFormat:"%s_%d", mPrefix, id];
     return self->mRetId;
 }
 

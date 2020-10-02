@@ -1,4 +1,4 @@
-﻿#import "MyLibs/FrameHandle/TimeInterval.h"
+#import "MyLibs/FrameHandle/TimeInterval.h"
 
 @implementation TimeInterval
 
@@ -26,7 +26,7 @@
 
 - (BOOL) canExec:(float) delta
 {
-    BOOL ret = false;
+    BOOL ret = no;
 
     self->mTotalTime += delta;
     self->mCurTime += delta;

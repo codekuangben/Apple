@@ -1,7 +1,9 @@
-﻿/**
+#import "MyLibs/Base/GObject.h"
+
+/**
  * @brief 事件间隔
  */
-@interface TimeInterval
+@interface TimeInterval : GObject
 {
     @protected
     float mInterval;

@@ -1,9 +1,11 @@
-#import "Lib/EventHandle/ICalleeObject.h";
-#import "Lib/Tools/UtilSysLibsWrap.h";
+#import "MyLibs/EventHandle/ICalleeObject.h"
+#import "MyLibs/FrameHandle/ICalleeObjectTimer.h"
+#import "MyLibs/Tools/UtilSysLibsWrap.h"
+#import "MyLibs/Base/GObject.h"
 
-@interface TimerFunctionObject
+@interface TimerFunctionObject : GObject
 {
-    public
+@public
     ICalleeObjectTimer* mHandle;
 }
 
@@ -12,4 +14,5 @@
 - (BOOL) isValid;
 - (BOOL) isEqual:(ICalleeObject*) handle;
 - (void) call:(TimerItemBase*) dispObj;
+
 @end

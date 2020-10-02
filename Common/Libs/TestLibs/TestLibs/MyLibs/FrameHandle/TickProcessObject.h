@@ -1,7 +1,11 @@
-﻿@interface TickProcessObject
+#import <Foundation/Foundation.h>
+#import "MyLibs/Base/GObject.h"
+#import "MyLibs/FrameHandle/ITickedObject.h"
+
+@interface TickProcessObject : GObject
 {
-    @public
-    ITickedObject mTickObject;
+@public
+    GObject<ITickedObject>* mTickObject;
     float mPriority;
 }
 

@@ -1,10 +1,12 @@
-﻿#import "MyLibs/DelayHandle/IDelayHandleItem.h";
-#import "MyLibs/EventHandle/IDispatchObject.h";
+#import "MyLibs/DelayHandle/IDelayHandleItem.h"
+#import "MyLibs/EventHandle/IDispatchObject.h"
+#import "MyLibs/FrameHandle/TimerFunctionObject.h"
+#import "MyLibs/FrameHandle/ICalleeObjectTimer.h"
 
 /**
  * @brief 定时器，这个是不断增长的
  */
-@interface TimerItemBase : IDelayHandleItem, IDispatchObject
+@interface TimerItemBase <IDelayHandleItem, IDispatchObject>
 {
     float mInternal;        // 定时器间隔
     float mTotalTime;       // 总共定时器时间
@@ -12,7 +14,7 @@
     float mCurCallTime;     // 当前定时器已经调用的时间
     BOOL mIsInfineLoop;      // 是否是无限循环
     float mIntervalLeftTime;     // 定时器调用间隔剩余时间
-    TimerFunctionObject mTimerDisp;       // 定时器分发
+    TimerFunctionObject* mTimerDisp;       // 定时器分发
     BOOL mDisposed;             // 是否已经被释放
     BOOL mIsContinuous;          // 是否是连续的定时器
 }
