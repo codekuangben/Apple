@@ -50,32 +50,32 @@
 			}
 
             DelayHandleObject* delayHandleObject = [[DelayHandleObjec alloc] init];
-			delayHandleObject.mDelayParam = [[DelayAddPara alloc] init];
-			self->mDeferredAddQueue.Add(delayHandleObject);
+			delayHandleObject->mDelayParam = [[DelayAddPara alloc] init];
+			[self->mDeferredAddQueue Add:delayHandleObject];
 
-			delayHandleObject.mDelayObject = delayObject;
-			((DelayAddParam)delayHandleObject.mDelayParam).mPriority = priority;
+			delayHandleObject->mDelayObject = delayObject;
+			((DelayAddParam*)delayHandleObject->mDelayParam)->mPriority = priority;
 		}
 	}
 }
 
 - (void) removeObject:(GObject<IDelayHandleItem>*) delayObject
 {
-	if (self->mLoopDepth.isInDepth())
+	if ([self->mLoopDepth isInDepth])
 	{
-		if (!self->existDelList(delayObject))
+		if (![self existDelList:delayObject])
 		{
-			if (self->existAddList(delayObject))    // 如果已经添加到删除列表中
+			if ([self existAddList:delayObject])    // 如果已经添加到删除列表中
 			{
-				self->delFromDelayAddList(delayObject);
+				[self delFromDelayAddList:delayObject];
 			}
 
-			delayObject.setClientDispose(true);
+			[delayObject setClientDispose:true];
 
-			DelayHandleObject delayHandleObject = new DelayHandleObject();
-			delayHandleObject.mDelayParam = new DelayDelParam();
-			self->mDeferredDelQueue.Add(delayHandleObject);
-			delayHandleObject.mDelayObject = delayObject;
+			DelayHandleObject* delayHandleObject = [[DelayHandleObject alloc] init];
+			delayHandleObject->mDelayParam = [[DelayDelParam alloc] init];
+			[self->mDeferredDelQueue Add:delayHandleObject];
+			delayHandleObject->mDelayObject = delayObject;
 		}
 	}
 }
@@ -83,7 +83,7 @@
 // 只有没有添加到列表中的才能添加
 - (BOOL) existAddList:(GObject<IDelayHandleItem>*) delayObject
 {
-	for(DelayHandleObject item : self->mDeferredAddQueue.list())
+	for(DelayHandleObject item : [self->mDeferredAddQueue list])
 	{
 		if(UtilSysLibsWrap.isAddressEqual(item.mDelayObject, delayObject))
 		{
@@ -97,9 +97,9 @@
 // 只有没有添加到列表中的才能添加
 - (BOOL) existDelList:(GObject<IDelayHandleItem>*) delayObject
 {
-	for (DelayHandleObject item : self->mDeferredDelQueue.list())
+	for (DelayHandleObject* item in [self->mDeferredDelQueue list])
 	{
-		if (UtilSysLibsWrap.isAddressEqual(item.mDelayObject, delayObject))
+		if ([UtilSysLibsWrap isAddressEqual:item->mDelayObject b:delayObject])
 		{
 			return true;
 		}
@@ -111,11 +111,11 @@
 // 从延迟添加列表删除一个 Item
 - (void) delFromDelayAddList:(GObject<IDelayHandleItem>*) delayObject
 {
-	for (DelayHandleObject item : self->mDeferredAddQueue.list())
+	for (DelayHandleObject* item in [self->mDeferredAddQueue list])
 	{
-		if (UtilSysLibsWrap.isAddressEqual(item.mDelayObject, delayObject))
+		if ([UtilSysLibsWrap isAddressEqual:item->mDelayObject b:delayObject])
 		{
-			self->mDeferredAddQueue.Remove(item);
+			[self->mDeferredAddQueue Remove:item];
 		}
 	}
 }
@@ -123,57 +123,57 @@
 // 从延迟删除列表删除一个 Item
 - (void) delFromDelayDelList:(GObject<IDelayHandleItem>*) delayObject
 {
-	for (DelayHandleObject item : self->mDeferredDelQueue.list())
+	for (DelayHandleObject* item in [self->mDeferredDelQueue list])
 	{
-		if(UtilSysLibsWrap.isAddressEqual(item.mDelayObject, delayObject))
+		if([UtilSysLibsWrap isAddressEqual:item.mDelayObject b:delayObject])
 		{
-			self->mDeferredDelQueue.Remove(item);
+			[self->mDeferredDelQueue Remove:item];
 		}
 	}
 }
 
 - (void) processDelayObjects
 {
-	(int) idx = 0;
+	int idx = 0;
 	// len 是 Python 的关键字
-	(int) elemLen = 0;
+	int elemLen = 0;
 
-	if (!self->mLoopDepth.isInDepth())       // 只有全部退出循环后，才能处理添加删除
+	if (![self->mLoopDepth isInDepth])       // 只有全部退出循环后，才能处理添加删除
 	{
-		if (self->mDeferredAddQueue.Count() > 0)
+		if ([self->mDeferredAddQueue Count] > 0)
 		{
 			idx = 0;
-			elemLen = self->mDeferredAddQueue.Count();
+			elemLen = [self->mDeferredAddQueue Count];
 			while(idx < elemLen)
 			{
-				self->addObject(self->mDeferredAddQueue.get(idx).mDelayObject, ((DelayAddParam)self->mDeferredAddQueue.get(idx).mDelayParam).mPriority);
+				[self->addObject:[self->mDeferredAddQueue get:idx]->mDelayObject ((DelayAddParam*)[self->mDeferredAddQueue get:idx]->mDelayParam)->mPriority);
 
 				idx += 1;
 			}
 
-			self->mDeferredAddQueue.Clear();
+			[self->mDeferredAddQueue Clear];
 		}
 
-		if (self->mDeferredDelQueue.Count() > 0)
+		if ([self->mDeferredDelQueue Count] > 0)
 		{
 			idx = 0;
-			elemLen = self->mDeferredDelQueue.Count();
+			elemLen = [self->mDeferredDelQueue:Count];
 
 			while(idx < elemLen)
 			{
-				self->removeObject(self->mDeferredDelQueue.get(idx).mDelayObject);
+				[self->removeObject:[self->mDeferredDelQueue get:idx]->mDelayObject);
 
 				idx += 1;
 			}
 
-			self->mDeferredDelQueue.Clear();
+			[self->mDeferredDelQueue Clear];
 		}
 	}
 }
 
 - (void) call
 {
-	self->processDelayObjects();
+	[self processDelayObjects];
 }
 
 @end

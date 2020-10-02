@@ -49,7 +49,7 @@
         }
         else
         {
-            for(FrameTimerItem* item in self->mTimerList.list())
+            for(FrameTimerItem* item in [self->mTimerList list])
             {
                 if ([UtilSysLibsWrap isAddressEqual:item, b:delayObject])
                 {
