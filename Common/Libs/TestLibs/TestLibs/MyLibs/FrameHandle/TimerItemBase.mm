@@ -102,11 +102,11 @@
     {
         self->mCurCallTime = self->mCurCallTime + self->mInternal;
         self->mIntervalLeftTime = self->mIntervalLeftTime - self->mInternal;
-        [self->onPreCallBack();
+        [self onPreCallBack];
 
         if ([self->mTimerDisp isValid])
         {
-            [self->mTimerDisp call:this];
+            [self->mTimerDisp call:self];
         }
     }
 }
@@ -119,7 +119,7 @@
 
     if ([self->mTimerDisp isValid])
     {
-        [self->mTimerDisp call:this];
+        [self->mTimerDisp call:self];
     }
 }
 
@@ -145,9 +145,9 @@
         self->mIntervalLeftTime = self->mIntervalLeftTime - self->mInternal;
         [self onPreCallBack];
 
-        if ([self->mTimerDisp isValid]
+        if ([self->mTimerDisp isValid])
         {
-            [self->mTimerDisp call:this];
+            [self->mTimerDisp call:self];
         }
     }
 }
@@ -164,7 +164,7 @@
 
         if ([self->mTimerDisp isValid])
         {
-            [self->mTimerDisp call:this];
+            [self->mTimerDisp call:self];
         }
     }
 }
@@ -177,7 +177,7 @@
     self->mDisposed = false;
 }
 
-- (void) setClientDispose(BOOL) isDispose
+- (void) setClientDispose:(BOOL) isDispose
 {
 
 }

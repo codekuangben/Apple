@@ -7,6 +7,7 @@
     self->mInterval = 1 / 10;    // 每一秒更新 10 次
     self->mTotalTime = 0;
     self->mCurTime = 0;
+    return self;
 }
 
 - (void) setInterval:(float) value
@@ -26,7 +27,7 @@
 
 - (BOOL) canExec:(float) delta
 {
-    BOOL ret = no;
+    BOOL ret = NO;
 
     self->mTotalTime += delta;
     self->mCurTime += delta;
