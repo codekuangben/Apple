@@ -1,9 +1,10 @@
 ﻿#import <Foundation/Foundation.h>
+#import "MyLibs/Base/GObject.h"
 
 /**
  * @brief 对系统 List 的封装
  */
-@interface MList
+@interface MList : GObject
 {
 @protected
     //NSArray* mList;

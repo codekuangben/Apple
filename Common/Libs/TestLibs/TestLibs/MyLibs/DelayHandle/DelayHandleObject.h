@@ -1,7 +1,8 @@
 ﻿#import "MyLibs/DelayHandle/IDelayHandleItem.h"
 #import "MyLibs/DelayHandle/DelayHandleParamBase.h"
+#import "MyLibs/Base/GObject.h"
 
-@interface DelayHandleObject
+@interface DelayHandleObject : GObject
 {
 @public
     

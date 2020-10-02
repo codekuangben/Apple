@@ -1,6 +1,7 @@
 ﻿#import <Foundation/Foundation.h>
+#import "MyLibs/Base/GObject.h"
 
-@interface MDictionary
+@interface MDictionary : GObject
 {
 @protected
     //NSDictionary* mData;

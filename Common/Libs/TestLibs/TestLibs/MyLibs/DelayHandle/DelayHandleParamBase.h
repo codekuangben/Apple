@@ -1,4 +1,6 @@
-﻿@interface DelayHandleParamBase
+﻿#import "MyLibs/Base/GObject.h"
+
+@interface DelayHandleParamBase : GObject
 {
 	
 }
