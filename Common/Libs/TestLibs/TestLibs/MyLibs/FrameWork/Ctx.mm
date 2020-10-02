@@ -13,133 +13,98 @@ static Ctx* mInstance = nil;
 {
     if (mInstance == nil)
     {
-        mInstance = new Ctx();
+        mInstance = [[Ctx alloc] init];
     }
     return mInstance;
 }
 
 - (void) constructInit
 {
-    self->mMsgRouteNotify = new MsgRouteNotify();
-    self->mSystemSetting = new SystemSetting();
-    self->mPoolSys = new PoolSys();
-    self->mTaskQueue = new TaskQueue("TaskQueue");
-    self->mTaskThreadPool = new TaskThreadPool();
+    self->mMsgRouteNotify = [[MsgRouteNotify alloc] init];
+    self->mSystemSetting = [[SystemSetting alloc] init];
 
-    self->mCfg = new Config();
-    self->mFactoryBuild = new FactoryBuild();
+    self->mCfg = [[Config alloc] init];
 
-    self->mProcessSys = new ProcessSys();
-    self->mTickMgr = new TickMgr();
-    self->mFixedTickMgr = new FixedTickMgr();
-    self->mTimerMgr = new TimerMgr();
-    self->mFrameTimerMgr = new FrameTimerMgr();
+    self->mProcessSys = [[ProcessSys alloc] init];
+    self->mTickMgr = [[TickMgr alloc] init];
+    self->mFixedTickMgr = [[ FixedTickMgr alloc] init];
+    self->mTimerMgr = [[TimerMgr alloc] init];
+    self->mFrameTimerMgr = [[FrameTimerMgr alloc] init];
 
-    self->mShareData = new ShareData();
-    self->mEngineLoop = new EngineLoop();
-    self->mResizeMgr = new ResizeMgr();
+    self->mShareData = [[ShareData alloc] init];
+    self->mEngineLoop = [[EngineLoop alloc] init];
 
-    self->mLogSys = new LogSys();
-    self->mGlobalDelegate = new GlobalDelegate();
-    self->mIdPoolSys = new IdPoolSys();
+    self->mGlobalDelegate = [[GlobalDelegate alloc] init];
 
-    self->mLogicTickMgr = new LogicTickMgr();
-    self->mSysMsgRoute = new SysMsgRoute("");
-    self->mSystemTimeData = new SystemTimeData();
-    self->mSystemFrameData = new SystemFrameData();
+    self->mLogicTickMgr = [[LogicTickMgr alloc] init];
+    self->mSysMsgRoute = [[SysMsgRoute alloc] init];
+    self->mSystemTimeData = [[SystemTimeData alloc] init];
+    self->mSystemFrameData = [[SystemFrameData alloc] init];
 }
 
 - (void) logicInit
 {
-    self->mLogSys.init();
-    self->mTickMgr.init();
-    self->mFixedTickMgr.init();
+    [self->mLogSys init];
+    [self->mTickMgr init];
+    [self->mFixedTickMgr init];
 
-    self->mTaskQueue.mTaskThreadPool = self->mTaskThreadPool;
-    self->mTaskThreadPool.initThreadPool(2, self->mTaskQueue);
+    [self->mGlobalDelegate init];
+    [self->mLogicTickMgr init];
+    [self->mSysMsgRoute init];
+    [self->mSystemTimeData init];
 
-    self->mGlobalDelegate.init();
-    self->mResizeMgr.init();
-    self->mIdPoolSys.init();
-    self->mLogicTickMgr.init();
-    self->mSysMsgRoute.init();
-    self->mSystemTimeData.init();
-
-    self->mSystemFrameData.init();
-
-    self->addEventHandle();
+    [self->mSystemFrameData init];
 }
 
 - (void) init
 {
     // 构造初始化
-    constructInit();
+    [self constructInit];
     // 逻辑初始化，交叉引用的对象初始化
-    logicInit();
+    [self logicInit];
 }
 
 - (void) dispose
 {
-    if (nil != self->mResizeMgr)
-    {
-        self->mResizeMgr.dispose();
-        self->mResizeMgr = nil;
-    }
     if (nil != self->mTickMgr)
     {
-        self->mTickMgr.dispose();
+        [self->mTickMgr dispose];
         self->mTickMgr = nil;
     }
     if (nil != self->mFixedTickMgr)
     {
-        self->mFixedTickMgr.dispose();
+        [self->mFixedTickMgr dispose];
         self->mFixedTickMgr = nil;
     }
 
-    // 关闭日志设备
-    if (nil != self->mLogSys)
-    {
-        self->mLogSys.dispose();
-        self->mLogSys = nil;
-    }
-    if(nil != self->mIdPoolSys)
-    {
-        self->mIdPoolSys.dispose();
-        self->mIdPoolSys = nil;
-    }
     if(nil != self->mLogicTickMgr)
     {
-        self->mLogicTickMgr.dispose();
+        [self->mLogicTickMgr dispose];
         self->mLogicTickMgr = nil;
     }
     if(nil != self->mSysMsgRoute)
     {
-        self->mSysMsgRoute.dispose();
+        [self->mSysMsgRoute dispose];
         self->mSysMsgRoute = nil;
     }
     if(nil != self->mSystemTimeData)
     {
-        self->mSystemTimeData.dispose();
+        [self->mSystemTimeData dispose];
         self->mSystemTimeData = nil;
     }
     if(nil != self->mSystemFrameData)
     {
-        self->mSystemFrameData.dispose();
+        [self->mSystemFrameData dispose];
         self->mSystemFrameData = nil;
     }
 }
 
 - (void) quitApp
 {
-    self->dispose();
+    [self dispose];
 
     // 释放自己
     //mInstance = nil;
-}
-
-- (void) addEventHandle
-{
-    self->mTickMgr.addTick((ITickedObject)self->mResizeMgr, TickPriority.eTPResizeMgr);
 }
 
 @end

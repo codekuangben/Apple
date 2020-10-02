@@ -1,4 +1,5 @@
-﻿#import "MyLibs/FrameHandle/FixedTickMgr.h"
+﻿#import <Foundation/Foundation.h>
+#import "MyLibs/FrameHandle/FixedTickMgr.h"
 #import "MyLibs/FrameHandle/FrameTimerMgr.h"
 #import "MyLibs/FrameHandle/ITickedObject.h"
 #import "MyLibs/FrameHandle/LogicTickMgr.h"
@@ -8,13 +9,9 @@
 #import "MyLibs/FrameHandle/TickMgr.h"
 #import "MyLibs/FrameHandle/TickPriority.h"
 #import "MyLibs/FrameHandle/TimerMgr.h"
-#import "MyLibs/Log/LogSys.h"
 #import "MyLibs/MsgRoute/MsgRouteNotify.h"
 #import "MyLibs/MsgRoute/SysMsgRoute.h"
-#import "MyLibs/ObjectPool/IdPoolSys.h"
-#import "MyLibs/ObjectPool/PoolSys.h"
-#import "MyLibs/Task/TaskQueue.h"
-#import "MyLibs/Task/TaskThreadPool.h"
+
 
 /**
  * @brief 全局数据区
@@ -23,7 +20,6 @@
 {
 @public
     Config* mCfg;                       // 整体配置文件
-    LogSys* mLogSys;                    // 日志系统
 
     TickMgr* mTickMgr;                  // 心跳管理器
     FixedTickMgr* mFixedTickMgr;             // 固定间隔心跳管理器
@@ -36,7 +32,6 @@
 
     ShareData* mShareData;               // 共享数据系统
     MsgRouteNotify* mMsgRouteNotify;     // RouteMsg 客户端自己消息流程
-    //MFileSys mFileSys;                  // 文件系统
 
     SystemSetting* mSystemSetting;
     GlobalDelegate* mGlobalDelegate;
