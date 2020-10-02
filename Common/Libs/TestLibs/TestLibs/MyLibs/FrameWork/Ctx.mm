@@ -1,6 +1,6 @@
 #import "MyLibs/FrameWork/Ctx.h"
 
-static Ctx* mInstance;
+static Ctx* mInstance = nil;
 
 @implementation Ctx
 
@@ -9,7 +9,7 @@ static Ctx* mInstance;
 
 }
 
-+ (Ctx) ins
++ (Ctx*) ins
 {
     if (mInstance == nil)
     {

@@ -1,4 +1,5 @@
-﻿#import "MyLibs/MsgRoute/MsgRouteBase.h";
+#import "MyLibs/MsgRoute/MsgRouteBase.h"
+#import "MyLibs/FrameWork/Ctx.h"
 
 /**
  * @brief 主循环
@@ -9,7 +10,7 @@
 {
     // 处理客户端自己的消息机制
     MsgRouteBase* routeMsg = nil;
-    while ((routeMsg = [[Ctx ins]->mSysMsgRoute pop] != nil)
+    while ((routeMsg = [[Ctx ins]->mSysMsgRoute pop]) != nil)
     {
         [[Ctx ins]->mMsgRouteNotify handleMsg:routeMsg];
     }

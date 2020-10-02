@@ -14,6 +14,8 @@
     self->mTimerDisp = [[TimerFunctionObject alloc] init];
     self->mDisposed = false;
     self->mIsContinuous = false;
+    
+    return self;
 }
 
 - (void) setFuncObject:(GObject<ICalleeObjectTimer>*) handle
