@@ -1,4 +1,4 @@
-﻿#import <Foundation/Foundation.h>
+#import <Foundation/Foundation.h>
 #import "MyLibs/Base/GObject.h"
 
 /**
@@ -20,7 +20,7 @@
 - (void) Add:(id) item;
 - (BOOL) Remove:(id) item;
 - (id) get:(int) index;
-- (void) set:(int) index, value:(id) value;
+- (void) set:(int) index value:(id) value;
 - (void) Clear;
 - (int) Count;
 - (void) setLength:(int) value;
