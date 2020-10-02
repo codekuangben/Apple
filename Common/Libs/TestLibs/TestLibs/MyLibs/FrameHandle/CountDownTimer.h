@@ -8,7 +8,7 @@
 	
 }
 
--(void) init;
+-(id) init;
 -(void) setTotalTime:(float) value;
 -(float) getRunTime;
 // 如果要获取剩余的倒计时时间，使用 getLeftCallTime

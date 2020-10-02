@@ -3,16 +3,18 @@
 #import "MyLibs/Tools/UtilSysLibsWrap.h"
 #import "MyLibs/Base/GObject.h"
 
+@class TimerItemBase;
+
 @interface TimerFunctionObject : GObject
 {
 @public
-    ICalleeObjectTimer* mHandle;
+    GObject<ICalleeObjectTimer>* mHandle;
 }
 
 - (id) TimerFunctionObject;
-- (void) setFuncObject:(ICalleeObjectTimer*) handle;
+- (void) setFuncObject:(GObject<ICalleeObjectTimer>*) handle;
 - (BOOL) isValid;
-- (BOOL) isEqual:(ICalleeObject*) handle;
+- (BOOL) isEqual:(GObject<ICalleeObject>*) handle;
 - (void) call:(TimerItemBase*) dispObj;
 
 @end

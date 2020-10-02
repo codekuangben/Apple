@@ -4,12 +4,13 @@
 
 @implementation TimerFunctionObject
 
-- TimerFunctionObject
+- (id) init
 {
     self->mHandle = nil;
+    return self;
 }
 
-- (void) setFuncObject:(ICalleeObjectTimer*) handle
+- (void) setFuncObject:(GObject<ICalleeObjectTimer>*) handle
 {
     self->mHandle = handle;
 }
@@ -19,7 +20,7 @@
     return self->mHandle != nil;
 }
 
-- (BOOL) isEqual:(ICalleeObject*) handle
+- (BOOL) isEqual:(GObject<ICalleeObject>*) handle
 {
     BOOL ret = false;
 

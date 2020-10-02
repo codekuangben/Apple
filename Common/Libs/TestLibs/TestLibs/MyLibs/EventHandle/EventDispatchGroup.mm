@@ -1,10 +1,12 @@
-﻿#import "MyLibs/EventHandle/EventDispatchGroup.h"
+#import "MyLibs/EventHandle/EventDispatchGroup.h"
+#import "MyLibs/DataStruct/MDictionary.h"
+#import "MyLibs/Eventhandle/EventDispatch.h"
 
 @implementation EventDispatchGroup
 
 - (id) init
 {
-    self->mGroupID2DispatchDic = [MDictionary alloc] init];
+    self->mGroupID2DispatchDic = [[MDictionary alloc] init];
     self->mIsInLoop = false;
 }
 

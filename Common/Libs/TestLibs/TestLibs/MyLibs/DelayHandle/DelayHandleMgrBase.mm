@@ -1,4 +1,5 @@
-﻿#import "MyLibs/DelayHandle/DelayHandleMgrBase.h"
+#import "MyLibs/DelayHandle/DelayHandleMgrBase.h"
+#import "MyLibs/DelayHandle/DelayHandleObject.h"
 
 /**
 * @brief 当需要管理的对象可能在遍历中间添加的时候，需要这个管理器
@@ -9,11 +10,11 @@
 {
 	if(self = [super init])
     {
-        self->mDeferredAddQueue = new MList<DelayHandleObject>();
-		self->mDeferredDelQueue = new MList<DelayHandleObject>();
+        self->mDeferredAddQueue = [[MList alloc] init];
+		self->mDeferredDelQueue = [[MList alloc] init];
 
-		self->mLoopDepth = new LoopDepth();
-		self->mLoopDepth.setZeroHandle(self);
+		self->mLoopDepth = [[LoopDepth alloc] init];
+		[self->mLoopDepth setZeroHandle:self];
     }
     
     return self;
@@ -32,24 +33,24 @@
 
 }
 
-- (void) addObject:(IDelayHandleItem*) delayObject
+- (void) addObject:(GObject<IDelayHandleItem>*) delayObject
 {
-	self->addObject(delayObject, 0);
+	[self addObject:delayObject priority:0];
 }
 
-- (void) addObject:(IDelayHandleItem*) delayObject priority:float priority
+- (void) addObject:(GObject<IDelayHandleItem>*) delayObject priority:(float) priority
 {
-	if (self->mLoopDepth.isInDepth())
+	if ([self->mLoopDepth isInDept])
 	{
-		if (!self->existAddList(delayObject))        // 如果添加列表中没有
+		if (![self existAddList:delayObject])        // 如果添加列表中没有
 		{
-			if (self->existDelList(delayObject))    // 如果已经添加到删除列表中
+			if ([self existDelList:delayObject])    // 如果已经添加到删除列表中
 			{
-				self->delFromDelayDelList(delayObject);
+				[self delFromDelayDelList:delayObject];
 			}
 
-			DelayHandleObject delayHandleObject = new DelayHandleObject();
-			delayHandleObject.mDelayParam = new DelayAddParam();
+            DelayHandleObject* delayHandleObject = [[DelayHandleObjec alloc] init];
+			delayHandleObject.mDelayParam = [[DelayAddPara alloc] init];
 			self->mDeferredAddQueue.Add(delayHandleObject);
 
 			delayHandleObject.mDelayObject = delayObject;
@@ -58,7 +59,7 @@
 	}
 }
 
-- (void) removeObject:(IDelayHandleItem) delayObject
+- (void) removeObject:(GObject<IDelayHandleItem>*) delayObject
 {
 	if (self->mLoopDepth.isInDepth())
 	{
@@ -80,7 +81,7 @@
 }
 
 // 只有没有添加到列表中的才能添加
-- (BOOL) existAddList:(IDelayHandleItem*) delayObject
+- (BOOL) existAddList:(GObject<IDelayHandleItem>*) delayObject
 {
 	for(DelayHandleObject item : self->mDeferredAddQueue.list())
 	{
@@ -94,7 +95,7 @@
 }
 
 // 只有没有添加到列表中的才能添加
-- (BOOL) existDelList:(IDelayHandleItem*) delayObject
+- (BOOL) existDelList:(GObject<IDelayHandleItem>*) delayObject
 {
 	for (DelayHandleObject item : self->mDeferredDelQueue.list())
 	{
@@ -108,7 +109,7 @@
 }
 
 // 从延迟添加列表删除一个 Item
-- (void) delFromDelayAddList:(IDelayHandleItem*) delayObject
+- (void) delFromDelayAddList:(GObject<IDelayHandleItem>*) delayObject
 {
 	for (DelayHandleObject item : self->mDeferredAddQueue.list())
 	{
@@ -120,7 +121,7 @@
 }
 
 // 从延迟删除列表删除一个 Item
-- (void) delFromDelayDelList:(IDelayHandleItem*) delayObject
+- (void) delFromDelayDelList:(GObject<IDelayHandleItem>*) delayObject
 {
 	for (DelayHandleObject item : self->mDeferredDelQueue.list())
 	{

@@ -1,4 +1,5 @@
 #import "MyLibs/FrameHandle/TimerItemBase.h"
+#include <math.h>
 
 @implementation TimerItemBase
 
@@ -158,8 +159,8 @@
     if (self->mIntervalLeftTime >= self->mInternal)
     {
         // 这个地方 m_curCallTime 肯定会小于 m_totalTime，因为在调用这个函数的外部已经进行了判断
-        self->mCurCallTime = self->mCurCallTime + ((((int))(self->mIntervalLeftTime / self->mInternal)) * self->mInternal);
-        self->mIntervalLeftTime = self->mIntervalLeftTime % self->mInternal;   // 只保留余数
+        self->mCurCallTime = self->mCurCallTime + ((self->mIntervalLeftTime / self->mInternal) * self->mInternal);
+        self->mIntervalLeftTime = fmod(self->mIntervalLeftTime, self->mInternal);   // 只保留余数
         [self onPreCallBack];
 
         if ([self->mTimerDisp isValid])

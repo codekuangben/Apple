@@ -1,4 +1,6 @@
-﻿#import <Foundation/Foundation.h>
+#import <Foundation/Foundation.h>
+
+@class TimerItemBase;
 
 /**
  * @brief 可被调用的函数对象,，没有返回没有参数

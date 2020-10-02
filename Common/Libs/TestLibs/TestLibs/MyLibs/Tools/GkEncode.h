@@ -1,4 +1,4 @@
-﻿#import <Foundation/Foundation.h>
+#import <Foundation/Foundation.h>
 
 enum GkEncode : NSUInteger
 {
@@ -13,4 +13,4 @@ enum GkEncode : NSUInteger
     eGB2312,
     eUnicode,
     eDefault,
-}
+};
