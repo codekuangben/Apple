@@ -1,27 +1,20 @@
-@interface MEncoding
+#import "MyLibs/Base/GObject.h"
+
+@interface MEncoding : GObject
 {
 @public
-    static final NSString UTF8_STR  = "UTF-8";
-    static final NSString GB2312_STR  = "GB2312";
-    static final NSString Unicode_STR  = "Unicode";
-    static final NSString Default_STR  = "UTF-8";
-
-    static final MEncoding UTF8  = new MEncoding(MEncoding.UTF8_STR);
-    static final MEncoding GB2312  = new MEncoding(MEncoding.GB2312_STR);
-    static final MEncoding Unicode  = new MEncoding(MEncoding.Unicode_STR);
-    static final MEncoding Default  = new MEncoding(MEncoding.Default_STR);
 
 @protected
-    NSString mEncodeStr;
+    NSString* mEncodeStr;
 }
 
-@property() NSString mEncodeStr;
+//@property() NSString*mEncodeStr;
 
-- (id) init: (NSString) encodeStr;
-- (NSString) GetString: (char[]) bytes;
-- (NSString) GetString: (char[]): bytes, startIndex: (int) startIndex;
-- (NSString) GetString:(char[]) bytes, startIndex: (int) startIndex, len:(int) len;
-- (int) GetByteCount: (NSString) str;
-- (char[]) GetBytes:(NSString) str;
+- (id) init: (NSString*) encodeStr;
+- (NSString*) GetString: (char[]) bytes;
+- (NSString*) GetString: (char[]): bytes, startIndex: (int) startIndex;
+- (NSString*) GetString:(char[]) bytes, startIndex: (int) startIndex, len:(int) len;
+- (int) GetByteCount: (NSString*) str;
+- (char[]) GetBytes:(NSString*) str;
 
 @end

@@ -1,8 +1,18 @@
 #import "MyLibs/Tools/MEncoding.h"
 
+static NSString* UTF8_STR  = "UTF-8";
+static NSString* GB2312_STR  = "GB2312";
+static NSString* Unicode_STR  = "Unicode";
+static NSString* Default_STR  = "UTF-8";
+
+static MEncoding UTF8  = [MEncoding alloc] init:UTF8_STR];
+static MEncoding GB2312  = [MEncoding alloc] init:GB2312_STR];
+static MEncoding Unicode  = [MEncoding alloc] init:Unicode_STR];
+static MEncoding Default  = [MEncoding alloc] init:Default_STR];
+
 @implementation MEncoding
 
-- (id) init: (NSString) encodeStr
+- (id) init: (NSString*) encodeStr
 {
     if(self = [super init])
     {
@@ -13,17 +23,17 @@
     return self;
 }
 
-- (NSString) GetString: (char[]) bytes
+- (NSString*) GetString: (char[]) bytes
 {
     return  self->GetString(bytes, 0, bytes.length);
 }
 
-- (NSString) GetString: (char[]): bytes, startIndex: (int) startIndex
+- (NSString*) GetString: (char[]): bytes, startIndex: (int) startIndex
 {
     return self->GetString(bytes, startIndex, bytes.length - startIndex);
 }
 
-- (NSString) GetString:(char[]) bytes, startIndex: (int) startIndex, len:(int) len
+- (NSString*) GetString:(char[]) bytes, startIndex: (int) startIndex, len:(int) len
 {
     NSString* ret = "";
     
@@ -39,7 +49,7 @@
     return ret;
 }
 
-- (int) GetByteCount: (NSString) str
+- (int) GetByteCount: (NSString*) str
 {
     (int) len = 0;
     
@@ -56,7 +66,7 @@
     return len;
 }
 
-- (char[]) GetBytes:(NSString) str
+- (char[]) GetBytes:(NSString*) str
 {
     char[] bytes = nil;
     

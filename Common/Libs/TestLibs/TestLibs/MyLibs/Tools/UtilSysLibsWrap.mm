@@ -51,7 +51,7 @@ static NSString* CR_LF = @"\\r\\n";
     return 1000;
 }
 
-+ (NSString) getFormatTime
++ (NSString*) getFormatTime
 {
     Date currentTime = new Date();
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
