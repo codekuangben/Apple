@@ -9,26 +9,26 @@
 
 - (void) ProcessNextFrame
 {
-    [Ctx.mInstance.mSystemTimeData nextFrame()];
-    [self Advance:[Ctx.mInstance.mSystemTimeData getDeltaSec]];
+    [[Ctx ins]->mSystemTimeData nextFrame()];
+    [self Advance:[[Ctx ins]->mSystemTimeData getDeltaSec]];
 }
 
 - (void) Advance:(float) delta
 {
-    [Ctx.mInstance.mSystemFrameData nextFrame:delta];
-    [Ctx.mInstance.mTickMgr Advance:delta];            // 心跳
-    [Ctx.mInstance.mTimerMgr Advance:delta:];           // 定时器
-    [Ctx.mInstance.mFrameTimerMgr Advance:delta];      // 帧定时器
+    [[Ctx ins]->mSystemFrameData nextFrame:delta];
+    [[Ctx ins]->mTickMgr Advance:delta];            // 心跳
+    [[Ctx ins]->mTimerMgr Advance:delta:];           // 定时器
+    [[Ctx ins]->mFrameTimerMgr Advance:delta];      // 帧定时器
 }
 
 - (void) ProcessNextFixedFrame
 {
-    [self FixedAdvance:[Ctx.mInstance.mSystemTimeData getFixedTimestep]];
+    [self FixedAdvance:[[Ctx ins]->mSystemTimeData getFixedTimestep]];
 }
 
 - (void) FixedAdvance:(float) delta
 {
-    [Ctx.mInstance.mFixedTickMgr Advance:delta];
+    [[Ctx ins]->mFixedTickMgr Advance:delta];
 }
 
 @end

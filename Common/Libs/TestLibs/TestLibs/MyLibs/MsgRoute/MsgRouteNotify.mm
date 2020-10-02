@@ -35,7 +35,7 @@
 		item.handleMsg(msg);
 	}
 
-	//Ctx.mInstance.mPoolSys.deleteObj(msg);
+	//[Ctx ins]->mPoolSys.deleteObj(msg);
 }
 
 @end

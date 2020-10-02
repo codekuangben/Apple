@@ -190,12 +190,12 @@
 
 - (void) startTimer
 {
-    //Ctx.mInstance.mTimerMgr.addTimer(this);
+    //[Ctx ins]->mTimerMgr.addTimer(this);
 }
 
 - (void) stopTimer
 {
-    //Ctx.mInstance.mTimerMgr.removeTimer(this);
+    //[Ctx ins]->mTimerMgr.removeTimer(this);
 }
 
 @end

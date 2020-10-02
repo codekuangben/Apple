@@ -24,7 +24,7 @@
 
 - float getFixedTimestep
 {
-    if (Ctx.mInstance.mCfg.mIsActorMoveUseFixUpdate)
+    if ([Ctx ins]->mCfg->mIsActorMoveUseFixUpdate)
     {
         return self->mFixedTimestep;
     }
