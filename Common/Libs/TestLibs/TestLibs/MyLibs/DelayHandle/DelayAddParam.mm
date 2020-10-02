@@ -1,4 +1,4 @@
-﻿#import "MyLibs/DelayHandle/DelayAddParam.h";
+#import "MyLibs/DelayHandle/DelayAddParam.h"
 
 @implementation DelayAddParam
 

@@ -20,7 +20,7 @@ static NSString* SnowBlockPrefix = @"SM";
 
 - (NSString*) genNewStrId
 {
-    self->mRetId = [NSString stringWithFormat:@"%s_%s", self->mPrefix, self->genNewId()];
+    self->mRetId = [NSString stringWithFormat:@"%s_%s", self->mPrefix, [self genNewId]];
     return self->mRetId;
 }
 
@@ -31,7 +31,7 @@ static NSString* SnowBlockPrefix = @"SM";
 
 - (NSString*) genStrIdById:(int) id
 {
-    self->mRetId = [NSString stringWithFormat:"%s_%d", mPrefix, id];
+    self->mRetId = [NSString stringWithFormat:@"%s_%d", mPrefix, id];
     return self->mRetId;
 }
 
