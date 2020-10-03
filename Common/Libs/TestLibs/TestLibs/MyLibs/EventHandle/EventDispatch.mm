@@ -78,7 +78,7 @@
 	}
 }
 
-- (void) removeEventHandle:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle
+- (void) removeEventHandle:(GObject<ICalleeObject>*) pThis handle:/*(GObject<IDispatchObject>*)*/(SEL) handle
 {
 	int idx = 0;
 	int elemLen = 0;
