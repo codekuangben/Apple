@@ -6,8 +6,8 @@
 {
 	if(self = [super init])
     {
-        self.mDelayObject = nil;
-        self.mDelayParam = nil;
+        self->mDelayObject = nil;
+        self->mDelayParam = nil;
     }
     
     return self;
