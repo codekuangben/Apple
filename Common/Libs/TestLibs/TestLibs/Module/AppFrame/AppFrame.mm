@@ -3,9 +3,11 @@
 
 @implementation AppFrame
 
-- (void) init
+- (id) init
 {
     [Ctx ins];
+    
+    return self;
 }
 
 - (void) run

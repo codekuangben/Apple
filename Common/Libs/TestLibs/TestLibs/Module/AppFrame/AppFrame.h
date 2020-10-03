@@ -2,7 +2,7 @@
 
 @interface AppFrame : GObject
 
-- (void) init;
+- (id) init;
 - (void) run;
 
 @end
