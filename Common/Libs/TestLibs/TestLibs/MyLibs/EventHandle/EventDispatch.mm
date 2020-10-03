@@ -153,7 +153,7 @@
 	{
 		handle = [self->mHandleList get:idx];
 
-		if (![handle mIsClientDispose])
+		if (!handle->mIsClientDispose)
 		{
 			[handle call:dispatchObject];
 		}

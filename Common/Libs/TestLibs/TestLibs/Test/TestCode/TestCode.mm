@@ -23,13 +23,21 @@
 - (void) _testA
 {
     EventDispatch* eventDispatch = [[EventDispatch alloc] init];
-    [eventDispatch addEventHandle:self handle:[self @selector(_onEventHandle:userParam:)]];
+    SEL handle = @selector(_onEventHandle:userParam:);
+    //SEL handle = [self @selector(_onEventHandle:userParam:)];
+    //[eventDispatch addEventHandle:self handle:[self @selector(_onEventHandle:userParam:)]];
+    [eventDispatch addEventHandle:self handle:handle];
     [eventDispatch dispatchEvent:nil];
 }
 
 - (void) _onEventHandle:(GObject<IDispatchObject>*) dispatchObject userParam:(id)userParam
 {
     [UtilLog log:@"aaa"];
+}
+
+- (void) call: (GObject<IDispatchObject>*) dispObj
+{
+    
 }
 
 @end

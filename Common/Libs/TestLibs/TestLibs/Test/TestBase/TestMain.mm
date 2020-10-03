@@ -1,5 +1,6 @@
 #import "Test/TestBase/TestMain.h"
 #import "Test/TestSyntax/TestSyntax.h"
+#import "Test/TestCode/TestCode.h"
 
 @implementation TestMain
 
@@ -7,7 +8,8 @@
 {
     if(self = [super init])
     {
-        _TestSyntax = [[TestSyntax alloc] init];
+        self->_TestSyntax = [[TestSyntax alloc] init];
+        self->_TestCode = [[TestCode alloc] init];
     }
     
     return self;
@@ -20,7 +22,7 @@
 
 - (void) run
 {
-
+    [self->_TestCode run];
 }
 
 @end

@@ -1,4 +1,5 @@
 #import "MyLibs/FrameWork/Ctx.h"
+#import "Test/TestBase/TestMain.h"
 
 static Ctx* mInstance = nil;
 
@@ -98,6 +99,13 @@ static Ctx* mInstance = nil;
 
     // 释放自己
     //mInstance = nil;
+}
+
+- (void) run
+{
+    //#import "Test/TestBase/TestMain.h"
+    TestMain* testMain = [[TestMain alloc] init];
+    [testMain run];
 }
 
 @end

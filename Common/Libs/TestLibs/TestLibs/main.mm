@@ -19,7 +19,7 @@ int main(int argc, const char * argv[])
         [TestA setB: 20];
 
         AppFrame* appFrame = [[AppFrame alloc] init];
-        [AppFrame run];
+        [appFrame run];
     }
     return 0;
 }

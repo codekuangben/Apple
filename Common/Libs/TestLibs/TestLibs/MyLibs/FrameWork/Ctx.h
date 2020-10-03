@@ -46,4 +46,5 @@
 - (void) dispose;
 - (void) quitApp;
 - (void) addEventHandle;
+- (void) run;
 @end
