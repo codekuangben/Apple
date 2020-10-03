@@ -13,7 +13,7 @@
     return self;
 }
 
-- (void) setFuncObject:(ICalleeObject*) pThis, func:(SEL) func
+- (void) setFuncObject:(GObject<ICalleeObject>*) pThis, func:(SEL) func
 {
 	self->mThis = pThis;
 	self->mHandle = func;
@@ -25,7 +25,7 @@
 	return self->mThis != nil && self->mHandle != nil;
 }
 
-- (BOOL) isEqual:(ICalleeObject*) pThis, handle:(SEL*) handle
+- (BOOL) isEqual:(GObject<ICalleeObject>*) pThis, handle:(SEL*) handle
 {
 	BOOL ret = false;
 	if(pThis != nil)
@@ -48,7 +48,7 @@
 	return ret;
 }
 
-- (void) call:(IDispatchObject*) dispObj
+- (void) call:(GObject<IDispatchObject>*) dispObj
 {
 	if(nil != self->mThis && nil != self->mHandle)
 	{

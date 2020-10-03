@@ -5,7 +5,7 @@
     
 }
 
-- (void) addEventHandle:(ICalleeObject*) pThis handle:(IDispatchObject*) handle;
-- (void) dispatchEvent:(IDispatchObject*) dispatchObject;
+- (void) addEventHandle:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle;
+- (void) dispatchEvent:(GObject<IDispatchObject>*) dispatchObject;
 
 @end

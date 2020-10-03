@@ -1,8 +1,15 @@
 #import "MyLibs/DelayHandle/DelayHandleMgrBase.h"
-
+#import "MyLibs/DataStruct/MList.h"
+#import "MyLibs/EventHandle/EventDispatchFunctionObject.h"
+#import "MyLibs/EventHandle/IDispatchObject.h"
+#import "MyLibs/EventHandle/ICalleeObject.h"
+#import "MyLibs/DelayHandle/IDelayHandleItem.h"
 
 @class MList;
 @class EventDispatchFunctionObject;
+@protocol IDispatchObject;
+@protocol ICalleeObject;
+@protocol IDelayHandleItem;
 
 /**
  * @brief 事件分发，之分发一类事件，不同类型的事件使用不同的事件分发
@@ -29,15 +36,15 @@
 - (void) addDispatch:(EventDispatchFunctionObject*) dispatch;
 - (void) removeDispatch:(EventDispatchFunctionObject*) dispatch;
 // 相同的函数只能增加一次，Lua ，Python 这些语言不支持同时存在几个相同名字的函数，只支持参数可以赋值，因此不单独提供同一个名字不同参数的接口了
-- (void) addEventHandle:(ICalleeObject*) pThis handle:(IDispatchObject*) handle;
-- (void) removeEventHandle:(ICalleeObject*) pThis handle:(IDispatchObject*) handle;
-- (void) addObject:(IDelayHandleItem*) delayObject;
-- (void) addObject:(IDelayHandleItem*) delayObject, priority:(float) priority;
-- (void) removeObject:(IDelayHandleItem*) delayObject;
-- (void) dispatchEvent:(IDispatchObject*) dispatchObject;
+- (void) addEventHandle:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle;
+- (void) removeEventHandle:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle;
+- (void) addObject:(GObject<IDelayHandleItem>*) delayObject;
+- (void) addObject:(GObject<IDelayHandleItem>*) delayObject, priority:(float) priority;
+- (void) removeObject:(GObject<IDelayHandleItem>*) delayObject;
+- (void) dispatchEvent:(GObject<IDispatchObject>*) dispatchObject;
 - (void) clearEventHandle;
 // 这个判断说明相同的函数只能加一次，但是如果不同资源使用相同的回调函数就会有问题，但是这个判断可以保证只添加一次函数，值得，因此不同资源需要不同回调函数
-- (BOOL) isExistEventHandle:(ICalleeObject*) pThis, handle:(IDispatchObject*) handle;
+- (BOOL) isExistEventHandle:(GObject<ICalleeObject>*) pThis, handle:(GObject<IDispatchObject>*) handle;
 - (void) copyFrom:(EventDispatch*) rhv;
 - (BOOL) hasEventHandle;
 - (int) getEventHandle;

@@ -13,7 +13,7 @@
     return self;
 }
 
-- (void) dispatchEvent: (IDispatchObject*) dispatchObject
+- (void) dispatchEvent: (GObject<IDispatchObject>*) dispatchObject
 {
 	[super dispatchEvent: dispatchObject];
 

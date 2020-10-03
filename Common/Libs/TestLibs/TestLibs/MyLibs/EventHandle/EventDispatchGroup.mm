@@ -19,7 +19,7 @@
     }
 }
 
-- (void) addEventHandle:(int) groupID pThis:(ICalleeObject*) pThis handle:(IDispatchObject*) handle
+- (void) addEventHandle:(int) groupID pThis:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle
 {
     // 如果没有就创建一个
     if (![self->mGroupID2DispatchDic ContainsKey:groupID])
@@ -30,7 +30,7 @@
     [[self->mGroupID2DispatchDic get:groupID] addEventHandle:pThis handle:handle];
 }
 
-- (void) removeEventHandle:(int) groupID pThis:(ICalleeObject*) pThis handle:(IDispatchObject*) handle
+- (void) removeEventHandle:(int) groupID pThis:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle
 {
     if ([self->mGroupID2DispatchDic ContainsKey:groupID)
     {
@@ -48,7 +48,7 @@
     }
 }
 
-- (void) dispatchEvent:(int) groupID dispatchObject:(IDispatchObject*) dispatchObject
+- (void) dispatchEvent:(int) groupID dispatchObject:(GObject<IDispatchObject>*) dispatchObject
 {
     self->mIsInLoop = true;
     if ([self->mGroupID2DispatchDic ContainsKey:groupID])

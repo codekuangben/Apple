@@ -34,7 +34,7 @@
 	return self->mInsGO;
 }
 
-- (void) dispatchEvent: (IDispatchObject*) dispatchObject
+- (void) dispatchEvent: (GObject<IDispatchObject>*) dispatchObject
 {
 	if(self->mIsValid)
 	{

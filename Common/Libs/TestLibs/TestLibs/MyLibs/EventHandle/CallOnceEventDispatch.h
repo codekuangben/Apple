@@ -9,6 +9,6 @@
 }
 
 - (void) init;
-- (void) dispatchEvent: (IDispatchObject*) dispatchObject;
+- (void) dispatchEvent: (GObject<IDispatchObject>*) dispatchObject;
 
 @end

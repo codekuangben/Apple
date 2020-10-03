@@ -17,10 +17,10 @@
 @property int mEventId;
 
 - (id) init: (int) baseUniqueId;
-- (void) setFuncObject:(ICalleeObject*) pThis, func:(SEL) func;
+- (void) setFuncObject:(GObject<ICalleeObject>*) pThis, func:(SEL) func;
 - (BOOL) isValid;
-- (BOOL) isEqual:(ICalleeObject*) pThis, handle:(SEL) handle;
-- (void) call:(IDispatchObject*) dispObj;
+- (BOOL) isEqual:(GObject<ICalleeObject>*) pThis, handle:(SEL) handle;
+- (void) call:(GObject<IDispatchObject>*) dispObj;
 - (void) setClientDispose:(BOOL) isDispose;
 - (BOOL) isClientDispose;
 

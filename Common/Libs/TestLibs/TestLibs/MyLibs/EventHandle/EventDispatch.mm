@@ -58,7 +58,7 @@
 }
 
 // 相同的函数只能增加一次，Lua ，Python 这些语言不支持同时存在几个相同名字的函数，只支持参数可以赋值，因此不单独提供同一个名字不同参数的接口了
-- (void) addEventHandle:(ICalleeObject*) pThis, handle:(IDispatchObject*) handle
+- (void) addEventHandle:(GObject<ICalleeObject>*) pThis, handle:(GObject<IDispatchObject>*) handle
 {
 	if (nil != pThis || nil != handle)
 	{
@@ -77,7 +77,7 @@
 	}
 }
 
-- (void) removeEventHandle:(ICalleeObject*) pThis, handle:(IDispatchObject*) handle
+- (void) removeEventHandle:(GObject<ICalleeObject>*) pThis, handle:(GObject<IDispatchObject>*) handle
 {
 	int idx = 0;
 	int elemLen = 0;
@@ -103,12 +103,12 @@
 	}
 }
 
-- (void) addObject:(IDelayHandleItem*) delayObject
+- (void) addObject:(GObject<IDelayHandleItem>*) delayObject
 {
 	[self addObject:delayObject priority:0];
 }
 
-- (void) addObject:(IDelayHandleItem*) delayObject, priority:(float) priority
+- (void) addObject:(GObject<IDelayHandleItem>*) delayObject, priority:(float) priority
 {
 	if ([self->mLoopDepth isInDepth]
 	{
@@ -121,7 +121,7 @@
 	}
 }
 
-- (void) removeObject:(IDelayHandleItem*) delayObject
+- (void) removeObject:(GObject<IDelayHandleItem>*) delayObject
 {
 	if ([self->mLoopDepth isInDepth])
 	{
@@ -136,7 +136,7 @@
 	}
 }
 
-- (void) dispatchEvent:(IDispatchObject*) dispatchObject
+- (void) dispatchEvent:(GObject<IDispatchObject>*) dispatchObject
 {
 	//try
 	//{
@@ -193,7 +193,7 @@
 }
 
 // 这个判断说明相同的函数只能加一次，但是如果不同资源使用相同的回调函数就会有问题，但是这个判断可以保证只添加一次函数，值得，因此不同资源需要不同回调函数
-- (BOOL) isExistEventHandle:(ICalleeObject*) pThis, handle:(IDispatchObject*) handle
+- (BOOL) isExistEventHandle:(GObject<ICalleeObject>*) pThis, handle:(GObject<IDispatchObject>*) handle
 {
 	BOOL bFinded = false;
 	//foreach (EventDispatchFunctionObject item in self->mHandleList.list())

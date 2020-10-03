@@ -2,7 +2,7 @@
 
 @implementation AddOnceAndCallOnceEventDispatch
 
-- (void) addEventHandle: (ICalleeObject*) pThis handle: (IDispatchObject*) handle
+- (void) addEventHandle: (GObject<ICalleeObject>*) pThis handle: (GObject<IDispatchObject>*) handle
 {
 	if (! [self isExistEventHandle: pThis and: handle])
 	{
@@ -10,7 +10,7 @@
 	}
 }
 
-- (void) dispatchEvent: (IDispatchObject*) dispatchObject
+- (void) dispatchEvent: (GObject<IDispatchObject>*) dispatchObject
 {
 	[super dispatchEvent: dispatchObject];
 
