@@ -58,16 +58,16 @@
 }
 
 // 相同的函数只能增加一次，Lua ，Python 这些语言不支持同时存在几个相同名字的函数，只支持参数可以赋值，因此不单独提供同一个名字不同参数的接口了
-- (void) addEventHandle:(GObject<ICalleeObject>*) pThis handle:/*(GObject<IDispatchObject>*)*/(SEL) handle
+- (void) addEventHandle:(GObject<IListenerObject>*) eventListener eventHandle:/*(GObject<IDispatchObject>*)*/(SEL) eventHandle
 {
-	if (nil != pThis || nil != handle)
+	if (nil != eventListener || nil != eventHandle)
 	{
 		EventDispatchFunctionObject* funcObject = [[EventDispatchFunctionObject alloc] init];
 
-		if (nil != handle)
+		if (nil != eventHandle)
 		{
-			//[funcObject setFuncObject:pThis func:(SEL)handle];
-            [funcObject setFuncObject:pThis func:handle];
+			//[funcObject setFuncObject:eventListener eventHandle:(SEL)eventHandle];
+            [funcObject setFuncObject:eventListener eventHandle:eventHandle];
         }
 
 		[self addDispatch:funcObject];
@@ -78,7 +78,7 @@
 	}
 }
 
-- (void) removeEventHandle:(GObject<ICalleeObject>*) pThis handle:/*(GObject<IDispatchObject>*)*/(SEL) handle
+- (void) removeEventHandle:(GObject<IListenerObject>*) eventListener eventHandle:/*(GObject<IDispatchObject>*)*/(SEL) eventHandle
 {
 	int idx = 0;
 	int elemLen = 0;
@@ -86,7 +86,7 @@
 
 	while (idx < elemLen)
 	{
-		if ([[self->mHandleList get:idx] isEqual:pThis func:handle])
+		if ([[self->mHandleList get:idx] isEqual:eventListener eventHandle:eventHandle])
 		{
 			break;
 		}
@@ -143,19 +143,19 @@
 	//{
 	[self->mLoopDepth incDepth];
 
-	//foreach (EventDispatchFunctionObject handle in self->mHandleList.list())
+	//foreach (EventDispatchFunctionObject eventHandle in self->mHandleList.list())
 
 	int idx = 0;
 	int len = [self->mHandleList Count];
-	EventDispatchFunctionObject* handle = nil;
+	EventDispatchFunctionObject* eventHandle = nil;
 
 	while (idx < len)
 	{
-		handle = [self->mHandleList get:idx];
+		eventHandle = [self->mHandleList get:idx];
 
-		if (!handle->mIsClientDispose)
+		if (!eventHandle->mIsClientDispose)
 		{
-			[handle call:dispatchObject];
+			[eventHandle call:dispatchObject];
 		}
 
 		++idx;
@@ -194,7 +194,7 @@
 }
 
 // 这个判断说明相同的函数只能加一次，但是如果不同资源使用相同的回调函数就会有问题，但是这个判断可以保证只添加一次函数，值得，因此不同资源需要不同回调函数
-- (BOOL) isExistEventHandle:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle
+- (BOOL) isExistEventHandle:(GObject<IListenerObject>*) eventListener eventHandle:(GObject<IDispatchObject>*) eventHandle
 {
 	BOOL bFinded = false;
 	//foreach (EventDispatchFunctionObject item in self->mHandleList.list())
@@ -206,7 +206,7 @@
 	{
 		item = [self->mHandleList get:idx];
 
-		if ([item isEqual:pThis handle:(SEL)handle])
+		if ([item isEqual:eventListener eventHandle:(SEL)eventHandle])
 		{
 			bFinded = true;
 			break;
@@ -220,16 +220,16 @@
 
 - (void) copyFrom:(EventDispatch*) rhv
 {
-	//foreach(EventDispatchFunctionObject handle in rhv.handleList.list())
+	//foreach(EventDispatchFunctionObject eventHandle in rhv.handleList.list())
 	int idx = 0;
 	int len = [self->mHandleList Count];
-	EventDispatchFunctionObject* handle = nil;
+	EventDispatchFunctionObject* eventHandle = nil;
 
 	while (idx < len)
 	{
-        handle = [self->mHandleList get:idx];
+        eventHandle = [self->mHandleList get:idx];
 
-		[self->mHandleList Add:handle];
+		[self->mHandleList Add:eventHandle];
 
 		++idx;
 	}

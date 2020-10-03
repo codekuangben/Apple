@@ -18,9 +18,9 @@
     return self;
 }
 
-- (void) setFuncObject:(GObject<ICalleeObjectTimer>*) handle
+- (void) setFuncObject:(GObject<ICalleeObjectTimer>*) eventHandle
 {
-    [self->mTimerDisp setFuncObject:handle];
+    [self->mTimerDisp setFuncObject:eventHandle];
 }
 
 - (void) setTotalTime:(float) value

@@ -1,5 +1,5 @@
 #import "MyLibs/EventHandle/AddOnceEventDispatch.h"
-#import "MyLibs/EventHandle/ICalleeObject.h"
+#import "MyLibs/EventHandle/IListenerObject.h"
 #import "MyLibs/EventHandle/IDispatchObject.h"
 #import "MyLibs/Base/GObject.h"
 
@@ -15,7 +15,7 @@
 
 - (id) init;
 - (void) dispose;
-- (void) addMainChildChangedHandle:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle;
+- (void) addMainChildChangedHandle:(GObject<IListenerObject>*) eventListener eventHandle:(GObject<IDispatchObject>*) eventHandle;
 
 
 @end

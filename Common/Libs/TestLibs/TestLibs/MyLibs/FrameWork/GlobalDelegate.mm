@@ -14,9 +14,9 @@
 
 }
 
-- (void) addMainChildChangedHandle:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle
+- (void) addMainChildChangedHandle:(GObject<IListenerObject>*) eventListener eventHandle:(GObject<IDispatchObject>*) eventHandle
 {
-    //[self->mMainChildMassChangedDispatch addEventHandle:pThis handle:handle];
+    //[self->mMainChildMassChangedDispatch addEventHandle:eventListener eventHandle:eventHandle];
 }
 
 @end

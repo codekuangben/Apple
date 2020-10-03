@@ -1,30 +1,30 @@
 #import "MyLibs/DelayHandle/IDelayHandleItem.h"
 #import "MyLibs/Base/GObject.h"
-#import "MyLibs/EventHandle/ICalleeObject.h"
+#import "MyLibs/EventHandle/IListenerObject.h"
 
 @interface EventDispatchFunctionObject : GObject <IDelayHandleItem>
 {
 @public 
 	BOOL mIsClientDispose;       // 是否释放了资源
-    GObject<ICalleeObject>* mThis;
-    SEL mHandle;
+    GObject<IListenerObject>* mEventListener;
+    SEL mEventHandle;
 	IMP mHandleImp;
 	int mEventId;
 }
 
 /*
 @property BOOL mIsClientDispose;       	// 是否释放了资源
-@property ICalleeObject* mThis;
-@property SEL mHandle;					// 选择器
+@property IListenerObject* mEventListener;
+@property SEL mEventHandle;					// 选择器
 @property IMP mHandleImp;
 @property int mEventId;
 */
 
 - (id) init: (int) baseUniqueId;
-- (void) setFuncObject:(GObject<ICalleeObject>*) pThis func:(SEL) func;
+- (void) setFuncObject:(GObject<IListenerObject>*) eventListener eventHandle:(SEL) eventHandle;
 - (BOOL) isValid;
-- (BOOL) isEqual:(GObject<ICalleeObject>*) pThis handle:(SEL) handle;
-- (void) call:(GObject<IDispatchObject>*) dispObj;
+- (BOOL) isEqual:(GObject<IListenerObject>*) eventListener eventHandle:(SEL) eventHandle;
+- (void) call:(GObject<IDispatchObject>*) dispatchObject;
 - (void) setClientDispose:(BOOL) isDispose;
 - (BOOL) isClientDispose;
 

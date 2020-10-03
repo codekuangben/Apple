@@ -21,7 +21,7 @@
 }
 
 - (id) init;
-- (void) setFuncObject:(GObject<ICalleeObjectTimer>*) handle;
+- (void) setFuncObject:(GObject<ICalleeObjectTimer>*) eventHandle;
 - (void) setTotalTime:(float) value;
 - (float) getRunTime;
 - (float) getCallTime;

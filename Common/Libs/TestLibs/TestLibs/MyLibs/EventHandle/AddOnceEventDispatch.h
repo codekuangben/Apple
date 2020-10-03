@@ -10,6 +10,6 @@
 
 - (id) init;
 - (id) init:(int) eventId_;
-- (void) addEventHandle: (GObject<ICalleeObject>*) pThis handle: (GObject<IDispatchObject>*) handle;
+- (void) addEventHandle: (GObject<IListenerObject>*) eventListener eventHandle: (GObject<IDispatchObject>*) eventHandle;
 
 @end

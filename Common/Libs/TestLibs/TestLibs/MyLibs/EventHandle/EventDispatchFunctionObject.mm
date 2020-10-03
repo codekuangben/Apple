@@ -15,33 +15,33 @@
     return self;
 }
 
-- (void) setFuncObject:(GObject<ICalleeObject>*) pThis func:(SEL) func
+- (void) setFuncObject:(GObject<IListenerObject>*) eventListener eventHandle:(SEL) eventHandle
 {
-	self->mThis = pThis;
-	self->mHandle = func;
-	self->mHandleImp = [self->mThis methodForSelector:self->mHandle];  
+	self->mEventListener = eventListener;
+	self->mEventHandle = eventHandle;
+	self->mHandleImp = [self->mEventListener methodForSelector:self->mEventHandle];  
 }
 
 - (BOOL) isValid
 {
-	return self->mThis != nil && self->mHandle != nil;
+	return self->mEventListener != nil && self->mEventHandle != nil;
 }
 
-- (BOOL) isEqual:(GObject<ICalleeObject>*) pThis handle:(SEL) handle
+- (BOOL) isEqual:(GObject<IListenerObject>*) eventListener eventHandle:(SEL) eventHandle
 {
 	BOOL ret = false;
-	if(pThis != nil)
+	if(eventListener != nil)
 	{
-		ret = [UtilSysLibsWrap isAddressEqual:self->mThis b:pThis];
+		ret = [UtilSysLibsWrap isAddressEqual:self->mEventListener b:eventListener];
 		if (!ret)
 		{
 			return ret;
 		}
 	}
-	if (handle != nil)
+	if (eventHandle != nil)
 	{
-		//ret = [UtilSysLibsWrap isDelegateEqual:self->mHandle b:handle];
-        ret = (self->mHandle == handle);
+		//ret = [UtilSysLibsWrap isDelegateEqual:self->mEventHandle b:eventHandle];
+        ret = (self->mEventHandle == eventHandle);
         if (!ret)
 		{
 			return ret;
@@ -51,19 +51,19 @@
 	return ret;
 }
 
-- (void) call:(GObject<IDispatchObject>*) dispObj
+- (void) call:(GObject<IDispatchObject>*) dispatchObject
 {
-	if(nil != self->mThis && nil != self->mHandle)
+	if(nil != self->mEventListener && nil != self->mEventHandle)
 	{
-		//[self->mThis performSelector:self->mHandle withObject:self->mEventId withObject:dispObj];
-		//self->mHandleImp(self->mThis, self->mEventId, dispObj);
+		//[self->mEventListener performSelector:self->mEventHandle withObject:self->mEventId withObject:dispatchObject];
+		//self->mHandleImp(self->mEventListener, self->mEventId, dispatchObject);
         //self->mHandleImp();
-        [self->mThis performSelector:self->mHandle withObject:dispObj withObject:(id)self->mEventId];
+        [self->mEventListener performSelector:self->mEventHandle withObject:dispatchObject withObject:(id)self->mEventId];
     }
-	else if(nil == self->mThis && nil != self->mHandle)
+	else if(nil == self->mEventListener && nil != self->mEventHandle)
 	{
-		//self->mHandle(dispObj, self->mEventId);
-        [self->mThis performSelector:self->mHandle withObject:dispObj withObject:(id)self->mEventId];
+		//self->mEventHandle(dispatchObject, self->mEventId);
+        [self->mEventListener performSelector:self->mEventHandle withObject:dispatchObject withObject:(id)self->mEventId];
     }
 }
 

@@ -3,7 +3,7 @@
 
 @class EventDispatch;
 @class GObject;
-@protocol ICalleeObject;
+@protocol IListenerObject;
 @protocol IDispatchObject;
 
 @interface EventDispatchGroup : GObject
@@ -16,8 +16,8 @@
 - (id) init;
 // 添加分发器
 - (void) addEventDispatch:(int) groupID disp:(EventDispatch*) disp;
-- (void) addEventHandle:(int) groupID pThis:(GObject<ICalleeObject>*) pThis handle:/*(GObject<IDispatchObject>*)*/(SEL) handle;
-- (void) removeEventHandle:(int) groupID pThis:(GObject<ICalleeObject>*) pThis handle:/*(GObject<IDispatchObject>*)*/(SEL) handle;
+- (void) addEventHandle:(int) groupID eventListener:(GObject<IListenerObject>*) eventListener eventHandle:/*(GObject<IDispatchObject>*)*/(SEL) eventHandle;
+- (void) removeEventHandle:(int) groupID eventListener:(GObject<IListenerObject>*) eventListener eventHandle:/*(GObject<IDispatchObject>*)*/(SEL) eventHandle;
 - (void) dispatchEvent:(int) groupID dispatchObject:(GObject<IDispatchObject>*) dispatchObject;
 - (void) clearAllEventHandle;
 - (void) clearGroupEventHandle:(int) groupID;

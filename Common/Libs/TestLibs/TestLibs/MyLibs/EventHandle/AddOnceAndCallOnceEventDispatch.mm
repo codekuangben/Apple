@@ -2,11 +2,11 @@
 
 @implementation AddOnceAndCallOnceEventDispatch
 
-- (void) addEventHandle: (GObject<ICalleeObject>*) pThis handle: (GObject<IDispatchObject>*) handle
+- (void) addEventHandle: (GObject<IListenerObject>*) eventListener eventHandle: (GObject<IDispatchObject>*) eventHandle
 {
-	if (! [self isExistEventHandle: pThis and: handle])
+	if (! [self isExistEventHandle: eventListener and: eventHandle])
 	{
-		[super addEventHandle:pThis and handle];
+		[super addEventHandle:eventListener and eventHandle];
 	}
 }
 

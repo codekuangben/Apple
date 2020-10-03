@@ -16,27 +16,27 @@
 	return self;
 }
 
-- (void) addMsgRouteHandle:(MsgRouteID) msgRouteID pThis:(GObject<ICalleeObject>*) pThis handle:/*(GObject<IDispatchObject>*)*/(SEL) handle
+- (void) addMsgRouteHandle:(MsgRouteID) msgRouteID eventListener:(GObject<IListenerObject>*) eventListener eventHandle:/*(GObject<IDispatchObject>*)*/(SEL) eventHandle
 {
 	if(![self->mId2HandleDic ContainsKey:msgRouteID])
 	{
 		[self->mId2HandleDic set:msgRouteID value:[[AddOnceEventDispatch alloc] init]];
 	}
 
-	[[self->mId2HandleDic get:msgRouteID] addEventHandle:pThis handle:handle];
+	[[self->mId2HandleDic get:msgRouteID] addEventHandle:eventListener eventHandle:eventHandle];
 }
 
-- (void) removeMsgRouteHandle:(MsgRouteID) msgRouteID pThis:(GObject<ICalleeObject>*) pThis handle:/*(GObject<IDispatchObject>*)*/(SEL) handle
+- (void) removeMsgRouteHandle:(MsgRouteID) msgRouteID eventListener:(GObject<IListenerObject>*) eventListener eventHandle:/*(GObject<IDispatchObject>*)*/(SEL) eventHandle
 {
 	if ([self->mId2HandleDic ContainsKey:msgRouteID])
 	{
-		[[self->mId2HandleDic get:msgRouteID] removeEventHandle:pThis handle:handle];
+		[[self->mId2HandleDic get:msgRouteID] removeEventHandle:eventListener eventHandle:eventHandle];
 	}
 }
 
-- (void) handleMsg:(GObject<IDispatchObject>*) dispObj
+- (void) handleMsg:(GObject<IDispatchObject>*) dispatchObject
 {
-	MsgRouteBase* msg = (MsgRouteBase*)dispObj;
+	MsgRouteBase* msg = (MsgRouteBase*)dispatchObject;
 
 	if ([self->mId2HandleDic ContainsKey:msg->mMsgID])
 	{
@@ -48,7 +48,7 @@
 	}
 }
 
-- (void) call:(GObject<IDispatchObject>*) dispObj
+- (void) call:(GObject<IDispatchObject>*) dispatchObject
 {
 
 }

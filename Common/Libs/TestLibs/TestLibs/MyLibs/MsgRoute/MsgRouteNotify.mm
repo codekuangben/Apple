@@ -12,7 +12,7 @@
 	return self;
 }
 
-- (void) addOneDisp:(MsgRouteDispHandle*) disp
+- (void) addOneDisp:(MsgRouteDispatchHandle*) disp
 {
 	if(![self->mDispList Contains:disp])
 	{
@@ -20,7 +20,7 @@
 	}
 }
 
-- (void) removeOneDisp:(MsgRouteDispHandle*) disp
+- (void) removeOneDisp:(MsgRouteDispatchHandle*) disp
 {
 	if([self->mDispList Contains:disp])
 	{
@@ -30,7 +30,7 @@
 
 - (void) handleMsg:(MsgRouteBase*) msg
 {
-	for(MsgRouteDispHandle* item in [self->mDispList list])
+	for(MsgRouteDispatchHandle* item in [self->mDispList list])
 	{
 		[item handleMsg:msg];
 	}

@@ -2,7 +2,7 @@
 #import "MyLibs/DataStruct/MList.h"
 
 @class MsgRouteBase;
-@class MsgRouteDispHandle;
+@class MsgRouteDispatchHandle;
 
 @interface MsgRouteNotify : GObject
 {
@@ -11,8 +11,8 @@
 }
 
 -(id) init;
-- (void) addOneDisp:(MsgRouteDispHandle*) disp;
-- (void) removeOneDisp:(MsgRouteDispHandle*) disp;
+- (void) addOneDisp:(MsgRouteDispatchHandle*) disp;
+- (void) removeOneDisp:(MsgRouteDispatchHandle*) disp;
 - (void) handleMsg:(MsgRouteBase*) msg;
 
 @end

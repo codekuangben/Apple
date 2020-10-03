@@ -1,32 +1,32 @@
 #import "MyLibs/FrameHandle/TimerFunctionObject.h"
-#import "MyLibs/EventHandle/ICalleeObject.h"
+#import "MyLibs/EventHandle/IListenerObject.h"
 #import "MyLibs/Tools/UtilSysLibsWrap.h"
 
 @implementation TimerFunctionObject
 
 - (id) init
 {
-    self->mHandle = nil;
+    self->mEventHandle = nil;
     return self;
 }
 
-- (void) setFuncObject:(GObject<ICalleeObjectTimer>*) handle
+- (void) setFuncObject:(GObject<ICalleeObjectTimer>*) eventHandle
 {
-    self->mHandle = handle;
+    self->mEventHandle = eventHandle;
 }
 
 - (BOOL) isValid
 {
-    return self->mHandle != nil;
+    return self->mEventHandle != nil;
 }
 
-- (BOOL) isEqual:(GObject<ICalleeObject>*) handle
+- (BOOL) isEqual:(GObject<IListenerObject>*) eventHandle
 {
     BOOL ret = false;
 
-    if(handle != nil)
+    if(eventHandle != nil)
     {
-        ret = [UtilSysLibsWrap isAddressEqual:self->mHandle b:handle];
+        ret = [UtilSysLibsWrap isAddressEqual:self->mEventHandle b:eventHandle];
         if(!ret)
         {
             return ret;
@@ -36,11 +36,11 @@
     return ret;
 }
 
-- (void) call:(TimerItemBase*) dispObj
+- (void) call:(TimerItemBase*) dispatchObject
 {
-    if (nil != self->mHandle)
+    if (nil != self->mEventHandle)
     {
-        [self->mHandle call:dispObj];
+        [self->mEventHandle call:dispatchObject];
     }
 }
 

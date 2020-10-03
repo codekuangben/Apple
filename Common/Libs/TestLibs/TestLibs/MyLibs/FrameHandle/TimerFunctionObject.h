@@ -1,4 +1,4 @@
-#import "MyLibs/EventHandle/ICalleeObject.h"
+#import "MyLibs/EventHandle/IListenerObject.h"
 #import "MyLibs/FrameHandle/ICalleeObjectTimer.h"
 #import "MyLibs/Tools/UtilSysLibsWrap.h"
 #import "MyLibs/Base/GObject.h"
@@ -8,13 +8,13 @@
 @interface TimerFunctionObject : GObject
 {
 @public
-    GObject<ICalleeObjectTimer>* mHandle;
+    GObject<ICalleeObjectTimer>* mEventHandle;
 }
 
 - (id) TimerFunctionObject;
-- (void) setFuncObject:(GObject<ICalleeObjectTimer>*) handle;
+- (void) setFuncObject:(GObject<ICalleeObjectTimer>*) eventHandle;
 - (BOOL) isValid;
-- (BOOL) isEqual:(GObject<ICalleeObject>*) handle;
-- (void) call:(TimerItemBase*) dispObj;
+- (BOOL) isEqual:(GObject<IListenerObject>*) eventHandle;
+- (void) call:(TimerItemBase*) dispatchObject;
 
 @end
