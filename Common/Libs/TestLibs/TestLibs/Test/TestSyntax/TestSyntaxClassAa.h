@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
-#import "Test/TestBase/TestBase.h"
+#import "Test/Base/GObject.h"
 
-@interface TestSyntax : TestBase
+@interface TestSyntaxClassAa : GObject
 {
 
 }
