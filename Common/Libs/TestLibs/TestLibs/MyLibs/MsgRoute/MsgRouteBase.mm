@@ -1,4 +1,4 @@
-﻿#import "MyLibs/MsgRoute/MsgRouteBase.h"
+#import "MyLibs/MsgRoute/MsgRouteBase.h"
 
 @implementation MsgRouteBase
 
@@ -6,7 +6,7 @@
 {
 	if(self = [super init])
 	{
-		self->mMsgType = MsgRouteType.eMRT_BASIC;
+		self->mMsgType = eMRT_BASIC;
 		self->mMsgID = msgId;
 	}
 	

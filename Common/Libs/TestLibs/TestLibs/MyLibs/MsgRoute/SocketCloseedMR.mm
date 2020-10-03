@@ -5,7 +5,7 @@
 
 -(id) init
 {
-	if(self = [super init:MsgRouteID.eMRIDSocketClosed])
+	if(self = [super init:eMRIDSocketClosed])
 	{
 		
 	}

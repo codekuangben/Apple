@@ -1,8 +1,10 @@
-﻿/**
+#import "MyLibs/Base/GObject.h"
+
+/**
 * @brief 系统循环
 */
 
-@interface ProcessSys
+@interface ProcessSys : GObject
 {
 
 }

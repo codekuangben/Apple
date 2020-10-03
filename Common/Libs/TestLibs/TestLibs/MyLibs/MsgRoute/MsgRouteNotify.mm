@@ -1,4 +1,4 @@
-﻿#import "MsgRouteNotify"
+#import "MyLibs/MsgRoute/MsgRouteNotify.h"
 
 @implementation MsgRouteNotify
 
@@ -12,7 +12,7 @@
 	return self;
 }
 
-- (void) addOneDisp:(MsgRouteDispHandle) disp
+- (void) addOneDisp:(MsgRouteDispHandle*) disp
 {
 	if(![self->mDispList Contains:disp])
 	{
@@ -20,7 +20,7 @@
 	}
 }
 
-- (void) removeOneDisp:(MsgRouteDispHandle) disp
+- (void) removeOneDisp:(MsgRouteDispHandle*) disp
 {
 	if([self->mDispList Contains:disp])
 	{
@@ -28,11 +28,11 @@
 	}
 }
 
-- (void) handleMsg:(MsgRouteBase) msg
+- (void) handleMsg:(MsgRouteBase*) msg
 {
-	for(MsgRouteDispHandle item : self->mDispList.list())
+	for(MsgRouteDispHandle* item in [self->mDispList list])
 	{
-		item.handleMsg(msg);
+		[item handleMsg:msg];
 	}
 
 	//[Ctx ins]->mPoolSys.deleteObj(msg);

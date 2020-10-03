@@ -1,9 +1,8 @@
 #import "MyLibs/Base/GObject.h"
 
-@class id;
 @class TestSyntax;
 
-@interface TestMain : NSObject
+@interface TestMain : GObject
 {
     TestSyntax* _TestSyntax;
 }

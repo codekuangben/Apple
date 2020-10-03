@@ -1,7 +1,5 @@
-﻿#import "MyLibs/FrameWork/ShareData.h"
-/**
- * @brief 共享内容，主要是数据
- */
+#import "MyLibs/FrameWork/ShareData.h"
+
 @implementation ShareData
 
 

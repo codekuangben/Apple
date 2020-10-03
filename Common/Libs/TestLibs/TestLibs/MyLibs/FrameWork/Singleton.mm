@@ -1,6 +1,7 @@
-﻿#import "MyLibs/FrameWork/Singleton.h"
+#import "MyLibs/FrameWork/Singleton.h"
+#import <Foundation/Foundation.h>
 
-@interface Singleton
+@implementation Singleton
 
 - (id) getSingletonPtr
 {

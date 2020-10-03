@@ -29,7 +29,6 @@ static Ctx* mInstance = nil;
     self->mTimerMgr = [[TimerMgr alloc] init];
     self->mFrameTimerMgr = [[FrameTimerMgr alloc] init];
 
-    self->mShareData = [[ShareData alloc] init];
     self->mEngineLoop = [[EngineLoop alloc] init];
 
     self->mGlobalDelegate = [[GlobalDelegate alloc] init];

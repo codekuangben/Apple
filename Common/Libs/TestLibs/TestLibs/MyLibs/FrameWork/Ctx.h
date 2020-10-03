@@ -13,6 +13,7 @@
 #import "MyLibs/FrameWork/Config.h"
 #import "MyLibs/FrameWork/ProcessSys.h"
 #import "MyLibs/FrameWork/EngineLoop.h"
+#include "MyLibs/FrameWork/GlobalDelegate.h"
 
 
 /**
@@ -31,11 +32,7 @@
     TimerMgr* mTimerMgr;                // 定时器系统
     FrameTimerMgr* mFrameTimerMgr;      // 定时器系统
     EngineLoop* mEngineLoop;            // 引擎循环
-
-    ShareData* mShareData;               // 共享数据系统
     MsgRouteNotify* mMsgRouteNotify;     // RouteMsg 客户端自己消息流程
-
-    SystemSetting* mSystemSetting;
     GlobalDelegate* mGlobalDelegate;
     SysMsgRoute* mSysMsgRoute;
     SystemTimeData* mSystemTimeData;
