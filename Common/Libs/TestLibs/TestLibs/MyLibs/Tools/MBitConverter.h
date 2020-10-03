@@ -1,6 +1,9 @@
+#import <Foundation/Foundation.h>
+#import "MyLibs/Tools/EEndian.h"
+
 @interface MBitConverter
 
-+ (BOOL) ToBoolean:(Byte[]) bytes
++ (BOOL) ToBoolean:(char[]) bytes
         startIndex: (int) startIndex;
 + (BOOL) ToBoolean:(char[]) bytes
         startIndex: (int) startIndex
@@ -60,7 +63,7 @@
 + (float) ToFloat:(char[]) b index:(int) index;
 
 + (double) ToDouble:(char[]) bytes
-        (int) startIndex;
+            startIndex:(int) startIndex;
 
 + (void) GetBytes:(BOOL) data
         bytes:(char[]) bytes

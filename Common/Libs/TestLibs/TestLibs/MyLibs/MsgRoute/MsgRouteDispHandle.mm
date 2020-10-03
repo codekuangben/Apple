@@ -1,4 +1,5 @@
-﻿#import "MyLibs/MsgRoute/MsgRouteDispHandle.h"
+#import "MyLibs/MsgRoute/MsgRouteDispHandle.h"
+#import "MyLibs/MsgRoute/MsgRouteBase.h"
 
 @implementation MsgRouteDispHandle
 
@@ -14,17 +15,17 @@
 
 - (void) addRouteHandle:(int) evtId pThis:(MsgRouteHandleBase*) pThis handle:(GObject<IDispatchObject>*) handle
 {
-	[self->mEventDispatchGroup addEventHandle:evtId pThis:pThis handle:handle];
+	[self->mEventDispatchGroup addEventHandle:evtId pThis:(GObject<ICalleeObject>*)pThis handle:handle];
 }
 
 - (void) removeRouteHandle:(int) evtId pThis:(MsgRouteHandleBase*) pThis handle:(GObject<IDispatchObject>*) handle
 {
-	[self->mEventDispatchGroup removeEventHandle:evtId pThis:pThis handle:handle];
+	[self->mEventDispatchGroup removeEventHandle:evtId pThis:(GObject<ICalleeObject>*)pThis handle:handle];
 }
 
 - (void) handleMsg:(MsgRouteBase*) msg
 {
-	NSString* textStr = "";
+	NSString* textStr = @"";
 
 	if([self->mEventDispatchGroup hasEventHandle:msg->mMsgType])
 	{

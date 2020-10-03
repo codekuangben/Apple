@@ -1,4 +1,4 @@
-﻿#import "MyLibs/EventHandle/ResInsEventDispatch.h"
+#import "MyLibs/EventHandle/ResInsEventDispatch.h"
 #import "MyLibs/EventHandle/EventDispatch.h"
 #import "MyLibs/EventHandle/IDispatchObject.h"
 
@@ -8,7 +8,7 @@
 {
     if(self = [super init])
     {
-		self->mIsValid = true;
+		self->mIsValid = YES;
     }
     
     return self;
@@ -24,7 +24,7 @@
 	return self->mIsValid;
 }
 
-- (void) setInsGO: (NSObject) go
+- (void) setInsGO: (GObject*) go
 {
 	self->mInsGO = go;
 }

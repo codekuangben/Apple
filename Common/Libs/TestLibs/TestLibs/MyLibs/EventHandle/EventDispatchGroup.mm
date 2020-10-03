@@ -32,7 +32,7 @@
 
 - (void) removeEventHandle:(int) groupID pThis:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle
 {
-    if ([self->mGroupID2DispatchDic ContainsKey:groupID)
+    if ([self->mGroupID2DispatchDic ContainsKey:groupID])
     {
         [[self->mGroupID2DispatchDic get:groupID] removeEventHandle:pThis handle:handle];
 
