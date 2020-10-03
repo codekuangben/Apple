@@ -1,5 +1,7 @@
-﻿#import "MyLibs/EventHandle/EventDispatchFunctionObject.h"
+#import "MyLibs/EventHandle/EventDispatchFunctionObject.h"
 #import "MyLibs/Delayhandle/IDelayHandleItem.h"
+#import "MyLibs/Tools/UtilSysLibsWrap.h"
+
 
 @implementation EventDispatchFunctionObject
 
@@ -13,7 +15,7 @@
     return self;
 }
 
-- (void) setFuncObject:(GObject<ICalleeObject>*) pThis, func:(SEL) func
+- (void) setFuncObject:(GObject<ICalleeObject>*) pThis func:(SEL) func
 {
 	self->mThis = pThis;
 	self->mHandle = func;
@@ -25,7 +27,7 @@
 	return self->mThis != nil && self->mHandle != nil;
 }
 
-- (BOOL) isEqual:(GObject<ICalleeObject>*) pThis, handle:(SEL*) handle
+- (BOOL) isEqual:(GObject<ICalleeObject>*) pThis handle:(SEL) handle
 {
 	BOOL ret = false;
 	if(pThis != nil)
@@ -38,8 +40,9 @@
 	}
 	if (handle != nil)
 	{
-		ret = [UtilSysLibsWrap isDelegateEqual:self->mHandle b:handle];
-		if (!ret)
+		//ret = [UtilSysLibsWrap isDelegateEqual:self->mHandle b:handle];
+        ret = (self->mHandle == handle);
+        if (!ret)
 		{
 			return ret;
 		}
@@ -53,11 +56,11 @@
 	if(nil != self->mThis && nil != self->mHandle)
 	{
 		//[self->mThis performSelector:self->mHandle withObject:self->mEventId withObject:dispObj];
-		self->mHandleImp(self->mThis, self->mEventId, dispObj);
+		//self->mHandleImp(self->mThis, self->mEventId, dispObj);
 	}
 	else if(nil == self->mThis && nil != self->mHandle)
 	{
-		self->mHandle(dispObj, self->mEventId); 
+		//self->mHandle(dispObj, self->mEventId); 
 	}
 }
 

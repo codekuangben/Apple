@@ -39,12 +39,12 @@
 - (void) addEventHandle:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle;
 - (void) removeEventHandle:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle;
 - (void) addObject:(GObject<IDelayHandleItem>*) delayObject;
-- (void) addObject:(GObject<IDelayHandleItem>*) delayObject, priority:(float) priority;
+- (void) addObject:(GObject<IDelayHandleItem>*) delayObject priority:(float) priority;
 - (void) removeObject:(GObject<IDelayHandleItem>*) delayObject;
 - (void) dispatchEvent:(GObject<IDispatchObject>*) dispatchObject;
 - (void) clearEventHandle;
 // 这个判断说明相同的函数只能加一次，但是如果不同资源使用相同的回调函数就会有问题，但是这个判断可以保证只添加一次函数，值得，因此不同资源需要不同回调函数
-- (BOOL) isExistEventHandle:(GObject<ICalleeObject>*) pThis, handle:(GObject<IDispatchObject>*) handle;
+- (BOOL) isExistEventHandle:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle;
 - (void) copyFrom:(EventDispatch*) rhv;
 - (BOOL) hasEventHandle;
 - (int) getEventHandle;

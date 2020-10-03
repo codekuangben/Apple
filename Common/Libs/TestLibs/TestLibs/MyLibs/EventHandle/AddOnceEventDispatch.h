@@ -1,4 +1,4 @@
-﻿#import "MyLibs/EventHandle/EventDispatch.h"
+#import "MyLibs/EventHandle/EventDispatch.h"
 
 /**
  * @brief 事件回调函数只能添加一次
@@ -9,7 +9,7 @@
 }
 
 - (id) init;
-- (id) init((int) eventId_);
+- (id) init:(int) eventId_;
 - (void) addEventHandle: (GObject<ICalleeObject>*) pThis handle: (GObject<IDispatchObject>*) handle;
 
 @end

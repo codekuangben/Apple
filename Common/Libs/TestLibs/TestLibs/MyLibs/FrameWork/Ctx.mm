@@ -4,11 +4,6 @@ static Ctx* mInstance = nil;
 
 @implementation Ctx
 
-- (id) init
-{
-
-}
-
 + (Ctx*) ins
 {
     if (mInstance == nil)
@@ -52,7 +47,7 @@ static Ctx* mInstance = nil;
     [self->mSystemFrameData init];
 }
 
-- (void) init
+- (id) init
 {
     // 构造初始化
     [self constructInit];

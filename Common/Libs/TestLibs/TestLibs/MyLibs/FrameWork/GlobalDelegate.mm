@@ -1,25 +1,20 @@
-﻿#import "MyLibs/EventHandle/AddOnceEventDispatch.h"
+#import "MyLibs/EventHandle/AddOnceEventDispatch.h"
 
 @implementation GlobalDelegate
 
 - (id) init
 {
-    self->mMainChildMassChangedDispatch = [[AddOnceEventDispatch alloc] init];
-}
-
-- (void) addMainChildChangedHandle:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle
-{
-    [self->mMainChildMassChangedDispatch addEventHandle:pThis handle:handle];
-}
-
-- (void) init
-{
-
+    //self->mMainChildMassChangedDispatch = [[AddOnceEventDispatch alloc] init];
 }
 
 - (void) dispose
 {
 
+}
+
+- (void) addMainChildChangedHandle:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle
+{
+    //[self->mMainChildMassChangedDispatch addEventHandle:pThis handle:handle];
 }
 
 @end

@@ -43,7 +43,6 @@
 + (Ctx*) ins;
 - (void) constructInit;
 - (void) logicInit;
-- (void) init;
 - (void) dispose;
 - (void) quitApp;
 - (void) addEventHandle;

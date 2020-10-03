@@ -40,7 +40,7 @@
 
             if (self->mTimerDisp != nil)
             {
-                [self->mTimerDisp call: this];
+                [self->mTimerDisp call: self];
             }
         }
     }
@@ -51,7 +51,7 @@
             self->mDisposed = true;
             if (self->mTimerDisp != nil)
             {
-                [self->mTimerDisp call: this];
+                [self->mTimerDisp call: self];
             }
         }
         else
@@ -61,7 +61,7 @@
                 self->mCurLeftFrame = 0;
                 if (self->mTimerDisp != nil)
                 {
-                    [self->mTimerDisp call: this];
+                    [self->mTimerDisp call: self];
                 }
             }
         }
