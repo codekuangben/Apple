@@ -8,19 +8,21 @@
     self->mIncHandle = nil;
     self->mDecHandle = nil;
     self->mZeroHandle = nil;
+
+    return self;
 }
 
-- (void) setIncHandle:(ICalleeObjectNoRetNoParam*) value
+- (void) setIncHandle:(GObject<ICalleeObjectNoRetNoParam>*) value
 {
     self->mIncHandle = value;
 }
 
-- (void) setDecHandle:(ICalleeObjectNoRetNoParam*) value
+- (void) setDecHandle:(GObject<ICalleeObjectNoRetNoParam>*) value
 {
     self->mDecHandle = value;
 }
 
-- (void) setZeroHandle:(ICalleeObjectNoRetNoParam*) value
+- (void) setZeroHandle:(GObject<ICalleeObjectNoRetNoParam>*) value
 {
     self->mZeroHandle = value;
 }
