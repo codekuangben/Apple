@@ -1,6 +1,7 @@
 #import "MyLibs/EventHandle/EventDispatchGroup.h"
 #import "MyLibs/DataStruct/MDictionary.h"
 #import "MyLibs/Eventhandle/EventDispatch.h"
+#import <Foundation/Foundation.h>
 
 @implementation EventDispatchGroup
 
@@ -14,7 +15,8 @@
 // 添加分发器
 - (void) addEventDispatch:(int) groupID disp:(EventDispatch*) disp
 {
-    if (![self->mGroupID2DispatchDic ContainsKey:groupID])
+    NSString* strKey = [NSString stringWithFormat:@"%d",groupID]; 
+    if (![self->mGroupID2DispatchDic ContainsKey:strKey/*groupID*/])
     {
         [self->mGroupID2DispatchDic:groupID value:disp];
     }
@@ -22,25 +24,27 @@
 
 - (void) addEventHandle:(int) groupID pThis:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle
 {
+    NSString* strKey = [NSString stringWithFormat:@"%d",groupID]; 
     // 如果没有就创建一个
-    if (![self->mGroupID2DispatchDic ContainsKey:groupID])
+    if (![self->mGroupID2DispatchDic ContainsKey:strKey/*groupID*/])
     {
-        [self addEventDispatch:groupID, [[EventDispatch alloc] init]];
+        [self addEventDispatch:groupID disp:[[EventDispatch alloc] init]];
     }
 
-    [[self->mGroupID2DispatchDic get:groupID] addEventHandle:pThis handle:handle];
+    [[self->mGroupID2DispatchDic get:strKey/*groupID*/] addEventHandle:pThis handle:handle];
 }
 
 - (void) removeEventHandle:(int) groupID pThis:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle
 {
-    if ([self->mGroupID2DispatchDic ContainsKey:groupID])
+    NSString* strKey = [NSString stringWithFormat:@"%d",groupID]; 
+    if ([self->mGroupID2DispatchDic ContainsKey:strKey/*groupID*/])
     {
-        [[self->mGroupID2DispatchDic get:groupID] removeEventHandle:pThis handle:handle];
+        [[self->mGroupID2DispatchDic get:strKey/*groupID*/] removeEventHandle:pThis handle:handle];
 
         // 如果已经没有了
-        if (![[self->mGroupID2DispatchDic get:groupID] hasEventHandle])
+        if (![[self->mGroupID2DispatchDic get:strKey/*groupID*/] hasEventHandle])
         {
-            [self->mGroupID2DispatchDic Remove:groupID];
+            [self->mGroupID2DispatchDic Remove:strKey/*groupID*/];
         }
     }
     else
@@ -51,10 +55,11 @@
 
 - (void) dispatchEvent:(int) groupID dispatchObject:(GObject<IDispatchObject>*) dispatchObject
 {
+    NSString* strKey = [NSString stringWithFormat:@"%d",groupID]; 
     self->mIsInLoop = true;
-    if ([self->mGroupID2DispatchDic ContainsKey:groupID])
+    if ([self->mGroupID2DispatchDic ContainsKey:strKey/*groupID*/])
     {
-        [[self->mGroupID2DispatchDic get:groupID] dispatchEvent:dispatchObject];
+        [[self->mGroupID2DispatchDic get:strKey/*groupID*/] dispatchEvent:dispatchObject];
     }
     else
     {
@@ -85,12 +90,13 @@
 
 - (void) clearGroupEventHandle:(int) groupID
 {
+    NSString* strKey = [NSString stringWithFormat:@"%d",groupID]; 
     if (!self->mIsInLoop)
     {
-        if ([self->mGroupID2DispatchDic ContainsKey:groupID])
+        if ([self->mGroupID2DispatchDic ContainsKey:strKey/*groupID*/])
         {
-            [[self->mGroupID2DispatchDic get:groupID] clearEventHandle];
-            [self->mGroupID2DispatchDic Remove:groupID];
+            [[self->mGroupID2DispatchDic get:strKey/*groupID*/] clearEventHandle];
+            [self->mGroupID2DispatchDic Remove:strKey/*groupID*/];
         }
         else
         {
@@ -105,9 +111,10 @@
 
 - (BOOL) hasEventHandle:(int) groupID
 {
-    if([self->mGroupID2DispatchDic ContainsKey:groupID])
+    NSString* strKey = [NSString stringWithFormat:@"%d",groupID]; 
+    if([self->mGroupID2DispatchDic ContainsKey:strKey/*groupID*/])
     {
-        return [[self->mGroupID2DispatchDic get:groupID] hasEventHandle];
+        return [[self->mGroupID2DispatchDic get:strKey/*groupID*/] hasEventHandle];
     }
 
     return false;
