@@ -14,8 +14,8 @@
 //@property() MDictionary mId2HandleDic;
 
 - (id) init;
-- (void) addMsgRouteHandle:(MsgRouteID) msgRouteID handle:(GObject<IDispatchObject>*) handle;
-- (void) removeMsgRouteHandle:(MsgRouteID) msgRouteID handle:(GObject<IDispatchObject>*) handle;
+- (void) addMsgRouteHandle:(MsgRouteID) msgRouteID pThis:(GObject<ICalleeObject>*) pThis handle:/*(GObject<IDispatchObject>*)*/(SEL) handle;
+- (void) removeMsgRouteHandle:(MsgRouteID) msgRouteID pThis:(GObject<ICalleeObject>*) pThis handle:/*(GObject<IDispatchObject>*)*/(SEL) handle;
 - (void) handleMsg:(GObject<IDispatchObject>*) dispObj;
 - (void) call:(GObject<IDispatchObject>*) dispObj;
 

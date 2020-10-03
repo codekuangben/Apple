@@ -13,9 +13,9 @@
 
 //@property() EventDispatchGroup mEventDispatchGroup;
 
--(id) init;
-- (void) addRouteHandle:(int) evtId pThis:(MsgRouteHandleBase*) pThis handle:(GObject<IDispatchObject>*) handle;
-- (void) removeRouteHandle:(int) evtId pThis:(MsgRouteHandleBase*) pThis handle:(GObject<IDispatchObject>*) handle;
+- (id) init;
+- (void) addRouteHandle:(int) evtId pThis:(MsgRouteHandleBase*) pThis handle:/*(GObject<IDispatchObject>*)*/(SEL) handle;
+- (void) removeRouteHandle:(int) evtId pThis:(MsgRouteHandleBase*) pThis handle:/*(GObject<IDispatchObject>*)*/(SEL) handle;
 - (void) handleMsg:(MsgRouteBase*) msg;
 
 @end

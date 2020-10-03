@@ -16,8 +16,8 @@
 - (id) init;
 // 添加分发器
 - (void) addEventDispatch:(int) groupID disp:(EventDispatch*) disp;
-- (void) addEventHandle:(int) groupID pThis:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle;
-- (void) removeEventHandle:(int) groupID pThis:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle;
+- (void) addEventHandle:(int) groupID pThis:(GObject<ICalleeObject>*) pThis handle:/*(GObject<IDispatchObject>*)*/(SEL) handle;
+- (void) removeEventHandle:(int) groupID pThis:(GObject<ICalleeObject>*) pThis handle:/*(GObject<IDispatchObject>*)*/(SEL) handle;
 - (void) dispatchEvent:(int) groupID dispatchObject:(GObject<IDispatchObject>*) dispatchObject;
 - (void) clearAllEventHandle;
 - (void) clearGroupEventHandle:(int) groupID;

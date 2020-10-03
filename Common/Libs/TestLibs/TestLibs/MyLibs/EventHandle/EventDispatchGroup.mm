@@ -22,7 +22,7 @@
     }
 }
 
-- (void) addEventHandle:(int) groupID pThis:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle
+- (void) addEventHandle:(int) groupID pThis:(GObject<ICalleeObject>*) pThis handle:/*(GObject<IDispatchObject>*)*/(SEL) handle
 {
     NSString* strKey = [NSString stringWithFormat:@"%d",groupID]; 
     // 如果没有就创建一个
@@ -34,7 +34,7 @@
     [[self->mGroupID2DispatchDic get:groupID] addEventHandle:pThis handle:handle];
 }
 
-- (void) removeEventHandle:(int) groupID pThis:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle
+- (void) removeEventHandle:(int) groupID pThis:(GObject<ICalleeObject>*) pThis handle:/*(GObject<IDispatchObject>*)*/(SEL) handle
 {
     NSString* strKey = [NSString stringWithFormat:@"%d",groupID]; 
     if ([self->mGroupID2DispatchDic ContainsKey:strKey/*groupID*/])

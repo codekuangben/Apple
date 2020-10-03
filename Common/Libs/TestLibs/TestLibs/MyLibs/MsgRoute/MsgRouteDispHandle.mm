@@ -13,12 +13,12 @@
 	return self;
 }
 
-- (void) addRouteHandle:(int) evtId pThis:(MsgRouteHandleBase*) pThis handle:(GObject<IDispatchObject>*) handle
+- (void) addRouteHandle:(int) evtId pThis:(MsgRouteHandleBase*) pThis handle:/*(GObject<IDispatchObject>*)*/(SEL) handle
 {
 	[self->mEventDispatchGroup addEventHandle:evtId pThis:(GObject<ICalleeObject>*)pThis handle:handle];
 }
 
-- (void) removeRouteHandle:(int) evtId pThis:(MsgRouteHandleBase*) pThis handle:(GObject<IDispatchObject>*) handle
+- (void) removeRouteHandle:(int) evtId pThis:(MsgRouteHandleBase*) pThis handle:/*(GObject<IDispatchObject>*)*/(SEL) handle
 {
 	[self->mEventDispatchGroup removeEventHandle:evtId pThis:(GObject<ICalleeObject>*)pThis handle:handle];
 }
