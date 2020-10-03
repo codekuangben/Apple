@@ -53,6 +53,8 @@ static Ctx* mInstance = nil;
     [self constructInit];
     // 逻辑初始化，交叉引用的对象初始化
     [self logicInit];
+    
+    return self;
 }
 
 - (void) dispose
