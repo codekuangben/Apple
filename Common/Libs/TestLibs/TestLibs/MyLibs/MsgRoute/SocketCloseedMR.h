@@ -1,4 +1,6 @@
-﻿@interface SocketCloseedMR : MsgRouteBase
+#import "MyLibs/MsgRoute/MsgRouteBase.h"
+
+@interface SocketCloseedMR : MsgRouteBase
 {
 	
 }

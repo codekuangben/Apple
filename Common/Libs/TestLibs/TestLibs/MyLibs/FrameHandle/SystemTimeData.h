@@ -1,4 +1,7 @@
-﻿@interface SystemTimeData
+#import "MyLibs/Base/GObject.h"
+#import <Foundation/Foundation.h>
+
+@interface SystemTimeData : GObject
 {
     @protected 
     long mPreTime;           // 上一次更新时的秒数
@@ -13,12 +16,11 @@
 }
 
 - (id) init;
-- (void) init;
 - (void) dispose;
-- float getDeltaSec;
+- (float) getDeltaSec;
 - (void) setDeltaSec:(float) value;
-- float getFixedTimestep;
-- long getCurTime;
+- (float) getFixedTimestep;
+- (long) getCurTime;
 - (void) setCurTime:(long) value;
 - (void) nextFrame;
 

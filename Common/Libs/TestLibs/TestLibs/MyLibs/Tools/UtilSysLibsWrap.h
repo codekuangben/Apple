@@ -3,11 +3,12 @@
 #import <MyLibs/EventHandle/IDispatchObject.h>
 #import <Foundation/Foundation.h>
 #import "MyLibs/Base/GObject.h"
+#import "MyLibs/Base/GObject.h"
 
 /**
  * @brief 对 api 的进一步 wrap
  */
-@interface UtilSysLibsWrap
+@interface UtilSysLibsWrap : GObject
 {
 @public
     

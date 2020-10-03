@@ -48,7 +48,7 @@
 - (void) nextFrame
 {
     self->mPreTime = self->mCurTime;
-    self->mCurTime = System.currentTimeMillis()/1000;
+    //self->mCurTime = System.currentTimeMillis()/1000;
 
     if (mIsFixFrameRate)
     {

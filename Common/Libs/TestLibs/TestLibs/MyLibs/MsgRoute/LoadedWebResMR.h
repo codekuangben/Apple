@@ -1,11 +1,14 @@
-﻿@interface LoadedWebResMR : MsgRouteBase
+
+#import "MyLibs/MsgRoute/MsgRouteBase.h"
+
+@interface LoadedWebResMR : MsgRouteBase
 {
 @public
-	ITask mTask;
+	//ITask mTask;
 }
 
 // 属性区域
-@property() ITask mTask;
+//@property() ITask mTask;
 
 // 接口区域
 - (id) init;

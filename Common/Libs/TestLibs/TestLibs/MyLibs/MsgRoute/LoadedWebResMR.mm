@@ -1,4 +1,4 @@
-﻿#import "MyLibs/MsgRoute/LoadedWebResMR.h"
+#import "MyLibs/MsgRoute/LoadedWebResMR.h"
 
 @implementation LoadedWebResMR
 
@@ -14,7 +14,7 @@
 
 - (void) resetDefault
 {
-	self->mTask = nil;
+	//self->mTask = nil;
 }
 
 @end

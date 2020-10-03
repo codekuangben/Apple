@@ -1,9 +1,8 @@
-﻿#import <Foundation/Foundation.h>
+#import <Foundation/Foundation.h>
 #import "MyLibs/FrameHandle/FixedTickMgr.h"
 #import "MyLibs/FrameHandle/FrameTimerMgr.h"
 #import "MyLibs/FrameHandle/ITickedObject.h"
 #import "MyLibs/FrameHandle/LogicTickMgr.h"
-#import "MyLibs/FrameHandle/ResizeMgr.h"
 #import "MyLibs/FrameHandle/SystemFrameData.h"
 #import "MyLibs/FrameHandle/SystemTimeData.h"
 #import "MyLibs/FrameHandle/TickMgr.h"
@@ -11,12 +10,15 @@
 #import "MyLibs/FrameHandle/TimerMgr.h"
 #import "MyLibs/MsgRoute/MsgRouteNotify.h"
 #import "MyLibs/MsgRoute/SysMsgRoute.h"
+#import "MyLibs/FrameWork/Config.h"
+#import "MyLibs/FrameWork/ProcessSys.h"
+#import "MyLibs/FrameWork/EngineLoop.h"
 
 
 /**
  * @brief 全局数据区
  */
-@interface Ctx
+@interface Ctx : NSObject
 {
 @public
     Config* mCfg;                       // 整体配置文件

@@ -5,7 +5,7 @@
 
 +(id) init
 {
-	if(self = [super init:MsgRouteID.eMRIDThreadLog])
+	//if(self = [super init:MsgRouteID.eMRIDThreadLog])
 	{
 
 	}

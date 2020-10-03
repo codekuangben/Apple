@@ -7,6 +7,6 @@
 }
 
 - (id) init;
-- (void) run();
+- (void) run;
 
 @end

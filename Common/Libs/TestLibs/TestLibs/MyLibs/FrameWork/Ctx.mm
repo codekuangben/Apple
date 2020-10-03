@@ -21,8 +21,6 @@ static Ctx* mInstance = nil;
 - (void) constructInit
 {
     self->mMsgRouteNotify = [[MsgRouteNotify alloc] init];
-    self->mSystemSetting = [[SystemSetting alloc] init];
-
     self->mCfg = [[Config alloc] init];
 
     self->mProcessSys = [[ProcessSys alloc] init];
@@ -44,7 +42,6 @@ static Ctx* mInstance = nil;
 
 - (void) logicInit
 {
-    [self->mLogSys init];
     [self->mTickMgr init];
     [self->mFixedTickMgr init];
 

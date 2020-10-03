@@ -1,7 +1,7 @@
 #import "MyLibs/Tools/UtilSysLibsWrap.h"
 #import <Foundation/Foundation.h>
 #import "MyLibs/Base/GObject.h"
-"
+
 static NSString* CR_LF = @"\\r\\n";
 
 @implementation UtilSysLibsWrap
@@ -57,14 +57,18 @@ static NSString* CR_LF = @"\\r\\n";
 
 + (NSString*) getFormatTime
 {
+    /*
     Date currentTime = new Date();
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     NSString* dateString = formatter.format(currentTime);
+     */
+    NSString* dateString = @"";
     return dateString;
 }
 
 + (void) printCallStack
 {
+    /*
     Throwable ex = new Throwable();
 
     StackTraceElement[] stackElements = ex.getStackTrace();
@@ -80,6 +84,7 @@ static NSString* CR_LF = @"\\r\\n";
             System.out.println("-----------------------------------");
         }
     }
+     */
 }
 
 @end

@@ -1,5 +1,5 @@
 #import "Test/TestBase/TestMain.h"
-#import "Test/TestBase/TestSyntax.h"
+#import "Test/TestSyntax/TestSyntax.h"
 
 @implementation TestMain
 
