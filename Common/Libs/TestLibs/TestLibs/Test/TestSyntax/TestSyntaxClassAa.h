@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "Test/Base/GObject.h"
+#import "MyLibs/Base/GObject.h"
 
 @interface TestSyntaxClassAa : GObject
 {

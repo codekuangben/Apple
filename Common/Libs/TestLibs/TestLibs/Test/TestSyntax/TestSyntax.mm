@@ -22,12 +22,12 @@
 
 - (void) _testA
 {
-    TestSyntaxClassAa* TestSyntaxClassAa = [[TestSyntaxClassAa alloc] init]
+    TestSyntaxClassAa* TestSyntaxClassAa = [[TestSyntaxClassAa alloc] init];
 }
 
 - (void) _testB
 {
-    TestSyntaxClassAa* testSyntaxClassAa = [[TestSyntaxClassAa alloc] init]
+    TestSyntaxClassAa* testSyntaxClassAa = [[TestSyntaxClassAa alloc] init];
 }
 
 @end

@@ -57,11 +57,14 @@
 	{
 		//[self->mThis performSelector:self->mHandle withObject:self->mEventId withObject:dispObj];
 		//self->mHandleImp(self->mThis, self->mEventId, dispObj);
-	}
+        //self->mHandleImp();
+        [self->mThis performSelector:self->mHandle withObject:dispObj withObject:(id)self->mEventId];
+    }
 	else if(nil == self->mThis && nil != self->mHandle)
 	{
-		//self->mHandle(dispObj, self->mEventId); 
-	}
+		//self->mHandle(dispObj, self->mEventId);
+        [self->mThis performSelector:self->mHandle withObject:dispObj withObject:(id)self->mEventId];
+    }
 }
 
 - (void) setClientDispose:(BOOL) isDispose

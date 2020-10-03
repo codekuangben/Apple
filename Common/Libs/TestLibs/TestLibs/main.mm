@@ -3,7 +3,7 @@
 //  TestLibs
 
 #import <Foundation/Foundation.h>
-#import "TestA.h"
+#import "Test/TestClass/TestA.h"
 #import "Module/AppFrame/AppFrame.h"
 
 int main(int argc, const char * argv[])

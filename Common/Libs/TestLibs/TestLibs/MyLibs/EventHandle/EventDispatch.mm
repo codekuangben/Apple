@@ -58,7 +58,7 @@
 }
 
 // 相同的函数只能增加一次，Lua ，Python 这些语言不支持同时存在几个相同名字的函数，只支持参数可以赋值，因此不单独提供同一个名字不同参数的接口了
-- (void) addEventHandle:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle
+- (void) addEventHandle:(GObject<ICalleeObject>*) pThis handle:/*(GObject<IDispatchObject>*)*/(SEL) handle
 {
 	if (nil != pThis || nil != handle)
 	{
@@ -66,8 +66,9 @@
 
 		if (nil != handle)
 		{
-			[funcObject setFuncObject:pThis func:(SEL)handle];
-		}
+			//[funcObject setFuncObject:pThis func:(SEL)handle];
+            [funcObject setFuncObject:pThis func:handle];
+        }
 
 		[self addDispatch:funcObject];
 	}
