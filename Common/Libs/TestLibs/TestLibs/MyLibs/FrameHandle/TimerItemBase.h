@@ -8,6 +8,7 @@
  */
 @interface TimerItemBase : GObject <IDelayHandleItem, IDispatchObject>
 {
+@public
     float mInternal;        // 定时器间隔
     float mTotalTime;       // 总共定时器时间
     float mCurRunTime;      // 当前定时器运行的时间

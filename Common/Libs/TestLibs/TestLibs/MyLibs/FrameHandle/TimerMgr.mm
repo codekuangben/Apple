@@ -1,8 +1,9 @@
-﻿#import "MyLibs/FrameHandle/TimerMgr.h"
+#import "MyLibs/FrameHandle/TimerMgr.h"
+#import "MyLibs/FrameHandle/TimerItemBase.h"
 
 @implementation TimerMgr
 
--(void) init()
+-(id) init
 {
 	if(self = [super init])
 	{
@@ -17,12 +18,12 @@
 
 }
 
-- (void) addObject:(IDelayHandleItem*) delayObject
+- (void) addObject:(GObject<IDelayHandleItem>*) delayObject
 {
 	[self addObject:delayObject priority:0];
 }
 
-- (void) addObject:(IDelayHandleItem*) delayObject priority:(float) priority
+- (void) addObject:(GObject<IDelayHandleItem>*) delayObject priority:(float) priority
 {
 	// 检查当前是否已经在队列中
 	if (![self->mTimerList Contains:(TimerItemBase*)delayObject])
@@ -38,7 +39,7 @@
 	}
 }
 
-- (void) removeObject:(IDelayHandleItem*) delayObject
+- (void) removeObject:(GObject<IDelayHandleItem>*) delayObject
 {
 	// 检查当前是否在队列中
 	if ([self->mTimerList Contains:(TimerItemBase*)delayObject])
@@ -51,7 +52,7 @@
 		}
 		else
 		{
-			for(TimerItemBase* item in [self->mTimerList list])
+            for(TimerItemBase* item in [self->mTimerList list])
 			{
 				if ([UtilSysLibsWrap isAddressEqual:item b:delayObject])
 				{
@@ -69,7 +70,7 @@
 }
 
 // 从 Lua 中添加定时器，这种定时器尽量整个定时器周期只与 Lua 通信一次
-- (void) addTimer:(TimerItemBase*) delayObject, priority:(float) priority
+- (void) addTimer:(TimerItemBase*) delayObject priority:(float) priority
 {
 	[self addObject:delayObject priority:priority];
 }
@@ -90,7 +91,7 @@
 			[timerItem OnTimer:delta];
 		}
 
-		if (timerItem.mDisposed)        // 如果已经结束
+		if (timerItem->mDisposed)        // 如果已经结束
 		{
 			[self removeObject:timerItem];
 		}

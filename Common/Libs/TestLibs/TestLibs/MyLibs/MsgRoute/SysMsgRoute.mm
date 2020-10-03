@@ -1,10 +1,10 @@
-﻿#import "MyLibs/MsgRoute/SysMsgRoute.h"
+#import "MyLibs/MsgRoute/SysMsgRoute.h"
 
 @implementation SysMsgRoute
 
 -(id) init:(NSString*) name
 {
-	if([self = [super init:name]])
+	if([self = [super init]])
 	{
 		
 	}

@@ -9,7 +9,7 @@
 }
 
 @property (nonatomic, readwrite/*, retain*/) GObject<IDelayHandleItem>* mDelayObject;
-@property (nonatomic, readwrite, retain) DelayHandleParamBase* mDelayParam;
+@property (nonatomic, readwrite/*, retain*/) DelayHandleParamBase* mDelayParam;
 
 - (id) init;
 

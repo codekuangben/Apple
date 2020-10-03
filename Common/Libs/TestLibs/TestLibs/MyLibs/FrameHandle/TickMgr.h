@@ -1,32 +1,29 @@
-﻿/**
-* @brief 心跳管理器
-*/
+#import "MyLibs/DataStruct/MList.h"
+#import "MyLibs/DelayHandle/DelayHandleMgrBase.h"
+#import "MyLibs/DelayHandle/IDelayHandleItem.h"
+#import "MyLibs/EventHandle/ICalleeObjectNoRetNoParam.h"
+#import "MyLibs/Tools/UtilSysLibsWrap.h"
+#import "MyLibs/FrameHandle/ITickedObject.h"
+#import "MyLibs/Base/GObject.h"
 
-#import "MyLibs/DataStruct/MList.h";
-#import "MyLibs/DelayHandle/DelayHandleMgrBase.h";
-#import "MyLibs/DelayHandle/IDelayHandleItem.h";
-#import "MyLibs/EventHandle/ICalleeObjectNoRetNoParam.h";
-#import "MyLibs/Tools/UtilSysLibsWarp.h";
+/**
+ * @brief 心跳管理器
+ */
 
 @interface TickMgr : DelayHandleMgrBase
 {
     @protected
-    MList<TickProcessObject> mTickList;
+    MList* mTickList;
 }
 
-- (id) init
-{
-    self->mTickList = new MList<TickProcessObject>();
-}
-
-- (void) init;
+- (id) init;
 - (void) dispose;
-- (void) addTick:(ITickedObject*) tickObj;
-- (void) addTick:(ITickedObject*) tickObj  priority:(float) priority;
-- (void) addObject:(IDelayHandleItem*) delayObject;
-- (void) addObject:(IDelayHandleItem*) delayObject, priority:(float) priority;
-- (void) removeTick:(ITickedObject*) tickObj;
-- (void) removeObject:(IDelayHandleItem*) delayObject;
+- (void) addTick:(GObject<ITickedObject>*) tickObj;
+- (void) addTick:(GObject<ITickedObject>*) tickObj  priority:(float) priority;
+- (void) addObject:(GObject<IDelayHandleItem>*) delayObject;
+- (void) addObject:(GObject<IDelayHandleItem>*) delayObject priority:(float) priority;
+- (void) removeTick:(GObject<ITickedObject>*) tickObj;
+- (void) removeObject:(GObject<IDelayHandleItem>*) delayObject;
 - (void) Advance:(float) delta;
 - (void) onPreAdvance:(float) delta;
 - (void) onExecAdvance:(float) delta;

@@ -1,15 +1,12 @@
-﻿#import "MyLibs/FrameHandle/TickMgr.h"
+#import "MyLibs/FrameHandle/TickMgr.h"
+#import "MyLibs/FrameHandle/TickProcessObject.h"
 
 @implementation TickMgr
 
 - (id) init
 {
     self->mTickList = [[MList alloc] init];
-}
-
-- (void) init
-{
-
+    return self;
 }
 
 - (void) dispose
@@ -17,24 +14,24 @@
     [self->mTickList Clear];
 }
 
-- (void) addTick:(ITickedObject*) tickObj
+- (void) addTick:(GObject<ITickedObject>*) tickObj
 {
     [self addTick:tickObj priority:0];
 }
 
-- (void) addTick:(ITickedObject*) tickObj  priority:(float) priority
+- (void) addTick:(GObject<ITickedObject>*) tickObj  priority:(float) priority
 {
-    [self addObject:(IDelayHandleItem*)tickObj priority:priority];
+    [self addObject:(GObject<IDelayHandleItem>*)tickObj priority:priority];
 }
 
-- (void) addObject:(IDelayHandleItem*) delayObject
+- (void) addObject:(GObject<IDelayHandleItem>*) delayObject
 {
-    [self addObject:delayObject, priority:0];
+    [self addObject:delayObject priority:0];
 }
 
-- (void) addObject:(IDelayHandleItem*) delayObject, priority:(float) priority
+- (void) addObject:(GObject<IDelayHandleItem>*) delayObject priority:(float) priority
 {
-    if ([self->mLoopDepth isInDepth]
+    if ([self->mLoopDepth isInDepth])
     {
         [super addObject:delayObject priority:priority];
     }
@@ -51,12 +48,12 @@
                 continue;
             }
 
-            if ([self->mTickList get:idx]->mTickObject == delayObject)
+            if (((TickProcessObject*)[self->mTickList get:idx])->mTickObject == delayObject)
             {
                 return;
             }
 
-            if ([self->mTickList get:idx]->mPriority < priority)
+            if (((TickProcessObject*)[self->mTickList get:idx])->mPriority < priority)
             {
                 position = idx;
                 break;
@@ -66,7 +63,7 @@
         }
 
         TickProcessObject* processObject = [[TickProcessObject alloc] init];
-        processObject->mTickObject = (ITickedObject*)delayObject;
+        processObject->mTickObject = (GObject<ITickedObject>*)delayObject;
         processObject->mPriority = priority;
 
         if (position < 0 || position >= [self->mTickList Count])
@@ -80,12 +77,12 @@
     }
 }
 
-- (void) removeTick:(ITickedObject*) tickObj
+- (void) removeTick:(GObject<ITickedObject>*) tickObj
 {
-    [self removeObject:(IDelayHandleItem*)tickObj];
+    [self removeObject:(GObject<IDelayHandleItem>*)tickObj];
 }
 
-- (void) removeObject:(IDelayHandleItem*) delayObject
+- (void) removeObject:(GObject<IDelayHandleItem>*) delayObject
 {
     if ([self->mLoopDepth isInDepth])
     {
@@ -93,9 +90,9 @@
     }
     else
     {
-        for(TickProcessObject* item in [self->mTickList.list())
+        for(TickProcessObject* item in [self->mTickList list])
         {
-            if ([UtilSysLibsWrap isAddressEqual:item.mTickObject b:delayObject])
+            if ([UtilSysLibsWrap isAddressEqual:item->mTickObject b:delayObject])
             {
                 [self->mTickList Remove:item];
                 break;
@@ -131,13 +128,13 @@
 {
     int idx = 0;
     int count = [self->mTickList Count];
-    ITickedObject* tickObject = nil;
+    GObject<ITickedObject>* tickObject = nil;
 
     while (idx < count)
     {
-        tickObject = [self->mTickList get:idx]->mTickObject;
+        tickObject = ((TickProcessObject*)[self->mTickList get:idx])->mTickObject;
 
-        if (![(IDelayHandleItem*)tickObject isClientDispose])
+        if (![(GObject<IDelayHandleItem>*)tickObject isClientDispose])
         {
             [tickObject onTick:delta];
         }

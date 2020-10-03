@@ -1,13 +1,16 @@
-﻿#import "MyLibs/DataStruct/MList.h"
+#import "MyLibs/FrameHandle/FrameTimerMgr.h"
+#import "MyLibs/DataStruct/MList.h"
 #import "MyLibs/DelayHandle/DelayHandleMgrBase.h"
 #import "MyLibs/DelayHandle/IDelayHandleItem.h"
 #import "MyLibs/Tools/UtilSysLibsWrap.h"
+#import "MyLibs/FrameHandle/FrameTimerItem.h"
 
 @implementation FrameTimerMgr
 
 - (id) init
 {
     self->mTimerList = [[MList alloc] init];
+    return self;
 }
 
 - (void) dispose
@@ -15,17 +18,17 @@
 
 }
 
-- (void) addObject:(IDelayHandleItem*) delayObject
+- (void) addObject:(GObject<IDelayHandleItem>*) delayObject
 {
     [self addObject:delayObject priority:0];
 }
 
-- (void) addObject:(IDelayHandleItem*) delayObject priority:(float) priority
+- (void) addObject:(GObject<IDelayHandleItem>*) delayObject priority:(float) priority
 {
     // 检查当前是否已经在队列中
-    if (![self->mTimerList.Contains((FrameTimerItem)delayObject))
+    if (![self->mTimerList Contains:((FrameTimerItem*)delayObject)])
     {
-        if ([self->mLoopDepth isInDepth]
+        if ([self->mLoopDepth isInDepth])
         {
             [super addObject:delayObject priority:priority];
         }
@@ -36,7 +39,7 @@
     }
 }
 
-- (void) removeObject:(IDelayHandleItem*) delayObject
+- (void) removeObject:(GObject<IDelayHandleItem>*) delayObject
 {
     // 检查当前是否在队列中
     if ([self->mTimerList Contains:(FrameTimerItem*)delayObject])
@@ -51,7 +54,7 @@
         {
             for(FrameTimerItem* item in [self->mTimerList list])
             {
-                if ([UtilSysLibsWrap isAddressEqual:item, b:delayObject])
+                if ([UtilSysLibsWrap isAddressEqual:item b:delayObject])
                 {
                     [self->mTimerList Remove:item];
                     break;
@@ -61,7 +64,7 @@
     }
 }
 
-- (void) addFrameTimer:(FrameTimerItem) timer
+- (void) addFrameTimer:(FrameTimerItem*) timer
 {
     [self addFrameTimer:timer priority:0];
 }
@@ -80,13 +83,13 @@
 {
     [self->mLoopDepth incDepth];
 
-    for(FrameTimerItem* timerItem in [self->mTimerList list]
+    for(FrameTimerItem* timerItem in [self->mTimerList list])
     {
-        if (![timerItem isClientDispose]
+        if (![timerItem isClientDispose])
         {
             [timerItem OnFrameTimer];
         }
-        if (timerItem.mDisposed)
+        if ([timerItem mDisposed])
         {
             [self removeObject:timerItem];
         }
