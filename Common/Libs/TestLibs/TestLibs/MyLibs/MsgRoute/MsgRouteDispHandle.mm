@@ -12,23 +12,23 @@
 	return self;
 }
 
-- (void) addRouteHandle:(int) evtId pThis:(MsgRouteHandleBase) pThis handle:(IDispatchObject) handle
+- (void) addRouteHandle:(int) evtId pThis:(MsgRouteHandleBase*) pThis handle:(GObject<IDispatchObject>*) handle
 {
 	[self->mEventDispatchGroup addEventHandle:evtId pThis:pThis handle:handle];
 }
 
-- (void) removeRouteHandle:(int) evtId pThis:(MsgRouteHandleBase) pThis handle:(IDispatchObject) handle
+- (void) removeRouteHandle:(int) evtId pThis:(MsgRouteHandleBase*) pThis handle:(GObject<IDispatchObject>*) handle
 {
 	[self->mEventDispatchGroup removeEventHandle:evtId pThis:pThis handle:handle];
 }
 
-- (void) handleMsg:(MsgRouteBase) msg
+- (void) handleMsg:(MsgRouteBase*) msg
 {
 	NSString* textStr = "";
 
-	if([self->mEventDispatchGroup hasEventHandle:msg.mMsgType])
+	if([self->mEventDispatchGroup hasEventHandle:msg->mMsgType])
 	{
-		[self->mEventDispatchGroup dispatchEvent:msg.mMsgType msg:msg];
+		[self->mEventDispatchGroup dispatchEvent:msg->mMsgType msg:msg];
 	}
 	else
 	{

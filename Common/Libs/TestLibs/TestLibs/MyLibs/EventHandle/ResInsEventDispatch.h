@@ -18,6 +18,6 @@
 - (void) setInsGO: (NSObject*) go;
 - (NSObject*) getInsGO;
 
-- (void) dispatchEvent: (IDispatchObject) dispatchObject;
+- (void) dispatchEvent: (GObject<IDispatchObject>*) dispatchObject;
 
 @end

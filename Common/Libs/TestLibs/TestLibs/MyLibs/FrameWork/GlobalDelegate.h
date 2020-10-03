@@ -13,7 +13,7 @@
 }
 
 - (id) init;
-- (void) addMainChildChangedHandle:(GObject<ICalleeObject>*) pThis handle:(IDispatchObject) handle;
+- (void) addMainChildChangedHandle:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle;
 - (void) init;
 - (void) dispose;
 

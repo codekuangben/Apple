@@ -7,7 +7,7 @@
     self->mMainChildMassChangedDispatch = [[AddOnceEventDispatch alloc] init];
 }
 
-- (void) addMainChildChangedHandle:(GObject<ICalleeObject>*) pThis handle:(IDispatchObject) handle
+- (void) addMainChildChangedHandle:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle
 {
     [self->mMainChildMassChangedDispatch addEventHandle:pThis handle:handle];
 }

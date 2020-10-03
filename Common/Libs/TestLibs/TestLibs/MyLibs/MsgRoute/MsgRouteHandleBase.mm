@@ -14,7 +14,7 @@
 	return self;
 }
 
-- (void) addMsgRouteHandle:(MsgRouteID) msgRouteID handle:(IDispatchObject) handle
+- (void) addMsgRouteHandle:(MsgRouteID) msgRouteID handle:(GObject<IDispatchObject>*) handle
 {
 	if(![self->mId2HandleDic ContainsKey:msgRouteID])
 	{
@@ -24,7 +24,7 @@
 	[[self->mId2HandleDic get:msgRouteID] addEventHandle:nil, handle:handle];
 }
 
-- (void) removeMsgRouteHandle:(MsgRouteID) msgRouteID, handle:(IDispatchObject) handle
+- (void) removeMsgRouteHandle:(MsgRouteID) msgRouteID, handle:(GObject<IDispatchObject>*) handle
 {
 	if ([self->mId2HandleDic ContainsKey:msgRouteID])
 	{
@@ -32,9 +32,9 @@
 	}
 }
 
-- (void) handleMsg:(IDispatchObject) dispObj
+- (void) handleMsg:(GObject<IDispatchObject>*) dispObj
 {
-	MsgRouteBase msg = (MsgRouteBase)dispObj;
+	MsgRouteBase msg = (MsgRouteBase*)dispObj;
 
 	if ([self->mId2HandleDic ContainsKey:msg.mMsgID])
 	{
@@ -46,7 +46,7 @@
 	}
 }
 
-- (void) call:(IDispatchObject) dispObj
+- (void) call:(GObject<IDispatchObject>*) dispObj
 {
 
 }
