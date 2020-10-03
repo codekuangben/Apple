@@ -1,10 +1,11 @@
-﻿#import "MyLibs/FrameHandle/SystemTimeData.h"
+#import "MyLibs/FrameHandle/SystemTimeData.h"
+#import "MyLibs/FrameWork/Ctx.h"
 
 @implementation SystemTimeData
 
-- (void) init
+- (id) init
 {
-
+    return self;
 }
 
 - (void) dispose
@@ -12,7 +13,7 @@
 
 }
 
-- float getDeltaSec
+- (float) getDeltaSec
 {
     return self->mDeltaSec;
 }
@@ -22,7 +23,7 @@
     self->mDeltaSec = value;
 }
 
-- float getFixedTimestep
+- (float) getFixedTimestep
 {
     if ([Ctx ins]->mCfg->mIsActorMoveUseFixUpdate)
     {
@@ -34,7 +35,7 @@
     }
 }
 
-- long getCurTime
+- (long) getCurTime
 {
     return self->mCurTime;
 }
@@ -55,7 +56,7 @@
     }
     else
     {
-        if (self->mPreTime != 0f)     // 第一帧跳过，因为这一帧不好计算间隔
+        if (self->mPreTime != 0)     // 第一帧跳过，因为这一帧不好计算间隔
         {
             self->mDeltaSec = (float)(self->mCurTime - self->mPreTime);
         }

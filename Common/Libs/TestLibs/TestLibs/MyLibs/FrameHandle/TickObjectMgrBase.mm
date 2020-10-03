@@ -1,11 +1,12 @@
-﻿#import "MyLibs/FrameHandle/TickObjectMgrBase.h"
+#import "MyLibs/FrameHandle/TickObjectMgrBase.h"
+#import "MyLibs/FrameHandle/ITickedObject.h"
 
 // 每一帧执行的对象管理器
 @implementation TickObjectMgrBase
 
 - (id) init
 {
-
+    return self;
 }
 
 - (void) dispose
@@ -36,13 +37,13 @@
 {
     int idx = 0;
     int count = [self->mTickObjectList Count];
-    ITickedObject* tickObject = nil;
+    GObject<ITickedObject>* tickObject = nil;
 
     while (idx < count)
     {
         tickObject = [self->mTickObjectList get:idx];
 
-        if (![(IDelayHandleItem*)tickObject isClientDispose]
+        if (![(GObject<IDelayHandleItem>*)tickObject isClientDispose])
         {
             [tickObject onTick:delta];
         }
@@ -51,27 +52,27 @@
     }
 }
 
-- (void) addObject:(IDelayHandleItem*) tickObject
+- (void) addObject:(GObject<IDelayHandleItem>*) tickObject
 {
-    [self->addObject:tickObject priority:0];
+    [self addObject:tickObject priority:0];
 }
 
-- (void) addObject:(IDelayHandleItem*) tickObject priority:(float) priority
+- (void) addObject:(GObject<IDelayHandleItem>*) tickObject priority:(float) priority
 {
-    if ([self->mLoopDepth isInDepth]
+    if ([self->mLoopDepth isInDepth])
     {
         [super addObject:tickObject];
     }
     else
     {
-        if ([self->mTickObjectList IndexOf:(ITickedObject*)tickObject] == -1)
+        if ([self->mTickObjectList IndexOf:(GObject<ITickedObject>*)tickObject] == -1)
         {
-            [self->mTickObjectList Add:(ITickedObject*)tickObject];
+            [self->mTickObjectList Add:(GObject<ITickedObject>*)tickObject];
         }
     }
 }
 
-- (void) removeObject:(IDelayHandleItem*) tickObject
+- (void) removeObject:(GObject<IDelayHandleItem>*) tickObject
 {
     if ([self->mLoopDepth isInDepth])
     {
@@ -79,9 +80,9 @@
     }
     else
     {
-        if ([self->mTickObjectList.IndexOf:(ITickedObject*)tickObject] != -1)
+        if ([self->mTickObjectList IndexOf:(GObject<ITickedObject>*)tickObject] != -1)
         {
-            [self->mTickObjectList Remove:(ITickedObject*)tickObject];
+            [self->mTickObjectList Remove:(GObject<ITickedObject>*)tickObject];
         }
     }
 }

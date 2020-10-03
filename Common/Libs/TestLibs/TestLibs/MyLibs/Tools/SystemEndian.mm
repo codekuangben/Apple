@@ -1,4 +1,4 @@
-﻿#import "MyLibs/Tools/SystemEndian.h"
+#import "MyLibs/Tools/SystemEndian.h"
 
 static EEndian msLocalEndian = EEndian.eLITTLE_ENDIAN;   // 本地字节序
 static EEndian msNetEndian = EEndian.eBIG_ENDIAN;        // 网络字节序

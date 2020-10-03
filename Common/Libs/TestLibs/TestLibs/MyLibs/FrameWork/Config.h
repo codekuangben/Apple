@@ -5,7 +5,8 @@
  */
 @interface Config : GObject
 {
-    
+    @public
+    BOOL mIsActorMoveUseFixUpdate;
 }
 
 @end

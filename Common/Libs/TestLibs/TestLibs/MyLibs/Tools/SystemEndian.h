@@ -1,4 +1,7 @@
-﻿@interface SystemEndian
+#include "MyLibs/Base/GObject.h"
+#import "MyLibs/Tools/EEndian.h"
+
+@interface SystemEndian : GObject
 {
 @public
 

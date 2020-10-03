@@ -1,18 +1,18 @@
-﻿#import "MyLibs/FrameHandle/SystemFrameData.h"
+#import "MyLibs/FrameHandle/SystemFrameData.h"
 
 @implementation SystemFrameData
 
-- (void) init()
+- (id) init
+{
+    return self;
+}
+
+- (void) dispose
 {
 
 }
 
-- (void) dispose()
-{
-
-}
-
-- (int) getTotalFrameCount()
+- (int) getTotalFrameCount
 {
     return self->mTotalFrameCount;
 }
