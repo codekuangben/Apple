@@ -8,6 +8,7 @@
 {
     self->mGroupID2DispatchDic = [[MDictionary alloc] init];
     self->mIsInLoop = false;
+    return self;
 }
 
 // 添加分发器
@@ -15,7 +16,7 @@
 {
     if (![self->mGroupID2DispatchDic ContainsKey:groupID])
     {
-        [self->mGroupID2DispatchDic:set:groupID, value:disp];
+        [self->mGroupID2DispatchDic:groupID value:disp];
     }
 }
 
@@ -24,7 +25,7 @@
     // 如果没有就创建一个
     if (![self->mGroupID2DispatchDic ContainsKey:groupID])
     {
-        [self addEventDispatch:groupID, [[EventDispatch alloc] init];
+        [self addEventDispatch:groupID, [[EventDispatch alloc] init]];
     }
 
     [[self->mGroupID2DispatchDic get:groupID] addEventHandle:pThis handle:handle];
@@ -37,7 +38,7 @@
         [[self->mGroupID2DispatchDic get:groupID] removeEventHandle:pThis handle:handle];
 
         // 如果已经没有了
-        if (![[self->mGroupID2DispatchDic get:groupID] hasEventHandle]
+        if (![[self->mGroupID2DispatchDic get:groupID] hasEventHandle])
         {
             [self->mGroupID2DispatchDic Remove:groupID];
         }
@@ -88,7 +89,7 @@
     {
         if ([self->mGroupID2DispatchDic ContainsKey:groupID])
         {
-            [[self->mGroupID2DispatchDic.get:groupID] clearEventHandle];
+            [[self->mGroupID2DispatchDic get:groupID] clearEventHandle];
             [self->mGroupID2DispatchDic Remove:groupID];
         }
         else
