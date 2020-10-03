@@ -12,18 +12,33 @@
     return self;
 }
 
-- (void) setIncHandle:(GObject<ICalleeObjectNoRetNoParam>*) value
+- (void) setIncHandle:(GObject<IListenerObject>*) eventListener eventHandle:(SEL) eventHandle
 {
-    self->mIncHandle = value;
+    if (nil == self->mIncHandle)
+    {
+        self->mIncHandle = [[EventDispatchFunctionObject alloc] init];
+    }
+
+    [self->mIncHandle setFuncObject:eventListener eventHandle:eventHandle];
 }
 
-- (void) setDecHandle:(GObject<ICalleeObjectNoRetNoParam>*) value
+- (void) setDecHandle:(GObject<IListenerObject>*) eventListener eventHandle:(SEL) eventHandle
 {
+    if (nil == self->mDecHandle)
+    {
+        self->mDecHandle = [[EventDispatchFunctionObject alloc] init];
+    }
+
     self->mDecHandle = value;
 }
 
-- (void) setZeroHandle:(GObject<ICalleeObjectNoRetNoParam>*) value
+- (void) setZeroHandle:(GObject<IListenerObject>*) eventListener eventHandle:(SEL) eventHandle
 {
+    if (nil == self->mZeroHandle)
+    {
+        self->mZeroHandle = [[EventDispatchFunctionObject alloc] init];
+    }
+
     self->mZeroHandle = value;
 }
 

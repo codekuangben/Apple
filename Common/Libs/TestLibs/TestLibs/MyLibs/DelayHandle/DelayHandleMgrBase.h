@@ -1,6 +1,6 @@
 #import "MyLibs/Base/GObject.h"
 #import "MyLibs/DataStruct/MList.h"
-#import "MyLibs/EventHandle/ICalleeObjectNoRetNoParam.h"
+#import "MyLibs/EventHandle/IListenerObject.h"
 #import "MyLibs/FrameHandle/LoopDepth.h"
 #import "MyLibs/Tools/UtilSysLibsWrap.h"
 #include "MyLibs/DelayHandle/IDelayHandleItem.h"
@@ -8,7 +8,7 @@
 /**
  * @brief 当需要管理的对象可能在遍历中间添加的时候，需要这个管理器
  */
-@interface DelayHandleMgrBase : GObject <ICalleeObjectNoRetNoParam>
+@interface DelayHandleMgrBase : GObject <IListenerObject>
 {
 @public
     MList* mDeferredAddQueue;

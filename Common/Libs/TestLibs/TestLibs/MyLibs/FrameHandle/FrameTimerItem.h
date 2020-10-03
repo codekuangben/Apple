@@ -1,6 +1,6 @@
 #import "MyLibs/DelayHandle/IDelayHandleItem.h"
 #import "MyLibs/Base/GObject.h"
-#import "MyLibs/FrameHandle/ICalleeObjectFrameTimer.h"
+#import "MyLibs/FrameHandle/IListenerObject.h"
 
 /**
  * @brief 定时器，这个是不断增长的
@@ -13,7 +13,7 @@
     int mCurFrame;              // 当前已经调用的定时器的时间
     int mCurLeftFrame;          // 剩余帧数
     BOOL mIsInfineLoop;      // 是否是无限循环
-    GObject<ICalleeObjectFrameTimer>* mTimerDisp;       // 定时器分发
+    GObject<IListenerObject>* mTimerDispatch;       // 定时器分发
     BOOL mDisposed;             // 是否已经被释放
 }
 

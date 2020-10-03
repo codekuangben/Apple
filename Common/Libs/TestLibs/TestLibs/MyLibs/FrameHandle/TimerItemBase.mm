@@ -11,16 +11,16 @@
     self->mCurCallTime = 0;
     self->mIsInfineLoop = false;
     self->mIntervalLeftTime = 0;
-    self->mTimerDisp = [[TimerFunctionObject alloc] init];
+    self->mTimerDispatch = [[EventDispatchFunctionObject alloc] init];
     self->mDisposed = false;
     self->mIsContinuous = false;
     
     return self;
 }
 
-- (void) setFuncObject:(GObject<ICalleeObjectTimer>*) eventHandle
+- (void) setFuncObject:(GObject<IListenerObject>*) eventHandle
 {
-    [self->mTimerDisp setFuncObject:eventHandle];
+    [self->mTimerDispatch setFuncObject:eventHandle];
 }
 
 - (void) setTotalTime:(float) value
@@ -107,9 +107,9 @@
         self->mIntervalLeftTime = self->mIntervalLeftTime - self->mInternal;
         [self onPreCallBack];
 
-        if ([self->mTimerDisp isValid])
+        if ([self->mTimerDispatch isValid])
         {
-            [self->mTimerDisp call:self];
+            [self->mTimerDispatch call:self];
         }
     }
 }
@@ -120,9 +120,9 @@
     self->mCurCallTime = self->mTotalTime;
     [self onPreCallBack];
 
-    if ([self->mTimerDisp isValid])
+    if ([self->mTimerDispatch isValid])
     {
-        [self->mTimerDisp call:self];
+        [self->mTimerDispatch call:self];
     }
 }
 
@@ -148,9 +148,9 @@
         self->mIntervalLeftTime = self->mIntervalLeftTime - self->mInternal;
         [self onPreCallBack];
 
-        if ([self->mTimerDisp isValid])
+        if ([self->mTimerDispatch isValid])
         {
-            [self->mTimerDisp call:self];
+            [self->mTimerDispatch call:self];
         }
     }
 }
@@ -165,9 +165,9 @@
         self->mIntervalLeftTime = fmod(self->mIntervalLeftTime, self->mInternal);   // 只保留余数
         [self onPreCallBack];
 
-        if ([self->mTimerDisp isValid])
+        if ([self->mTimerDispatch isValid])
         {
-            [self->mTimerDisp call:self];
+            [self->mTimerDispatch call:self];
         }
     }
 }

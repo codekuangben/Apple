@@ -9,7 +9,7 @@
     self->mCurFrame = 0;
     self->mIsInfineLoop = false;
     self->mCurLeftFrame = 0;
-    self->mTimerDisp = nil;
+    self->mTimerDispatch = nil;
     self->mDisposed = false;
     
     return self;
@@ -38,9 +38,9 @@
         {
             self->mCurLeftFrame = 0;
 
-            if (self->mTimerDisp != nil)
+            if (self->mTimerDispatch != nil)
             {
-                [self->mTimerDisp call: self];
+                [self->mTimerDispatch call: self];
             }
         }
     }
@@ -49,9 +49,9 @@
         if (self->mCurFrame == self->mTotalFrameCount)
         {
             self->mDisposed = true;
-            if (self->mTimerDisp != nil)
+            if (self->mTimerDispatch != nil)
             {
-                [self->mTimerDisp call: self];
+                [self->mTimerDispatch call: self];
             }
         }
         else
@@ -59,9 +59,9 @@
             if (self->mCurLeftFrame == self->mInternal)
             {
                 self->mCurLeftFrame = 0;
-                if (self->mTimerDisp != nil)
+                if (self->mTimerDispatch != nil)
                 {
-                    [self->mTimerDisp call: self];
+                    [self->mTimerDispatch call: self];
                 }
             }
         }

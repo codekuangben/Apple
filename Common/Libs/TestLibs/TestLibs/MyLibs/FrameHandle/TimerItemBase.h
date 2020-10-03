@@ -1,7 +1,7 @@
 #import "MyLibs/DelayHandle/IDelayHandleItem.h"
 #import "MyLibs/EventHandle/IDispatchObject.h"
-#import "MyLibs/FrameHandle/TimerFunctionObject.h"
-#import "MyLibs/FrameHandle/ICalleeObjectTimer.h"
+#import "MyLibs/FrameHandle/EventDispatchFunctionObject.h"
+#import "MyLibs/FrameHandle/IListenerObject.h"
 #import "MyLibs/Base/GObject.h"
 /**
  * @brief 定时器，这个是不断增长的
@@ -15,13 +15,13 @@
     float mCurCallTime;     // 当前定时器已经调用的时间
     BOOL mIsInfineLoop;      // 是否是无限循环
     float mIntervalLeftTime;     // 定时器调用间隔剩余时间
-    TimerFunctionObject* mTimerDisp;       // 定时器分发
+    EventDispatchFunctionObject* mTimerDispatch;       // 定时器分发
     BOOL mDisposed;             // 是否已经被释放
     BOOL mIsContinuous;          // 是否是连续的定时器
 }
 
 - (id) init;
-- (void) setFuncObject:(GObject<ICalleeObjectTimer>*) eventHandle;
+- (void) setFuncObject:(GObject<IListenerObject>*) eventHandle;
 - (void) setTotalTime:(float) value;
 - (float) getRunTime;
 - (float) getCallTime;

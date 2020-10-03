@@ -1,7 +1,7 @@
 #import "MyLibs/DataStruct/MList.h"
 #import "MyLibs/DelayHandle/DelayHandleMgrBase.h"
 #import "MyLibs/DelayHandle/IDelayHandleItem.h"
-#import "MyLibs/EventHandle/ICalleeObjectNoRetNoParam.h"
+#import "MyLibs/EventHandle/IListenerObject.h"
 #import "MyLibs/Tools/UtilSysLibsWrap.h"
 #import "MyLibs/FrameHandle/ITickedObject.h"
 #import "MyLibs/Base/GObject.h"
