@@ -1,7 +1,7 @@
 #import "MyLibs/DelayHandle/IDelayHandleItem.h"
 #import "MyLibs/EventHandle/IDispatchObject.h"
-#import "MyLibs/FrameHandle/EventDispatchFunctionObject.h"
-#import "MyLibs/FrameHandle/IListenerObject.h"
+#import "MyLibs/EventHandle/EventDispatchFunctionObject.h"
+#import "MyLibs/EventHandle/IListenerObject.h"
 #import "MyLibs/Base/GObject.h"
 /**
  * @brief 定时器，这个是不断增长的

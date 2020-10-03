@@ -1,11 +1,13 @@
 #import "MyLibs/DelayHandle/IDelayHandleItem.h"
 #import "MyLibs/Base/GObject.h"
-#import "MyLibs/FrameHandle/EventDispatchFunctionObject.h"
+#import "MyLibs/EventHandle/EventDispatchFunctionObject.h"
+#import "MyLibs/EventHandle/IDispatchObject.h"
+
 
 /**
  * @brief 定时器，这个是不断增长的
  */
-@interface FrameTimerItem : GObject <IDelayHandleItem>
+@interface FrameTimerItem : GObject <IDispatchObject, IDelayHandleItem>
 {
     @public 
     int mInternal;              // 帧数间隔
