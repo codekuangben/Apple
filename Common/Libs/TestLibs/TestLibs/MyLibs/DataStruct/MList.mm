@@ -1,4 +1,4 @@
-﻿#import "MyLibs/DataStruct/MList.h"
+#import "MyLibs/DataStruct/MList.h"
 
 /**
  * @brief 对系统 List 的封装
@@ -8,11 +8,13 @@
 - (id) init
 {
     self->mList = [NSMutableArray arrayWithCapacity:0];
+    return self;
 }
 
 - (id) initWithParams:(int) capacity
 {
     self->mList = [NSMutableArray arrayWithCapacity:capacity];
+    return self;
 }
 
 - (NSMutableArray*) list
@@ -38,6 +40,7 @@
 - (BOOL) Remove:(id) item
 {
     [self->mList removeObject:item];
+    return YES;
 }
 
 - (id) get:(int) index
@@ -45,7 +48,7 @@
     return [self->mList objectAtIndex:index];
 }
 
-- (void) set:(int) index, value:(id) value
+- (void) set:(int) index value:(id) value
 {
     [self->mList replaceObjectAtIndex:index withObject:value];
 }
@@ -62,7 +65,7 @@
 
 - (void) setLength:(int) value
 {
-    self->mList.ensureCapacity(value);
+    //self->mList.ensureCapacity(value);
 }
 
 - (void) RemoveAt:(int) index
@@ -77,7 +80,7 @@
 
 - (void) Insert:(int) index item:(id) item
 {
-    if (index <= self->Count())
+    if (index <= [self Count])
     {
         [self->mList insertObject:item atIndex:index];
     }

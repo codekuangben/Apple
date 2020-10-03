@@ -1,10 +1,11 @@
-﻿#import "MyLibs/DataStruct/MDictionary.h"
+#import "MyLibs/DataStruct/MDictionary.h"
 
 @implementation MDictionary
 
 - (id) init
 {
     mData = [NSMutableDictionary dictionary];
+    return self;
 }
 
 - (NSMutableDictionary*) getData
@@ -24,12 +25,12 @@
 
 - (int) Count
 {
-    return [self->mData count]
+    return [self->mData count];
 }
 
-- (void) add:(id) key, value:(id) value
+- (void) add:(id)key value:(id)value
 {
-    [self->mDic setObject:value forKey:key]
+    [self->mData setObject:value forKey:key];
 }
 
 - (void) Remove:(id) key
@@ -42,7 +43,7 @@
     [self->mData removeAllObjects];
 }
 
-- (BOOL) TryGetValue:(id) key value:(TValue) value
+- (BOOL) TryGetValue:(id) key value:(id) value
 {
     value = [self->mData get:key];
     return true;
@@ -50,7 +51,8 @@
 
 - (BOOL) ContainsKey:(id) key
 {
-    return [self->mData objectForKey:key];
+    [self->mData objectForKey:key];
+    return YES;
 }
 
 - (NSMutableArray*) allKeys
