@@ -18,7 +18,7 @@
     // 每一帧的游戏逻辑处理
     [[Ctx ins]->mProcessSys ProcessNextFrame];
     // 日志处理
-    [[Ctx ins]->mLogSys updateLog];
+    //[[Ctx ins]->mLogSys updateLog];
 }
 
 - (void) fixedUpdate

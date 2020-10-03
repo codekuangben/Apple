@@ -1,4 +1,4 @@
-﻿#import "MyLibs/EventHandle/EventDispatch.h"
+#import "MyLibs/EventHandle/EventDispatch.h"
 #import "MyLibs/DelayHandle/DelayHandleMgrBase.h"
 #import "MyLibs/DataStruct/MList.h"
 
@@ -58,7 +58,7 @@
 }
 
 // 相同的函数只能增加一次，Lua ，Python 这些语言不支持同时存在几个相同名字的函数，只支持参数可以赋值，因此不单独提供同一个名字不同参数的接口了
-- (void) addEventHandle:(GObject<ICalleeObject>*) pThis, handle:(GObject<IDispatchObject>*) handle
+- (void) addEventHandle:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle
 {
 	if (nil != pThis || nil != handle)
 	{
@@ -66,7 +66,7 @@
 
 		if (nil != handle)
 		{
-			[funcObject setFuncObject:pThis, func:handle;
+			[funcObject setFuncObject:pThis func:(SEL)handle];
 		}
 
 		[self addDispatch:funcObject];
@@ -77,7 +77,7 @@
 	}
 }
 
-- (void) removeEventHandle:(GObject<ICalleeObject>*) pThis, handle:(GObject<IDispatchObject>*) handle
+- (void) removeEventHandle:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle
 {
 	int idx = 0;
 	int elemLen = 0;
@@ -85,7 +85,7 @@
 
 	while (idx < elemLen)
 	{
-		if ([self->mHandleList get:idx] isEqual:pThis, func:handle])
+		if ([[self->mHandleList get:idx] isEqual:pThis func:handle])
 		{
 			break;
 		}
@@ -108,9 +108,9 @@
 	[self addObject:delayObject priority:0];
 }
 
-- (void) addObject:(GObject<IDelayHandleItem>*) delayObject, priority:(float) priority
+- (void) addObject:(GObject<IDelayHandleItem>*) delayObject priority:(float) priority
 {
-	if ([self->mLoopDepth isInDepth]
+	if ([self->mLoopDepth isInDepth])
 	{
 		[super addObject:delayObject priority:priority];
 	}
@@ -152,7 +152,7 @@
 	{
 		handle = [self->mHandleList get:idx];
 
-		if (!handle.mIsClientDispose)
+		if (![handle mIsClientDispose])
 		{
 			[handle call:dispatchObject];
 		}
@@ -170,7 +170,7 @@
 
 - (void) clearEventHandle
 {
-	if ([self->mLoopDepth isInDepth]
+	if ([self->mLoopDepth isInDepth])
 	{
 		//foreach (EventDispatchFunctionObject item in self->mHandleList.list())
 		int idx = 0;
@@ -193,7 +193,7 @@
 }
 
 // 这个判断说明相同的函数只能加一次，但是如果不同资源使用相同的回调函数就会有问题，但是这个判断可以保证只添加一次函数，值得，因此不同资源需要不同回调函数
-- (BOOL) isExistEventHandle:(GObject<ICalleeObject>*) pThis, handle:(GObject<IDispatchObject>*) handle
+- (BOOL) isExistEventHandle:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle
 {
 	BOOL bFinded = false;
 	//foreach (EventDispatchFunctionObject item in self->mHandleList.list())
@@ -205,7 +205,7 @@
 	{
 		item = [self->mHandleList get:idx];
 
-		if ([item isEqual:pThis handle:handle])
+		if ([item isEqual:pThis handle:(SEL)handle])
 		{
 			bFinded = true;
 			break;
@@ -226,7 +226,7 @@
 
 	while (idx < len)
 	{
-		handle = 【self->mHandleList get:idx];
+        handle = [self->mHandleList get:idx];
 
 		[self->mHandleList Add:handle];
 

@@ -1,11 +1,12 @@
 #import "MyLibs/DataStruct/MDictionary.h"
+#import "MyLibs/Base/GObject.h"
 
 @class EventDispatch;
 @class GObject;
 @protocol ICalleeObject;
 @protocol IDispatchObject;
 
-@interface EventDispatchGroup
+@interface EventDispatchGroup : GObject
 {
     @protected
     MDictionary* mGroupID2DispatchDic;

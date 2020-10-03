@@ -31,7 +31,7 @@
         [self addEventDispatch:groupID disp:[[EventDispatch alloc] init]];
     }
 
-    [[self->mGroupID2DispatchDic get:strKey/*groupID*/] addEventHandle:pThis handle:handle];
+    [[self->mGroupID2DispatchDic get:groupID] addEventHandle:pThis handle:handle];
 }
 
 - (void) removeEventHandle:(int) groupID pThis:(GObject<ICalleeObject>*) pThis handle:(GObject<IDispatchObject>*) handle
@@ -39,10 +39,10 @@
     NSString* strKey = [NSString stringWithFormat:@"%d",groupID]; 
     if ([self->mGroupID2DispatchDic ContainsKey:strKey/*groupID*/])
     {
-        [[self->mGroupID2DispatchDic get:strKey/*groupID*/] removeEventHandle:pThis handle:handle];
+        [[self->mGroupID2DispatchDic get:groupID] removeEventHandle:pThis handle:handle];
 
         // 如果已经没有了
-        if (![[self->mGroupID2DispatchDic get:strKey/*groupID*/] hasEventHandle])
+        if (![[self->mGroupID2DispatchDic get:groupID] hasEventHandle])
         {
             [self->mGroupID2DispatchDic Remove:strKey/*groupID*/];
         }
@@ -59,7 +59,7 @@
     self->mIsInLoop = true;
     if ([self->mGroupID2DispatchDic ContainsKey:strKey/*groupID*/])
     {
-        [[self->mGroupID2DispatchDic get:strKey/*groupID*/] dispatchEvent:dispatchObject];
+        [[self->mGroupID2DispatchDic get:groupID] dispatchEvent:dispatchObject];
     }
     else
     {
@@ -95,7 +95,7 @@
     {
         if ([self->mGroupID2DispatchDic ContainsKey:strKey/*groupID*/])
         {
-            [[self->mGroupID2DispatchDic get:strKey/*groupID*/] clearEventHandle];
+            [[self->mGroupID2DispatchDic get:groupID] clearEventHandle];
             [self->mGroupID2DispatchDic Remove:strKey/*groupID*/];
         }
         else
@@ -114,7 +114,7 @@
     NSString* strKey = [NSString stringWithFormat:@"%d",groupID]; 
     if([self->mGroupID2DispatchDic ContainsKey:strKey/*groupID*/])
     {
-        return [[self->mGroupID2DispatchDic get:strKey/*groupID*/] hasEventHandle];
+        return [[self->mGroupID2DispatchDic get:groupID] hasEventHandle];
     }
 
     return false;
