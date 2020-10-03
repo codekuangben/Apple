@@ -9,10 +9,15 @@
     self->mCurFrame = 0;
     self->mIsInfineLoop = false;
     self->mCurLeftFrame = 0;
-    self->mTimerDispatch = nil;
+    self->mTimerDispatch = [[EventDispatchFunctionObject alloc] init];;
     self->mDisposed = false;
     
     return self;
+}
+
+- (void) setFuncObject:(GObject<IListenerObject>*) eventListener eventHandle:(SEL) eventHandle;
+{
+    [self->mTimerDispatch eventListener:eventListener setFuncObject:eventHandle];
 }
 
 - (void) OnFrameTimer

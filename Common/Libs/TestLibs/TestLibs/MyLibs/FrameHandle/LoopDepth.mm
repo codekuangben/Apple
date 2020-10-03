@@ -29,7 +29,7 @@
         self->mDecHandle = [[EventDispatchFunctionObject alloc] init];
     }
 
-    self->mDecHandle = value;
+    [self->mDecHandle setFuncObject:eventListener eventHandle:eventHandle];
 }
 
 - (void) setZeroHandle:(GObject<IListenerObject>*) eventListener eventHandle:(SEL) eventHandle
@@ -39,7 +39,7 @@
         self->mZeroHandle = [[EventDispatchFunctionObject alloc] init];
     }
 
-    self->mZeroHandle = value;
+    [self->mZeroHandle setFuncObject:eventListener eventHandle:eventHandle];
 }
 
 - (void) incDepth

@@ -18,9 +18,9 @@
     return self;
 }
 
-- (void) setFuncObject:(GObject<IListenerObject>*) eventHandle
+- (void) setFuncObject:(GObject<IListenerObject>*) eventListener eventHandle:(SEL) eventHandle;
 {
-    [self->mTimerDispatch setFuncObject:eventHandle];
+    [self->mTimerDispatch eventListener:eventListener setFuncObject:eventHandle];
 }
 
 - (void) setTotalTime:(float) value

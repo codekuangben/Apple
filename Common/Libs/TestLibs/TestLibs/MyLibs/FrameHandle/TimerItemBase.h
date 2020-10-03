@@ -21,7 +21,7 @@
 }
 
 - (id) init;
-- (void) setFuncObject:(GObject<IListenerObject>*) eventHandle;
+- (void) setFuncObject:(GObject<IListenerObject>*) eventListener eventHandle:(SEL) eventHandle;
 - (void) setTotalTime:(float) value;
 - (float) getRunTime;
 - (float) getCallTime;
