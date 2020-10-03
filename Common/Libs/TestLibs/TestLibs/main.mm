@@ -4,6 +4,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TestA.h"
+#import "Module/AppFrame/AppFrame.h"
 
 int main(int argc, const char * argv[])
 {
@@ -16,6 +17,9 @@ int main(int argc, const char * argv[])
         [testA setAll: 10 paramStr: @"name"];
         
         [TestA setB: 20];
+
+        AppFrame* AppFrame = [[AppFrame, alloc] init];
+        [AppFrame run];
     }
     return 0;
 }
