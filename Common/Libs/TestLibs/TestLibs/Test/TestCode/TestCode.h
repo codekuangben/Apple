@@ -10,6 +10,6 @@
 
 - (id) init;
 - (void) run;
-- (void) _onEventHandle:GObject<IDispatchObject>* dispatchObject userParam:(id)userParam;
+- (void) _onEventHandle:(GObject<IDispatchObject>*) dispatchObject userParam:(id)userParam;
 
 @end
