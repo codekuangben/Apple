@@ -2,19 +2,19 @@
 
 @implementation UtilLog
 
-+ (void) log:(NSString*) strContent
++ (void) log:(NSString*) strContent ...
 {
-    NSLog(strContent);
+    NSLog(strContent, ...);
 }
 
-+ (void) warn:(NSString*) strContent
++ (void) warn:(NSString*) strContent ...
 {
-    NSLog(strContent);
+    NSLog(strContent, ...);
 }
 
-+ (void) error:(NSString*) strContent
++ (void) error:(NSString*) strContent ...
 {
-    NSLog(strContent);
+    NSLog(strContent, ...);
 }
 
 @end
