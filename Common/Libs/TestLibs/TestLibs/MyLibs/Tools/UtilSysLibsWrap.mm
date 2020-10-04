@@ -6,24 +6,24 @@ static NSString* CR_LF = @"\\r\\n";
 
 @implementation UtilSysLibsWrap
 
-+ (MEncoding*) convGkEncode2EncodingEncoding:(GkEncode) gkEncode
++ (MEncoding*) convGkEncode2EncodingEncoding:(MEncode) gkEncode
 {
     /*
     MEncoding* retEncode = MEncoding.UTF8;
 
-    if (GkEncode.eUTF8 == gkEncode)
+    if (MEncode.eUTF8 == gkEncode)
     {
         retEncode = MEncoding.UTF8;
     }
-    else if (GkEncode.eGB2312 == gkEncode)
+    else if (MEncode.eGB2312 == gkEncode)
     {
         retEncode = MEncoding.UTF8;
     }
-    else if (GkEncode.eUnicode == gkEncode)
+    else if (MEncode.eUnicode == gkEncode)
     {
         retEncode = MEncoding.Unicode;
     }
-    else if (GkEncode.eDefault == gkEncode)
+    else if (MEncode.eDefault == gkEncode)
     {
         retEncode = MEncoding.Default;
     }

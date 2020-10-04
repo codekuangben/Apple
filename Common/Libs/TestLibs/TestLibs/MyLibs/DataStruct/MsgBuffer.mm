@@ -1,4 +1,4 @@
-﻿// #import "MyLibs/Tools/EEndian.h"
+﻿// #import "MyLibs/Tools/MEndian.h"
 
 // @implementation MsgBuffer
 
@@ -30,7 +30,7 @@
 // }
 
 // // 设置网络字节序
-// - (void) setEndian:(EEndian) end
+// - (void) setEndian:(MEndian) end
 // {
 //     mHeaderBA.setEndian(end);
 //     mMsgBodyBA.setEndian(end);

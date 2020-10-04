@@ -269,10 +269,10 @@
 
 // -(void) writeText:(NSString*) text
 // {
-// 	self->writeText(text, GkEncode.eUTF8);
+// 	self->writeText(text, MEncode.eUTF8);
 // }
 
-// -(void) writeText:(NSString*) text gkEncode:(GkEncode) gkEncode
+// -(void) writeText:(NSString*) text gkEncode:(MEncode) gkEncode
 // {
 // 	MEncoding encode = UtilSysLibsWrap.convGkEncode2EncodingEncoding(gkEncode);
 
@@ -282,7 +282,7 @@
 // 	{
 // 		//if (encode == nil)
 // 		//{
-// 		//    encode = GkEncode.UTF8;
+// 		//    encode = MEncode.UTF8;
 // 		//}
 
 // 		char[] bytes = encode.GetBytes(text);
@@ -341,10 +341,10 @@
 
 // -(void) writeLine:(NSString*) text
 // {
-// 	self->writeLine(text, GkEncode.eUTF8);
+// 	self->writeLine(text, MEncode.eUTF8);
 // }
 
-// -(void) writeLine:(NSString*) text gkEncode:(GkEncode) gkEncode
+// -(void) writeLine:(NSString*) text gkEncode:(MEncode) gkEncode
 // {
 // 	text = text + UtilSysLibsWrap.CR_LF;
 // 	writeText(text, gkEncode);

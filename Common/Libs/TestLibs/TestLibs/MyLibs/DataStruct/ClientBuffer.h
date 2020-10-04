@@ -46,7 +46,7 @@
 // - (ByteBuffer*) getSendBuffer;
 // - (ByteBuffer*) getSendData;
 // // 设置 ClientBuffer 字节序
-// - (void) setEndian:(EEndian) end;
+// - (void) setEndian:(MEndian) end;
 // - (void) setCryptKey:(char[]) encrypt;
 // - (void) checkDES;
 // - (MsgBuffer*) getRawBuffer;

@@ -5,26 +5,26 @@
 
 // - (id) init
 // {
-//     [self init:BufferCV.INIT_CAPACITY maxCapacity:BufferCV.MAX_CAPACITY endian:EEndian.eLITTLE_ENDIAN]
+//     [self init:BufferCV.INIT_CAPACITY maxCapacity:BufferCV.MAX_CAPACITY endian:MEndian.eLITTLE_ENDIAN]
     
 //     return self;
 // }
 
 // - (id) init:(int) initCapacity
 // {
-//     [self init:initCapacity maxCapacity:BufferCV.MAX_CAPACITY endian:EEndian.eLITTLE_ENDIAN]
+//     [self init:initCapacity maxCapacity:BufferCV.MAX_CAPACITY endian:MEndian.eLITTLE_ENDIAN]
     
 //     return self;
 // }
 
 // - (id) init:(int) initCapacity maxCapacity:(int) maxCapacity
 // {
-//     [self init:initCapacity maxCapacity endian:EEndian.eLITTLE_ENDIAN]
+//     [self init:initCapacity maxCapacity endian:MEndian.eLITTLE_ENDIAN]
     
 //     return self;
 // }
 
-// - (id)init:(int)initCapacity maxCapacity:(int)maxCapacity endian:(EEndian)endian
+// - (id)init:(int)initCapacity maxCapacity:(int)maxCapacity endian:(MEndian)endian
 // {
 //     self->mEndian = endian;        // 缓冲区默认是小端的数据，因为服务器是 linux 的
 // 	self->mDynBuffer = [[DynByteBuffer alloc] init:initCapacity maxCapacity:maxCapacity];
@@ -60,12 +60,12 @@
 // 	return (self->mDynBuffer->getSize() - self->mPos);
 // }
 
-// - (EEndian)getEndian
+// - (MEndian)getEndian
 // {
 // 	return self->mEndian;
 // }
 
-// - (void)setEndian:(EEndian)end
+// - (void)setEndian:(MEndian)end
 // {
 // 	self->mEndian = end;
 // }
@@ -291,7 +291,7 @@
 // 	return this;
 // }
 
-// - (ByteBuffer*) readMultiByte:(NSString*)tmpStr len:(int)len gkCharSet:(GkEncode)gkCharSet
+// - (ByteBuffer*) readMultiByte:(NSString*)tmpStr len:(int)len gkCharSet:(MEncode)gkCharSet
 // {
 // 	MEncoding charSet = UtilSysLibsWrap.convGkEncode2EncodingEncoding(gkCharSet);
 
@@ -483,7 +483,7 @@
 // }
 
 // // 写入字符串
-// - (void) writeMultiByte:(NSString*) value, gkCharSet:(GkEncode) gkCharSet len:(int) len
+// - (void) writeMultiByte:(NSString*) value, gkCharSet:(MEncode) gkCharSet len:(int) len
 // {
 // 	MEncoding charSet = UtilSysLibsWrap.convGkEncode2EncodingEncoding(gkCharSet);
 // 	(int) num = 0;

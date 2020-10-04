@@ -5,12 +5,12 @@
 // + (BOOL) ToBoolean:(Byte[]) bytes
 //         startIndex: (int) startIndex
 // {
-//     return MBitConverter.ToBoolean(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
+//     return MBitConverter.ToBoolean(bytes, startIndex, MEndian.eLITTLE_ENDIAN);
 // }
 
 // + (BOOL) ToBoolean:(char[]) bytes
 //         startIndex: (int) startIndex
-//         endian:(EEndian) endian
+//         endian:(MEndian) endian
 // {
 //     return bytes[startIndex] != 0;
 // }
@@ -18,12 +18,12 @@
 // + (char) ToChar:(char[]) bytes
 //         startIndex: (int) startIndex
 // {
-//     return MBitConverter.ToChar(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
+//     return MBitConverter.ToChar(bytes, startIndex, MEndian.eLITTLE_ENDIAN);
 // }
 
 // + (char) ToChar:(char[]) bytes
 //         startIndex: (int) startIndex
-//         endian: (EEndian) endian
+//         endian: (MEndian) endian
 
 // {
 //     return (char)bytes[startIndex];
@@ -32,15 +32,15 @@
 // + (short) ToInt16:(char[]) bytes
 //         startIndex: (int) startIndex
 // {
-//     return MBitConverter.ToInt16(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
+//     return MBitConverter.ToInt16(bytes, startIndex, MEndian.eLITTLE_ENDIAN);
 // }
 
 // + (short) ToInt16:(char[]) bytes
 //         startIndex: (int) startIndex
-//         endian: (EEndian) endian
+//         endian: (MEndian) endian
 // {
 //     short retValue = 0;
-//     if (endian == EEndian.eLITTLE_ENDIAN)
+//     if (endian == MEndian.eLITTLE_ENDIAN)
 //     {
 //         retValue = (short)(
 //                            (bytes[startIndex + 1] << 8) +
@@ -60,15 +60,15 @@
 // + (short) ToUInt16:(char[]) bytes
 //         startIndex:(int) startIndex
 // {
-//     return MBitConverter.ToUInt16(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
+//     return MBitConverter.ToUInt16(bytes, startIndex, MEndian.eLITTLE_ENDIAN);
 // }
 
 // + (short) ToUInt16:(char[]) bytes
 //         startIndex:(int) startIndex
-//         endian:(EEndian) endian
+//         endian:(MEndian) endian
 // {
 //     short retValue = 0;
-//     if (endian == EEndian.eLITTLE_ENDIAN)
+//     if (endian == MEndian.eLITTLE_ENDIAN)
 //     {
 //         retValue = (short)(
 //                            (bytes[startIndex + 1] << 8) +
@@ -88,15 +88,15 @@
 // + (int) ToInt32:(char[]) bytes
 //         startIndex:(int) startIndex
 // {
-//     return MBitConverter.ToInt32(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
+//     return MBitConverter.ToInt32(bytes, startIndex, MEndian.eLITTLE_ENDIAN);
 // }
 
 // + (int) ToInt32:(char[]) bytes
 //         startIndex:(int) startIndex
-//         endian:(EEndian) endian
+//         endian:(MEndian) endian
 // {
 //     (int) retValue = 0;
-//     if (endian == EEndian.eLITTLE_ENDIAN)
+//     if (endian == MEndian.eLITTLE_ENDIAN)
 //     {
 //         retValue = ((int))(
 //                            (bytes[startIndex + 3] << 24) +
@@ -120,15 +120,15 @@
 // + (int) ToUInt32:(char[]) bytes
 //         startIndex:(int) startIndex
 // {
-//     return MBitConverter.ToUInt32(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
+//     return MBitConverter.ToUInt32(bytes, startIndex, MEndian.eLITTLE_ENDIAN);
 // }
 
 // + (int) ToUInt32:(char[]) bytes
 //         startIndex:(int) startIndex
-//         endian:(EEndian) endian
+//         endian:(MEndian) endian
 // {
 //     (int) retValue = 0;
-//     if (endian == EEndian.eLITTLE_ENDIAN)
+//     if (endian == MEndian.eLITTLE_ENDIAN)
 //     {
 //         retValue = ((int))(
 //                            (bytes[startIndex + 3] << 24) +
@@ -152,15 +152,15 @@
 // + (long) ToInt64:(char[]) bytes
 //         startIndex:(int) startIndex
 // {
-//     return MBitConverter.ToInt64(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
+//     return MBitConverter.ToInt64(bytes, startIndex, MEndian.eLITTLE_ENDIAN);
 // }
 
 // + (long) ToInt64:(char[]) bytes
 //     startIndex:(int) startIndex
-//     endian:(EEndian) endian
+//     endian:(MEndian) endian
 // {
 //     long retValue = 0;
-//     if (endian == EEndian.eLITTLE_ENDIAN)
+//     if (endian == MEndian.eLITTLE_ENDIAN)
 //     {
 //         retValue = (long)(
 //                           (bytes[startIndex + 7] << 56) +
@@ -192,15 +192,15 @@
 // + (long) ToUInt64:(char[]) bytes
 //         startIndex:(int) startIndex
 // {
-//     return MBitConverter.ToUInt64(bytes, startIndex, EEndian.eLITTLE_ENDIAN);
+//     return MBitConverter.ToUInt64(bytes, startIndex, MEndian.eLITTLE_ENDIAN);
 // }
 
 // + (long) ToUInt64:(char[]) bytes
 //         startIndex:(int) startIndex
-//         endian:(EEndian) endian
+//         endian:(MEndian) endian
 // {
 //     long retValue = 0;
-//     if (endian == EEndian.eLITTLE_ENDIAN)
+//     if (endian == MEndian.eLITTLE_ENDIAN)
 //     {
 //         retValue = (long)(
 //                           (bytes[startIndex + 7] << 56) +
@@ -264,13 +264,13 @@
 //         bytes:(char[]) bytes
 //         startIndex:(int) startIndex
 // {
-//     MBitConverter.GetBytes(data, bytes, startIndex, EEndian.eLITTLE_ENDIAN);
+//     MBitConverter.GetBytes(data, bytes, startIndex, MEndian.eLITTLE_ENDIAN);
 // }
 
 // + (void) GetBytes:(BOOL) data
 //     bytes:(char[]) bytes
 //     startIndex:(int) startIndex
-//     endian:(EEndian) endian
+//     endian:(MEndian) endian
 // {
 //     bytes[startIndex] = (char)(data ? 1 : 0);
 // }
@@ -279,13 +279,13 @@
 //         bytes:(char[]) bytes
 //         startIndex:(int) startIndex
 // {
-//     MBitConverter.GetBytes(data, bytes, startIndex, EEndian.eLITTLE_ENDIAN);
+//     MBitConverter.GetBytes(data, bytes, startIndex, MEndian.eLITTLE_ENDIAN);
 // }
 
 // + (void) GetBytes:char data
 //     bytes:(char[]) bytes
 //     startIndex:(int) startIndex
-//     endian:(EEndian) endian
+//     endian:(MEndian) endian
 // {
 //     bytes[startIndex] = (char)data;
 // }
@@ -294,15 +294,15 @@
 //         bytes:(char[]) bytes
 //         startIndex:(int) startIndex
 // {
-//     MBitConverter.GetBytes(data, bytes, startIndex, EEndian.eLITTLE_ENDIAN);
+//     MBitConverter.GetBytes(data, bytes, startIndex, MEndian.eLITTLE_ENDIAN);
 // }
 
 // + (void) GetBytes:(short) data
 //     bytes:(char[]) bytes
 //     startIndex:(int) startIndex
-//     endian:(EEndian) endian
+//     endian:(MEndian) endian
 // {
-//     if (endian == EEndian.eLITTLE_ENDIAN)
+//     if (endian == MEndian.eLITTLE_ENDIAN)
 //     {
 //         //bytes[index] = (char)(data & 0x00FF);
 //         //bytes[index + 1] = (char)((data & 0xFF00) >> 8);
@@ -322,15 +322,15 @@
 //         bytes:(char[]) bytes
 //         startIndex:(int) startIndex
 // {
-//     MBitConverter.GetBytes(data, bytes, startIndex, EEndian.eLITTLE_ENDIAN);
+//     MBitConverter.GetBytes(data, bytes, startIndex, MEndian.eLITTLE_ENDIAN);
 // }
 
 // + (void) GetBytes:(int) data
 //     bytes:(char[]) bytes
 //     startIndex:(int) startIndex
-//     endian:(EEndian) endian
+//     endian:(MEndian) endian
 // {
-//     if (endian == EEndian.eLITTLE_ENDIAN)
+//     if (endian == MEndian.eLITTLE_ENDIAN)
 //     {
 //         bytes[startIndex] = (char)(data << 24 >> 24);
 //         bytes[startIndex + 1] = (char)(data << 16 >> 24);
@@ -350,15 +350,15 @@
 //         bytes:(char[]) bytes
 //         startIndex:(int) startIndex
 // {
-//     MBitConverter.GetBytes(data, bytes, startIndex, EEndian.eLITTLE_ENDIAN);
+//     MBitConverter.GetBytes(data, bytes, startIndex, MEndian.eLITTLE_ENDIAN);
 // }
 
 // + (void) GetBytes:(long) data
 //     bytes:(char[]) bytes
 //     startIndex:(int) startIndex
-//     endian:(EEndian) endian
+//     endian:(MEndian) endian
 // {
-//     if (endian == EEndian.eLITTLE_ENDIAN)
+//     if (endian == MEndian.eLITTLE_ENDIAN)
 //     {
 //         bytes[startIndex] = (char)(data << 56 >> 56);
 //         bytes[startIndex + 1] = (char)(data << 48 >> 56);

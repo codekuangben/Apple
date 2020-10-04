@@ -1,5 +1,5 @@
 #import <MyLibs/Tools/MEncoding.h>
-#import <MyLibs/Tools/GkEncode.h>
+#import <MyLibs/Tools/MEncode.h>
 #import <MyLibs/EventHandle/IDispatchObject.h>
 #import <Foundation/Foundation.h>
 #import "MyLibs/Base/GObject.h"
@@ -14,7 +14,7 @@
     
 }
 
-+ (MEncoding*) convGkEncode2EncodingEncoding:(GkEncode) gkEncode;
++ (MEncoding*) convGkEncode2EncodingEncoding:(MEncode) gkEncode;
 // 判断两个 GameObject 地址是否相等
 + (BOOL) isAddressEqual:(GObject*) a b:(GObject*) b;
 // 判断两个函数是否相等，不能使用 isAddressEqual 判断函数是否相等

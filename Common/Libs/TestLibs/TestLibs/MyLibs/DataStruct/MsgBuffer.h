@@ -1,6 +1,6 @@
 ﻿// #import "MyLibs/Base/GObject.h"
 // #import "MyLibs/FrameWork/MacroDef.h"
-// #import "MyLibs/Tools/EEndian.h"
+// #import "MyLibs/Tools/MEndian.h"
 
 // @interface MsgBuffer : GObject
 // {
@@ -17,7 +17,7 @@
 // - (CircularBuffer*) getCircularBuffer;
 
 // // 设置网络字节序
-// - (void) setEndian:(EEndian) end;
+// - (void) setEndian:(MEndian) end;
 
 // /**
 //     * @brief 检查 CB 中是否有一个完整的消息

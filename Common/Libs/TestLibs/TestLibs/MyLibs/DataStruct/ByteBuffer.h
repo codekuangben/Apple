@@ -1,6 +1,6 @@
 // #import "MyLibs/EventHandle/IDispatchObject.h"
-// #import "MyLibs/Tools/EEndian.h"
-// #import "MyLibs/Tools/GkEncode.h"
+// #import "MyLibs/Tools/MEndian.h"
+// #import "MyLibs/Tools/MEncode.h"
 
 // @class DynByteBuffer;
 
@@ -20,7 +20,7 @@
 // @protected
 //     DynByteBuffer* mDynBuffer;
 //     int mPos;          // 当前可以读取的位置索引
-//     EEndian mEndian;          // 大端小端
+//     MEndian mEndian;          // 大端小端
 
 //     char mPadBytes[];
 // }
@@ -34,7 +34,7 @@
 
 // @property (nonatomic, readwrite, retain) DynByteBuffer* mDynBuffer[];
 // @property (nonatomic, readwrite, retain) int mPos;          // 当前可以读取的位置索引
-// @property (nonatomic, readwrite, retain) EEndian mEndian;          // 大端小端
+// @property (nonatomic, readwrite, retain) MEndian mEndian;          // 大端小端
 
 // @property (nonatomic, readwrite, retain) char[] mPadBytes;
 // */
@@ -42,11 +42,11 @@
 // - (id) init;
 // - (id) init:(int) initCapacity;
 // - (id) init:(int) initCapacity maxCapacity:(int) maxCapacity;
-// - (id)init:(int)initCapacity maxCapacity:(int)maxCapacity endian:(EEndian)endian;
+// - (id)init:(int)initCapacity maxCapacity:(int)maxCapacity endian:(MEndian)endian;
 // - (DynByteBuffer*)getDynBuffer;
 // - (int)getBytesAvailable;
-// - (EEndian)getEndian;
-// - (void)setEndian:(EEndian)end;
+// - (MEndian)getEndian;
+// - (void)setEndian:(MEndian)end;
 // - (int)getLength;
 // - (void)setLength:(int)value;
 // - (void)setPos:(int) pos;
@@ -73,7 +73,7 @@
 // - (ByteBuffer*) readUnsignedInt64:(long) tmpUlong;
 // - (ByteBuffer*) readFloat:(float) tmpFloat;
 // - (ByteBuffer*) readDouble:(double) tmpDouble;
-// - (ByteBuffer*) readMultiByte:(NSString*)tmpStr len:(int)len gkCharSet:(GkEncode)gkCharSet;
+// - (ByteBuffer*) readMultiByte:(NSString*)tmpStr len:(int)len gkCharSet:(MEncode)gkCharSet;
 // // 这个是字节读取，没有大小端的区别
 // - (ByteBuffer*) readBytes:(char[])tmpBytes len:(int)len;
 // // 如果要使用 writeInt8 ，直接使用 writeMultiByte 这个函数
@@ -92,7 +92,7 @@
 // // 写入字节， bchangeLen 是否改变长度
 // - (void) writeBytes:(char[]) value start:(int) start len:(int) len bchangeLen:(BOOL) bchangeLen;
 // // 写入字符串
-// - (void) writeMultiByte:(NSString*) value, gkCharSet:(GkEncode) gkCharSet len:(int) len;
+// - (void) writeMultiByte:(NSString*) value, gkCharSet:(MEncode) gkCharSet len:(int) len;
 // - (void) replace:(char[]) srcBytes srcStartPos:(int) srcStartPos;
 // - (void) replace:(char[]) srcBytes srcStartPos:(int) srcStartPos srclen_:(int) srclen_;
 // - (void) replace:(char[]) srcBytes srcStartPos:(int) srcStartPos srclen_:(int) srclen_; destStartPos:(int) destStartPos;

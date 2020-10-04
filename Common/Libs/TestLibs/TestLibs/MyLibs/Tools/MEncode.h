@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-enum GkEncode : NSUInteger
+enum MEncode : NSUInteger
 {
     /**
     static public Encoding UTF8 = Encoding.UTF8;

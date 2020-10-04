@@ -1,22 +1,22 @@
 #import "MyLibs/Tools/SystemEndian.h"
-#import "MyLibs/Tools/EEndian.h"
+#import "MyLibs/Tools/MEndian.h"
 
-static EEndian msLocalEndian = eLITTLE_ENDIAN;   // 本地字节序
-static EEndian msNetEndian = eBIG_ENDIAN;        // 网络字节序
-static EEndian msServerEndian = msNetEndian;// 服务器字节序，规定服务器字节序就是网络字节序
+static MEndian msLocalEndian = eLITTLE_ENDIAN;   // 本地字节序
+static MEndian msNetEndian = eBIG_ENDIAN;        // 网络字节序
+static MEndian msServerEndian = msNetEndian;// 服务器字节序，规定服务器字节序就是网络字节序
 
 @implementation SystemEndian
 
-+ (EEndian) IsLocalEndian
++ (MEndian) IsLocalEndian
 {
     return msLocalEndian;
 }
 
-+ (EEndian) IsNetEndian
++ (MEndian) IsNetEndian
 {
     return msNetEndian;
 }
-+ (EEndian) IsServerEndian
++ (MEndian) IsServerEndian
 {
     return msServerEndian;
 }

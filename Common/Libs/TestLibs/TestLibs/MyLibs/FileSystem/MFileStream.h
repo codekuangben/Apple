@@ -213,11 +213,11 @@
 // -(char[]) readByte:(int) offset;
 // -(char[]) readByte:(int) offset count:(int) count;
 // -(void) writeText:(NSString*) text;
-// -(void) writeText:(NSString*) text gkEncode:(GkEncode) gkEncode;
+// -(void) writeText:(NSString*) text gkEncode:(MEncode) gkEncode;
 // - (void) writeByte(char[] bytes;
 // - (void) writeByte(char[] bytes, (int) offset;
 // - (void) writeByte(char[] bytes, (int) offset, (int) count;
 // -(void) writeLine:(NSString*) text;
-// -(void) writeLine:(NSString*) text gkEncode:(GkEncode) gkEncode;
+// -(void) writeLine:(NSString*) text gkEncode:(MEncode) gkEncode;
 
 // @end

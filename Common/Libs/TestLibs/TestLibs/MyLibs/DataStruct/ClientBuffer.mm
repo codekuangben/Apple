@@ -44,7 +44,7 @@
 // }
 
 // // 设置 ClientBuffer 字节序
-// - (void) setEndian:(EEndian) end
+// - (void) setEndian:(MEndian) end
 // {
 // 	mRawBuffer.setEndian(end);
 // 	mMsgBuffer.setEndian(end);
